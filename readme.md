@@ -1,9 +1,8 @@
 #Projekt quizu na zaliczenie
-v. 0.0.2
+v. 0.1.0
 
 ####TODO:
 * ! Podział na pliki js
-* Ekran powitalny
 * Losowość pytań
 * Losowość odpowiedzi
 * Zbieranie punktów

@@ -27,3 +27,18 @@ $black-40: rgba(0, 0, 0, .4);
 $black-52: rgba(0, 0, 0, .52);
 $black-67: rgba(0, 0, 0, .67);
 $black-84: rgba(0, 0, 0, .84);
+
+
+// media mixins
+@mixin media-tablet-small() {
+  @media (min-width: 600px) and (max-width: 839px) {
+    @content;
+  }
+}
+
+// media mixins
+@mixin media-phone() {
+  @media (max-width: 599px) {
+    @content;
+  }
+}

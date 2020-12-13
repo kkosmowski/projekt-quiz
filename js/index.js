@@ -1,18 +1,54 @@
 class Quiz {
-  quizElement;
-  quizQuestionsWrapper;
   data = test;
+  states = {
+    none: 'none',
+    preStart: 'pre-start',
+    inProgress: 'in-progress',
+    finished: 'finished'
+  };
+  state = this.states.none;
+  quizElement;
+  quizQuestionsElement;
+  quizInstructionsElement;
 
   init() {
     this.createQuiz();
-    this.createQuestion(1);
   }
 
   createQuiz() {
     this.quizElement = this.createElement('main', document.body, ['quiz']);
     this.renderQuizHeader();
-    this.quizQuestionsWrapper = this.createElement('div', this.quizElement, ['quiz__questions']);
+    this.quizQuestionsElement = this.createElement('div', this.quizElement, ['quiz__questions']);
 
+    this.renderQuizInstructions();
+    this.state = this.states.preStart;
+  }
+
+  renderQuizInstructions() {
+    const instructions = `Celem quizu jest sprawdzenie Twojej wiedzy z zakresu języków HTML, CSS i Javascript.\n\nQuiz składa się z <em>25 pytań</em> - po 8 z każdej kategorii i jedno dodatkowe, z losowej kategorii.\n\nPytania podzielone są na <em>cztery stopnie trudności</em> - po 2 z każdego. Ostatnie - dwudzieste piąte - pytanie będzie zawsze o stopniu trudności 3.\n\nKażde pytanie oznaczone jest kategorią z lewej strony.\n\nPytania są losowane z większej puli, a więc dwa podejścia do quizu będą skutkowały innymi pytaniami oraz w innej kolejności. Odpowiedzi również mogą być w innej kolejności.\n\nNie ma limitu czasowego.\n\nPowodzenia!`;
+
+    this.quizInstructionsElement = this.createElement('section', this.quizQuestionsElement, ['quiz__instructions']);
+    this.createElement('h3', this.quizInstructionsElement, ['quiz__instructions-title'], 'Przed rozpoczęciem');
+    this.createElement('p', this.quizInstructionsElement, ['quiz__instructions-content'], instructions, true);
+
+    const startButton = this.createElement('button', this.quizInstructionsElement, ['quiz__start-button', 'button'], 'Rozpocznij');
+    startButton.type = 'button';
+    startButton.addEventListener('click', this.startQuiz.bind(this));
+  }
+
+  renderQuizHeader() {
+    const quizHeader = this.createElement('header', this.quizElement, ['quiz__header', 'header']);
+    const titleContainer = this.createElement('hgroup', quizHeader, ['header__title-container']);
+    this.createElement('h1', titleContainer, ['header__title'], 'Quiz');
+    this.createElement('h2', titleContainer, ['header__subtitle'], 'HTML, CSS i JS');
+  }
+
+  startQuiz() {
+    this.hide(this.quizInstructionsElement);
+    this.loadQuestions();
+  }
+
+  loadQuestions() {
     let i = 1;
     this.data.HTML.forEach(question => {
       this.renderQuestion(i, 'html', this.parseText(question.question), question.answers);
@@ -24,20 +60,11 @@ class Quiz {
     });
   }
 
-  renderQuizHeader() {
-    const quizHeader = this.createElement('header', this.quizElement, ['quiz__header', 'header']);
-    const titleContainer = this.createElement('hgroup', quizHeader, ['header__title-container']);
-    this.createElement('h1', titleContainer, ['header__title'], 'Quiz');
-    this.createElement('h2', titleContainer, ['header__subtitle'], 'HTML, CSS i JS');
-  }
-
-  createQuestion(id) {
-    this.renderQuestion(id, 'html', 'Lorem ipsum, dolor sit amet?', ['answer 1', 'answer 2', 'answer 3', 'answer 4']);
-    this.renderQuestion(id+1, 'css', 'Lorem ipsum, dolor sit amet?', ['answer 1', 'answer 2', 'answer 3', 'answer 4']);
-    this.renderQuestion(id+2, 'js', 'Lorem ipsum, dolor sit amet?', ['answer 1', 'answer 2', 'answer 3', 'answer 4']);
-  }
-
   // helper methods
+  hide(element) {
+    element.classList.add('display:none');
+  }
+  
   parseText(string) {
     return string
       .replaceAll('<', '&lt;').replaceAll('>', '&gt;')
@@ -58,7 +85,7 @@ class Quiz {
 
   renderQuestion(id, type, content, answers) {
     const answerLetters = ['a', 'b', 'c', 'd'];
-    const quizQuestion = this.createElement('section', this.quizQuestionsWrapper, ['quiz__question', 'quiz-question', `--${type}`]);
+    const quizQuestion = this.createElement('section', this.quizQuestionsElement, ['quiz__question', 'quiz-question', `--${type}`]);
     quizQuestion.id = `question-${id}`;
 
     const question = this.createElement('h3', quizQuestion, ['quiz-question__question']);

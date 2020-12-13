@@ -28,3 +28,17 @@ body {
 .quiz__question {
   margin-bottom: 6rem;
 }
+
+.display\:none {
+  display: none;
+}
+
+.button {
+  padding: 0.8rem 3.2rem;
+  text-transform: uppercase;
+  border: 2px solid #b2dbff;
+  background-color: #1f7dde;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 500;
+}
