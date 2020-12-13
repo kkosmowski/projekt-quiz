@@ -1,0 +1,71 @@
+.quiz-question {
+  position: relative;
+  padding: 0.4rem 2rem 1rem 4rem;
+
+  &::before {
+    position: absolute;
+    @include flex-row(center, center);
+    transform: rotate(180deg);
+    left: 0;
+    top: 0;
+    width: 2.4rem;
+    height: 100%;
+    letter-spacing: 1px;
+    font: 400 1.4rem 'Roboto';
+    text-transform: uppercase;
+    writing-mode: vertical-lr;
+  }
+
+  &.--html {
+    &::before {
+      content: 'html';
+      background-color: #e44d26;
+      color: #fff;
+    }
+  }
+
+  &.--css {
+    &::before {
+      content: 'css';
+      background-color: #379ad6;
+      color: #fff;
+    }
+  }
+
+  &.--js {
+    &::before {
+      content: 'javascript';
+      background-color: #f0db4f;
+      color: #323330;
+    }
+  }
+}
+
+.quiz-question__question {
+  margin-bottom: 1rem;
+  white-space: pre;
+}
+//TODO: Add better styles for code (and smaller font-size)
+// font-weight could be increased
+// one more \n for some questions blocks?
+
+// answers should have margin-bottom and reduced line-height
+
+.quiz-question__label {
+  color: $black-52;
+  font-style: italic;
+}
+
+.quiz-question__answers-container {
+  @include flex-column();
+  line-height: 1.6;
+}
+
+.quiz-question__answer {
+  @include flex-row(none, center);
+  padding-left: 2rem;
+}
+
+.quiz-question__answer-input {
+  margin-right: 1rem;
+}
