@@ -9,7 +9,28 @@ body {
 }
 
 code {
-  font-family: 'Roboto Mono', monospace;
+  font: 400 14px 'Roboto Mono', monospace;
+  background-color: #eee;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  letter-spacing: -0.25px;
+
+  &:not(.block) {
+    padding-left: 0.4ch;
+    padding-right: 0.4ch;
+    white-space: nowrap;
+  }
+
+  &.block {
+    display: block;
+    overflow: auto;
+    padding: 0.6ch 1ch;
+    margin-top: 1rem;
+
+    + code.block {
+      margin-top: -1rem;
+    }
+  }
 }
 
 h1, h2, h3 {

@@ -45,11 +45,6 @@
   margin-bottom: 1rem;
   white-space: pre;
 }
-//TODO: Add better styles for code (and smaller font-size)
-// font-weight could be increased
-// one more \n for some questions blocks?
-
-// answers should have margin-bottom and reduced line-height
 
 .quiz-question__label {
   color: $black-52;
@@ -58,12 +53,12 @@
 
 .quiz-question__answers-container {
   @include flex-column();
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .quiz-question__answer {
-  @include flex-row(none, center);
   padding-left: 2rem;
+  margin-bottom: 1rem;
 }
 
 .quiz-question__answer-input {

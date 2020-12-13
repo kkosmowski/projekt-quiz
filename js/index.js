@@ -39,7 +39,10 @@ class Quiz {
 
   // helper methods
   parseText(string) {
-    return string.replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('[[', '<code>').replaceAll(']]', '</code>');
+    return string
+      .replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+      .replaceAll('[[[', '<code class="block">').replaceAll(']]]', '</code>')
+      .replaceAll('[[', '<code>').replaceAll(']]', '</code>');
   }
 
   createElement(tag, parent, classList, content = null, contentAsHtml = false) {
@@ -95,11 +98,33 @@ const test = {
         "[[<p>]] to element grupujący elementy [[<span>]]."
       ],
       "explanation": "[[<span>]] to generyczny element [[inline]] którym zawsze powinniśmy oplatać tekst (chyba, że ten jest już zawarty w innym elemencie)."
+    },
+    {
+      "question": "Jaki cel ma ten kod?[[[<meta name=\"viewport\" content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">]]]",
+      "difficulty": 4,
+      "answers": [
+        "Jest to znacznik, który ustawia domyślne wyświetlenie strony na urządzeniu mobilnym.",
+        "Jest to znacznik, który informuje urządzenie mobilne, że ta strona wspiera technologię renderowania \"viewport\".",
+        "Ma on na celu ustawienie domyślnego wyświetlania strony na urządzeniach typu desktop.",
+        "Ma on na celu ustawienie ciemnego motywu na stronie."
+      ],
+      "explanation": ""
+    },
+    {
+      "question": "Które elementy będą miały czerwone tło?:[[[.list .item {\n  background-color: red;\n}]]]\n[[[<div class=\"list\">\n  <div class=\"item\">item 1</div>\n  <div class=\"item\">item 2</div>\n  <div class=\"item\">\n    <div class=\"item\">item 3</div>\n    <div class=\"item\">item 4</div>\n    <div class=\"item\">\n      <div class=\"item\">item 5</div>\n      <div class=\"item\">item 6</div>\n    </div>\n  </div>\n</div>]]]",
+      "difficulty": 2,
+      "answers": [
+        "Wszystkie elementy [[.item]].",
+        "Elementy [[.item]] \"item 1\" i \"item 2\"",
+        "Elementy [[.item]] poza \"item 1\" i \"item 2\"",
+        "Żaden element nie będzie miał czerwonego tła."
+      ],
+      "explanation": ""
     }
   ],
   "CSS": [
     {
-      "question": "Jaki kolory będą miały elementy?\n[[.parent > * {\ncolor: beige;\n}\n.item-1 {\ncolor: steelblue !important;\n}\n.parent span {\ncolor: coral;\n}\n.parent > .item-3 {\ncolor: darkslateblue;\n}\n.parent #item-3 {\ncolor: hotpink;\n}\n.parent .item-1,\n.parent .item-2 {\ncolor: chocolate;\n}]]\n[[<p class=\"parent\">\n  <span id=\"item-1\" class=\"item-1\" data-name=\"item-1\">Item 1</span>\n  <span id=\"item-2\" class=\"item-2\" data-name=\"item-2\" style=\"color: greenyellow\">Item 2</span>\n  <span id=\"item-3\" class=\"item-3\" data-name=\"item-3\">Item 3</span>\n</p>]]",
+      "question": "Jaki kolory będą miały elementy?[[[<p class=\"parent\">\n  <span id=\"item-1\" class=\"item-1\" data-name=\"item-1\">Item 1</span>\n  <span id=\"item-2\" class=\"item-2\" data-name=\"item-2\" style=\"color: greenyellow\">Item 2</span>\n  <span id=\"item-3\" class=\"item-3\" data-name=\"item-3\">Item 3</span>\n</p>]]]\n[[[.parent > * {\n  beige;\n}\n\n.item-1 {\n  color: steelblue !important;\n}\n\n.parent span {\n  color: coral;\n}\n\n.parent > .item-3 {\n  color: darkslateblue;\n}\n\n.parent #item-3 {\n  color: hotpink;\n}\n\n.parent .item-1,\n.parent .item-2 {\n  color: chocolate;\n}]]]",
       "difficulty": 3,
       "answers": [
         "Kolejno: [[steelblue]], [[limegreen]] i [[hotpink]].",
@@ -108,7 +133,7 @@ const test = {
         "Kolejno: [[steelblue]], [[chocolate]] i [[hotpink]]."
       ],
       "explanation": "Pierwszy [[<span>]] będzie o kolorze [[steelblue]] ponieważ reguła [[!important]] jest ponad wszystkimi innymi regułami. Następny element będzie w kolorze [[limegreen]] ponieważ [[specificity]] styli [[inline]] jest najwyższym możliwym. Ostatni element będzie w kolorze [[hotpink]] ponieważ selektor id ma większe specificity niż jakiekolwiek kombinacje selektorów klas."
-    }
+    },
   ]
 };
 
