@@ -1,5 +1,4 @@
 class Quiz {
-  data = test;
   states = {
     none: 'none',
     preStart: 'pre-start',
@@ -7,6 +6,7 @@ class Quiz {
     finished: 'finished'
   };
   state = this.states.none;
+  questions = [];
   quizElement;
   quizQuestionsElement;
   quizInstructionsElement;
@@ -33,6 +33,7 @@ class Quiz {
 
     const startButton = this.createElement('button', this.quizInstructionsElement, ['quiz__start-button', 'button'], 'Rozpocznij');
     startButton.type = 'button';
+    startButton.disabled = true; //TODO: Enable after loading questions works
     startButton.addEventListener('click', this.startQuiz.bind(this));
   }
 
@@ -49,13 +50,63 @@ class Quiz {
   }
 
   loadQuestions() {
+    const categories = ['html', 'css', 'javascript'];
+    const selectedCategories = {
+      html: 0,
+      css: 0,
+      javascript: 0,
+    };
+
+    const selectQuestion = (questions, category) => {
+      let selectedQuestion = Math.floor(Math.random() * questions[category].length);
+
+      if (questions[category][selectedQuestion]) {
+        this.questions.push({
+          ...questions[category][selectedQuestion],
+          type: category,
+        });
+        return selectedQuestion;
+      }
+      return selectQuestion(questions, category);
+    };
+
+    const selectCategory = () => {
+      const pickFrom = Math.floor(Math.random() * 3);
+      const selectedCategory = categories[pickFrom];
+      if (selectedCategories[selectedCategory] < 2) {
+        selectedCategories[selectedCategory]++;
+        return selectedCategory;
+      }
+      return selectCategory();
+    };
+
+    fetch('http://localhost:8000/questions.json')
+      .then(res => res.json())
+      .then(data => {
+        let fetchedQuestions = { ...data };
+
+        for (let i = 1; i <= 6; i++) {
+          const selectedCategory = selectCategory();
+          const selectedQuestion = selectQuestion(fetchedQuestions, selectedCategory);
+
+          fetchedQuestions = {
+            ...fetchedQuestions,
+            [selectedCategory]: {
+              ...fetchedQuestions[selectedCategory],
+              [selectedQuestion]: null
+            },
+          };
+        }
+
+        selectQuestion(fetchedQuestions, selectCategory());
+        this.renderQuestions();
+      });
+  }
+
+  renderQuestions() {
     let i = 1;
-    this.data.HTML.forEach(question => {
-      this.renderQuestion(i, 'html', this.parseText(question.question), question.answers);
-      i++;
-    });
-    this.data.CSS.forEach(question => {
-      this.renderQuestion(i, 'css',this.parseText(question.question), question.answers);
+    this.questions.forEach(question => {
+      this.renderQuestion(i, question.type, this.parseText(question.question), question.answers);
       i++;
     });
   }
