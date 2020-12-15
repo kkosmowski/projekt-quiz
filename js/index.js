@@ -17,6 +17,7 @@ class Quiz {
   state = this.states.none;
 
   questions = [];
+  questionsRendered = 0;
 
   quizElement;
   quizQuestionsElement;
@@ -44,7 +45,6 @@ class Quiz {
 
     const startButton = this.createElement('button', this.quizInstructionsElement, ['quiz__start-button', 'button'], 'Rozpocznij');
     startButton.type = 'button';
-    // startButton.disabled = true; //TODO: Enable after loading questions works
     startButton.addEventListener('click', this.startQuiz.bind(this));
   }
 
@@ -67,20 +67,17 @@ class Quiz {
       javascript: 0,
     };
 
-    const selectQuestion = (questions, category, checkLimit) => {
+    const selectQuestion = (questions, category) => {
       let selectedQuestion = Math.floor(Math.random() * Object.keys(questions[category]).length);
 
-      console.log(questions[category]);
-      console.log(selectedQuestion, category);
       if (questions[category][selectedQuestion]) {
-        console.log(questions[category][selectedQuestion]);
         this.questions.push({
           ...questions[category][selectedQuestion],
           type: category,
         });
         return selectedQuestion;
       }
-      return selectQuestion(questions, category, true);
+      return selectQuestion(questions, category);
     };
 
     const selectCategory = (checkLimit) => {
@@ -100,7 +97,7 @@ class Quiz {
 
         for (let i = 1; i <= this.questionsCount; i++) {
           const selectedCategory = selectCategory(true);
-          const selectedQuestion = selectQuestion(fetchedQuestions, selectedCategory, true);
+          const selectedQuestion = selectQuestion(fetchedQuestions, selectedCategory);
 
           fetchedQuestions = {
             ...fetchedQuestions,
@@ -111,18 +108,19 @@ class Quiz {
           };
         }
 
-        selectQuestion(fetchedQuestions, selectCategory(false), false); // 25th question
-        this.renderQuestions();
+        selectQuestion(fetchedQuestions, selectCategory(false)); // 25th question
+        this.renderPage();
+        this.state = this.states.inProgress;
       });
   }
 
-  renderQuestions() {
-    let i = 1;
-    this.questions.forEach(question => {
-      this.renderQuestion(i, question.type, this.parseText(question.question), question.answers);
-      i++;
+  renderPage() {
+    const questionsToRender = [...this.questions].splice((this.currentPage - 1) * this.questionsPerPage, this.questionsPerPage);
+
+    questionsToRender.forEach(question => {
+      this.questionsRendered++;
+      this.renderQuestion(this.questionsRendered, question.type, this.parseText(question.question), question.answers);
     });
-    this.state = this.states.inProgress;
   }
 
   // helper methods

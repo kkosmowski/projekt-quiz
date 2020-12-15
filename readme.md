@@ -1,17 +1,20 @@
 #Projekt quizu na zaliczenie
-v. 0.1.3
+v. 0.1.4
 
 ####TODO:
+* Paginacja i renderowanie 5 pytań na stronę / in progress
+* Dokumentacja
 * ! Podział na pliki js
-* Losowość pytań / in progress
 * Losowość odpowiedzi
 * Zbieranie punktów
-* Paginacja i renderowanie 5 pytań na stronę
 * Zapisywanie odpowiedzi (localStorage?) -> możliwość cofnięcia się na poprzednią stronę
 * Ekran końcowy
 
 
 ####Changelog:
+* 0.1.4
+  * paginacja częściowo zaimplementowana;
+  * code cleanup; 
 * 0.1.3
   * ładowanie pytań i ich losowość;
   * poprawki w inputach odpowiedzi;
