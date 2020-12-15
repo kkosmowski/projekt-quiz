@@ -43,7 +43,7 @@
 
 .quiz-question__question {
   margin-bottom: 1rem;
-  white-space: pre;
+  white-space: pre-wrap;
 }
 
 .quiz-question__label {
@@ -59,6 +59,7 @@
 .quiz-question__answer {
   padding-left: 2rem;
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 
 .quiz-question__answer-input {

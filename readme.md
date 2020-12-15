@@ -1,5 +1,5 @@
 #Projekt quizu na zaliczenie
-v. 0.1.2
+v. 0.1.3
 
 ####TODO:
 * ! Podział na pliki js
@@ -12,6 +12,10 @@ v. 0.1.2
 
 
 ####Changelog:
+* 0.1.3
+  * ładowanie pytań i ich losowość;
+  * poprawki w inputach odpowiedzi;
+  * dodane improvementy UX/UI;
 * 0.1.2
   * dodano częściową implementację ładowania pytań;   
   * dodano nowe pytania (css);

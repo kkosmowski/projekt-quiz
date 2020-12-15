@@ -99,17 +99,6 @@
       ],
       "explanation": ""
     },
-    "": {
-      "question": "Do czego nam tag [[<header>]]?",
-      "difficulty": 3,
-      "answers": [
-        "Do oznaczenia headera całej strony, artykułu, sekcji lub jakiegoś bloku.",
-        "[[<header>]] to element będący headerem strony lub podstrony. Powinien być tylko jeden na stronie, tak jak [[<h1>]].",
-        "[[<header>]] to element przed [[<body>]], w którym zawieramy metadane strony i odnośniki do innych zasobów.",
-        "[[<header>]] i [[<footer>]] to elementy, które muszą być w tagu [[<main>]] i określają kolejno header i footer strony."
-      ],
-      "explanation": ""
-    },
     "10": {
       "question": "Czym jest i jaką wartość semantyczną ma element [[<div>]]?",
       "difficulty": 2,
@@ -254,13 +243,13 @@
       "explanation": ""
     },
     "23": {
-      "question": "",
-      "difficulty": 0,
+      "question": "Do czego nam tag [[<header>]]?",
+      "difficulty": 3,
       "answers": [
-        "",
-        "",
-        "",
-        ""
+        "Do oznaczenia headera całej strony, artykułu, sekcji lub jakiegoś bloku.",
+        "[[<header>]] to element będący headerem strony lub podstrony. Powinien być tylko jeden na stronie, tak jak [[<h1>]].",
+        "[[<header>]] to element przed [[<body>]], w którym zawieramy metadane strony i odnośniki do innych zasobów.",
+        "[[<header>]] i [[<footer>]] to elementy, które muszą być w tagu [[<main>]] i określają kolejno header i footer strony."
       ],
       "explanation": ""
     }
@@ -344,7 +333,7 @@
       "explanation": ""
     },
     "8": {
-      "question": "Jak ostylować wszystkie elementy występuję tuż po tagu [[<code>]]?",
+      "question": "Jak ostylować wszystkie elementy występujące tuż po tagu [[<code>]]?",
       "difficulty": 2,
       "answers": [
         "[[code + *]]",
@@ -355,13 +344,23 @@
       "explanation": ""
     },
     "9": {
-      "question": "Jak zadeklarować zmienną w CSS? Jaką ma przewagę nad zmienną w np. Sassie?",
-      "difficulty": 4,
+      "question": "Jaką ma przewagę ma zmienna CSS nad zmienną w np. Sassie?",
+      "difficulty": 3,
       "answers": [
-        "",
-        "",
-        "",
-        ""
+        "Zmienne z języków rozszerzających CSS - jak np. Sass (SCSS) - zostają skompilowane i znikają, z kolei zmienne CSSowe nadal istnieją po załadowaniu strony, dodatkowo można się do nich odwołać Javascriptem.",
+        "Zmienne z języków rozszerzających CSS - jak np. Sass (SCSS) - zostają skompliowane i znikają, podczas gdy zmienne w CSSie nadal istnieją po załadowaniu strony. Nie ma innych różnic.",
+        "Zmienne CSS są globalne, tj. nie trzeba importować pliku, w którym je zdefiniowaliśmy. To jedyna zaleta tego rozwiązania.",
+        "Zmienne CSS nie mają przewagi nad zmiennymi w np. Sassie, ponieważ trzeba je deklarować w regule [[:root]] i odwoływać się do nich skomplikowaną składnią."
+      ]
+    },
+    "10": {
+      "question": "Jak zadeklarować i użyć zmienną w CSS?",
+      "difficulty": 3,
+      "answers": [
+        "[[[:root {\n  --color: lightblue;\n}\n\nbody {\n  background-color: var(color);\n}]]]",
+        "[[[:root {\n  color: lightblue;\n}\n\nbody {\n  background-color: --var(color);\n}]]]",
+        "[[[:root {\n  --color: lightblue;\n}\n\nbody {\n  background-color: var(--color);\n}]]]",
+        "[[[:root {\n  --var(color): lightblue;\n}\n\nbody {\n  background-color: --var(color);\n}]]]"
       ]
     }
   },
