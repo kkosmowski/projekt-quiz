@@ -131,8 +131,8 @@ class Quiz {
   parseText(string) {
     return string
       .replaceAll('<', '&lt;').replaceAll('>', '&gt;')
-      .replaceAll('[[[', '<code class="block">').replaceAll(']]]', '</code>')
-      .replaceAll('[[', '<code>').replaceAll(']]', '</code>');
+      .replaceAll('--[', '<code class="block">').replaceAll(']--', '</code>')
+      .replaceAll('-[', '<code>').replaceAll(']-', '</code>');
   }
 
   createElement(tag, parent, classList, content = null, contentAsHtml = false) {

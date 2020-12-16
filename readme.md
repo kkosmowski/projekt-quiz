@@ -12,6 +12,8 @@ v. 0.1.4
 
 
 ####Changelog:
+* 0.1.5
+  * zmiana notacji kodu liniowego i blokowego;
 * 0.1.4
   * paginacja częściowo zaimplementowana;
   * code cleanup; 

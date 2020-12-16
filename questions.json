@@ -1,7 +1,7 @@
 {
   "html": {
     "1": {
-      "question": "Ile tagów [[<h1>]] powinno być umieszczonych na jednej stronie?",
+      "question": "Ile tagów -[<h1>]- powinno być umieszczonych na jednej stronie?",
       "difficulty": 2,
       "answers": [
         "Tylko jeden.",
@@ -9,10 +9,10 @@
         "Nie ma ograniczeń.",
         "Taki tag nie istnieje."
       ],
-      "explanation": "Tag [[<h1>]] ma prezentować główny tytuł strony, dlatego zawsze powinien być tylko jeden."
+      "explanation": "Tag -[<h1>]- ma prezentować główny tytuł strony, dlatego zawsze powinien być tylko jeden."
     },
     "2": {
-      "question": "Do czego służy tag [[<ul>]]?",
+      "question": "Do czego służy tag -[<ul>]-?",
       "difficulty": 1,
       "answers": [
         "Do stworzenia nieposortowanej listy.",
@@ -20,59 +20,59 @@
         "Do stworzenia nagłówka.",
         "Do stworzenia paragrafu."
       ],
-      "explanation": "[[<ul>]] (unordered list) to tag listy nieposortowanej, której podpunkty nie są ponumerowane."
+      "explanation": "-[<ul>]- (unordered list) to tag listy nieposortowanej, której podpunkty nie są ponumerowane."
     },
     "3": {
-      "question": "Czym różni się [[<span>]] od [[<p>]]?",
+      "question": "Czym różni się -[<span>]- od -[<p>]-?",
       "difficulty": 2,
       "answers": [
-        "[[<span>]] to generyczny element [[inline]] bez wartości semantycznej, podczas gdy [[<p>]] to paragraf.",
-        "[[<span>]] to generyczny element [[block]], podczas gdy [[<p>]] to generyczny element [[inline-block]]",
-        "[[<p>]] i [[<span>]] służą do tego samego, różnią się jedynie stylami.",
-        "[[<p>]] to element grupujący elementy [[<span>]]."
+        "-[<span>]- to generyczny element -[inline]- bez wartości semantycznej, podczas gdy -[<p>]- to paragraf.",
+        "-[<span>]- to generyczny element -[block]-, podczas gdy -[<p>]- to generyczny element -[inline-block]-",
+        "-[<p>]- i -[<span>]- służą do tego samego, różnią się jedynie stylami.",
+        "-[<p>]- to element grupujący elementy -[<span>]-."
       ],
-      "explanation": "[[<span>]] to generyczny element [[inline]] którym zawsze powinniśmy oplatać tekst (chyba, że ten jest już zawarty w innym elemencie)."
+      "explanation": "-[<span>]- to generyczny element -[inline]- którym zawsze powinniśmy oplatać tekst (chyba, że ten jest już zawarty w innym elemencie)."
     },
     "4": {
-      "question": "Do czego służy tag [[<em>]]?",
+      "question": "Do czego służy tag -[<em>]-?",
       "difficulty": 3,
       "answers": [
         "Do oznaczenia tekstu, na który kładziemy nacisk.",
         "Do nałożenia kursywy.",
         "Do oznaczenia cytatu.",
-        "Jest to generyczny element [[inline]] służący do stylowania tekstu."
+        "Jest to generyczny element -[inline]- służący do stylowania tekstu."
       ],
-      "explanation": "Tag [[<em>]] (emphasis) to dodany w HTML5 semantyczny tag mający nadać nacisk na tekst w nim zawarty."
+      "explanation": "Tag -[<em>]- (emphasis) to dodany w HTML5 semantyczny tag mający nadać nacisk na tekst w nim zawarty."
     },
     "5": {
-      "question": "Jak wyświetlić obraz o ścieżce [[./images/logo.png]], alternatywnym tekście \"Logo\" i wymiarach 160x50 px?",
+      "question": "Jak wyświetlić obraz o ścieżce -[./images/logo.png]-, alternatywnym tekście \"Logo\" i wymiarach 160x50 px?",
       "difficulty": 2,
       "answers": [
-        "[[<img src=\"./images/logo.png\" alt=\"Logo\" class=\"logo\">]], a wymiary nadać klasie w CSSie.",
-        "[[<img href=\"./images/logo.png\" alt=\"Logo\" class=\"logo\">]], a wymiary nadać klasie w CSSIe.",
-        "[[<img src=\"./images/logo.png\" alt=\"Logo\" class=\"logo\" width=\"160\" height\"=50\">]].",
-        "[[<img href=\"./images/logo.png\" alt=\"Logo\" class=\"logo\" width=\"160\" height\"=50\">]]."
+        "-[<img src=\"./images/logo.png\" alt=\"Logo\" class=\"logo\">]-, a wymiary nadać klasie w CSSie.",
+        "-[<img href=\"./images/logo.png\" alt=\"Logo\" class=\"logo\">]-, a wymiary nadać klasie w CSSIe.",
+        "-[<img src=\"./images/logo.png\" alt=\"Logo\" class=\"logo\" width=\"160\" height\"=50\">]-.",
+        "-[<img href=\"./images/logo.png\" alt=\"Logo\" class=\"logo\" width=\"160\" height\"=50\">]-."
       ],
       "explanation": ""
     },
     "6": {
-      "question": "Do czego służy element [[<wbr>]]?",
+      "question": "Do czego służy element -[<wbr>]-?",
       "difficulty": 4,
       "answers": [
         "Do oznaczenia w którym miejscu pojawia się możliwość złamania tekstu.",
         "Do zakończenia linii.",
-        "Do oznaczenia skrótu: [[<wbr title=\"Cascading Style Sheets\">CSS</wbr>]]",
+        "Do oznaczenia skrótu: -[<wbr title=\"Cascading Style Sheets\">CSS</wbr>]-",
         "Do nadania tekstowi nacisku."
       ],
       "explanation": ""
     },
     "7": {
-      "question": "Dlaczego dodany został tag [[<strong>]] skoro mamy już [[<b>]]?",
+      "question": "Dlaczego dodany został tag -[<strong>]- skoro mamy już -[<b>]-?",
       "difficulty": 3,
       "answers": [
-        "Tag [[<strong>]] służy do oznaczenia tekstu ważnego, podniesienia jego istoty.",
-        "Tagi [[<strong>]] i [[<b>]] różnią się tym, że [[<strong>]] jeszcze bardziej pogruba tekst.",
-        "Tagi [[<b>]], [[<i>]] i [[<u>]] są już wycofane. Tag [[<strong>]] to następca [[<b>]].",
+        "Tag -[<strong>]- służy do oznaczenia tekstu ważnego, podniesienia jego istoty.",
+        "Tagi -[<strong>]- i -[<b>]- różnią się tym, że -[<strong>]- jeszcze bardziej pogruba tekst.",
+        "Tagi -[<b>]-, -[<i>]- i -[<u>]- są już wycofane. Tag -[<strong>]- to następca -[<b>]-.",
         "Oba te tagi służą do tego samego i mogą być zamiennie stosowane."
       ],
       "explanation": ""
@@ -89,18 +89,18 @@
       "explanation": ""
     },
     "9": {
-      "question": "Czym różni się [[<input>]] od [[<input />]]? Który powinniśmy stosować?",
+      "question": "Czym różni się -[<input>]- od -[<input />]-? Który powinniśmy stosować?",
       "difficulty": 2,
       "answers": [
-        "W HTML5 powinniśmy stosować [[<input>]]. [[<input />]] to przykład taga bez zamknięcia, stosowany w XHTMLu.",
-        "Oba te tagi są identyczne, po prostu [[<input />]] to nowsza wersja taga [[<input>]] i to jego należy używać.",
-        "[[<input>]] stosujemy gdy chcemy umieścić tekst wewnątrz taga: [[<input>Nazwa inputa</input>]]. Bez tekstu wystarczy [[<input />]].",
-        "[[<input>]] służy do przycisków ([[<input type=\"button\">Wyślij</input>]]), podczas gdy [[<input />]] służy do pól formularza."
+        "W HTML5 powinniśmy stosować -[<input>]-. -[<input />]- to przykład taga bez zamknięcia, stosowany w XHTMLu.",
+        "Oba te tagi są identyczne, po prostu -[<input />]- to nowsza wersja taga -[<input>]- i to jego należy używać.",
+        "-[<input>]- stosujemy gdy chcemy umieścić tekst wewnątrz taga: -[<input>Nazwa inputa</input>]-. Bez tekstu wystarczy -[<input />]-.",
+        "-[<input>]- służy do przycisków (-[<input type=\"button\">Wyślij</input>]-), podczas gdy -[<input />]- służy do pól formularza."
       ],
       "explanation": ""
     },
     "10": {
-      "question": "Czym jest i jaką wartość semantyczną ma element [[<div>]]?",
+      "question": "Czym jest i jaką wartość semantyczną ma element -[<div>]-?",
       "difficulty": 2,
       "answers": [
         "Nie ma żadnej. Jest to generyczny element, stosowany wszędzie tam, gdzie pozostałe, semantyczne elementy nie pasują.",
@@ -111,18 +111,18 @@
       "explanation": ""
     },
     "11": {
-      "question": "Do czego stosujemy [[<table>]]?",
+      "question": "Do czego stosujemy -[<table>]-?",
       "difficulty": 3,
       "answers": [
         "Do tworzenia tabel oraz mailingów (najbezpieczniejsza opcja tworzenia szablonów maili).",
-        "[[<table>]] to najlepszy sposób na zbudowanie layoutu strony, ale nie nadaje się do szablonów maili.",
-        "[[<table>]] wykorzystujemy aby poprawić responsywność stron internetowych.",
+        "-[<table>]- to najlepszy sposób na zbudowanie layoutu strony, ale nie nadaje się do szablonów maili.",
+        "-[<table>]- wykorzystujemy aby poprawić responsywność stron internetowych.",
         "Do tworzenia tabel oraz layoutów stron."
       ],
       "explanation": ""
     },
     "12": {
-      "question": "Jaki cel ma ten kod?[[[<meta name=\"viewport\" content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">]]]",
+      "question": "Jaki cel ma ten kod?--[<meta name=\"viewport\" content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">]--",
       "difficulty": 4,
       "answers": [
         "Jest to znacznik, który ustawia domyślne wyświetlenie strony na urządzeniu mobilnym.",
@@ -133,18 +133,18 @@
       "explanation": ""
     },
     "13": {
-      "question": "Wybierz tagi, które można utworzyć wewnątrz [[<head>]]:",
+      "question": "Wybierz tagi, które można utworzyć wewnątrz -[<head>]-:",
       "difficulty": 2,
       "answers": [
-        "[[<meta>]], [[<script>]], [[<link>]], [[<base>]]",
-        "[[<style>]], [[<main>]], [[<script>]], [[<title>]]",
-        "[[<meta>]], [[<link>]], [[<embed>]], [[<style>]]",
-        "[[<href>]], [[<script>]], [[<title>]], [[<link>]]"
+        "-[<meta>]-, -[<script>]-, -[<link>]-, -[<base>]-",
+        "-[<style>]-, -[<main>]-, -[<script>]-, -[<title>]-",
+        "-[<meta>]-, -[<link>]-, -[<embed>]-, -[<style>]-",
+        "-[<href>]-, -[<script>]-, -[<title>]-, -[<link>]-"
       ],
       "explanation": ""
     },
     "14": {
-      "question": "Który atrybut jest nieprawidłowy dla elementu [[<form>]]?",
+      "question": "Który atrybut jest nieprawidłowy dla elementu -[<form>]-?",
       "difficulty": 2,
       "answers": [
         "type",
@@ -166,18 +166,18 @@
       "explanation": ""
     },
     "16": {
-      "question": "Czym różni się [[<input type=\"button\">]] od [[<button>]]?",
+      "question": "Czym różni się -[<input type=\"button\">]- od -[<button>]-?",
       "difficulty": 2,
       "answers": [
-        "Graficznie i funkcjonalnie niczym. Różnica w dodawaniu zawartości: [[<input type=\"button\" value=\"Przycisk\">]] vs [[<button type=\"button\">Przycisk</button>]].",
-        "Mają inne zastosowanie - [[<input type=\"button\">]] jest używany w formularzach, a [[<button>]] nie.",
+        "Graficznie i funkcjonalnie niczym. Różnica w dodawaniu zawartości: -[<input type=\"button\" value=\"Przycisk\">]- vs -[<button type=\"button\">Przycisk</button>]-.",
+        "Mają inne zastosowanie - -[<input type=\"button\">]- jest używany w formularzach, a -[<button>]- nie.",
         "Mają inne style, ale ich funkcjonalność jest identyczna.",
-        "Nie istnieje input o typie [[button]]."
+        "Nie istnieje input o typie -[button]-."
       ],
       "explanation": ""
     },
     "17": {
-      "question": "Do czego służy atrybut [[accesskey]]?",
+      "question": "Do czego służy atrybut -[accesskey]-?",
       "difficulty": 4,
       "answers": [
         "Pozwala na stworzenie skrótu klawiszowego z wybranym (podanym) klawiszem.",
@@ -199,147 +199,147 @@
       "explanation": ""
     },
     "19": {
-      "question": "Czy element [[<div>]] może być zawarty w elemencie [[<span>]]?",
+      "question": "Czy element -[<div>]- może być zawarty w elemencie -[<span>]-?",
       "difficulty": 2,
       "answers": [
-        "Nie, ponieważ [[<span>]] to element inline, a [[<div>]] to element block. W elementach inline mogą być umieszczone tylko inne elementy inline.",
-        "Tak, ponieważ [[<span>]] to element inline, a [[<div>]] to element block. W elementach inline mogą być umieszczone wszystkie inne typy elementów.",
-        "Nie, ponieważ [[<span>]] to element block, a [[<div>]] to element inline. W elementach block mogą byyć umieszczone tylko inne elementy block.",
-        "Tak, ponieważ [[<span>]] to element block, a [[<div>]] to element inline. W elementach block mogą być umieszczone wszystkie inne typy elementów."
+        "Nie, ponieważ -[<span>]- to element inline, a -[<div>]- to element block. W elementach inline mogą być umieszczone tylko inne elementy inline.",
+        "Tak, ponieważ -[<span>]- to element inline, a -[<div>]- to element block. W elementach inline mogą być umieszczone wszystkie inne typy elementów.",
+        "Nie, ponieważ -[<span>]- to element block, a -[<div>]- to element inline. W elementach block mogą byyć umieszczone tylko inne elementy block.",
+        "Tak, ponieważ -[<span>]- to element block, a -[<div>]- to element inline. W elementach block mogą być umieszczone wszystkie inne typy elementów."
       ],
       "explanation": ""
     },
     "20": {
-      "question": "Co jest nie tak w tym kodzie? Zakładamy, że nie ma żadnego stylowania.\n[[<a src=\"index.html\">\n  <div>\n    <img href=\"logo.png\"></img>\n  </div>\n</a>]]",
+      "question": "Co jest nie tak w tym kodzie? Zakładamy, że nie ma żadnego stylowania.\n-[<a src=\"index.html\">\n  <div>\n    <img href=\"logo.png\"></img>\n  </div>\n</a>]-",
       "difficulty": 1,
       "answers": [
-        "[[<a>]] ma błędny atrybut [[src]], [[<div>]] w [[<a>]] oraz [[<img>]] z błędnym atrybutem [[href]] i tagiem zamykającym.",
-        "[[<a>]] ma błędny atrybut [[src]], [[<div>]] w [[<a>]] oraz [[<img>]] z błędnym atrybutem [[href]].",
-        "[[<a>]] ma błędny atrybut [[src], [[<img>]] ma błędny atrybut [[href]].",
-        "[[<div>]] w [[<a>]] oraz [[<img>]] z tagiem zamykającym."
+        "-[<a>]- ma błędny atrybut -[src]-, -[<div>]- w -[<a>]- oraz -[<img>]- z błędnym atrybutem -[href]- i tagiem zamykającym.",
+        "-[<a>]- ma błędny atrybut -[src]-, -[<div>]- w -[<a>]- oraz -[<img>]- z błędnym atrybutem -[href]-.",
+        "-[<a>]- ma błędny atrybut -[src], -[<img>]- ma błędny atrybut -[href]-.",
+        "-[<div>]- w -[<a>]- oraz -[<img>]- z tagiem zamykającym."
       ],
       "explanation": ""
     },
     "21": {
-      "question": "Do czego służy tag [[<aside>]]?",
+      "question": "Do czego służy tag -[<aside>]-?",
       "difficulty": 3,
       "answers": [
         "Do elementów i treści mniej powiązanych (niebezpośrednio) z główną treścią.",
         "Do wyświetlania elementów z boku strony, np. bocznego menu, sidebara.",
         "Do wyświetlenia elementów niezwiązanych z treścią, np. reklam.",
-        "Tag [[<aside>]] używany jest do elementów rozwijanych horyzontalnie i takich, które wysuwają się z boku strony."
+        "Tag -[<aside>]- używany jest do elementów rozwijanych horyzontalnie i takich, które wysuwają się z boku strony."
       ],
-      "explanation": "[[<aside>]] wcale nie musi być \"z boku\" strony, może to być mniej powiązane zdanie w artykule. Jednak może to być także np. sidebar. Generalnie elementy tylko trochę związane z główną treścią."
+      "explanation": "-[<aside>]- wcale nie musi być \"z boku\" strony, może to być mniej powiązane zdanie w artykule. Jednak może to być także np. sidebar. Generalnie elementy tylko trochę związane z główną treścią."
     },
     "22": {
       "question": "Czy istnieje możliwość wyświetlania innego obrazu na telefonie i komputerze za pomocą samego HTMLa?",
       "difficulty": 3,
       "answers": [
-        "Tak, służy do tego element [[<picture>]] i w nim zawarte (opcjonalne) elementy [[<source>]] i jeden [[<img>]].",
-        "Tak, służy do tego element [[<source>]] i w nim zawarte (opcjonalne) elementy [[<picture>]] i jeden [[<img>]].",
+        "Tak, służy do tego element -[<picture>]- i w nim zawarte (opcjonalne) elementy -[<source>]- i jeden -[<img>]-.",
+        "Tak, służy do tego element -[<source>]- i w nim zawarte (opcjonalne) elementy -[<picture>]- i jeden -[<img>]-.",
         "Nie, jest to możliwe tylko przy użyciu CSS.",
         "Nie, jest to możliwe tylko przy użyciu Javascriptu."
       ],
       "explanation": ""
     },
     "23": {
-      "question": "Do czego nam tag [[<header>]]?",
+      "question": "Do czego nam tag -[<header>]-?",
       "difficulty": 3,
       "answers": [
         "Do oznaczenia headera całej strony, artykułu, sekcji lub jakiegoś bloku.",
-        "[[<header>]] to element będący headerem strony lub podstrony. Powinien być tylko jeden na stronie, tak jak [[<h1>]].",
-        "[[<header>]] to element przed [[<body>]], w którym zawieramy metadane strony i odnośniki do innych zasobów.",
-        "[[<header>]] i [[<footer>]] to elementy, które muszą być w tagu [[<main>]] i określają kolejno header i footer strony."
+        "-[<header>]- to element będący headerem strony lub podstrony. Powinien być tylko jeden na stronie, tak jak -[<h1>]-.",
+        "-[<header>]- to element przed -[<body>]-, w którym zawieramy metadane strony i odnośniki do innych zasobów.",
+        "-[<header>]- i -[<footer>]- to elementy, które muszą być w tagu -[<main>]- i określają kolejno header i footer strony."
       ],
       "explanation": ""
     }
   },
   "css": {
     "1": {
-      "question": "Względem czego pozycjonuje się element z [[position: absolute]]?",
+      "question": "Względem czego pozycjonuje się element z -[position: absolute]-?",
       "difficulty": 2,
       "answers": [
-        "Względem najbliższego przodka o [[position]] innym niż [[static]]. Jeżeli takiego nie ma, to względem viewportu.",
-        "Względem rodzica, którego [[position]] nie ma żadnego wpływu.",
+        "Względem najbliższego przodka o -[position]- innym niż -[static]-. Jeżeli takiego nie ma, to względem viewportu.",
+        "Względem rodzica, którego -[position]- nie ma żadnego wpływu.",
         "Względem viewportu.",
-        "Względem najbliższego przodka o []position]] nie innym niż [[relative]]."
+        "Względem najbliższego przodka o []position]- nie innym niż -[relative]-."
       ],
-      "explanation": "[[position: absolute]] opuszcza domyślny flow dokumentu, dopasowując się do najbliżsezgo przodka o [[position]] innym niż [static]]. Może się jednak zdażyć, że takiego przodka nie ma - wówczas element ustawi się względem okna (viewportu)."
+      "explanation": "-[position: absolute]- opuszcza domyślny flow dokumentu, dopasowując się do najbliżsezgo przodka o -[position]- innym niż [static]-. Może się jednak zdażyć, że takiego przodka nie ma - wówczas element ustawi się względem okna (viewportu)."
     },
     "2": {
-      "question": "Które elementy będą miały czerwone tło?:[[[.list .item {\n  background-color: red;\n}]]]\n[[[<div class=\"list\">\n  <div class=\"item\">item 1</div>\n  <div class=\"item\">item 2</div>\n  <div class=\"item\">\n    <div class=\"item\">item 3</div>\n    <div class=\"item\">item 4</div>\n    <div class=\"item\">\n      <div class=\"item\">item 5</div>\n      <div class=\"item\">item 6</div>\n    </div>\n  </div>\n</div>]]]",
+      "question": "Które elementy będą miały czerwone tło?:--[.list .item {\n  background-color: red;\n}]--\n--[<div class=\"list\">\n  <div class=\"item\">item 1</div>\n  <div class=\"item\">item 2</div>\n  <div class=\"item\">\n    <div class=\"item\">item 3</div>\n    <div class=\"item\">item 4</div>\n    <div class=\"item\">\n      <div class=\"item\">item 5</div>\n      <div class=\"item\">item 6</div>\n    </div>\n  </div>\n</div>]--",
       "difficulty": 2,
       "answers": [
-        "Wszystkie elementy [[.item]].",
-        "Elementy [[.item]] \"item 1\" i \"item 2\"",
-        "Elementy [[.item]] poza \"item 1\" i \"item 2\"",
+        "Wszystkie elementy -[.item]-.",
+        "Elementy -[.item]- \"item 1\" i \"item 2\"",
+        "Elementy -[.item]- poza \"item 1\" i \"item 2\"",
         "Żaden element nie będzie miał czerwonego tła."
       ],
       "explanation": ""
     },
     "3": {
-      "question": "Jaki kolory będą miały elementy?[[[<p class=\"parent\">\n  <span id=\"item-1\" class=\"item-1\" data-name=\"item-1\">Item 1</span>\n  <span id=\"item-2\" class=\"item-2\" data-name=\"item-2\" style=\"color: greenyellow\">Item 2</span>\n  <span id=\"item-3\" class=\"item-3\" data-name=\"item-3\">Item 3</span>\n</p>]]]\n[[[.parent > * {\n  beige;\n}\n\n.item-1 {\n  color: steelblue !important;\n}\n\n.parent span {\n  color: coral;\n}\n\n.parent > .item-3 {\n  color: darkslateblue;\n}\n\n.parent #item-3 {\n  color: hotpink;\n}\n\n.parent .item-1,\n.parent .item-2 {\n  color: chocolate;\n}]]]",
+      "question": "Jaki kolory będą miały elementy?--[<p class=\"parent\">\n  <span id=\"item-1\" class=\"item-1\" data-name=\"item-1\">Item 1</span>\n  <span id=\"item-2\" class=\"item-2\" data-name=\"item-2\" style=\"color: greenyellow\">Item 2</span>\n  <span id=\"item-3\" class=\"item-3\" data-name=\"item-3\">Item 3</span>\n</p>]--\n--[.parent > * {\n  beige;\n}\n\n.item-1 {\n  color: steelblue !important;\n}\n\n.parent span {\n  color: coral;\n}\n\n.parent > .item-3 {\n  color: darkslateblue;\n}\n\n.parent #item-3 {\n  color: hotpink;\n}\n\n.parent .item-1,\n.parent .item-2 {\n  color: chocolate;\n}]--",
       "difficulty": 3,
       "answers": [
-        "Kolejno: [[steelblue]], [[limegreen]] i [[hotpink]].",
-        "Kolejno: [[chocolate]], [[limegreen]] i [[darkslateblue]].",
-        "Kolejno: [[chocolate]], [[chocolate]] i [[darkslateblue]].",
-        "Kolejno: [[steelblue]], [[chocolate]] i [[hotpink]]."
+        "Kolejno: -[steelblue]-, -[limegreen]- i -[hotpink]-.",
+        "Kolejno: -[chocolate]-, -[limegreen]- i -[darkslateblue]-.",
+        "Kolejno: -[chocolate]-, -[chocolate]- i -[darkslateblue]-.",
+        "Kolejno: -[steelblue]-, -[chocolate]- i -[hotpink]-."
       ],
-      "explanation": "Pierwszy [[<span>]] będzie o kolorze [[steelblue]] ponieważ reguła [[!important]] jest ponad wszystkimi innymi regułami. Następny element będzie w kolorze [[limegreen]] ponieważ [[specificity]] styli [[inline]] jest najwyższym możliwym. Ostatni element będzie w kolorze [[hotpink]] ponieważ selektor id ma większe specificity niż jakiekolwiek kombinacje selektorów klas."
+      "explanation": "Pierwszy -[<span>]- będzie o kolorze -[steelblue]- ponieważ reguła -[!important]- jest ponad wszystkimi innymi regułami. Następny element będzie w kolorze -[limegreen]- ponieważ -[specificity]- styli -[inline]- jest najwyższym możliwym. Ostatni element będzie w kolorze -[hotpink]- ponieważ selektor id ma większe specificity niż jakiekolwiek kombinacje selektorów klas."
     },
     "4": {
       "question": "Wybierz w odpowiedniej kolejności coraz konkretniejsze style (o większym specificity).",
       "difficulty": 3,
       "answers": [
-        "[[span]], [[span > span]], [[.item]], [[.parent > .item]], [[#parent]], [[#parent .item]], style inline.",
-        "[[span]], [[.item]], [[#parent]], [[span > span]], [[.parent > .item]], [[#parent .item]], style inline.",
-        "style inline, [[span]], [[#parent]], [[.item]], [[span > span]], [[#parent .item]], [[.parent > .item]].",
-        "[[#parent]], [[span]], [[.item]], [[span > span]], [[#parent .item]], [[.parent > .item]], style inline."
+        "-[span]-, -[span > span]-, -[.item]-, -[.parent > .item]-, -[#parent]-, -[#parent .item]-, style inline.",
+        "-[span]-, -[.item]-, -[#parent]-, -[span > span]-, -[.parent > .item]-, -[#parent .item]-, style inline.",
+        "style inline, -[span]-, -[#parent]-, -[.item]-, -[span > span]-, -[#parent .item]-, -[.parent > .item]-.",
+        "-[#parent]-, -[span]-, -[.item]-, -[span > span]-, -[#parent .item]-, -[.parent > .item]-, style inline."
       ],
-      "explanation": "W CSSie istnieje kluczowa charakterystyka zwana specificity, określająca konkretność danego selektora bądź kombinacji selektorów. Oznacza to, że każdy selektor ([[*]], [[.parent + .parent]], [[#parent > .item button]] itd.) ma swoje odwzorowanie w liczbie. Tag = 1, klasa = 10, id = 100, inline = 1000."
+      "explanation": "W CSSie istnieje kluczowa charakterystyka zwana specificity, określająca konkretność danego selektora bądź kombinacji selektorów. Oznacza to, że każdy selektor (-[*]-, -[.parent + .parent]-, -[#parent > .item button]- itd.) ma swoje odwzorowanie w liczbie. Tag = 1, klasa = 10, id = 100, inline = 1000."
     },
     "5": {
       "question": "Jakie property służy do zmiany rozmiaru fontu (czcionki)?",
       "difficulty": 1,
       "answers": [
-        "[[font-size]]",
-        "[[large-text]]",
-        "[[text-scale]]",
-        "[[font]]"
+        "-[font-size]-",
+        "-[large-text]-",
+        "-[text-scale]-",
+        "-[font]-"
       ],
       "explanation": ""
     },
     "6": {
-      "question": "Czym różni się property [[background]] od [[background-color]]?",
+      "question": "Czym różni się property -[background]- od -[background-color]-?",
       "difficulty": 1,
       "answers": [
-        "[[background]] to skrót wielu property ustawiających tło, np.: [[background-color]], [[background-repeat]], [[background-position]] itd.",
-        "[[background]] to property do ustawienia obrazu jako tła, podczas gdy [[background-color]] służy do ustawienia koloru tła.",
-        "[[background]] ustawia kolor tła dla elementu i wszystkich jego dzieci, podczas gdy [[background-color]] tylko dla tego konkretnego elementu.",
-        "[[background]] to skrót od [[background-color]] i niczym się te property nie różnią."
+        "-[background]- to skrót wielu property ustawiających tło, np.: -[background-color]-, -[background-repeat]-, -[background-position]- itd.",
+        "-[background]- to property do ustawienia obrazu jako tła, podczas gdy -[background-color]- służy do ustawienia koloru tła.",
+        "-[background]- ustawia kolor tła dla elementu i wszystkich jego dzieci, podczas gdy -[background-color]- tylko dla tego konkretnego elementu.",
+        "-[background]- to skrót od -[background-color]- i niczym się te property nie różnią."
       ],
       "explanation": ""
     },
     "7": {
-      "question": "Jaki efekt ma reguła [[* { box-sizing: border-box; }]]?",
+      "question": "Jaki efekt ma reguła -[* { box-sizing: border-box; }]-?",
       "difficulty": 4,
       "answers": [
-        "[[box-sizing]] o wartości [[border-box]] sprawia, że [[padding]] i [[border]] wliczają się do rozmiaru elementu.",
-        "[[box-sizing]] o wartości [[border-box]] sprawia, że [[padding]] wlicza się do rozmiaru elementu.",
-        "[[box-sizing]] o wartości [[border-box]] sprawia, że [[padding]], [[border]] i [[margin]] wliczają się do rozmiaru elementu.",
-        "[[box-sizing]] o wartości [[border-box]] sprawia, że [[padding]] nie wlicza się do rozmiaru elementu."
+        "-[box-sizing]- o wartości -[border-box]- sprawia, że -[padding]- i -[border]- wliczają się do rozmiaru elementu.",
+        "-[box-sizing]- o wartości -[border-box]- sprawia, że -[padding]- wlicza się do rozmiaru elementu.",
+        "-[box-sizing]- o wartości -[border-box]- sprawia, że -[padding]-, -[border]- i -[margin]- wliczają się do rozmiaru elementu.",
+        "-[box-sizing]- o wartości -[border-box]- sprawia, że -[padding]- nie wlicza się do rozmiaru elementu."
       ],
       "explanation": ""
     },
     "8": {
-      "question": "Jak ostylować wszystkie elementy występujące tuż po tagu [[<code>]]?",
+      "question": "Jak ostylować wszystkie elementy występujące tuż po tagu -[<code>]-?",
       "difficulty": 2,
       "answers": [
-        "[[code + *]]",
-        "[[code ~ *]]",
-        "[[code > *]]",
-        "[[code:after(*)]]"
+        "-[code + *]-",
+        "-[code ~ *]-",
+        "-[code > *]-",
+        "-[code:after(*)]-"
       ],
       "explanation": ""
     },
@@ -350,40 +350,40 @@
         "Zmienne z języków rozszerzających CSS - jak np. Sass (SCSS) - zostają skompilowane i znikają, z kolei zmienne CSSowe nadal istnieją po załadowaniu strony, dodatkowo można się do nich odwołać Javascriptem.",
         "Zmienne z języków rozszerzających CSS - jak np. Sass (SCSS) - zostają skompliowane i znikają, podczas gdy zmienne w CSSie nadal istnieją po załadowaniu strony. Nie ma innych różnic.",
         "Zmienne CSS są globalne, tj. nie trzeba importować pliku, w którym je zdefiniowaliśmy. To jedyna zaleta tego rozwiązania.",
-        "Zmienne CSS nie mają przewagi nad zmiennymi w np. Sassie, ponieważ trzeba je deklarować w regule [[:root]] i odwoływać się do nich skomplikowaną składnią."
+        "Zmienne CSS nie mają przewagi nad zmiennymi w np. Sassie, ponieważ trzeba je deklarować w regule -[:root]- i odwoływać się do nich skomplikowaną składnią."
       ]
     },
     "10": {
       "question": "Jak zadeklarować i użyć zmienną w CSS?",
       "difficulty": 3,
       "answers": [
-        "[[[:root {\n  --color: lightblue;\n}\n\nbody {\n  background-color: var(color);\n}]]]",
-        "[[[:root {\n  color: lightblue;\n}\n\nbody {\n  background-color: --var(color);\n}]]]",
-        "[[[:root {\n  --color: lightblue;\n}\n\nbody {\n  background-color: var(--color);\n}]]]",
-        "[[[:root {\n  --var(color): lightblue;\n}\n\nbody {\n  background-color: --var(color);\n}]]]"
+        "--[:root {\n  --color: lightblue;\n}\n\nbody {\n  background-color: var(color);\n}]--",
+        "--[:root {\n  color: lightblue;\n}\n\nbody {\n  background-color: --var(color);\n}]--",
+        "--[:root {\n  --color: lightblue;\n}\n\nbody {\n  background-color: var(--color);\n}]--",
+        "--[:root {\n  --var(color): lightblue;\n}\n\nbody {\n  background-color: --var(color);\n}]--"
       ]
     }
   },
   "javasccript": {
     "1": {
-      "question": "dupa",
+      "question": "",
       "difficulty": 2,
       "answers": [
-        "dupa",
-        "dupa",
-        "dupa",
-        "dupa"
+        "",
+        "",
+        "",
+        ""
       ],
       "explanation": ""
     },
     "2": {
-      "question": "dupa",
+      "question": "",
       "difficulty": 3,
       "answers": [
-        "dupa",
-        "dupa",
-        "dupa",
-        "dupa"
+        "",
+        "",
+        "",
+        ""
       ],
       "explanation": ""
     },
