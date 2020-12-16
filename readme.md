@@ -1,5 +1,5 @@
 #Projekt quizu na zaliczenie
-v. 0.1.4
+v. 0.1.6
 
 ####TODO:
 * Paginacja i renderowanie 5 pytań na stronę / in progress
@@ -12,6 +12,8 @@ v. 0.1.4
 
 
 ####Changelog:
+* 0.1.6
+  * dodano pytania CSS do bazy pytań;
 * 0.1.5
   * zmiana notacji kodu liniowego i blokowego;
 * 0.1.4

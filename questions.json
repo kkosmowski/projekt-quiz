@@ -362,9 +362,218 @@
         "--[:root {\n  --color: lightblue;\n}\n\nbody {\n  background-color: var(--color);\n}]--",
         "--[:root {\n  --var(color): lightblue;\n}\n\nbody {\n  background-color: --var(color);\n}]--"
       ]
+    },
+    "11": {
+      "question": "Jaka jest różnica między marginesem a paddingiem?",
+      "difficulty": 1,
+      "answers": [
+        "Padding to odstęp pomiędzy zawartością elementu (contentem), a ramką (borderem).",
+        "Padding to odstęp poza elementem (za ramką).",
+        "Padding to inaczej ramka, jest pomiędzy marginesem, a borderem.",
+        "Padding to margines dla elementów -[inline]-."
+      ],
+      "explanation": "Przede wszystkim padding zalicza się do modelu pudełkowego. Jest to przestrzeń bezpośrednio otaczająca content. Następnie mamy border, a później - już poza box modelem - margin."
+    },
+    "12": {
+      "question": "Czym się różni element -[inline]- od elementu -[block]-?",
+      "difficulty": 2,
+      "answers": [
+        "Element inline ma ustawione własności -[width]- i -[height]- na -[auto]-, ich zmiana nic nie da. Nie działają też marginesy -[top]- i -[bottom]-, a paddingi -[top]- i -[bottom]- nakładają się, ale nie mają żadnego wpływu. Marginesy i paddingi -[left]- i -[right]- zachowuja się normalnie. Nie działa -[transform]-. Pozycjonowany jest obok innego elementu jeżeli jest taka możliwość.",
+        "Element inline ma ustawione własności -[width]- i -[height]- na -[auto]-, ich zmiana nic nie da. Nie działa na niego margines -[top]- i -[bottom]-. Pozostałe -[margin-left]-, -[margin-right]-, a także -[padding]- i -[transform]- działają normalnie. Pozycjonowany jest obok innego elementu jeżeli jest taka możliwość.",
+        "Element inline ma ustawione własności -[width]- i -[height]- na -[auto]-, ale można je dowolnie zmienić. Działają wszystkie marginy i paddingi, ale nie działa property -[transform]-. Pozycjonowany jest obok innego elementu jeżeli jest taka możliwość.",
+        "Element inline ma ustawione własności -[width]- i -[height]- na -[auto]-, ale można je dowolnie zmienić. Działają tylko marginesy i paddingi -[left]- i -[right]-. Można stosować -[transform]-. Pozycjonowany jest obok innego elementu jeżeli jest taka możliwość."
+      ],
+      "explanation": "Element -[inline]-, to taki który pozycjonuje się w linii. Jego szerokość i wysokość jest automatyczna, czyli najmniejsza jaka jest potrzebna. Takie elementy nie mają marginesu -[top]- i -[bottom]-, a padding -[top]- i -[bottom]- choć się nakłada, to nie ma wpływu na inne elementy. Mało znanym faktem jest też to, że faktycznie -[transform]- na takich elementach nie działa."
+    },
+    "13": {
+      "question": "Co to jest pseudoklasa? Co to jest pseudoelement?",
+      "difficulty": 3,
+      "answers": [
+        "Pseudoklasa to selektor stanu. Poprzedza go \":\". Przykład: -[:hover]-, -[:focus]-, -[:active]-. Pseudoelement to \"wewnętrzny\" element w innym elemencie, np. w divie, poprzedzony \"::\". Przykład: -[::before]-, -[::after]-, -[::placeholder]-.",
+        "Pseudoklasa to selektor stanu. Poprzedza go \"::\". Przykład: -[::hover]-, -[::focus]-, -[::active]-. Pseudoelement to \"wewnętrzny\" element w innym elemencie, np. w divie, poprzedzony \":\". Przykład: -[:before]-, -[:after]-, -[:placeholder]-.",
+        "Pseudoklasa to selektor, którego budowa to <nazwa-tagu>.<nazwa-klasy>, np. -[button.active]-. Pseudoelement (lub Pseudoidentyfikator) to selektor, którego budowa to <nazwa-tagu>#<nazwa-id>, np. -[button#next-step]-.",
+        "Pseudoklasa to selektor, którego budowa to <nazwa-tagu>.<nazwa-klasy>, np. -[button.active]-. Pseudoelement (lub Pseudoidentyfikator) to selektor, którego budowa to <nazwa-klasy>#<nazwa-id>, np. -[.button#next-step]-."
+      ],
+      "explanation": "Z reguły pseudoelement poprzedzony jest \"::\" (wyjątek stanowi implementacja IE) np. -[::before]-, natomiast zawsze pseudoklasa poprzedzona jest \":\", np. -[:placeholder-shown]-."
+    },
+    "14": {
+      "question": "Czym się różni id od klasy? Po czym powinniśmy stylować?",
+      "difficulty": 2,
+      "answers": [
+        "Id to unikalna nazwa elementu. Jeden element może mieć maksymalnie 1 id. Klas natomiast może mieć wiele i to po nich powinniśmy stylować. Przykłady: -[#przykladowe-id]-, -[.przykladowa-klasa]-.",
+        "Klasa to unikalna nazwa elementu. Jeden element może mieć maksymalnie 1 klasę. Id natomiast może mieć wiele i to po nich powinniśmy stylować. Przykłady: -[#przykladowe-id]-, -[.przykladowa-klasa]-.",
+        "Id to unikalna nazwa elementu. Jeden element może mieć maksymalnie 1 id. Klas natomiast może mieć wiele i to po nich powinniśmy stylować. Przykłady: -[.przykladowe-id]-, -[#przykladowa-klasa]-.",
+        "Klasa to unikalna nazwa elementu. Jeden element może mieć maksymalnie 1 klasę. Id natomiast może mieć wiele i to po nich powinniśmy stylować. Przykłady: -[.przykladowe-id]-, -[#przykladowa-klasa]-."
+      ],
+      "explanation": "Element może mieć dowolną liczbę klas (-[.klasa]-), oddzielonych spacją, ale maksymalnie jedno id (-[#id]-). Atrybut typu -[id=\"id-1 id-2\"]- sprawi, że \"id-1 id-2\" będzie wartością id tego elementu. Powinniśmy unikać nazw tagów i id jako selektorów."
+    },
+    "15": {
+      "question": "Wyjaśnij różnice między: -[.item1.item2]-, -[.item1 .item2]-, -[.item1 > .item2]-.",
+      "difficulty": 2,
+      "answers": [
+        "Pierwszy selektor to wszystkie elementy o dwóch klasach -[.item1]- i -[.item2]-, drugi to wszyscy potomkowie elementu -[.item1]- mający klasę -[.item2]-, natomiast trzeci selektor to wszyscy bezpośredni potomkowie (dzieci) elementu -[.item1]- mające klasę -[.item2]-.",
+        "Pierwszy selektor to wszystkie elementy o klasie -[.item1]- lub -[.item2]- (wystarczy jedna). Drugi to dzieci elementu -[.item1]- mające klasę -[.item2]-, natomiast trzeci selektor to błąd, gdyż w CSSie nie używam operatorów arytmetycznych.",
+        "Pierwszy selektor to wszystkie elementy o klasie -[.item1.item2]-, drugi to wszyscy potomkowie elementu -[.item1]- mające klasę -[.item2]-. Trzeci selektor to elementy o klasie -[.item2]- będące bezpośrednio po elementach o klasie -[.item1]-.",
+        "Pierwszy selektor to błąd, drugi z kolei to wszyscy potomkowie elementu -[.item1]- mający klasę -[.item2]-. Trzeci selektor to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-."
+      ],
+      "explanation": ""
+    },
+    "16": {
+      "question": "Wyjaśnij róznice między: -[.item1 .item2]-, -[.item1 + .item2]-, -[.item1 ~ .item2]-.",
+      "difficulty": 3,
+      "answers": [
+        "Pierwszy selektor to wszyscy potomkowie elementu -[.item1]- mający klasę -[.item2]-. Drugi to elementy o klasie -[.item2]- będące bezpośrednio po elementach o klasie -[.item1]-. Trzeci to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-.",
+        "Pierwszy selektor to wszystkie dzieci (bezpośredni potomkowie) elementu -[.item1]- mające klasę -[.item2]-. Drugi to elementy o klasie -[.item2]- będące bezpośrednio po elementach o klasie -[.item1]-. Trzeci to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-.",
+        "Pierwszy selektor to wszystkie dzieci (bezpośredni potomkowie) elementu -[.item1]- mające klasę -[.item2]-. Drugi to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-. Trzeci to elementy o klasie -[.item1]- będące bezpośrednio po elementach o klasie -[.item2]-.",
+        "Pierwszy selektor to wszyscy potomkowie elementu -[.item1]- mający klasę -[.item2]-. Drugi to wszystkie dzieci (bezpośredni potomkowie) elementu -[.item1]- mające klasę -[.item2]-. Trzeci to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-."
+      ],
+      "explanation": ""
+    },
+    "17": {
+      "question": "Wyjaśnij różnicę między jednostkami: -[px]-, -[em]-, -[rem]-.",
+      "difficulty": 4,
+      "answers": [
+        "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[em]- to mnożnik \"obecnego\" rozmiaru tekstu, a więc jeżeli -[font-size]- elementu to -[16px]-, to -[width: 2em]- wyniesie w rzeczywistości -[32px]-. -[rem]- to mnożnik wartości -[font-size]- w tagu -[html]-. Jeżeli ustawimy w html -[font-size: 10px]-, to -[1rem]- = -[10px]-.",
+        "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[rem]- to mnożnik \"obecnego\" rozmiaru tekstu, ustawiany w selektorze html. Jeżeli w html ustawimy -[rem-size: 1.5]-, to mając -[font-size: 16px]- -[1rem] wyniesie -[24px]-. -[em]- to mnożnik wartości -[font-size]- w tagu -[html]-. Jeżeli ustawimy w html -[font-size: 10px]-, to -[1em]- = -[10px]-.",
+        "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[em]- to jednostka znaków, a więc element z -[width: 5em]- będzie długi na 5 znaków \"0\". -[rem]- to nowa jednostka rozmiaru tekstu, stosowania tylko w preprocesorach takich jak Sass czy Less.",
+        "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[em]- to mnożnik \"obecnego\" rozmiaru tekstu, ustawiany w selektorze html. Jeżeli w html ustawimy -[em-scale: 1.5]-, to mając -[font-size: 16px]- -[1em] wyniesie -[24px]-. -[rem]- to mnożnik wartości -[font-size]- w tagu -[html]-. Jeżeli ustawimy w html -[font-size: 10px]-, to -[1rem]- = -[10px]-."
+      ],
+      "explanation": ""
+    },
+    "18": {
+      "question": "Co reprezentuje jednostka -[ch]-?",
+      "difficulty": 0,
+      "answers": [
+        "to do",
+        "to do",
+        "to do",
+        "to do"
+      ],
+      "explanation": ""
+    },
+    "19": {
+      "question": "Jak zaznaczyć -[<a>]-, których wartość atrybutu -[href]- kończy się na \".pdf\"?",
+      "difficulty": 4,
+      "answers": [
+        "to do",
+        "to do",
+        "to do",
+        "to do"
+      ],
+      "explanation": ""
+    },
+    "20": {
+      "question": "Jak zaznaczyć -[<a>]-, których wartość atrybutu -[href]- zaczyna się od \"https\"?",
+      "difficulty": 4,
+      "answers": [
+        "to do",
+        "to do",
+        "to do",
+        "to do"
+      ],
+      "explanation": ""
+    },
+    "21": {
+      "question": "Co to jest Sass, Less albo Stylus?",
+      "difficulty": 3,
+      "answers": [
+        "to do",
+        "to do",
+        "to do",
+        "to do"
+      ],
+      "explanation": ""
+    },
+    "22": {
+      "question": "Co to jest flexbox? Jak działa?",
+      "difficulty": 2,
+      "answers": [
+        "to do",
+        "to do",
+        "to do",
+        "to do"
+      ],
+      "explanation": ""
+    },
+    "23": {
+      "question": "Co to jest grid? Jak działa?",
+      "difficulty": 3,
+      "answers": [
+        "to do",
+        "to do",
+        "to do",
+        "to do"
+      ],
+      "explanation": ""
+    },
+    "24": {
+      "question": "Co to jest sprite? Jakie korzyści niesie?",
+      "difficulty": 3,
+      "answers": [
+        "to do",
+        "to do",
+        "to do",
+        "to do"
+      ],
+      "explanation": ""
+    },
+    "25": {
+      "question": "Co to jest -[outline]- i dlaczego nie powinniśmy ustawiać go na -[none]-?",
+      "difficulty": 4,
+      "answers": [
+        "to do",
+        "to do",
+        "to do",
+        "to do"
+      ],
+      "explanation": ""
+    },
+    "26": {
+      "question": "Do czego służy -[@media]-?",
+      "difficulty": 4,
+      "answers": [
+        "to do",
+        "to do",
+        "to do",
+        "to do"
+      ],
+      "explanation": ""
+    },
+    "27": {
+      "question": "Jak stworzyć media query tylko dla telefonów o maksymalnej wysokości 600px i szerokości 360px?",
+      "difficulty": 3,
+      "answers": [
+        "to do",
+        "to do",
+        "to do",
+        "to do"
+      ],
+      "explanation": ""
+    },
+    "28": {
+      "question": "Wyjaśnij ten selektor: -[[role=navigation] > ul a:not([href^=mailto])]-",
+      "difficulty": 4,
+      "answers": [
+        "to do",
+        "to do",
+        "to do",
+        "to do"
+      ],
+      "explanation": ""
+    },
+    "29": {
+      "question": "Jaki jest najlepszy sposób żeby wykonać animację przesunięcia elementu o 200px w lewo i 50px w dół?",
+      "difficulty": 2,
+      "answers": [
+        "-[transform: translate(...)]-",
+        "-[left]- i -[top]-",
+        "-[padding-left]- i -[padding-top]-",
+        "-[margin-left]- i -[margin-top]-"
+      ],
+      "explanation": "-[transform: translate]- to najwydajniejszy sposób na animację zmiany pozycji elementów. Warto również dodać do tego property -[will-change]- pozwalające przeglądarace \"przygotować się\" do takiej zmiany."
     }
   },
-  "javasccript": {
+  "javascript": {
     "1": {
       "question": "",
       "difficulty": 2,
