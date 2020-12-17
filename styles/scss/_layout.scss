@@ -9,7 +9,7 @@ body {
   @include flex-column();
   width: min(80%, 80rem);
   height: 90%;
-  padding: 2rem 2rem 5rem;
+  padding: 2rem;
   border-radius: 8px 8px 0 0;
   background-color: #fff;
 }
@@ -29,6 +29,12 @@ body {
   margin-bottom: 6rem;
 }
 
+.quiz__controls {
+  @include flex-row(space-between, center);
+  width: 100%;
+  margin-top: 2rem;
+}
+
 .display\:none {
   display: none;
 }
@@ -36,10 +42,21 @@ body {
 .button {
   padding: 0.8rem 3.2rem;
   text-transform: uppercase;
-  border: 2px solid #b2dbff;
-  background-color: #1f7dde;
-  color: #fff;
+  border: 2px solid;
   border-radius: 5px;
   font-weight: 500;
-  cursor: pointer;
+
+  &:not([disabled]) {
+    border-color: $primary-100;
+    background-color: $primary;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  &[disabled] {
+    border-color: #ccc;
+    background-color: #8c8c8c;
+    color: #d6d6d6;
+    pointer-events: none;
+  }
 }

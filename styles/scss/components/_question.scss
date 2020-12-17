@@ -57,9 +57,19 @@
 }
 
 .quiz-question__answer {
+  display: flex;
+  align-items: baseline;
   padding-left: 2rem;
   margin-bottom: 1rem;
   cursor: pointer;
+
+  > span {
+    flex: 1;
+  }
+
+  code {
+    margin-top: 0;
+  }
 }
 
 .quiz-question__answer-input {

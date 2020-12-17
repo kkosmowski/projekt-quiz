@@ -2,7 +2,7 @@ class Quiz {
   categories = ['html', 'css'];
   // categories = ['html', 'css', 'javscript'];
   categoriesCount = this.categories.length;
-  questionsCount = 6;
+  questionsCount = 25;
 
   currentPage = 1;
   questionsPerPage = 5;
@@ -16,12 +16,22 @@ class Quiz {
   };
   state = this.states.none;
 
+  backControl;
+  continueControl;
+
   questions = [];
   questionsRendered = 0;
 
   quizElement;
   quizQuestionsElement;
   quizInstructionsElement;
+
+  progressValue;
+  progressValueVisible = false;
+  progressBoxesVisible = false;
+
+  deviceIsMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  screenNotSmall = window.innerWidth >= 1000;
 
   init() {
     this.createQuiz();
@@ -40,12 +50,12 @@ class Quiz {
     const instructions = `Celem quizu jest sprawdzenie Twojej wiedzy z zakresu języków HTML, CSS i Javascript.\n\nQuiz składa się z <em>${this.questionsCount} pytań</em> - po ${Math.floor(this.questionsCount / this.categoriesCount)} z każdej kategorii i jedno dodatkowe, z losowej kategorii.\n\nPytania podzielone są na <em>cztery stopnie trudności</em> - po 2 z każdego. Ostatnie - dwudzieste piąte - pytanie będzie zawsze o stopniu trudności 3.\n\nKażde pytanie oznaczone jest kategorią z lewej strony.\n\nPytania są losowane z większej puli, a więc dwa podejścia do quizu będą skutkowały innymi pytaniami oraz w innej kolejności. Odpowiedzi również mogą być w innej kolejności.\n\nNie ma limitu czasowego.\n\nPowodzenia!`;
 
     this.quizInstructionsElement = this.createElement('section', this.quizQuestionsElement, ['quiz__instructions']);
-    this.createElement('h3', this.quizInstructionsElement, ['quiz__instructions-title'], 'Przed rozpoczęciem');
+    this.createElement('h3', this.quizInstructionsElement, ['quiz__instructions-title'], 'Zanim zaczniesz');
     this.createElement('p', this.quizInstructionsElement, ['quiz__instructions-content'], instructions, true);
 
     const startButton = this.createElement('button', this.quizInstructionsElement, ['quiz__start-button', 'button'], 'Rozpocznij');
     startButton.type = 'button';
-    startButton.addEventListener('click', this.startQuiz.bind(this));
+    startButton.addEventListener('click', () => this.startQuiz());
   }
 
   renderQuizHeader() {
@@ -58,6 +68,70 @@ class Quiz {
   startQuiz() {
     this.hide(this.quizInstructionsElement);
     this.loadQuestions();
+    this.setupControls();
+  }
+
+  setupControls() {
+    this.renderControls();
+
+    this.backControl.addEventListener('click', () => this.setPreviousPage());
+    this.continueControl.addEventListener('click', () => this.setNextPage());
+  }
+
+  setPreviousPage() {
+    if (this.currentPage !== 1) {
+      this.changePage(false);
+    }
+  }
+
+  setNextPage() {
+    if (this.currentPage !== this.pages) {
+      this.changePage(true);
+    } else {
+      document.write('koniec');
+    }
+  }
+
+  changePage(increase) {
+    increase ? this.currentPage++ : this.currentPage--;
+    if (this.progressBoxesVisible) this.rerenderCurrentBoxes();
+    this.checkControlsValidity();
+  }
+
+  checkControlsValidity() {
+    this.backControl.disabled = this.currentPage === 1;
+    this.continueControl.textContent = this.currentPage === this.pages ? 'Zakończ' : 'Kontynuuj';
+  }
+
+  renderControls() {
+    const controlsElement = this.createElement('div', this.quizElement, ['quiz__controls', 'controls']);
+
+    this.backControl = this.createElement('button', controlsElement, ['button', 'controls__button--back'], 'Cofnij');
+    this.backControl.type = 'button';
+    this.backControl.disabled = true;
+
+    if (!this.deviceIsMobile && this.screenNotSmall) {
+      const progress = this.createElement('div', controlsElement, ['controls__progress']);
+      for (let i = 1; i <= this.questionsCount; i++) {
+        const progressBox = this.createElement('div', progress, ['controls__progress-box']);
+        progressBox.id = `progress-box-${i}`;
+
+        if (i <= this.questionsPerPage) {
+          progressBox.classList.add('--current');
+        }
+      }
+
+      this.progressBoxesVisible = true;
+    } else {
+      const progressBar = this.createElement('div', controlsElement, ['controls__progress-bar']);
+      this.createElement('div', progressBar, ['controls__progress-value']);
+      this.progressValue = this.createElement('span',progressBar, ['controls__progress-text'], '0%');
+
+      this.progressValueVisible = true;
+    }
+
+    this.continueControl = this.createElement('button', controlsElement, ['button', 'controls__button--continue'], 'Kontynuuj');
+    this.continueControl.type = 'button';
   }
 
   loadQuestions() {
@@ -123,6 +197,19 @@ class Quiz {
     });
   }
 
+  rerenderCurrentBoxes() {
+    const start = (this.currentPage - 1) * this.questionsPerPage + 1;
+    const end = start + this.questionsPerPage;
+
+    document.querySelectorAll('.controls__progress-box').forEach(
+      box => box.classList.remove('--current')
+    );
+
+    for (let i = start; i < end; i++) {
+      document.getElementById(`progress-box-${i}`).classList.add('--current');
+    }
+  }
+
   // helper methods
   hide(element) {
     element.classList.add('display:none');
@@ -171,7 +258,7 @@ class Quiz {
     input.name = `question-${questionId}`;
     input.id = `answer-${id}`;
 
-    label.innerHTML += content;
+    label.innerHTML += `<span>${content}</span>`;
   }
 }
 
