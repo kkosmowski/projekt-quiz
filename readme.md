@@ -1,16 +1,20 @@
 #Projekt quizu na zaliczenie
-v. 0.2.0
+v. 0.3.0
 
 ####TODO:
 * Dokumentacja
 * ! Podział na pliki js
-* Losowość odpowiedzi
-* Zbieranie punktów
 * Ekran końcowy
 * Nowy layout
 
 
 ####Changelog:
+* 0.3.0
+  * odpowiedzi są teraz w losowej kolejności;
+  * dodano tracking odpowiedzi i postępu odpowiedzi na stronie;
+  * dodano walidację przycisku Kontynuuj;
+  * refactor zarządzania stanem przycisków;
+  
 * 0.2.0
   * system zmiany strony ukończony;
   * dodano "cacheowanie" stron, tj. każdą z nich tylko raz tworzymy, potem tylko chowamy i pokazujemy;

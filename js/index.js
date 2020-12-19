@@ -4,7 +4,7 @@ class Quiz {
   categoriesCount = this.categories.length;
   questionsCount = 25;
 
-  currentPage = 1;
+  currentPage = 0;
   questionsPerPage = 5;
   pages = Math.ceil(this.questionsCount / this.questionsPerPage);
   lastCachedPage = 0;
@@ -23,12 +23,17 @@ class Quiz {
   questions = [];
   questionsRendered = 0;
 
+  answerLetters = ['a', 'b', 'c', 'd'];
+  userAnswers = new Array(this.questionsCount).fill(null);
+  correctAnswers = [null];
+
   quizElement;
   quizPageElements = [];
   quizPagesWrapperElement;
   quizInstructionsElement;
 
-  progressValue;
+  progressBarValue;
+  progressTextValue;
   progressValueVisible = false;
   progressBoxesVisible = false;
 
@@ -43,8 +48,50 @@ class Quiz {
     this.quizElement = this.createElement('main', document.body, ['quiz']);
     this.renderQuizHeader();
     this.quizPagesWrapperElement = this.createElement('div', this.quizElement, ['quiz__pages']);
+    this.addAnswerListener();
     this.renderQuizInstructions();
     this.state = this.states.preStart;
+  }
+
+  addAnswerListener() {
+    this.quizPagesWrapperElement.addEventListener('input', this.inputListenerFunction);
+  }
+
+  inputListenerFunction = (event) => {
+    event.stopPropagation();
+    const questionId = event.target.name.split('-')[1];
+    this.userAnswers[questionId] = event.target.id.split('-')[1];
+    if (this.progressBoxesVisible) this.markProgressBox(questionId);
+    else if (this.progressValueVisible) this.setProgressValue(questionId);
+    this.checkIfAllPageAnswersAreGiven();
+  };
+
+  checkIfAllPageAnswersAreGiven() {
+    // TODO: Refactor start and end into global constants
+    const start = (this.currentPage - 1) * this.questionsPerPage + 1;
+    const end = start + this.questionsPerPage;
+    const currentAnswers = this.userAnswers.slice(start, end);
+
+    if (!currentAnswers.includes(null)) {
+      this.setControl(this.continueControl, false);
+    }
+    return !currentAnswers.includes(null);
+  }
+
+  removeAnswerListener() {
+    this.quizPagesWrapperElement.removeEventListener('input', this.inputListenerFunction);
+  }
+
+  markProgressBox(questionId) {
+    document.getElementById(`progress-box-${questionId}`).classList.add('--answered');
+  }
+
+  setProgressValue() {
+    const answeredQuestionsCount = this.userAnswers.filter(answer => !!answer).length;
+    const answeredQuestionsPercent = `${Math.floor(answeredQuestionsCount / this.questionsCount * 100)}%`;
+
+    this.progressTextValue.textContent = answeredQuestionsPercent;
+    this.progressBarValue.style.width = answeredQuestionsPercent;
   }
 
   renderQuizInstructions() {
@@ -57,6 +104,7 @@ class Quiz {
 
     const startButton = this.createElement('button', this.quizInstructionsElement, ['quiz__start-button', 'button'], 'Rozpocznij');
     startButton.type = 'button';
+    // TODO: remove EL after event is fired
     startButton.addEventListener('click', () => this.startQuiz());
   }
 
@@ -79,6 +127,10 @@ class Quiz {
     this.continueControl.addEventListener('click', () => this.setNextPage());
   }
 
+  setControl(control, disabled) {
+    control.disabled = disabled;
+  }
+
   setPreviousPage() {
     if (this.currentPage !== 1) {
       this.changePage(false);
@@ -86,10 +138,13 @@ class Quiz {
   }
 
   setNextPage() {
-    if (this.currentPage !== this.pages) {
-      this.changePage(true);
-    } else {
-      document.write('koniec');
+    if (this.checkIfAllPageAnswersAreGiven()) {
+      if (this.currentPage !== this.pages) {
+        this.changePage(true);
+      } else {
+        this.removeAnswerListener();
+        document.write('koniec');
+      }
     }
   }
 
@@ -101,7 +156,9 @@ class Quiz {
   }
 
   checkControlsValidity() {
-    this.backControl.disabled = this.currentPage === 1;
+    this.setControl(this.continueControl, true);
+    this.checkIfAllPageAnswersAreGiven();
+    this.setControl(this.backControl,this.currentPage === 1);
     this.continueControl.textContent = this.currentPage === this.pages ? 'Zakończ' : 'Kontynuuj';
   }
 
@@ -110,7 +167,6 @@ class Quiz {
 
     this.backControl = this.createElement('button', controlsElement, ['button', 'controls__button--back'], 'Cofnij');
     this.backControl.type = 'button';
-    this.backControl.disabled = true;
 
     if (!this.deviceIsMobile && this.screenNotSmall) {
       const progress = this.createElement('div', controlsElement, ['controls__progress']);
@@ -126,8 +182,8 @@ class Quiz {
       this.progressBoxesVisible = true;
     } else {
       const progressBar = this.createElement('div', controlsElement, ['controls__progress-bar']);
-      this.createElement('div', progressBar, ['controls__progress-value']);
-      this.progressValue = this.createElement('span',progressBar, ['controls__progress-text'], '0%');
+      this.progressBarValue = this.createElement('div', progressBar, ['controls__progress-value']);
+      this.progressTextValue = this.createElement('span',progressBar, ['controls__progress-text'], '0%');
 
       this.progressValueVisible = true;
     }
@@ -185,7 +241,7 @@ class Quiz {
         }
 
         selectQuestion(fetchedQuestions, selectCategory(false)); // 25th question
-        this.renderPage(true);
+        this.setNextPage();
         this.state = this.states.inProgress;
       });
   }
@@ -258,7 +314,6 @@ class Quiz {
   }
 
   renderQuestion(parentElement, id, type, content, answers) {
-    const answerLetters = ['a', 'b', 'c', 'd'];
     const quizQuestion = this.createElement('section', parentElement, ['quiz__question', 'quiz-question', `--${type}`]);
     quizQuestion.id = `question-${id}`;
 
@@ -268,9 +323,30 @@ class Quiz {
 
     const answersContainer = this.createElement('div', quizQuestion, ['quiz-question__answers-container']);
 
+    const answerPositions = this.randomizeAnswerPositions(new Array(4).fill(null).map((element, index) => index + 1));
+    this.correctAnswers.push(answerPositions.indexOf(1) + 1);
     for (let i = 1; i <= 4; i++) {
-      this.renderAnswer(i, answersContainer, id, answerLetters[i-1], this.parseText(answers[i-1]));
+      const j = answerPositions[i-1];
+      this.renderAnswer(j, answersContainer, id, this.answerLetters[i-1], this.parseText(answers[j-1]));
     }
+  }
+
+  randomizeAnswerPositions(positions) {
+    let currentLength = positions.length;
+    let temp;
+    let random;
+
+    while (0 !== currentLength) {
+
+      random = Math.floor(Math.random() * currentLength);
+      currentLength -= 1;
+
+      temp = positions[currentLength];
+      positions[currentLength] = positions[random];
+      positions[random] = temp;
+    }
+
+    return positions;
   }
 
   renderAnswer(id, container, questionId, value, content) {

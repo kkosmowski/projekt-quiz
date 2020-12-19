@@ -215,7 +215,7 @@
       "answers": [
         "-[<a>]- ma błędny atrybut -[src]-, -[<div>]- w -[<a>]- oraz -[<img>]- z błędnym atrybutem -[href]- i tagiem zamykającym.",
         "-[<a>]- ma błędny atrybut -[src]-, -[<div>]- w -[<a>]- oraz -[<img>]- z błędnym atrybutem -[href]-.",
-        "-[<a>]- ma błędny atrybut -[src], -[<img>]- ma błędny atrybut -[href]-.",
+        "-[<a>]- ma błędny atrybut -[src]-, -[<img>]- ma błędny atrybut -[href]-.",
         "-[<div>]- w -[<a>]- oraz -[<img>]- z tagiem zamykającym."
       ],
       "explanation": ""
