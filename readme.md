@@ -1,17 +1,21 @@
 #Projekt quizu na zaliczenie
-v. 0.1.8
+v. 0.2.0
 
 ####TODO:
-* Paginacja i renderowanie 5 pytań na stronę / in progress
 * Dokumentacja
 * ! Podział na pliki js
 * Losowość odpowiedzi
 * Zbieranie punktów
-* Zapisywanie odpowiedzi (localStorage?) -> możliwość cofnięcia się na poprzednią stronę
 * Ekran końcowy
+* Nowy layout
 
 
 ####Changelog:
+* 0.2.0
+  * system zmiany strony ukończony;
+  * dodano "cacheowanie" stron, tj. każdą z nich tylko raz tworzymy, potem tylko chowamy i pokazujemy;
+  * rozwiązany problem zapisywania pytań w celu powrotu do strony;
+  * indykatory strony w pełni sprawne;
 * 0.1.8
   * dodane kontrolki quizu;
   * częściowo zaimplementowany system zmiany strony;

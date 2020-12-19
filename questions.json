@@ -434,7 +434,7 @@
       "difficulty": 4,
       "answers": [
         "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[em]- to mnożnik \"obecnego\" rozmiaru tekstu, a więc jeżeli -[font-size]- elementu to -[16px]-, to -[width: 2em]- wyniesie w rzeczywistości -[32px]-. -[rem]- to mnożnik wartości -[font-size]- w tagu -[html]-. Jeżeli ustawimy w html -[font-size: 10px]-, to -[1rem]- = -[10px]-.",
-        "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[rem]- to mnożnik \"obecnego\" rozmiaru tekstu, ustawiany w selektorze html. Jeżeli w html ustawimy -[rem-size: 1.5]-, to mając -[font-size: 16px]- -[1rem] wyniesie -[24px]-. -[em]- to mnożnik wartości -[font-size]- w tagu -[html]-. Jeżeli ustawimy w html -[font-size: 10px]-, to -[1em]- = -[10px]-.",
+        "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[rem]- to mnożnik \"obecnego\" rozmiaru tekstu, ustawiany w selektorze html. Jeżeli w html ustawimy -[rem-size: 1.5]-, to mając -[font-size: 16px]- -[1rem]- wyniesie -[24px]-. -[em]- to mnożnik wartości -[font-size]- w tagu -[html]-. Jeżeli ustawimy w html -[font-size: 10px]-, to -[1em]- = -[10px]-.",
         "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[em]- to jednostka znaków, a więc element z -[width: 5em]- będzie długi na 5 znaków \"0\". -[rem]- to nowa jednostka rozmiaru tekstu, stosowania tylko w preprocesorach takich jak Sass czy Less.",
         "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[em]- to mnożnik \"obecnego\" rozmiaru tekstu, ustawiany w selektorze html. Jeżeli w html ustawimy -[em-scale: 1.5]-, to mając -[font-size: 16px]- -[1em] wyniesie -[24px]-. -[rem]- to mnożnik wartości -[font-size]- w tagu -[html]-. Jeżeli ustawimy w html -[font-size: 10px]-, to -[1rem]- = -[10px]-."
       ],

@@ -21,7 +21,8 @@ body {
   margin-bottom: 4rem;
 }
 
-.quiz__questions {
+.quiz__pages {
+  scroll-behavior: smooth;
   overflow: auto;
 }
 

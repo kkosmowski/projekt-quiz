@@ -7,6 +7,7 @@ class Quiz {
   currentPage = 1;
   questionsPerPage = 5;
   pages = Math.ceil(this.questionsCount / this.questionsPerPage);
+  lastCachedPage = 0;
 
   states = {
     none: 'none',
@@ -23,7 +24,8 @@ class Quiz {
   questionsRendered = 0;
 
   quizElement;
-  quizQuestionsElement;
+  quizPageElements = [];
+  quizPagesWrapperElement;
   quizInstructionsElement;
 
   progressValue;
@@ -40,8 +42,7 @@ class Quiz {
   createQuiz() {
     this.quizElement = this.createElement('main', document.body, ['quiz']);
     this.renderQuizHeader();
-    this.quizQuestionsElement = this.createElement('div', this.quizElement, ['quiz__questions']);
-
+    this.quizPagesWrapperElement = this.createElement('div', this.quizElement, ['quiz__pages']);
     this.renderQuizInstructions();
     this.state = this.states.preStart;
   }
@@ -49,7 +50,8 @@ class Quiz {
   renderQuizInstructions() {
     const instructions = `Celem quizu jest sprawdzenie Twojej wiedzy z zakresu języków HTML, CSS i Javascript.\n\nQuiz składa się z <em>${this.questionsCount} pytań</em> - po ${Math.floor(this.questionsCount / this.categoriesCount)} z każdej kategorii i jedno dodatkowe, z losowej kategorii.\n\nPytania podzielone są na <em>cztery stopnie trudności</em> - po 2 z każdego. Ostatnie - dwudzieste piąte - pytanie będzie zawsze o stopniu trudności 3.\n\nKażde pytanie oznaczone jest kategorią z lewej strony.\n\nPytania są losowane z większej puli, a więc dwa podejścia do quizu będą skutkowały innymi pytaniami oraz w innej kolejności. Odpowiedzi również mogą być w innej kolejności.\n\nNie ma limitu czasowego.\n\nPowodzenia!`;
 
-    this.quizInstructionsElement = this.createElement('section', this.quizQuestionsElement, ['quiz__instructions']);
+    this.quizPageElements.push(this.createElement('div', this.quizPagesWrapperElement, ['quiz__questions']));
+    this.quizInstructionsElement = this.createElement('section', this.quizPageElements[0], ['quiz__instructions']);
     this.createElement('h3', this.quizInstructionsElement, ['quiz__instructions-title'], 'Zanim zaczniesz');
     this.createElement('p', this.quizInstructionsElement, ['quiz__instructions-content'], instructions, true);
 
@@ -66,7 +68,6 @@ class Quiz {
   }
 
   startQuiz() {
-    this.hide(this.quizInstructionsElement);
     this.loadQuestions();
     this.setupControls();
   }
@@ -94,6 +95,7 @@ class Quiz {
 
   changePage(increase) {
     increase ? this.currentPage++ : this.currentPage--;
+    this.renderPage(increase);
     if (this.progressBoxesVisible) this.rerenderCurrentBoxes();
     this.checkControlsValidity();
   }
@@ -183,19 +185,37 @@ class Quiz {
         }
 
         selectQuestion(fetchedQuestions, selectCategory(false)); // 25th question
-        this.renderPage();
+        this.renderPage(true);
         this.state = this.states.inProgress;
       });
   }
 
-  renderPage() {
+  checkIfPageCached() {
+    if (this.lastCachedPage < this.currentPage) {
+      this.lastCachedPage = this.currentPage;
+      return false;
+    }
+    return true;
+  }
+
+  renderPage(next) {
+    const pageCached = this.checkIfPageCached();
     const questionsToRender = [...this.questions].splice((this.currentPage - 1) * this.questionsPerPage, this.questionsPerPage);
 
-    questionsToRender.forEach(question => {
-      this.questionsRendered++;
-      this.renderQuestion(this.questionsRendered, question.type, this.parseText(question.question), question.answers);
-    });
+    this.hide(this.quizPageElements[next ? this.currentPage - 1 : this.currentPage + 1]);
+
+    if (!pageCached) {
+      this.quizPageElements.push(this.createElement('div', this.quizPagesWrapperElement, ['quiz__questions']));
+      questionsToRender.forEach(question => {
+        this.questionsRendered++;
+        this.renderQuestion(this.quizPageElements[this.currentPage], this.questionsRendered, question.type, this.parseText(question.question), question.answers);
+      });
+    } else {
+      this.show(this.quizPageElements[this.currentPage]);
+    }
+    this.quizPagesWrapperElement.scrollTo(0,0);
   }
+
 
   rerenderCurrentBoxes() {
     const start = (this.currentPage - 1) * this.questionsPerPage + 1;
@@ -213,6 +233,10 @@ class Quiz {
   // helper methods
   hide(element) {
     element.classList.add('display:none');
+  }
+
+  show(element) {
+    element.classList.remove('display:none');
   }
   
   parseText(string) {
@@ -233,9 +257,9 @@ class Quiz {
     return element;
   }
 
-  renderQuestion(id, type, content, answers) {
+  renderQuestion(parentElement, id, type, content, answers) {
     const answerLetters = ['a', 'b', 'c', 'd'];
-    const quizQuestion = this.createElement('section', this.quizQuestionsElement, ['quiz__question', 'quiz-question', `--${type}`]);
+    const quizQuestion = this.createElement('section', parentElement, ['quiz__question', 'quiz-question', `--${type}`]);
     quizQuestion.id = `question-${id}`;
 
     const question = this.createElement('h3', quizQuestion, ['quiz-question__question']);
