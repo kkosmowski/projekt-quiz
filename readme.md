@@ -1,5 +1,5 @@
 #Projekt quizu na zaliczenie
-v. 0.4.0
+v. 0.4.1
 
 ####TODO:
 * Dokumentacja
@@ -8,6 +8,9 @@ v. 0.4.0
 
 
 ####Changelog:
+* 0.4.1
+  * nowe metody Base: addClass i removeClass
+  * optymalizacja zmiany stanu progressBoxów
 * 0.4.0
   * dodano podział na moduły Javascript;
   * dodano moduł Render;

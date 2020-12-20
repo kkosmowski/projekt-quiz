@@ -80,7 +80,7 @@ export default class Render {
         progressBox.id = `progress-box-${i}`;
 
         if (i <= questionsPerPage) {
-          progressBox.classList.add('--current');
+          Base.addClass(progressBox, '--current');
         }
       }
 
@@ -131,16 +131,19 @@ export default class Render {
   }
 
 
-  static currentBoxes(currentPage, questionsPerPage) {
+  static currentBoxes(currentPage, questionsPerPage, increase) {
+    const previousStart = (currentPage - (increase ? 2 : 0)) * questionsPerPage + 1;
+    const previousEnd = previousStart + questionsPerPage;
+
     const start = (currentPage - 1) * questionsPerPage + 1;
     const end = start + questionsPerPage;
 
-    document.querySelectorAll('.controls__progress-box').forEach(
-      box => box.classList.remove('--current')
-    );
+    for (let i = previousStart; i < previousEnd; i++) {
+      Base.removeClassFromId(`progress-box-${i}`, '--current');
+    }
 
     for (let i = start; i < end; i++) {
-      document.getElementById(`progress-box-${i}`).classList.add('--current');
+      Base.addClassToId(`progress-box-${i}`, '--current');
     }
   }
 

@@ -24,4 +24,20 @@ export default class Base {
     parent.append(element);
     return element;
   }
+
+  static addClassToId(id, classNames) {
+    this.addClass(document.getElementById(id), classNames);
+  }
+
+  static addClass(element, classNames) {
+    element.classList.add(classNames);
+  }
+
+  static removeClassFromId(id, className) {
+    this.removeClass(document.getElementById(id), className);
+  }
+
+  static removeClass(element, className) {
+    element.classList.remove(className);
+  }
 }

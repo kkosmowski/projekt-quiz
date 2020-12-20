@@ -73,7 +73,7 @@ class Quiz {
   }
 
   markProgressBox(questionId) {
-    document.getElementById(`progress-box-${questionId}`).classList.add('--answered');
+    Base.addClassToId(`progress-box-${questionId}`, '--answered');
   }
 
   setProgressValue() {
@@ -123,7 +123,7 @@ class Quiz {
   changePage(increase) {
     increase ? this.currentPage++ : this.currentPage--;
     this.renderPage(increase);
-    if (Render.progressBoxesVisible) Render.currentBoxes(this.currentPage, this.questionsPerPage);
+    if (Render.progressBoxesVisible) Render.currentBoxes(this.currentPage, this.questionsPerPage, increase);
     this.checkControlsValidity();
   }
 
