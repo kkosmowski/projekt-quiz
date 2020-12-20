@@ -5,6 +5,7 @@ export default class Render {
   static quizPageElements = [];
   static quizPagesWrapperElement;
   static quizInstructionsElement;
+  static quizControlsElement;
 
   static progressBarValue;
   static progressTextValue;
@@ -18,6 +19,10 @@ export default class Render {
 
   static questionsRenderedCount = 0;
 
+
+  /*
+    Initial method, renders fundamental elements.
+   */
   static init() {
     this.quiz();
     this.header();
@@ -30,6 +35,10 @@ export default class Render {
   }
 
 
+  /*
+    Creates quiz header, containing title and subtitle.
+    TODO: Add Vistula logo with URL to Vistula website.
+   */
   static header() {
     const quizHeader = Base.createElement('header', this.quizElement, ['quiz__header', 'header']);
     const titleContainer = Base.createElement('hgroup', quizHeader, ['header__title-container']);
@@ -43,6 +52,11 @@ export default class Render {
   }
 
 
+  /*
+    Creates instructions start screen (page 0).
+    It is necessary to pass questionsCount, questionsPerCategoryCount to add these values to instructions content.
+    The last argument is startQuizFn which has to be a function, invoked on start button click.
+   */
   static instructions(questionsCount, questionsPerCategoryCount, startQuizFn) {
     const instructions = `Celem quizu jest sprawdzenie Twojej wiedzy z zakresu języków HTML, CSS i Javascript.\n\nQuiz składa się z <em>${questionsCount} pytań</em> - po ${questionsPerCategoryCount} z każdej kategorii i jedno dodatkowe, z losowej kategorii.\n\nPytania podzielone są na <em>cztery stopnie trudności</em> - po 2 z każdego. Ostatnie - dwudzieste piąte - pytanie będzie zawsze o stopniu trudności 3.\n\nKażde pytanie oznaczone jest kategorią z lewej strony.\n\nPytania są losowane z większej puli, a więc dwa podejścia do quizu będą skutkowały innymi pytaniami oraz w innej kolejności. Odpowiedzi również mogą być w innej kolejności.\n\nNie ma limitu czasowego.\n\nPowodzenia!`;
 
@@ -58,6 +72,11 @@ export default class Render {
   }
 
 
+  /*
+    Renders page with question(s).
+    Arguments — questionsToRender (an array of questions), currentPage id and correctAnswers.
+    Note: correctAnswers aren't used in this method, but they are necessary in this.question().
+   */
   static page(questionsToRender, currentPage, correctAnswers) {
     this.quizPageElements.push(Base.createElement('div', this.quizPagesWrapperElement, ['quiz__questions']));
     questionsToRender.forEach(question => {
@@ -67,14 +86,34 @@ export default class Render {
   }
 
 
+  /*
+    Creates and returns back and continue controls.
+    Invokes indicators() method to create progress indicator between controls.
+   */
   static controls(questionsCount, questionsPerPage) {
-    const controlsElement = Base.createElement('div', this.quizElement, ['quiz__controls', 'controls']);
+    this.quizControlsElement = Base.createElement('div', this.quizElement, ['quiz__controls', 'controls']);
 
-    const backControl = Base.createElement('button', controlsElement, ['button', 'controls__button--back'], 'Cofnij');
+    const backControl = Base.createElement('button', this.quizControlsElement, ['button', 'controls__button--back'], 'Cofnij');
     backControl.type = 'button';
 
+    this.indicators(questionsCount, questionsPerPage);
+
+    const continueControl = Base.createElement('button', this.quizControlsElement, ['button', 'controls__button--continue'], 'Kontynuuj');
+    continueControl.type = 'button';
+    return [backControl, continueControl];
+  }
+
+
+  /*
+    Creates progress indicator depending on the screen size and device.
+    If browser suggests it's not mobile device and screen size is large enough,
+     a progress boxes will be rendered, allowing the track of answered questions and current page.
+    If either it is a mobile device or the screen size is not large enough,
+     a progress percent will be rendered instead, allowing only the track of answered questions.
+   */
+  static indicators(questionsCount, questionsPerPage) {
     if (!this.deviceIsMobile && this.screenNotSmall) {
-      const progress = Base.createElement('div', controlsElement, ['controls__progress']);
+      const progress = Base.createElement('div', this.quizControlsElement, ['controls__progress']);
       for (let i = 1; i <= questionsCount; i++) {
         const progressBox = Base.createElement('div', progress, ['controls__progress-box']);
         progressBox.id = `progress-box-${i}`;
@@ -86,30 +125,34 @@ export default class Render {
 
       this.progressBoxesVisible = true;
     } else {
-      const progressBar = Base.createElement('div', controlsElement, ['controls__progress-bar']);
+      const progressBar = Base.createElement('div', this.quizControlsElement, ['controls__progress-bar']);
       this.progressBarValue = Base.createElement('div', progressBar, ['controls__progress-value']);
       this.progressTextValue = Base.createElement('span',progressBar, ['controls__progress-text'], '0%');
 
       this.progressValueVisible = true;
     }
-
-    const continueControl = Base.createElement('button', controlsElement, ['button', 'controls__button--continue'], 'Kontynuuj');
-    continueControl.type = 'button';
-    return [backControl, continueControl];
   }
 
 
+  /*
+    Creates a question element and invokes creation of answers.
+    Question element requires a answersContainer, a parent element of answer elements.
+   */
   static question(parentElement, type, content, answers, correctAnswers) {
+    // Create and identify question element
     const quizQuestion = Base.createElement('section', parentElement, ['quiz__question', 'quiz-question', `--${ type }`]);
     quizQuestion.id = `question-${ this.questionsRenderedCount }`;
 
+    // Render question content
     const question = Base.createElement('h3', quizQuestion, ['quiz-question__question']);
     Base.createElement('span', question, ['quiz-question__label'], `Pytanie ${ this.questionsRenderedCount }: `);
     Base.createElement('span', question, [], content, true);
 
+    // Create answers container
     const answersContainer = Base.createElement('div', quizQuestion, ['quiz-question__answers-container']);
 
-    const answerPositions = this.randomizeAnswerPositions(new Array(4).fill(null).map((element, index) => index + 1));
+    // Proceed rendering 4 answers in a random order
+    const answerPositions = this.randomizeAnswerPositions([1,2,3,4]);
     correctAnswers.push(answerPositions.indexOf(1) + 1);
     for (let i = 1; i <= 4; i++) {
       const j = answerPositions[i - 1];
@@ -148,21 +191,27 @@ export default class Render {
   }
 
 
+  /*
+    Input is an array (of position ids).
+    Output is the shuffled array of same position ids.
+    Example:
+      [1,2,3,4]  =>  [4,1,3,2] etc.
+   */
   static randomizeAnswerPositions(positions) {
     let currentLength = positions.length;
     let temp;
     let random;
 
-    while (0 !== currentLength) {
-
+    while (0 !== currentLength) { // assuming received array is of length n:
+      // generate random number from 0 to n-1 and decrease n
       random = Math.floor(Math.random() * currentLength);
-      currentLength -= 1;
+      currentLength--;
 
+      // switch nth array item with random id
       temp = positions[currentLength];
       positions[currentLength] = positions[random];
       positions[random] = temp;
     }
-
     return positions;
   }
 }

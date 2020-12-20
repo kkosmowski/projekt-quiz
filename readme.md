@@ -1,16 +1,19 @@
 #Projekt quizu na zaliczenie
-v. 0.4.1
+v. 0.4.3
 
 ####TODO:
-* Dokumentacja
+* Dokumentacja - in progress
 * Ekran końcowy
 * Nowy layout
-
+* Osobny JSON z tekstami
 
 ####Changelog:
+* 0.4.3
+  * częściowa dokumentacja;
+  * tworzenie indykatorów postępu wyniesione do osobnej metody;
 * 0.4.1
-  * nowe metody Base: addClass i removeClass
-  * optymalizacja zmiany stanu progressBoxów
+  * nowe metody Base: addClass i removeClass;
+  * optymalizacja zmiany stanu progressBoxów;
 * 0.4.0
   * dodano podział na moduły Javascript;
   * dodano moduł Render;
