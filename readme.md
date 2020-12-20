@@ -1,14 +1,17 @@
 #Projekt quizu na zaliczenie
-v. 0.3.0
+v. 0.4.0
 
 ####TODO:
 * Dokumentacja
-* ! Podział na pliki js
 * Ekran końcowy
 * Nowy layout
 
 
 ####Changelog:
+* 0.4.0
+  * dodano podział na moduły Javascript;
+  * dodano moduł Render;
+  * dodano moduł Base;
 * 0.3.0
   * odpowiedzi są teraz w losowej kolejności;
   * dodano tracking odpowiedzi i postępu odpowiedzi na stronie;
