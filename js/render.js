@@ -15,8 +15,6 @@ export default class Render {
   static deviceIsMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   static screenNotSmall = window.innerWidth >= 1000;
 
-  static answerLetters = ['a', 'b', 'c', 'd'];
-
   static questionsRenderedCount = 0;
 
 
@@ -31,7 +29,7 @@ export default class Render {
 
 
   static quiz() {
-    this.quizElement = Base.createElement('main', document.body, ['quiz']);
+    this.quizElement = Base.createElement('main', document.body, 'quiz');
   }
 
 
@@ -41,9 +39,9 @@ export default class Render {
    */
   static header() {
     const quizHeader = Base.createElement('header', this.quizElement, ['quiz__header', 'header']);
-    const titleContainer = Base.createElement('hgroup', quizHeader, ['header__title-container']);
-    Base.createElement('h1', titleContainer, ['header__title'], 'Quiz');
-    Base.createElement('h2', titleContainer, ['header__subtitle'], 'HTML, CSS i JS');
+    const titleContainer = Base.createElement('hgroup', quizHeader, 'header__title-container');
+    Base.createElement('h1', titleContainer, 'header__title', 'Quiz');
+    Base.createElement('h2', titleContainer, 'header__subtitle', 'HTML, CSS i JS');
   }
 
 
@@ -60,10 +58,10 @@ export default class Render {
   static instructions(questionsCount, questionsPerCategoryCount, startQuizFn) {
     const instructions = `Celem quizu jest sprawdzenie Twojej wiedzy z zakresu języków HTML, CSS i Javascript.\n\nQuiz składa się z <em>${questionsCount} pytań</em> - po ${questionsPerCategoryCount} z każdej kategorii i jedno dodatkowe, z losowej kategorii.\n\nPytania podzielone są na <em>cztery stopnie trudności</em> - po 2 z każdego. Ostatnie - dwudzieste piąte - pytanie będzie zawsze o stopniu trudności 3.\n\nKażde pytanie oznaczone jest kategorią z lewej strony.\n\nPytania są losowane z większej puli, a więc dwa podejścia do quizu będą skutkowały innymi pytaniami oraz w innej kolejności. Odpowiedzi również mogą być w innej kolejności.\n\nNie ma limitu czasowego.\n\nPowodzenia!`;
 
-    this.quizPageElements.push(Base.createElement('div', this.quizPagesWrapperElement, ['quiz__questions']));
-    this.quizInstructionsElement = Base.createElement('section', this.quizPageElements[0], ['quiz__instructions']);
-    Base.createElement('h3', this.quizInstructionsElement, ['quiz__instructions-title'], 'Zanim zaczniesz');
-    Base.createElement('p', this.quizInstructionsElement, ['quiz__instructions-content'], instructions, true);
+    this.quizPageElements.push(Base.createElement('div', this.quizPagesWrapperElement, 'quiz__questions'));
+    this.quizInstructionsElement = Base.createElement('section', this.quizPageElements[0], 'quiz__instructions');
+    Base.createElement('h3', this.quizInstructionsElement, 'quiz__instructions-title', 'Zanim zaczniesz');
+    Base.createElement('p', this.quizInstructionsElement, 'quiz__instructions-content', instructions, true);
 
     const startButton = Base.createElement('button', this.quizInstructionsElement, ['quiz__start-button', 'button'], 'Rozpocznij');
     startButton.type = 'button';
@@ -74,11 +72,11 @@ export default class Render {
 
   /*
     Renders page with question(s).
-    Arguments — questionsToRender (an array of questions), currentPage id and correctAnswers.
+    Arguments: questionsToRender (an array of questions), current page id and correctAnswers.
     Note: correctAnswers aren't used in this method, but they are necessary in this.question().
    */
   static page(questionsToRender, currentPage, correctAnswers) {
-    this.quizPageElements.push(Base.createElement('div', this.quizPagesWrapperElement, ['quiz__questions']));
+    this.quizPageElements.push(Base.createElement('div', this.quizPagesWrapperElement, 'quiz__questions'));
     questionsToRender.forEach(question => {
       this.questionsRenderedCount++;
       this.question(this.quizPageElements[currentPage], question.type, Base.parseText(question.question), question.answers, correctAnswers);
@@ -113,10 +111,10 @@ export default class Render {
    */
   static indicators(questionsCount, questionsPerPage) {
     if (!this.deviceIsMobile && this.screenNotSmall) {
-      const progress = Base.createElement('div', this.quizControlsElement, ['controls__progress']);
+      const progress = Base.createElement('div', this.quizControlsElement, 'controls__progress');
       for (let i = 1; i <= questionsCount; i++) {
-        const progressBox = Base.createElement('div', progress, ['controls__progress-box']);
-        progressBox.id = `progress-box-${i}`;
+        const progressBox = Base.createElement('div', progress, 'controls__progress-box');
+        progressBox.id = `progress-box-${ i }`;
 
         if (i <= questionsPerPage) {
           Base.addClass(progressBox, '--current');
@@ -125,9 +123,9 @@ export default class Render {
 
       this.progressBoxesVisible = true;
     } else {
-      const progressBar = Base.createElement('div', this.quizControlsElement, ['controls__progress-bar']);
-      this.progressBarValue = Base.createElement('div', progressBar, ['controls__progress-value']);
-      this.progressTextValue = Base.createElement('span',progressBar, ['controls__progress-text'], '0%');
+      const progressBar = Base.createElement('div', this.quizControlsElement, 'controls__progress-bar');
+      this.progressBarValue = Base.createElement('div', progressBar, 'controls__progress-value');
+      this.progressTextValue = Base.createElement('span',progressBar, 'controls__progress-text', '0%');
 
       this.progressValueVisible = true;
     }
@@ -144,49 +142,65 @@ export default class Render {
     quizQuestion.id = `question-${ this.questionsRenderedCount }`;
 
     // Render question content
-    const question = Base.createElement('h3', quizQuestion, ['quiz-question__question']);
-    Base.createElement('span', question, ['quiz-question__label'], `Pytanie ${ this.questionsRenderedCount }: `);
-    Base.createElement('span', question, [], content, true);
+    const question = Base.createElement('h3', quizQuestion, 'quiz-question__question');
+    Base.createElement('span', question, 'quiz-question__label', `Pytanie ${ this.questionsRenderedCount }: `);
+    Base.createElement('span', question, null, content, true);
 
     // Create answers container
-    const answersContainer = Base.createElement('div', quizQuestion, ['quiz-question__answers-container']);
+    const answersContainer = Base.createElement('div', quizQuestion, 'quiz-question__answers-container');
 
     // Proceed rendering 4 answers in a random order
     const answerPositions = this.randomizeAnswerPositions([1,2,3,4]);
     correctAnswers.push(answerPositions.indexOf(1) + 1);
     for (let i = 1; i <= 4; i++) {
       const j = answerPositions[i - 1];
-      this.answer(j, answersContainer, this.answerLetters[i - 1], Base.parseText(answers[j - 1]));
+      this.answer(j, answersContainer, answers[j - 1]);
     }
   }
 
 
-  static answer(id, container, value, content) {
-    const label = Base.createElement('label', container, ['quiz-question__answer']);
+  /*
+    Creates answer element.
+    Requires its id, parent container, and its content.
+   */
+  static answer(id, container, content) {
+    // render label (text)
+    const label = Base.createElement('label', container, 'quiz-question__answer');
 
-    const input = Base.createElement('input', label, ['quiz-question__answer-input']);
+    // render and setup the input
+    const input = Base.createElement('input', label, 'quiz-question__answer-input');
     input.type = 'radio';
-    input.value = value;
     input.name = `question-${ this.questionsRenderedCount }`;
-    input.id = `answer-${id}`;
+    input.id = `answer-${ id }`;
 
-    label.innerHTML += `<span>${content}</span>`;
+    // this is appended to label HTML — already containing an input — and it has to be the last.
+    label.innerHTML += `<span>${ Base.parseText(content) }</span>`;
   }
 
 
+  /*
+    Re-renders progress boxes.
+    In order to do this, current page and questions per page need to be provided.
+    Since it is executed after page change, a Boolean information whether the page number
+     increased or decreased is required as well. Necessary to unmark the previous boxes.
+   */
   static currentBoxes(currentPage, questionsPerPage, increase) {
-    const previousStart = (currentPage - (increase ? 2 : 0)) * questionsPerPage + 1;
-    const previousEnd = previousStart + questionsPerPage;
+    // if current page number is 1 and it was increased, it means it is initial execution.
+    // in such case there are no "previous" boxes, so their removal should not happen.
+    if (!(currentPage === 1 && increase)) {
+      const previousFirstBox = (currentPage - (increase ? 2 : 0)) * questionsPerPage + 1;
+      const previousLastBox = previousFirstBox + questionsPerPage;
 
-    const start = (currentPage - 1) * questionsPerPage + 1;
-    const end = start + questionsPerPage;
-
-    for (let i = previousStart; i < previousEnd; i++) {
-      Base.removeClassFromId(`progress-box-${i}`, '--current');
+      for (let i = previousFirstBox; i < previousLastBox; i++) {
+        Base.removeClassFromId(`progress-box-${ i }`, '--current');
+      }
     }
 
-    for (let i = start; i < end; i++) {
-      Base.addClassToId(`progress-box-${i}`, '--current');
+    const firstBox = (currentPage - 1) * questionsPerPage + 1;
+    const lastBox = firstBox + questionsPerPage;
+
+    for (let i = firstBox; i < lastBox; i++) {
+      Base.addClassToId(`progress-box-${ i }`, '--current');
     }
   }
 

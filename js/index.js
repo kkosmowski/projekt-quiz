@@ -16,7 +16,7 @@ class Quiz {
     none: 'none',
     preStart: 'pre-start',
     inProgress: 'in-progress',
-    finished: 'finished'
+    finished: 'finished',
   };
   state = this.states.none;
 
@@ -28,10 +28,16 @@ class Quiz {
   userAnswers = new Array(this.questionsCount).fill(null);
   correctAnswers = [null];
 
+
   init() {
     this.createQuiz();
   }
 
+
+  /*
+    Creates and setups quiz.
+    Renders instructions.
+   */
   createQuiz() {
     Render.init();
     this.addAnswerListener();
@@ -43,19 +49,53 @@ class Quiz {
     this.state = this.states.preStart;
   }
 
+
+  startQuiz() {
+    this.loadQuestions();
+    this.setupControls();
+    this.state = this.states.inProgress;
+  }
+
+
   addAnswerListener() {
     Render.quizPagesWrapperElement.addEventListener('input', this.inputListenerFunction.bind(this));
   }
 
-  inputListenerFunction = (event) => {
-    event.stopPropagation();
-    const questionId = event.target.name.split('-')[1];
-    this.userAnswers[questionId] = event.target.id.split('-')[1];
-    if (Render.progressBoxesVisible) this.markProgressBox(questionId);
-    else if (Render.progressValueVisible) this.setProgressValue(questionId);
-    this.checkIfAllPageAnswersAreGiven();
-  };
 
+  /*
+    Increases or decreases current page based on Boolean input.
+    Fires controls validators.
+   */
+  changePage(increase) {
+    increase ? this.currentPage++ : this.currentPage--;
+    this.renderPage(increase);
+
+    if (Render.progressBoxesVisible) {
+      Render.currentBoxes(this.currentPage, this.questionsPerPage, increase);
+    }
+
+    this.checkControlsValidity();
+  }
+
+
+  /*
+    Enables or disabled control based on number of conditions.
+   */
+  checkControlsValidity() {
+    this.disableControl(this.continueControl);
+    this.currentPage === 1 ? this.disableControl(this.backControl) : this.enableControl(this.backControl);
+
+    this.checkIfAllPageAnswersAreGiven();
+
+    this.continueControl.textContent = this.currentPage === this.pages ? 'Zakończ' : 'Kontynuuj';
+  }
+
+
+  /*
+    Checks whether all questions on the page are answered.
+    Enables the continue control if so.
+    Returns boolean.
+   */
   checkIfAllPageAnswersAreGiven() {
     // TODO: Refactor start and end into global constants
     const start = (this.currentPage - 1) * this.questionsPerPage + 1;
@@ -63,76 +103,40 @@ class Quiz {
     const currentAnswers = this.userAnswers.slice(start, end);
 
     if (!currentAnswers.includes(null)) {
-      this.setControl(this.continueControl, false);
+      this.enableControl(this.continueControl);
     }
     return !currentAnswers.includes(null);
   }
 
-  removeAnswerListener() {
-    Render.quizPagesWrapperElement.removeEventListener('input', this.inputListenerFunction.bind(this));
-  }
 
-  markProgressBox(questionId) {
-    Base.addClassToId(`progress-box-${questionId}`, '--answered');
-  }
-
-  setProgressValue() {
-    const answeredQuestionsCount = this.userAnswers.filter(answer => !!answer).length;
-    const answeredQuestionsPercent = `${Math.floor(answeredQuestionsCount / this.questionsCount * 100)}%`;
-
-    Render.progressTextValue.textContent = answeredQuestionsPercent;
-    Render.progressBarValue.style.width = answeredQuestionsPercent;
-  }
-
-  startQuiz() {
-    this.loadQuestions();
-    this.setupControls();
-  }
-
-  setupControls() {
-    [this.backControl, this.continueControl] = Render.controls(
-      this.questionsCount,
-      this.questionsPerPage
-    );
-
-    this.backControl.addEventListener('click', () => this.setPreviousPage());
-    this.continueControl.addEventListener('click', () => this.setNextPage());
-  }
-
-  setControl(control, disabled) {
-    control.disabled = disabled;
-  }
-
-  setPreviousPage() {
-    if (this.currentPage !== 1) {
-      this.changePage(false);
+  /*
+    If page was already created, make it visible.
+    If not, then it needs to be created.
+   */
+  checkIfPageCached() {
+    if (this.lastCachedPage < this.currentPage) {
+      this.lastCachedPage = this.currentPage;
+      return false;
     }
+    return true;
   }
 
-  setNextPage() {
-    if (this.checkIfAllPageAnswersAreGiven()) {
-      if (this.currentPage !== this.pages) {
-        this.changePage(true);
-      } else {
-        this.removeAnswerListener();
-        document.write('koniec');
-      }
-    }
-  }
 
-  changePage(increase) {
-    increase ? this.currentPage++ : this.currentPage--;
-    this.renderPage(increase);
-    if (Render.progressBoxesVisible) Render.currentBoxes(this.currentPage, this.questionsPerPage, increase);
-    this.checkControlsValidity();
-  }
+  /*
+    Listener method,
+   */
+  inputListenerFunction(event) {
+    event.stopPropagation();
 
-  checkControlsValidity() {
-    this.setControl(this.continueControl, true);
+    const questionId = event.target.name.split('-')[1];
+    this.userAnswers[questionId] = event.target.id.split('-')[1];
+
+    if (Render.progressBoxesVisible) this.markProgressBox(questionId);
+    else if (Render.progressValueVisible) this.setProgressValue(questionId);
+
     this.checkIfAllPageAnswersAreGiven();
-    this.setControl(this.backControl,this.currentPage === 1);
-    this.continueControl.textContent = this.currentPage === this.pages ? 'Zakończ' : 'Kontynuuj';
   }
+
 
   loadQuestions() {
     const selectedCategories = {
@@ -167,7 +171,7 @@ class Quiz {
     fetch('http://localhost:8000/questions.json')
       .then(res => res.json())
       .then(data => {
-        let fetchedQuestions = { ...data };
+        let fetchedQuestions = {...data};
 
         for (let i = 1; i <= this.questionsCount; i++) {
           const selectedCategory = selectCategory(true);
@@ -188,13 +192,16 @@ class Quiz {
       });
   }
 
-  checkIfPageCached() {
-    if (this.lastCachedPage < this.currentPage) {
-      this.lastCachedPage = this.currentPage;
-      return false;
-    }
-    return true;
+
+  markProgressBox(questionId) {
+    Base.addClassToId(`progress-box-${ questionId }`, '--answered');
   }
+
+
+  removeAnswerListener() {
+    Render.quizPagesWrapperElement.removeEventListener('input', this.inputListenerFunction.bind(this));
+  }
+
 
   renderPage(next) {
     const pageCached = this.checkIfPageCached();
@@ -207,9 +214,67 @@ class Quiz {
     } else {
       Base.show(Render.quizPageElements[this.currentPage]);
     }
-    Render.quizPagesWrapperElement.scrollTo(0,0);
+    Render.quizPagesWrapperElement.scrollTo(0, 0);
+  }
+
+
+  setupControls() {
+    [this.backControl, this.continueControl] = Render.controls(
+      this.questionsCount,
+      this.questionsPerPage
+    );
+
+    this.backControl.addEventListener('click', () => this.setPreviousPage());
+    this.continueControl.addEventListener('click', () => this.setNextPage());
+  }
+
+
+  disableControl(control) {
+    control.disabled = true;
+  }
+
+  enableControl(control) {
+    control.disabled = false;
+  }
+
+
+  setProgressValue() {
+    const answeredQuestionsCount = this.userAnswers.filter(answer => !!answer).length;
+    const answeredQuestionsPercent = `${ Math.floor(answeredQuestionsCount / this.questionsCount * 100) }%`;
+
+    Render.progressTextValue.textContent = answeredQuestionsPercent;
+    Render.progressBarValue.style.width = answeredQuestionsPercent;
+  }
+
+
+  setNextPage() {
+    if (
+      this.checkIfAllPageAnswersAreGiven()
+      && this.state !== this.states.none
+      && this.state !== this.states.finished
+    ) {
+      if (this.currentPage !== this.pages) {
+        this.changePage(true);
+      } else {
+        this.removeAnswerListener();
+        this.state = this.states.finished;
+        document.write('koniec');
+      }
+    }
+  }
+
+
+  setPreviousPage() {
+    if (
+      this.currentPage !== 1
+      && this.state !== this.states.none
+      && this.state !== this.states.finished
+    ) {
+      this.changePage(false);
+    }
   }
 }
+
 
 (() => {
   new Quiz().init();

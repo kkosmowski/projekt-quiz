@@ -1,5 +1,5 @@
 #Projekt quizu na zaliczenie
-v. 0.4.3
+v. 0.4.5
 
 ####TODO:
 * Dokumentacja - in progress
@@ -8,6 +8,11 @@ v. 0.4.3
 * Osobny JSON z tekstami
 
 ####Changelog:
+* 0.4.5
+  * dodano kolejną część dokumentacji;
+  * usunięte zbędne litery odpowiedzi;
+  * drobna zmiana w metodzie tworzenia odpowiedzi;
+  * code cleanup;
 * 0.4.3
   * częściowa dokumentacja;
   * tworzenie indykatorów postępu wyniesione do osobnej metody;
@@ -23,7 +28,6 @@ v. 0.4.3
   * dodano tracking odpowiedzi i postępu odpowiedzi na stronie;
   * dodano walidację przycisku Kontynuuj;
   * refactor zarządzania stanem przycisków;
-  
 * 0.2.0
   * system zmiany strony ukończony;
   * dodano "cacheowanie" stron, tj. każdą z nich tylko raz tworzymy, potem tylko chowamy i pokazujemy;

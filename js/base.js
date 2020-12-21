@@ -41,20 +41,20 @@ export default class Base {
     - or with contentAsHtml true (innerHTML)
     Additionally returns the element.
    */
-  static createElement(tag, parent, classList, content = null, contentAsHtml = false) {
+  static createElement(tag, parent, classes, content = null, contentAsHtml = false) {
     const element = document.createElement(tag);
     if (content) {
       if (contentAsHtml) element.innerHTML = content;
       else element.textContent = content;
     }
-    if (classList.length) this.addClass(element, ...classList);
+    if (classes) this.addClass(element, classes);
     parent.append(element);
     return element;
   }
 
 
   static addClass(element, classNames) {
-    element.classList.add(classNames);
+    typeof classNames === 'object' ? element.classList.add(...classNames) : element.classList.add(classNames);
   }
 
 
@@ -63,8 +63,8 @@ export default class Base {
   }
 
 
-  static removeClass(element, className) {
-    element.classList.remove(className);
+  static removeClass(element, classNames) {
+    typeof classNames === 'object' ? element.classList.remove(...classNames) : element.classList.remove(classNames);
   }
 
 
