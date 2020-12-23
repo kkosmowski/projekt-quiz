@@ -1,0 +1,39 @@
+.end-screen {
+  @extend .non-question-page;
+  @include flex-column(none, center);
+
+  .--passed {
+    color: $color-passed;
+  }
+
+  .--failed {
+    color: $color-failed;
+  }
+}
+
+.end-screen__graphic-result,
+.end-screen__title,
+.end-screen__paragraph {
+  margin-bottom: 2rem;
+}
+
+.end-screen__graphic-result {
+  > svg {
+    width: 16rem;
+    height: 16rem;
+    fill: currentColor;
+  }
+}
+
+.end-screen__title {
+  font-size: 2.5rem;
+}
+
+.end-screen__paragraph {
+  white-space: pre-wrap;
+}
+
+.end-screen__general-score {
+  text-align: center;
+  line-height: 1.75;
+}

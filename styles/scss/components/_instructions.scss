@@ -1,7 +1,5 @@
-.quiz__instructions {
-  width: max(60%, 30rem);
-  padding-top: 4rem;
-  margin: 0 auto;
+.instructions {
+  @extend .non-question-page;
 
   @include media-tablet-small() {
     width: 80%;
@@ -11,24 +9,24 @@
     width: 100%;
     overflow-x: hidden;
   }
+
+  .quiz__start-button {
+    margin-top: 3rem;
+  }
 }
 
-.quiz__instructions,
-.quiz__instructions-title,
-.quiz__instructions-content {
+.instructions,
+.instructions__title,
+.instructions__content {
   text-align: center;
 }
 
-.quiz__instructions-title {
+.instructions__title {
   margin-bottom: 2rem;
   font-weight: 400;
   color: $black-67;
 }
 
-.quiz__instructions-content {
+.instructions__content {
   white-space: pre-wrap;
-}
-
-.quiz__start-button {
-  margin-top: 3rem;
 }

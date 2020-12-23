@@ -22,8 +22,15 @@ body {
 }
 
 .quiz__pages {
+  flex: 1;
   scroll-behavior: smooth;
   overflow: auto;
+}
+
+.non-question-page {
+  width: max(60%, 30rem);
+  padding-top: 4rem;
+  margin: 0 auto;
 }
 
 .quiz__question {

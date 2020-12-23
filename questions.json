@@ -77,7 +77,7 @@
       "difficulty": 3,
       "answers": [
         "Tag -[<strong>]- służy do oznaczenia tekstu ważnego, podniesienia jego istoty.",
-        "Tagi -[<strong>]- i -[<b>]- różnią się tym, że -[<strong>]- jeszcze bardziej pogruba tekst.",
+        "Tagi -[<strong>]- i -[<b>]- różnią się tym, że -[<strong>]- jeszcze bardziej pogrubia tekst.",
         "Tagi -[<b>]-, -[<i>]- i -[<u>]- są już wycofane. Tag -[<strong>]- to następca -[<b>]-.",
         "Oba te tagi służą do tego samego i mogą być zamiennie stosowane."
       ],
@@ -275,8 +275,23 @@
       ],
       "explanation": "",
       "moreInfoUrl": ""
+    },
+    "24": {
+      "question": "Czym jest atrybut -[aria-role]-?",
+      "difficulty": 4,
+      "answers": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "explanation": "",
+      "moreInfoUrl": ""
     }
   },
+
+
+
   "css": {
     "1": {
       "question": "Względem czego pozycjonuje się element z -[position: absolute]-?",
@@ -303,7 +318,7 @@
       "moreInfoUrl": ""
     },
     "3": {
-      "question": "Jaki kolory będą miały elementy?--[<p class=\"parent\">\n  <span id=\"item-1\" class=\"item-1\" data-name=\"item-1\">Item 1</span>\n  <span id=\"item-2\" class=\"item-2\" data-name=\"item-2\" style=\"color: greenyellow\">Item 2</span>\n  <span id=\"item-3\" class=\"item-3\" data-name=\"item-3\">Item 3</span>\n</p>]--\n--[.parent > * {\n  beige;\n}\n\n.item-1 {\n  color: steelblue !important;\n}\n\n.parent span {\n  color: coral;\n}\n\n.parent > .item-3 {\n  color: darkslateblue;\n}\n\n.parent #item-3 {\n  color: hotpink;\n}\n\n.parent .item-1,\n.parent .item-2 {\n  color: chocolate;\n}]--",
+      "question": "Jaki kolory będą miały elementy?--[<p class=\"parent\">\n  <span id=\"item-1\" class=\"item-1\" data-name=\"item-1\">Item 1</span>\n  <span id=\"item-2\" class=\"item-2\" data-name=\"item-2\" style=\"color: limegreen\">Item 2</span>\n  <span id=\"item-3\" class=\"item-3\" data-name=\"item-3\">Item 3</span>\n</p>]--\n--[.parent > * {\n  beige;\n}\n\n.item-1 {\n  color: steelblue !important;\n}\n\n.parent span {\n  color: coral;\n}\n\n.parent > .item-3 {\n  color: darkslateblue;\n}\n\n.parent #item-3 {\n  color: hotpink;\n}\n\n.parent .item-1,\n.parent .item-2 {\n  color: chocolate;\n}]--",
       "difficulty": 3,
       "answers": [
         "Kolejno: -[steelblue]-, -[limegreen]- i -[hotpink]-.",
@@ -381,7 +396,7 @@
         "Zmienne z języków rozszerzających CSS - jak np. Sass (SCSS) - zostają skompilowane i znikają, z kolei zmienne CSSowe nadal istnieją po załadowaniu strony, dodatkowo można się do nich odwołać Javascriptem.",
         "Zmienne z języków rozszerzających CSS - jak np. Sass (SCSS) - zostają skompliowane i znikają, podczas gdy zmienne w CSSie nadal istnieją po załadowaniu strony. Nie ma innych różnic.",
         "Zmienne CSS są globalne, tj. nie trzeba importować pliku, w którym je zdefiniowaliśmy. To jedyna zaleta tego rozwiązania.",
-        "Zmienne CSS nie mają przewagi nad zmiennymi w np. Sassie, ponieważ trzeba je deklarować w regule -[:root]- i odwoływać się do nich skomplikowaną składnią."
+        "Zmienne CSS nie mają przewagi nad zmiennymi w np. Sassie, ponieważ trzeba je deklarować w selektorze -[:root]- i odwoływać się do nich skomplikowaną składnią."
       ]
     },
     "10": {
@@ -473,7 +488,7 @@
         "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[em]- to mnożnik \"obecnego\" rozmiaru tekstu, a więc jeżeli -[font-size]- elementu to -[16px]-, to -[width: 2em]- wyniesie w rzeczywistości -[32px]-. -[rem]- to mnożnik wartości -[font-size]- w tagu -[html]-. Jeżeli ustawimy w html -[font-size: 10px]-, to -[1rem]- = -[10px]-.",
         "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[rem]- to mnożnik \"obecnego\" rozmiaru tekstu, ustawiany w selektorze html. Jeżeli w html ustawimy -[rem-size: 1.5]-, to mając -[font-size: 16px]- -[1rem]- wyniesie -[24px]-. -[em]- to mnożnik wartości -[font-size]- w tagu -[html]-. Jeżeli ustawimy w html -[font-size: 10px]-, to -[1em]- = -[10px]-.",
         "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[em]- to jednostka znaków, a więc element z -[width: 5em]- będzie długi na 5 znaków \"0\". -[rem]- to nowa jednostka rozmiaru tekstu, stosowania tylko w preprocesorach takich jak Sass czy Less.",
-        "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[em]- to mnożnik \"obecnego\" rozmiaru tekstu, ustawiany w selektorze html. Jeżeli w html ustawimy -[em-scale: 1.5]-, to mając -[font-size: 16px]- -[1em] wyniesie -[24px]-. -[rem]- to mnożnik wartości -[font-size]- w tagu -[html]-. Jeżeli ustawimy w html -[font-size: 10px]-, to -[1rem]- = -[10px]-."
+        "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[em]- to mnożnik \"obecnego\" rozmiaru tekstu, ustawiany w selektorze html. Jeżeli w html ustawimy -[em-scale: 1.5]-, to mając -[font-size: 16px]- -[1em]- wyniesie -[24px]-. -[rem]- to mnożnik wartości -[font-size]- w tagu -[html]-. Jeżeli ustawimy w html -[font-size: 10px]-, to -[1rem]- = -[10px]-."
       ],
       "explanation": "",
       "moreInfoUrl": ""

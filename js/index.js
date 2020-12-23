@@ -5,7 +5,8 @@ class Quiz {
   categories = ['html', 'css'];
   // categories = ['html', 'css', 'javscript'];
   categoriesCount = this.categories.length;
-  questionsCount = 25;
+  questionsCount = 5;
+  requiredPercentToPass = 75;
 
   currentPage = 0;
   questionsPerPage = 5;
@@ -26,7 +27,7 @@ class Quiz {
   questions = [];
 
   userAnswers = new Array(this.questionsCount).fill(null);
-  correctAnswers = [null];
+  correctAnswers = [];
 
 
   init() {
@@ -54,6 +55,16 @@ class Quiz {
     this.loadQuestions();
     this.setupControls();
     this.state = this.states.inProgress;
+  }
+
+
+  // TODO: add definition if necessary
+  endQuiz() {
+    Base.hide(Render.quizPageElements[this.currentPage]);
+    Base.hide(Render.quizControlsElement);
+    this.removeAnswerListener();
+    this.renderEndScreen();
+    this.state = this.states.finished;
   }
 
 
@@ -122,6 +133,7 @@ class Quiz {
   }
 
 
+  // TODO: finish definition
   /*
     Listener method,
    */
@@ -129,7 +141,7 @@ class Quiz {
     event.stopPropagation();
 
     const questionId = event.target.name.split('-')[1];
-    this.userAnswers[questionId] = event.target.id.split('-')[1];
+    this.userAnswers[questionId - 1] = Number(event.target.id.split('-')[1]);
 
     if (Render.progressBoxesVisible) this.markProgressBox(questionId);
     else if (Render.progressValueVisible) this.setProgressValue(questionId);
@@ -173,7 +185,7 @@ class Quiz {
       .then(data => {
         let fetchedQuestions = {...data};
 
-        for (let i = 1; i <= this.questionsCount; i++) {
+        for (let i = 1; i < this.questionsCount; i++) {
           const selectedCategory = selectCategory(true);
           const selectedQuestion = selectQuestion(fetchedQuestions, selectedCategory);
 
@@ -200,6 +212,33 @@ class Quiz {
 
   removeAnswerListener() {
     Render.quizPagesWrapperElement.removeEventListener('input', this.inputListenerFunction.bind(this));
+  }
+
+
+  // TODO: add definition if necessary
+  renderEndScreen() {
+    const correctAnswersCount = this.userAnswers.filter((answer, index) => answer === this.correctAnswers[index]).length;
+    const correctAnswersPercent = correctAnswersCount / this.questionsCount * 100;
+
+    Render.endScreen(this.pages + 1);
+    Render.endScreenResult(correctAnswersPercent >= this.requiredPercentToPass);
+    console.log(this.questions)
+    Render.endScreenScores(correctAnswersCount, this.questionsCount, correctAnswersPercent);
+    // TODO
+    // Render.endScreenScorePerLanguage({
+    //   html: {
+    //     correctAnswers: '2/8',
+    //     percent: 50,
+    //   },
+    //   css: {
+    //     correctAnswers: '9/9',
+    //     percent: 100,
+    //   },
+    //   javascript: {
+    //     correctAnswers: '2/8',
+    //     percent: 50,
+    //   }
+    // });
   }
 
 
@@ -256,9 +295,7 @@ class Quiz {
       if (this.currentPage !== this.pages) {
         this.changePage(true);
       } else {
-        this.removeAnswerListener();
-        this.state = this.states.finished;
-        document.write('koniec');
+        this.endQuiz();
       }
     }
   }

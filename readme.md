@@ -1,13 +1,21 @@
 #Projekt quizu na zaliczenie
-v. 0.4.7
+v. 0.5.0
 
 ####TODO:
 * Dokumentacja - in progress
-* Ekran końcowy
+* Ekran końcowy - in progress
+* Ekran z wyjaśnieniami
 * Nowy layout
-* Osobny JSON z tekstami
+* Osobny JSON z tekstami (translacjami)
 
 ####Changelog:
+* 0.5.0
+  * dodano ekran końcowy i wyliczanie wyniku;
+  * dodano procent wymagany do zaliczenia quizu;
+  * dodano obsługę em dash i en dash;
+  * dodano nowe pytanie html;
+  * drobne poprawki w pytaniach;
+  * spory code cleanup dla poprawy czytelności;
 * 0.4.7
   * poprawa części pytań i odpowiedzi;
   * dodano odpowiedzi do kilku pytań;

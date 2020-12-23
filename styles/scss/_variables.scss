@@ -20,7 +20,7 @@
 }
 
 // variables
-$breakpoint:  1000px;
+$breakpoint: 1000px;
 
 $primary-100: #b2dbff;
 $primary: #1f7dde;
@@ -31,6 +31,9 @@ $black-40: rgba(0, 0, 0, .4);
 $black-52: rgba(0, 0, 0, .52);
 $black-67: rgba(0, 0, 0, .67);
 $black-84: rgba(0, 0, 0, .84);
+
+$color-passed: #02c302;
+$color-failed: #e52312;
 
 
 // media mixins

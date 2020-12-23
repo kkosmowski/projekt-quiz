@@ -6,6 +6,7 @@ export default class Render {
   static quizPagesWrapperElement;
   static quizInstructionsElement;
   static quizControlsElement;
+  static quizEndScreenElement;
 
   static progressBarValue;
   static progressTextValue;
@@ -29,7 +30,11 @@ export default class Render {
 
 
   static quiz() {
-    this.quizElement = Base.createElement('main', document.body, 'quiz');
+    this.quizElement = Base.createElement(
+      'main',
+      document.body,
+      'quiz'
+    );
   }
 
 
@@ -38,15 +43,40 @@ export default class Render {
     TODO: Add Vistula logo with URL to Vistula website.
    */
   static header() {
-    const quizHeader = Base.createElement('header', this.quizElement, ['quiz__header', 'header']);
-    const titleContainer = Base.createElement('hgroup', quizHeader, 'header__title-container');
-    Base.createElement('h1', titleContainer, 'header__title', 'Quiz');
-    Base.createElement('h2', titleContainer, 'header__subtitle', 'HTML, CSS i JS');
+    const quizHeader = Base.createElement(
+      'header',
+      this.quizElement,
+      ['quiz__header', 'header']
+    );
+
+    const titleContainer = Base.createElement(
+      'hgroup',
+      quizHeader,
+      'header__title-container'
+    );
+
+    Base.createElement(
+      'h1',
+      titleContainer,
+      'header__title',
+      'Quiz'
+    );
+
+    Base.createElement(
+      'h2',
+      titleContainer,
+      'header__subtitle',
+      'HTML, CSS i JS'
+    );
   }
 
 
   static pagesWrapper() {
-    this.quizPagesWrapperElement = Base.createElement('div', this.quizElement, ['quiz__pages']);
+    this.quizPagesWrapperElement = Base.createElement(
+      'div',
+      this.quizElement,
+      ['quiz__pages']
+    );
   }
 
 
@@ -56,14 +86,44 @@ export default class Render {
     The last argument is startQuizFn which has to be a function, invoked on start button click.
    */
   static instructions(questionsCount, questionsPerCategoryCount, startQuizFn) {
-    const instructions = `Celem quizu jest sprawdzenie Twojej wiedzy z zakresu języków HTML, CSS i Javascript.\n\nQuiz składa się z <em>${questionsCount} pytań</em> - po ${questionsPerCategoryCount} z każdej kategorii i jedno dodatkowe, z losowej kategorii.\n\nPytania podzielone są na <em>cztery stopnie trudności</em> - po 2 z każdego. Ostatnie - dwudzieste piąte - pytanie będzie zawsze o stopniu trudności 3.\n\nKażde pytanie oznaczone jest kategorią z lewej strony.\n\nPytania są losowane z większej puli, a więc dwa podejścia do quizu będą skutkowały innymi pytaniami oraz w innej kolejności. Odpowiedzi również mogą być w innej kolejności.\n\nNie ma limitu czasowego.\n\nPowodzenia!`;
+    const instructions = `Celem quizu jest sprawdzenie Twojej wiedzy z zakresu języków HTML, CSS i Javascript.\n\nQuiz składa się z <em>${ questionsCount } pytań</em> - po ${ questionsPerCategoryCount } z każdej kategorii i jedno dodatkowe, z losowej kategorii.\n\nPytania podzielone są na <em>cztery stopnie trudności</em> - po 2 z każdego. Ostatnie - dwudzieste piąte - pytanie będzie zawsze o stopniu trudności 3.\n\nKażde pytanie oznaczone jest kategorią z lewej strony.\n\nPytania są losowane z większej puli, a więc dwa podejścia do quizu będą skutkowały innymi pytaniami oraz w innej kolejności. Odpowiedzi również mogą być w innej kolejności.\n\nNie ma limitu czasowego.\n\nPowodzenia!`;
 
-    this.quizPageElements.push(Base.createElement('div', this.quizPagesWrapperElement, 'quiz__questions'));
-    this.quizInstructionsElement = Base.createElement('section', this.quizPageElements[0], 'quiz__instructions');
-    Base.createElement('h3', this.quizInstructionsElement, 'quiz__instructions-title', 'Zanim zaczniesz');
-    Base.createElement('p', this.quizInstructionsElement, 'quiz__instructions-content', instructions, true);
+    this.quizPageElements.push(
+      Base.createElement(
+        'div',
+        this.quizPagesWrapperElement,
+        'quiz__questions'
+      )
+    );
 
-    const startButton = Base.createElement('button', this.quizInstructionsElement, ['quiz__start-button', 'button'], 'Rozpocznij');
+    this.quizInstructionsElement = Base.createElement(
+      'section',
+      this.quizPageElements[0],
+      ['quiz__instructions', 'instructions']
+    );
+
+    Base.createElement(
+      'h3',
+      this.quizInstructionsElement,
+      'instructions__title',
+      'Zanim zaczniesz'
+    );
+
+    Base.createElement(
+      'p',
+      this.quizInstructionsElement,
+      'instructions__content',
+      instructions,
+      true
+    );
+
+    const startButton = Base.createElement(
+      'button',
+      this.quizInstructionsElement,
+      ['quiz__start-button', 'button'],
+      'Rozpocznij'
+    );
+
     startButton.type = 'button';
     // TODO: remove EL after event is fired
     startButton.addEventListener('click', () => startQuizFn());
@@ -76,11 +136,26 @@ export default class Render {
     Note: correctAnswers aren't used in this method, but they are necessary in this.question().
    */
   static page(questionsToRender, currentPage, correctAnswers) {
-    this.quizPageElements.push(Base.createElement('div', this.quizPagesWrapperElement, 'quiz__questions'));
-    questionsToRender.forEach(question => {
-      this.questionsRenderedCount++;
-      this.question(this.quizPageElements[currentPage], question.type, Base.parseText(question.question), question.answers, correctAnswers);
-    });
+    this.quizPageElements.push(
+      Base.createElement(
+        'div',
+        this.quizPagesWrapperElement,
+        'quiz__page'
+      )
+    );
+
+    if (questionsToRender) {
+      questionsToRender.forEach(question => {
+        this.questionsRenderedCount++;
+        this.question(
+          this.quizPageElements[currentPage],
+          question.type,
+          Base.parseText(question.question),
+          question.answers,
+          correctAnswers
+        );
+      });
+    }
   }
 
 
@@ -89,14 +164,28 @@ export default class Render {
     Invokes indicators() method to create progress indicator between controls.
    */
   static controls(questionsCount, questionsPerPage) {
-    this.quizControlsElement = Base.createElement('div', this.quizElement, ['quiz__controls', 'controls']);
+    this.quizControlsElement = Base.createElement(
+      'div',
+      this.quizElement,
+      ['quiz__controls', 'controls']
+    );
 
-    const backControl = Base.createElement('button', this.quizControlsElement, ['button', 'controls__button--back'], 'Cofnij');
+    const backControl = Base.createElement(
+      'button',
+      this.quizControlsElement,
+      ['button', 'controls__button--back'],
+      'Cofnij'
+    );
     backControl.type = 'button';
 
     this.indicators(questionsCount, questionsPerPage);
 
-    const continueControl = Base.createElement('button', this.quizControlsElement, ['button', 'controls__button--continue'], 'Kontynuuj');
+    const continueControl = Base.createElement(
+      'button',
+      this.quizControlsElement,
+      ['button', 'controls__button--continue'],
+      'Kontynuuj'
+    );
     continueControl.type = 'button';
     return [backControl, continueControl];
   }
@@ -111,9 +200,18 @@ export default class Render {
    */
   static indicators(questionsCount, questionsPerPage) {
     if (!this.deviceIsMobile && this.screenNotSmall) {
-      const progress = Base.createElement('div', this.quizControlsElement, 'controls__progress');
+      const progress = Base.createElement(
+        'div',
+        this.quizControlsElement,
+        'controls__progress'
+      );
+
       for (let i = 1; i <= questionsCount; i++) {
-        const progressBox = Base.createElement('div', progress, 'controls__progress-box');
+        const progressBox = Base.createElement(
+          'div',
+          progress,
+          'controls__progress-box'
+        );
         progressBox.id = `progress-box-${ i }`;
 
         if (i <= questionsPerPage) {
@@ -123,9 +221,21 @@ export default class Render {
 
       this.progressBoxesVisible = true;
     } else {
-      const progressBar = Base.createElement('div', this.quizControlsElement, 'controls__progress-bar');
-      this.progressBarValue = Base.createElement('div', progressBar, 'controls__progress-value');
-      this.progressTextValue = Base.createElement('span',progressBar, 'controls__progress-text', '0%');
+      const progressBar = Base.createElement(
+        'div', this.quizControlsElement,
+        'controls__progress-bar'
+      );
+
+      this.progressBarValue = Base.createElement(
+        'div', progressBar,
+        'controls__progress-value'
+      );
+
+      this.progressTextValue = Base.createElement(
+        'span', progressBar,
+        'controls__progress-text',
+        '0%'
+      );
 
       this.progressValueVisible = true;
     }
@@ -138,7 +248,11 @@ export default class Render {
    */
   static question(parentElement, type, content, answers, correctAnswers) {
     // Create and identify question element
-    const quizQuestion = Base.createElement('section', parentElement, ['quiz__question', 'quiz-question', `--${ type }`]);
+    const quizQuestion = Base.createElement(
+      'section',
+      parentElement,
+      ['quiz__question', 'quiz-question', `--${ type }`]
+    );
     quizQuestion.id = `question-${ this.questionsRenderedCount }`;
 
     // Render question content
@@ -150,11 +264,11 @@ export default class Render {
     const answersContainer = Base.createElement('div', quizQuestion, 'quiz-question__answers-container');
 
     // Proceed rendering 4 answers in a random order
-    const answerPositions = this.randomizeAnswerPositions([1,2,3,4]);
+    const answerPositions = this.randomizeAnswerPositions([1, 2, 3, 4]);
     correctAnswers.push(answerPositions.indexOf(1) + 1);
     for (let i = 1; i <= 4; i++) {
       const j = answerPositions[i - 1];
-      this.answer(j, answersContainer, answers[j - 1]);
+      this.answer(i, answersContainer, answers[j - 1]);
     }
   }
 
@@ -227,5 +341,51 @@ export default class Render {
       positions[random] = temp;
     }
     return positions;
+  }
+
+  // TODO: add definition if necessary
+  static endScreen(currentPage) {
+    this.page(null, currentPage, null);
+    this.quizEndScreenElement = this.quizPageElements[currentPage];
+    Base.addClass(this.quizEndScreenElement, 'end-screen');
+  }
+
+  // TODO: add definition if necessary
+  static endScreenScores(correctAnswersCount, questionsCount, correctAnswersPercent) {
+    Base.createElement(
+      'p',
+      this.quizEndScreenElement,
+      ['end-screen__paragraph', 'end-screen__general-score'],
+      `Odpowiedziałeś(aś) poprawnie na ${ correctAnswersCount } z ${ questionsCount } odpowiedzi.\nDaje to wynik <em>${ correctAnswersPercent + '%' }</em>!`,
+      true
+    );
+  }
+
+  // TODO: add definition if necessary
+  static endScreenScorePerLanguage(scores) {
+    Base.createElement(
+      'p',
+      this.quizEndScreenElement,
+      ['end-screen__paragraph', 'end-screen__languages-score'],
+      `Wyniki w poszczególnych językach: <ul class="end-screen__language-scores"><li>HTML: ${scores.html.correctAnswers} (${scores.html.percent})</li><li>CSS: ${scores.css.correctAnswers} (${scores.css.percent})</li><li>Javascript: ${scores.javascript.correctAnswers} (${scores.javascript.percent})</li></ul>`,
+      true
+    );
+  }
+
+  // TODO: add definition if necessary
+  static endScreenResult(passed) {
+    const graphicResult = Base.createElement(
+      'div',
+      this.quizEndScreenElement,
+      ['end-screen__graphic-result', passed ? '--passed' : '--failed']
+    );
+
+    if (passed) {
+      graphicResult.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0zm0 0h24v24H0V0z" fill="none"/><path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>';
+    } else {
+      graphicResult.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
+    }
+
+    Base.createElement('h3', this.quizEndScreenElement, ['end-screen__title'], passed ? 'Brawo!' : ':(');
   }
 }

@@ -5,7 +5,7 @@ export default class Base {
   /*
     Adds a display:none rule class to an element.
    */
-  static hide (element) {
+  static hide(element) {
     element.classList.add(this.displayNoneClass);
   }
 
@@ -19,6 +19,7 @@ export default class Base {
   }
 
 
+  //TODO: update definition
   /*
     Text parser to remove any html tags from code.
     Additionally code symbol are parsed into <code> tags.
@@ -27,10 +28,13 @@ export default class Base {
       --[<h1>]--  =>  <code class="block">&lt;h1&gt;</code>
    */
   static parseText(string) {
+    //TODO: refactor into own method that makes only one loop across the string, instead of <as many as replaceAll calls>
     return string
       .replaceAll('<', '&lt;').replaceAll('>', '&gt;')
       .replaceAll('--[', '<code class="block">').replaceAll(']--', '</code>')
-      .replaceAll('-[', '<code>').replaceAll(']-', '</code>');
+      .replaceAll('-[', '<code>').replaceAll(']-', '</code>')
+      .replaceAll('---', '&mdash;')
+      .replaceAll('--', '&ndash;');
   }
 
 
