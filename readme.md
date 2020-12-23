@@ -1,5 +1,5 @@
 #Projekt quizu na zaliczenie
-v. 0.4.5
+v. 0.4.7
 
 ####TODO:
 * Dokumentacja - in progress
@@ -8,6 +8,11 @@ v. 0.4.5
 * Osobny JSON z tekstami
 
 ####Changelog:
+* 0.4.7
+  * poprawa części pytań i odpowiedzi;
+  * dodano odpowiedzi do kilku pytań;
+  * dodano kilka wytłumaczeń do pytań;
+  * dodano nowe pole w bazie pytań, z linkiem do dalszej lektury;
 * 0.4.5
   * dodano kolejną część dokumentacji;
   * usunięte zbędne litery odpowiedzi;

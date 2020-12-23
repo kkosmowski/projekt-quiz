@@ -4,12 +4,13 @@
       "question": "Ile tagów -[<h1>]- powinno być umieszczonych na jednej stronie?",
       "difficulty": 2,
       "answers": [
-        "Tylko jeden.",
-        "Tylko dwa.",
+        "Dokładnie jeden.",
+        "Maksymalnie dwa.",
         "Nie ma ograniczeń.",
         "Taki tag nie istnieje."
       ],
-      "explanation": "Tag -[<h1>]- ma prezentować główny tytuł strony, dlatego zawsze powinien być tylko jeden."
+      "explanation": "Tag -[<h1>]- ma za zadanie prezentować główny tytuł strony, dlatego zawsze powinien być tylko jeden. Pomijanie go również błędny zabieg. Należy też pamiętać, że tagi h1-h6 mają za zadanie oznaczać semantyczne tytuły i podtytuły na stronie, dlatego nic nie stoi na przeszkodzie by h1 był mniejszy i mniej widoczny niż h2.",
+      "moreInfoUrl": ""
     },
     "2": {
       "question": "Do czego służy tag -[<ul>]-?",
@@ -20,7 +21,8 @@
         "Do stworzenia nagłówka.",
         "Do stworzenia paragrafu."
       ],
-      "explanation": "-[<ul>]- (unordered list) to tag listy nieposortowanej, której podpunkty nie są ponumerowane."
+      "explanation": "-[<ul>]- (unordered list) to tag listy nieposortowanej, której podpunkty nie są ponumerowane, tzw. bullet list. Za pomocą CSS można zmienić wypunktowania w <ul> nawet na \"a)\" lub \"1.\", jednak jest to błędny i zbędny zabieg.",
+      "moreInfoUrl": ""
     },
     "3": {
       "question": "Czym różni się -[<span>]- od -[<p>]-?",
@@ -31,7 +33,8 @@
         "-[<p>]- i -[<span>]- służą do tego samego, różnią się jedynie stylami.",
         "-[<p>]- to element grupujący elementy -[<span>]-."
       ],
-      "explanation": "-[<span>]- to generyczny element -[inline]- którym zawsze powinniśmy oplatać tekst (chyba, że ten jest już zawarty w innym elemencie)."
+      "explanation": "-[<span>]- to generyczny element -[inline]-, odpowiednik blokowego -[div]-. Reguła stosowania jest identyczna jak w przypadku -[div]- - stosujemy go wtedy, gdy żaden inny element -[inline]- nie pasuje.",
+      "moreInfoUrl": ""
     },
     "4": {
       "question": "Do czego służy tag -[<em>]-?",
@@ -42,7 +45,8 @@
         "Do oznaczenia cytatu.",
         "Jest to generyczny element -[inline]- służący do stylowania tekstu."
       ],
-      "explanation": "Tag -[<em>]- (emphasis) to dodany w HTML5 semantyczny tag mający nadać nacisk na tekst w nim zawarty."
+      "explanation": "Tag -[<em>]- (emphasis) to dodany w HTML5 semantyczny tag mający nadać nacisk na tekst w nim zawarty. Domyślnie nakłada kursywę na tekst, jednak równie dobrze możemy ustawic pogrubiony, czerwony kolor lub ustawić zwykły tekst i nadal będzie to poprawne.",
+      "moreInfoUrl": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em"
     },
     "5": {
       "question": "Jak wyświetlić obraz o ścieżce -[./images/logo.png]-, alternatywnym tekście \"Logo\" i wymiarach 160x50 px?",
@@ -50,10 +54,11 @@
       "answers": [
         "-[<img src=\"./images/logo.png\" alt=\"Logo\" class=\"logo\">]-, a wymiary nadać klasie w CSSie.",
         "-[<img href=\"./images/logo.png\" alt=\"Logo\" class=\"logo\">]-, a wymiary nadać klasie w CSSIe.",
-        "-[<img src=\"./images/logo.png\" alt=\"Logo\" class=\"logo\" width=\"160\" height\"=50\">]-.",
-        "-[<img href=\"./images/logo.png\" alt=\"Logo\" class=\"logo\" width=\"160\" height\"=50\">]-."
+        "-[<img src=\"./images/logo.png\" alt=\"Logo\" width=\"160\" height=\"50\">]-.",
+        "-[<img href=\"./images/logo.png\" alt=\"Logo\" width=\"160\" height=\"50\">]-."
       ],
-      "explanation": ""
+      "explanation": "Atrybu [href] jest niepoprawny dla tagu -[<img>]-, z kolei ustawienie wymiarów poprzez atrybuty -[width]- i -[height]- jest możliwe i nie jest błędem, jednak zdecydowanie najlepszą praktyką jest zarządzanie warstwą \"wizualną\" --- czyli tego jak coś wyświetlać --- za pomocą CSS.",
+      "moreInfoUrl": ""
     },
     "6": {
       "question": "Do czego służy element -[<wbr>]-?",
@@ -64,7 +69,8 @@
         "Do oznaczenia skrótu: -[<wbr title=\"Cascading Style Sheets\">CSS</wbr>]-",
         "Do nadania tekstowi nacisku."
       ],
-      "explanation": ""
+      "explanation": "-[<wbr>]- to nowy tag, zaistniały w HTML5. Nie reprezentuje niczego \"fizycznego\", podobnie jak -[<br>]-, które jedynie łamie linię. Z kolei -[<wbr>]- służy do opcjonalnego złamania linii w miejscu w którym jest dodany, a samo złamanie linii nastąpi tylko wtedy gdy będzie to konieczne (np. bardzo długie słowo).\nNa marginesie, być może lepszym sposobem w języku Polskim jest użycie encji -[&shy;]- czyli soft-hypen, nie tylko umożlwiiającej opcjonalne łamanie linii, ale także dodanie \"-\" na końcu linii.",
+      "moreInfoUrl": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr"
     },
     "7": {
       "question": "Dlaczego dodany został tag -[<strong>]- skoro mamy już -[<b>]-?",
@@ -75,7 +81,8 @@
         "Tagi -[<b>]-, -[<i>]- i -[<u>]- są już wycofane. Tag -[<strong>]- to następca -[<b>]-.",
         "Oba te tagi służą do tego samego i mogą być zamiennie stosowane."
       ],
-      "explanation": ""
+      "explanation": "Nie należy patrzeć na -[<strong>]- jako na element, którym pogrubimy tekst --- od tego mamy style CSS, lub tag -[<b>]-. Podobnie style -[<strong>]- nie są czymś intotnym i usunięcie pogrubienia, czy też zmiana koloru na czerwony będą jak najbardziej poprawnymi zmianami.",
+      "moreInfoUrl": ""
     },
     "8": {
       "question": "Czym jest język HTML?",
@@ -86,7 +93,8 @@
         "HTML to nowy język łączący w sobie znaczniki (tagi) oraz logikę (np. IF i ELSE, pętle FOR).",
         "Jest to rozszerzenie do Javascriptu i CSSa."
       ],
-      "explanation": ""
+      "explanation": "HTML, tak jak np. XML, to języki znaczników. Nie mają żadnych instrukcji for czy też if, nie wprowadzają żadnej logiki. Jego jedynym zadaniem jest budowa dokumentu z wcześniej wspomnianych znaczników (tagów), do których później logikę dodajemy Javascriptem, a style CSSem.",
+      "moreInfoUrl": ""
     },
     "9": {
       "question": "Czym różni się -[<input>]- od -[<input />]-? Który powinniśmy stosować?",
@@ -97,7 +105,8 @@
         "-[<input>]- stosujemy gdy chcemy umieścić tekst wewnątrz taga: -[<input>Nazwa inputa</input>]-. Bez tekstu wystarczy -[<input />]-.",
         "-[<input>]- służy do przycisków (-[<input type=\"button\">Wyślij</input>]-), podczas gdy -[<input />]- służy do pól formularza."
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "10": {
       "question": "Czym jest i jaką wartość semantyczną ma element -[<div>]-?",
@@ -108,18 +117,20 @@
         "Jest to semantyczny tag, oznaczający element oddzielony od głównej treści, niezwiązany z nim.",
         "Jest to posortowana lista, semantycznie służy do tworzenia list innych niż wypunktowane."
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "11": {
       "question": "Do czego stosujemy -[<table>]-?",
       "difficulty": 3,
       "answers": [
-        "Do tworzenia tabel oraz mailingów (najbezpieczniejsza opcja tworzenia szablonów maili).",
+        "Do tworzenia tabel oraz mailingów (najbardziej stabilna opcja tworzenia szablonów maili).",
         "-[<table>]- to najlepszy sposób na zbudowanie layoutu strony, ale nie nadaje się do szablonów maili.",
         "-[<table>]- wykorzystujemy aby poprawić responsywność stron internetowych.",
         "Do tworzenia tabel oraz layoutów stron."
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "12": {
       "question": "Jaki cel ma ten kod?--[<meta name=\"viewport\" content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">]--",
@@ -130,7 +141,8 @@
         "Ma on na celu ustawienie domyślnego wyświetlania strony na urządzeniach typu desktop.",
         "Ma on na celu ustawienie ciemnego motywu na stronie."
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "13": {
       "question": "Wybierz tagi, które można utworzyć wewnątrz -[<head>]-:",
@@ -141,7 +153,8 @@
         "-[<meta>]-, -[<link>]-, -[<embed>]-, -[<style>]-",
         "-[<href>]-, -[<script>]-, -[<title>]-, -[<link>]-"
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "14": {
       "question": "Który atrybut jest nieprawidłowy dla elementu -[<form>]-?",
@@ -152,7 +165,8 @@
         "method",
         "novalidate"
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "15": {
       "question": "Który typ przycisku nie istnieje?",
@@ -163,7 +177,8 @@
         "button",
         "submit"
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "16": {
       "question": "Czym różni się -[<input type=\"button\">]- od -[<button>]-?",
@@ -174,7 +189,8 @@
         "Mają inne style, ale ich funkcjonalność jest identyczna.",
         "Nie istnieje input o typie -[button]-."
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "17": {
       "question": "Do czego służy atrybut -[accesskey]-?",
@@ -185,7 +201,8 @@
         "Atrybut służy do podania wartości dla inputu, którą trzeba wpisać, aby wykonać przypisaną akcję.",
         "Taki atrybut nie istnieje."
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "18": {
       "question": "Co to jest a11y (accessibility)? Do czego służy?",
@@ -196,7 +213,8 @@
         "Jest to zbiór rozwiązań takich jak uwierzytelnianie i autoryzacja, mających na celu uprzywilejowanie użytkownika.",
         "Jest to błędnie nazwany zestaw dobrych praktyk, związanych z rozmieszczaniem przycisków w formularzu."
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "19": {
       "question": "Czy element -[<div>]- może być zawarty w elemencie -[<span>]-?",
@@ -207,7 +225,8 @@
         "Nie, ponieważ -[<span>]- to element block, a -[<div>]- to element inline. W elementach block mogą byyć umieszczone tylko inne elementy block.",
         "Tak, ponieważ -[<span>]- to element block, a -[<div>]- to element inline. W elementach block mogą być umieszczone wszystkie inne typy elementów."
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "20": {
       "question": "Co jest nie tak w tym kodzie? Zakładamy, że nie ma żadnego stylowania.\n-[<a src=\"index.html\">\n  <div>\n    <img href=\"logo.png\"></img>\n  </div>\n</a>]-",
@@ -218,7 +237,8 @@
         "-[<a>]- ma błędny atrybut -[src]-, -[<img>]- ma błędny atrybut -[href]-.",
         "-[<div>]- w -[<a>]- oraz -[<img>]- z tagiem zamykającym."
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "21": {
       "question": "Do czego służy tag -[<aside>]-?",
@@ -229,7 +249,8 @@
         "Do wyświetlenia elementów niezwiązanych z treścią, np. reklam.",
         "Tag -[<aside>]- używany jest do elementów rozwijanych horyzontalnie i takich, które wysuwają się z boku strony."
       ],
-      "explanation": "-[<aside>]- wcale nie musi być \"z boku\" strony, może to być mniej powiązane zdanie w artykule. Jednak może to być także np. sidebar. Generalnie elementy tylko trochę związane z główną treścią."
+      "explanation": "-[<aside>]- wcale nie musi być \"z boku\" strony, może to być mniej powiązane zdanie w artykule. Jednak może to być także np. sidebar. Generalnie elementy tylko trochę związane z główną treścią.",
+      "moreInfoUrl": ""
     },
     "22": {
       "question": "Czy istnieje możliwość wyświetlania innego obrazu na telefonie i komputerze za pomocą samego HTMLa?",
@@ -240,7 +261,8 @@
         "Nie, jest to możliwe tylko przy użyciu CSS.",
         "Nie, jest to możliwe tylko przy użyciu Javascriptu."
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "23": {
       "question": "Do czego nam tag -[<header>]-?",
@@ -251,7 +273,8 @@
         "-[<header>]- to element przed -[<body>]-, w którym zawieramy metadane strony i odnośniki do innych zasobów.",
         "-[<header>]- i -[<footer>]- to elementy, które muszą być w tagu -[<main>]- i określają kolejno header i footer strony."
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     }
   },
   "css": {
@@ -262,9 +285,10 @@
         "Względem najbliższego przodka o -[position]- innym niż -[static]-. Jeżeli takiego nie ma, to względem viewportu.",
         "Względem rodzica, którego -[position]- nie ma żadnego wpływu.",
         "Względem viewportu.",
-        "Względem najbliższego przodka o []position]- nie innym niż -[relative]-."
+        "Względem najbliższego przodka o -[position]- nie innym niż -[relative]-."
       ],
-      "explanation": "-[position: absolute]- opuszcza domyślny flow dokumentu, dopasowując się do najbliżsezgo przodka o -[position]- innym niż [static]-. Może się jednak zdażyć, że takiego przodka nie ma - wówczas element ustawi się względem okna (viewportu)."
+      "explanation": "-[position: absolute]- opuszcza domyślny flow dokumentu, dopasowując się do najbliżsezgo przodka o -[position]- innym niż [static]-. Może się jednak zdażyć, że takiego przodka nie ma - wówczas element ustawi się względem okna (viewportu).",
+      "moreInfoUrl": ""
     },
     "2": {
       "question": "Które elementy będą miały czerwone tło?:--[.list .item {\n  background-color: red;\n}]--\n--[<div class=\"list\">\n  <div class=\"item\">item 1</div>\n  <div class=\"item\">item 2</div>\n  <div class=\"item\">\n    <div class=\"item\">item 3</div>\n    <div class=\"item\">item 4</div>\n    <div class=\"item\">\n      <div class=\"item\">item 5</div>\n      <div class=\"item\">item 6</div>\n    </div>\n  </div>\n</div>]--",
@@ -275,7 +299,8 @@
         "Elementy -[.item]- poza \"item 1\" i \"item 2\"",
         "Żaden element nie będzie miał czerwonego tła."
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "3": {
       "question": "Jaki kolory będą miały elementy?--[<p class=\"parent\">\n  <span id=\"item-1\" class=\"item-1\" data-name=\"item-1\">Item 1</span>\n  <span id=\"item-2\" class=\"item-2\" data-name=\"item-2\" style=\"color: greenyellow\">Item 2</span>\n  <span id=\"item-3\" class=\"item-3\" data-name=\"item-3\">Item 3</span>\n</p>]--\n--[.parent > * {\n  beige;\n}\n\n.item-1 {\n  color: steelblue !important;\n}\n\n.parent span {\n  color: coral;\n}\n\n.parent > .item-3 {\n  color: darkslateblue;\n}\n\n.parent #item-3 {\n  color: hotpink;\n}\n\n.parent .item-1,\n.parent .item-2 {\n  color: chocolate;\n}]--",
@@ -286,7 +311,8 @@
         "Kolejno: -[chocolate]-, -[chocolate]- i -[darkslateblue]-.",
         "Kolejno: -[steelblue]-, -[chocolate]- i -[hotpink]-."
       ],
-      "explanation": "Pierwszy -[<span>]- będzie o kolorze -[steelblue]- ponieważ reguła -[!important]- jest ponad wszystkimi innymi regułami. Następny element będzie w kolorze -[limegreen]- ponieważ -[specificity]- styli -[inline]- jest najwyższym możliwym. Ostatni element będzie w kolorze -[hotpink]- ponieważ selektor id ma większe specificity niż jakiekolwiek kombinacje selektorów klas."
+      "explanation": "Pierwszy -[<span>]- będzie o kolorze -[steelblue]- ponieważ reguła -[!important]- jest ponad wszystkimi innymi regułami. Następny element będzie w kolorze -[limegreen]- ponieważ -[specificity]- styli -[inline]- jest najwyższym możliwym. Ostatni element będzie w kolorze -[hotpink]- ponieważ selektor id ma większe specificity niż jakiekolwiek kombinacje selektorów klas.",
+      "moreInfoUrl": ""
     },
     "4": {
       "question": "Wybierz w odpowiedniej kolejności coraz konkretniejsze style (o większym specificity).",
@@ -297,7 +323,8 @@
         "style inline, -[span]-, -[#parent]-, -[.item]-, -[span > span]-, -[#parent .item]-, -[.parent > .item]-.",
         "-[#parent]-, -[span]-, -[.item]-, -[span > span]-, -[#parent .item]-, -[.parent > .item]-, style inline."
       ],
-      "explanation": "W CSSie istnieje kluczowa charakterystyka zwana specificity, określająca konkretność danego selektora bądź kombinacji selektorów. Oznacza to, że każdy selektor (-[*]-, -[.parent + .parent]-, -[#parent > .item button]- itd.) ma swoje odwzorowanie w liczbie. Tag = 1, klasa = 10, id = 100, inline = 1000."
+      "explanation": "W CSSie istnieje kluczowa charakterystyka zwana specificity, określająca konkretność danego selektora bądź kombinacji selektorów. Oznacza to, że każdy selektor (-[*]-, -[.parent + .parent]-, -[#parent > .item button]- itd.) ma swoje odwzorowanie w liczbie. Tag = 1, klasa = 10, id = 100, inline = 1000.",
+      "moreInfoUrl": ""
     },
     "5": {
       "question": "Jakie property służy do zmiany rozmiaru fontu (czcionki)?",
@@ -308,7 +335,8 @@
         "-[text-scale]-",
         "-[font]-"
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "6": {
       "question": "Czym różni się property -[background]- od -[background-color]-?",
@@ -319,18 +347,20 @@
         "-[background]- ustawia kolor tła dla elementu i wszystkich jego dzieci, podczas gdy -[background-color]- tylko dla tego konkretnego elementu.",
         "-[background]- to skrót od -[background-color]- i niczym się te property nie różnią."
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "7": {
       "question": "Jaki efekt ma reguła -[* { box-sizing: border-box; }]-?",
       "difficulty": 4,
       "answers": [
-        "-[box-sizing]- o wartości -[border-box]- sprawia, że -[padding]- i -[border]- wliczają się do rozmiaru elementu.",
-        "-[box-sizing]- o wartości -[border-box]- sprawia, że -[padding]- wlicza się do rozmiaru elementu.",
-        "-[box-sizing]- o wartości -[border-box]- sprawia, że -[padding]-, -[border]- i -[margin]- wliczają się do rozmiaru elementu.",
-        "-[box-sizing]- o wartości -[border-box]- sprawia, że -[padding]- nie wlicza się do rozmiaru elementu."
+        "-[box-sizing]- o wartości -[border-box]- sprawia, że -[padding]- i -[border]- wliczają się do rozmiaru elementu. -[*]- to selektor oznaczający każdy element.",
+        "-[box-sizing]- o wartości -[border-box]- sprawia, że -[padding]- wlicza się do rozmiaru elementu. -[*]- to selektor oznaczający każdy element.",
+        "-[box-sizing]- o wartości -[border-box]- sprawia, że -[padding]-, -[border]- i -[margin]- wliczają się do rozmiaru elementu. -[*]- to selektor oznaczający każdy element.",
+        "-[box-sizing]- o wartości -[border-box]- sprawia, że -[padding]- nie wlicza się do rozmiaru elementu. -[*]- to selektor oznaczający każdy element."
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "8": {
       "question": "Jak ostylować wszystkie elementy występujące tuż po tagu -[<code>]-?",
@@ -341,7 +371,8 @@
         "-[code > *]-",
         "-[code:after(*)]-"
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "9": {
       "question": "Jaką ma przewagę ma zmienna CSS nad zmienną w np. Sassie?",
@@ -372,7 +403,8 @@
         "Padding to inaczej ramka, jest pomiędzy marginesem, a borderem.",
         "Padding to margines dla elementów -[inline]-."
       ],
-      "explanation": "Przede wszystkim padding zalicza się do modelu pudełkowego. Jest to przestrzeń bezpośrednio otaczająca content. Następnie mamy border, a później - już poza box modelem - margin."
+      "explanation": "Przede wszystkim padding zalicza się do modelu pudełkowego. Jest to przestrzeń bezpośrednio otaczająca content. Następnie mamy border, a później - już poza box modelem - margin.",
+      "moreInfoUrl": ""
     },
     "12": {
       "question": "Czym się różni element -[inline]- od elementu -[block]-?",
@@ -383,18 +415,20 @@
         "Element inline ma ustawione własności -[width]- i -[height]- na -[auto]-, ale można je dowolnie zmienić. Działają wszystkie marginy i paddingi, ale nie działa property -[transform]-. Pozycjonowany jest obok innego elementu jeżeli jest taka możliwość.",
         "Element inline ma ustawione własności -[width]- i -[height]- na -[auto]-, ale można je dowolnie zmienić. Działają tylko marginesy i paddingi -[left]- i -[right]-. Można stosować -[transform]-. Pozycjonowany jest obok innego elementu jeżeli jest taka możliwość."
       ],
-      "explanation": "Element -[inline]-, to taki który pozycjonuje się w linii. Jego szerokość i wysokość jest automatyczna, czyli najmniejsza jaka jest potrzebna. Takie elementy nie mają marginesu -[top]- i -[bottom]-, a padding -[top]- i -[bottom]- choć się nakłada, to nie ma wpływu na inne elementy. Mało znanym faktem jest też to, że faktycznie -[transform]- na takich elementach nie działa."
+      "explanation": "Element -[inline]-, to taki który pozycjonuje się w linii. Jego szerokość i wysokość jest automatyczna, czyli najmniejsza jaka jest potrzebna. Takie elementy nie mają marginesu -[top]- i -[bottom]-, a padding -[top]- i -[bottom]- choć się nakłada, to nie ma wpływu na inne elementy. Mało znanym faktem jest też to, że faktycznie -[transform]- na takich elementach nie działa.",
+      "moreInfoUrl": ""
     },
     "13": {
       "question": "Co to jest pseudoklasa? Co to jest pseudoelement?",
       "difficulty": 3,
       "answers": [
-        "Pseudoklasa to selektor stanu. Poprzedza go \":\". Przykład: -[:hover]-, -[:focus]-, -[:active]-. Pseudoelement to \"wewnętrzny\" element w innym elemencie, np. w divie, poprzedzony \"::\". Przykład: -[::before]-, -[::after]-, -[::placeholder]-.",
-        "Pseudoklasa to selektor stanu. Poprzedza go \"::\". Przykład: -[::hover]-, -[::focus]-, -[::active]-. Pseudoelement to \"wewnętrzny\" element w innym elemencie, np. w divie, poprzedzony \":\". Przykład: -[:before]-, -[:after]-, -[:placeholder]-.",
-        "Pseudoklasa to selektor, którego budowa to <nazwa-tagu>.<nazwa-klasy>, np. -[button.active]-. Pseudoelement (lub Pseudoidentyfikator) to selektor, którego budowa to <nazwa-tagu>#<nazwa-id>, np. -[button#next-step]-.",
-        "Pseudoklasa to selektor, którego budowa to <nazwa-tagu>.<nazwa-klasy>, np. -[button.active]-. Pseudoelement (lub Pseudoidentyfikator) to selektor, którego budowa to <nazwa-klasy>#<nazwa-id>, np. -[.button#next-step]-."
+        "Pseudoklasa to selektor stanu. Poprzedza go -[:]-. Przykład: -[:hover]-, -[:focus]-, -[:active]-. Pseudoelement to \"wewnętrzny\" element w innym elemencie, np. w divie, poprzedzony -[::]-. Przykład: -[::before]-, -[::after]-, -[::placeholder]-.",
+        "Pseudoklasa to selektor stanu. Poprzedza go -[::]-. Przykład: -[::hover]-, -[::focus]-, -[::active]-. Pseudoelement to \"wewnętrzny\" element w innym elemencie, np. w divie, poprzedzony -[:]-. Przykład: -[:before]-, -[:after]-, -[:placeholder]-.",
+        "Pseudoklasa to selektor, którego budowa to -[<nazwa-tagu>.<nazwa-klasy>]-, np. -[button.active]-. Pseudoelement (lub Pseudoidentyfikator) to selektor, którego budowa to <nazwa-tagu>#<nazwa-id>, np. -[button#next-step]-.",
+        "Pseudoklasa to selektor, którego budowa to -[<nazwa-tagu>.<nazwa-klasy>]-, np. -[button.active]-. Pseudoelement (lub Pseudoidentyfikator) to selektor, którego budowa to <nazwa-klasy>#<nazwa-id>, np. -[.button#next-step]-."
       ],
-      "explanation": "Z reguły pseudoelement poprzedzony jest \"::\" (wyjątek stanowi implementacja IE) np. -[::before]-, natomiast zawsze pseudoklasa poprzedzona jest \":\", np. -[:placeholder-shown]-."
+      "explanation": "Z reguły pseudoelement poprzedzony jest -[::]- (wyjątek stanowi implementacja IE) np. -[::before]-, natomiast zawsze pseudoklasa poprzedzona jest -[:]-, np. -[:placeholder-shown]-.",
+      "moreInfoUrl": ""
     },
     "14": {
       "question": "Czym się różni id od klasy? Po czym powinniśmy stylować?",
@@ -405,7 +439,8 @@
         "Id to unikalna nazwa elementu. Jeden element może mieć maksymalnie 1 id. Klas natomiast może mieć wiele i to po nich powinniśmy stylować. Przykłady: -[.przykladowe-id]-, -[#przykladowa-klasa]-.",
         "Klasa to unikalna nazwa elementu. Jeden element może mieć maksymalnie 1 klasę. Id natomiast może mieć wiele i to po nich powinniśmy stylować. Przykłady: -[.przykladowe-id]-, -[#przykladowa-klasa]-."
       ],
-      "explanation": "Element może mieć dowolną liczbę klas (-[.klasa]-), oddzielonych spacją, ale maksymalnie jedno id (-[#id]-). Atrybut typu -[id=\"id-1 id-2\"]- sprawi, że \"id-1 id-2\" będzie wartością id tego elementu. Powinniśmy unikać nazw tagów i id jako selektorów."
+      "explanation": "Element może mieć dowolną liczbę klas (-[.klasa]-), oddzielonych spacją, ale maksymalnie jedno id (-[#id]-). Atrybut typu -[id=\"id-1 id-2\"]- sprawi, że \"id-1 id-2\" będzie wartością id tego elementu. Powinniśmy unikać nazw tagów i id jako selektorów.",
+      "moreInfoUrl": ""
     },
     "15": {
       "question": "Wyjaśnij różnice między: -[.item1.item2]-, -[.item1 .item2]-, -[.item1 > .item2]-.",
@@ -416,7 +451,8 @@
         "Pierwszy selektor to wszystkie elementy o klasie -[.item1.item2]-, drugi to wszyscy potomkowie elementu -[.item1]- mające klasę -[.item2]-. Trzeci selektor to elementy o klasie -[.item2]- będące bezpośrednio po elementach o klasie -[.item1]-.",
         "Pierwszy selektor to błąd, drugi z kolei to wszyscy potomkowie elementu -[.item1]- mający klasę -[.item2]-. Trzeci selektor to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-."
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "16": {
       "question": "Wyjaśnij róznice między: -[.item1 .item2]-, -[.item1 + .item2]-, -[.item1 ~ .item2]-.",
@@ -427,7 +463,8 @@
         "Pierwszy selektor to wszystkie dzieci (bezpośredni potomkowie) elementu -[.item1]- mające klasę -[.item2]-. Drugi to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-. Trzeci to elementy o klasie -[.item1]- będące bezpośrednio po elementach o klasie -[.item2]-.",
         "Pierwszy selektor to wszyscy potomkowie elementu -[.item1]- mający klasę -[.item2]-. Drugi to wszystkie dzieci (bezpośredni potomkowie) elementu -[.item1]- mające klasę -[.item2]-. Trzeci to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-."
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "17": {
       "question": "Wyjaśnij różnicę między jednostkami: -[px]-, -[em]-, -[rem]-.",
@@ -438,51 +475,56 @@
         "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[em]- to jednostka znaków, a więc element z -[width: 5em]- będzie długi na 5 znaków \"0\". -[rem]- to nowa jednostka rozmiaru tekstu, stosowania tylko w preprocesorach takich jak Sass czy Less.",
         "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[em]- to mnożnik \"obecnego\" rozmiaru tekstu, ustawiany w selektorze html. Jeżeli w html ustawimy -[em-scale: 1.5]-, to mając -[font-size: 16px]- -[1em] wyniesie -[24px]-. -[rem]- to mnożnik wartości -[font-size]- w tagu -[html]-. Jeżeli ustawimy w html -[font-size: 10px]-, to -[1rem]- = -[10px]-."
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "18": {
       "question": "Co reprezentuje jednostka -[ch]-?",
-      "difficulty": 0,
+      "difficulty": 2,
       "answers": [
-        "to do",
-        "to do",
-        "to do",
-        "to do"
+        "Jednostka -[ch]- reprezentuje szerokość znaku \"0\", czyli -[width: 10ch]- to taka sama szerokość jak dziesięć takich znaków.\nWielkość ta zależy od obecnego -[font-size]-.",
+        "Jednostka -[ch]- reprezentuje szerokość znaku \"0\", czyli -[width: 10ch]- to taka sama szerokość jak dziesięć takich znaków.\nWielkość ta zależy od -[font-size]- w selektorze -[html]- (domyślnie 16px).",
+        "Jednostka -[ch]- reprezentuje szerokość znaku \"0\", czyli -[width: 10ch]- to taka sama szerokość jak dziesięć takich znaków.\nWielkość ta jest niezależna i zawsze chodzi o \"0\" o -[font-size: 16px]-.",
+        "Jednostka -[ch]- reprezentuje szerokość znaku \"0\", czyli -[width: 10ch]- to taka sama szerokość jak dziesięć takich znaków.\nWielkość ta jest niezależna i zawsze chodzi o \"0\" o -[font-size: 10px]-."
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "19": {
       "question": "Jak zaznaczyć -[<a>]-, których wartość atrybutu -[href]- kończy się na \".pdf\"?",
-      "difficulty": 4,
+      "difficulty": 3,
       "answers": [
-        "to do",
-        "to do",
-        "to do",
-        "to do"
+        "-[a[href$=\".pdf\"]]-",
+        "-[a[href^=\".pdf\"]]-",
+        "-[a[href*=\".pdf\"]]-",
+        "-[a[href#=\".pdf\"]]-"
       ],
-      "explanation": ""
+      "explanation": "W CSSie możemy wybrać tylko elementy zawierające konkretne atrybuty i ich wartości, np. -[a[href]]- aby zaznaczyć -[a]- posiadające atrybut -[href]-. Możemy także wyszczególnić, że wartość tego atrybutu powinna kończyć się wartością \".pdf\" w ten sposób: -[href$=\".pdf\"]]-.\nWarto dodać, że opcja -[href*=\".pdf\"]]- także zadziała, ponieważ wyszukuje podanej wartości w całej wartości atrybutu, a więc może nie zadziałać tak, jakbyśmy tego oczekiwali.",
+      "moreInfoUrl": ""
     },
     "20": {
       "question": "Jak zaznaczyć -[<a>]-, których wartość atrybutu -[href]- zaczyna się od \"https\"?",
-      "difficulty": 4,
+      "difficulty": 3,
       "answers": [
-        "to do",
-        "to do",
-        "to do",
-        "to do"
+        "-[a[href^=\"https\"]]-",
+        "-[a[href$=\"https\"]]-",
+        "-[a[href*=\"https\"]]-",
+        "-[a[href#=\"https\"]]-"
       ],
-      "explanation": ""
+      "explanation": "W CSSie możemy wybrać tylko elementy zawierające konkretne atrybuty i ich wartości, np. -[a[href]]- aby zaznaczyć -[a]- posiadające atrybut -[href]-. Możemy także wyszczególnić, że wartość tego atrybutu powinna zaczynać się od wartości \"https\" w ten sposób: -[href^=\"https\"]]-.\nWarto dodać, że opcja -[href*=\"https\"]]- także zadziała, ponieważ wyszukuje podanej wartości w całej wartości atrybutu, a więc może nie zadziałać tak, jakbyśmy tego oczekiwali.",
+      "moreInfoUrl": ""
     },
     "21": {
       "question": "Co to jest Sass, Less albo Stylus?",
       "difficulty": 3,
       "answers": [
-        "to do",
-        "to do",
-        "to do",
-        "to do"
+        "Są to preprocesory języka CSS, czyli rozszerzenia dające nam nowe możliwości, ostatecznie kompilowane do czystego kodu CSS.",
+        "Są to postprocesory języka CSS, umożliwiające optymalizację kodu CSS (usunięcie nieużywanych lub powtarzających się reguł, grupowanie selektorów o tych samych regułach itd.",
+        "Są to następcy języka CSS, trzy implementacje bazujące na CSS, ale znacznie go rozszerzające. Kod ten nie musi być kompilowany, stosowany w przeglądarkach od paru lat.",
+        "Są to następcy języka CSS, łączący w sobie CSS i Javascript, tzw. CSS-in-JS. Style pisane są w Javascripcie."
       ],
-      "explanation": ""
+      "explanation": "Preprocesor języka CSS to narzędzie pozwalające na wydajniejsze tworzenie styli, dzięki możliwościom takim jak zmienne (nie mylić ze zmiennymi CSS), mixiny, pętle for, instrukcje if, czy nawet zagnieżdżanie reguł styli.",
+      "moreInfoUrl": ""
     },
     "22": {
       "question": "Co to jest flexbox? Jak działa?",
@@ -493,7 +535,8 @@
         "to do",
         "to do"
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "23": {
       "question": "Co to jest grid? Jak działa?",
@@ -504,7 +547,8 @@
         "to do",
         "to do"
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "24": {
       "question": "Co to jest sprite? Jakie korzyści niesie?",
@@ -515,7 +559,8 @@
         "to do",
         "to do"
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "25": {
       "question": "Co to jest -[outline]- i dlaczego nie powinniśmy ustawiać go na -[none]-?",
@@ -526,7 +571,8 @@
         "to do",
         "to do"
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "26": {
       "question": "Do czego służy -[@media]-?",
@@ -537,7 +583,8 @@
         "to do",
         "to do"
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "27": {
       "question": "Jak stworzyć media query tylko dla telefonów o maksymalnej wysokości 600px i szerokości 360px?",
@@ -548,7 +595,8 @@
         "to do",
         "to do"
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "28": {
       "question": "Wyjaśnij ten selektor: -[[role=navigation] > ul a:not([href^=mailto])]-",
@@ -559,7 +607,8 @@
         "to do",
         "to do"
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "29": {
       "question": "Jaki jest najlepszy sposób żeby wykonać animację przesunięcia elementu o 200px w lewo i 50px w dół?",
@@ -570,7 +619,8 @@
         "-[padding-left]- i -[padding-top]-",
         "-[margin-left]- i -[margin-top]-"
       ],
-      "explanation": "-[transform: translate]- to najwydajniejszy sposób na animację zmiany pozycji elementów. Warto również dodać do tego property -[will-change]- pozwalające przeglądarace \"przygotować się\" do takiej zmiany."
+      "explanation": "-[transform: translate]- to najwydajniejszy sposób na animację zmiany pozycji elementów. Warto również dodać do tego property -[will-change]- pozwalające przeglądarace \"przygotować się\" do takiej zmiany.",
+      "moreInfoUrl": ""
     }
   },
   "javascript": {
@@ -583,7 +633,8 @@
         "",
         ""
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "2": {
       "question": "",
@@ -594,7 +645,8 @@
         "",
         ""
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "3": {
       "question": "",
@@ -605,7 +657,8 @@
         "",
         ""
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "4": {
       "question": "",
@@ -616,7 +669,8 @@
         "",
         ""
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "5": {
       "question": "",
@@ -627,7 +681,8 @@
         "",
         ""
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "6": {
       "question": "",
@@ -638,7 +693,8 @@
         "",
         ""
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "7": {
       "question": "",
@@ -649,7 +705,8 @@
         "",
         ""
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "8": {
       "question": "",
@@ -660,7 +717,8 @@
         "",
         ""
       ],
-      "explanation": ""
+      "explanation": "",
+      "moreInfoUrl": ""
     },
     "9": {
       "question": "",

@@ -1,12 +1,12 @@
 {
   "name": "projekt-quiz",
-  "version": "0.4.5",
+  "version": "0.4.7",
   "description": "Start: 12.12.2020 22:20\r #Projekt quizu na zaliczenie\r v. 0.0.1",
   "main": "js/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "sass --watch styles/scss:styles/css",
-    "start": "python -m server.py"
+    "start": "python3 -m server.py"
   },
   "author": "Krzysztof Kosmowski",
   "license": "ISC",
