@@ -105,7 +105,7 @@
         "-[<input>]- stosujemy gdy chcemy umieścić tekst wewnątrz taga: -[<input>Nazwa inputa</input>]-. Bez tekstu wystarczy -[<input />]-.",
         "-[<input>]- służy do przycisków (-[<input type=\"button\">Wyślij</input>]-), podczas gdy -[<input />]- służy do pól formularza."
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "10": {
@@ -117,7 +117,7 @@
         "Jest to semantyczny tag, oznaczający element oddzielony od głównej treści, niezwiązany z nim.",
         "Jest to posortowana lista, semantycznie służy do tworzenia list innych niż wypunktowane."
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "11": {
@@ -129,7 +129,7 @@
         "-[<table>]- wykorzystujemy aby poprawić responsywność stron internetowych.",
         "Do tworzenia tabel oraz layoutów stron."
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "12": {
@@ -141,7 +141,7 @@
         "Ma on na celu ustawienie domyślnego wyświetlania strony na urządzeniach typu desktop.",
         "Ma on na celu ustawienie ciemnego motywu na stronie."
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "13": {
@@ -153,7 +153,7 @@
         "-[<meta>]-, -[<link>]-, -[<embed>]-, -[<style>]-",
         "-[<href>]-, -[<script>]-, -[<title>]-, -[<link>]-"
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "14": {
@@ -165,7 +165,7 @@
         "method",
         "novalidate"
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "15": {
@@ -177,7 +177,7 @@
         "button",
         "submit"
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "16": {
@@ -189,7 +189,7 @@
         "Mają inne style, ale ich funkcjonalność jest identyczna.",
         "Nie istnieje input o typie -[button]-."
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "17": {
@@ -201,7 +201,7 @@
         "Atrybut służy do podania wartości dla inputu, którą trzeba wpisać, aby wykonać przypisaną akcję.",
         "Taki atrybut nie istnieje."
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "18": {
@@ -213,7 +213,7 @@
         "Jest to zbiór rozwiązań takich jak uwierzytelnianie i autoryzacja, mających na celu uprzywilejowanie użytkownika.",
         "Jest to błędnie nazwany zestaw dobrych praktyk, związanych z rozmieszczaniem przycisków w formularzu."
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "19": {
@@ -225,7 +225,7 @@
         "Nie, ponieważ -[<span>]- to element block, a -[<div>]- to element inline. W elementach block mogą byyć umieszczone tylko inne elementy block.",
         "Tak, ponieważ -[<span>]- to element block, a -[<div>]- to element inline. W elementach block mogą być umieszczone wszystkie inne typy elementów."
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "20": {
@@ -237,7 +237,7 @@
         "-[<a>]- ma błędny atrybut -[src]-, -[<img>]- ma błędny atrybut -[href]-.",
         "-[<div>]- w -[<a>]- oraz -[<img>]- z tagiem zamykającym."
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "21": {
@@ -261,7 +261,7 @@
         "Nie, jest to możliwe tylko przy użyciu CSS.",
         "Nie, jest to możliwe tylko przy użyciu Javascriptu."
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "23": {
@@ -273,7 +273,7 @@
         "-[<header>]- to element przed -[<body>]-, w którym zawieramy metadane strony i odnośniki do innych zasobów.",
         "-[<header>]- i -[<footer>]- to elementy, które muszą być w tagu -[<main>]- i określają kolejno header i footer strony."
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "24": {
@@ -285,7 +285,7 @@
         "",
         ""
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     }
   },
@@ -314,7 +314,7 @@
         "Elementy -[.item]- poza \"item 1\" i \"item 2\"",
         "Żaden element nie będzie miał czerwonego tła."
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "3": {
@@ -350,7 +350,7 @@
         "-[text-scale]-",
         "-[font]-"
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "6": {
@@ -362,7 +362,7 @@
         "-[background]- ustawia kolor tła dla elementu i wszystkich jego dzieci, podczas gdy -[background-color]- tylko dla tego konkretnego elementu.",
         "-[background]- to skrót od -[background-color]- i niczym się te property nie różnią."
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "7": {
@@ -374,7 +374,7 @@
         "-[box-sizing]- o wartości -[border-box]- sprawia, że -[padding]-, -[border]- i -[margin]- wliczają się do rozmiaru elementu. -[*]- to selektor oznaczający każdy element.",
         "-[box-sizing]- o wartości -[border-box]- sprawia, że -[padding]- nie wlicza się do rozmiaru elementu. -[*]- to selektor oznaczający każdy element."
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "8": {
@@ -386,7 +386,7 @@
         "-[code > *]-",
         "-[code:after(*)]-"
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "9": {
@@ -466,7 +466,7 @@
         "Pierwszy selektor to wszystkie elementy o klasie -[.item1.item2]-, drugi to wszyscy potomkowie elementu -[.item1]- mające klasę -[.item2]-. Trzeci selektor to elementy o klasie -[.item2]- będące bezpośrednio po elementach o klasie -[.item1]-.",
         "Pierwszy selektor to błąd, drugi z kolei to wszyscy potomkowie elementu -[.item1]- mający klasę -[.item2]-. Trzeci selektor to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-."
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "16": {
@@ -478,7 +478,7 @@
         "Pierwszy selektor to wszystkie dzieci (bezpośredni potomkowie) elementu -[.item1]- mające klasę -[.item2]-. Drugi to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-. Trzeci to elementy o klasie -[.item1]- będące bezpośrednio po elementach o klasie -[.item2]-.",
         "Pierwszy selektor to wszyscy potomkowie elementu -[.item1]- mający klasę -[.item2]-. Drugi to wszystkie dzieci (bezpośredni potomkowie) elementu -[.item1]- mające klasę -[.item2]-. Trzeci to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-."
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "17": {
@@ -490,7 +490,7 @@
         "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[em]- to jednostka znaków, a więc element z -[width: 5em]- będzie długi na 5 znaków \"0\". -[rem]- to nowa jednostka rozmiaru tekstu, stosowania tylko w preprocesorach takich jak Sass czy Less.",
         "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[em]- to mnożnik \"obecnego\" rozmiaru tekstu, ustawiany w selektorze html. Jeżeli w html ustawimy -[em-scale: 1.5]-, to mając -[font-size: 16px]- -[1em]- wyniesie -[24px]-. -[rem]- to mnożnik wartości -[font-size]- w tagu -[html]-. Jeżeli ustawimy w html -[font-size: 10px]-, to -[1rem]- = -[10px]-."
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "18": {
@@ -502,7 +502,7 @@
         "Jednostka -[ch]- reprezentuje szerokość znaku \"0\", czyli -[width: 10ch]- to taka sama szerokość jak dziesięć takich znaków.\nWielkość ta jest niezależna i zawsze chodzi o \"0\" o -[font-size: 16px]-.",
         "Jednostka -[ch]- reprezentuje szerokość znaku \"0\", czyli -[width: 10ch]- to taka sama szerokość jak dziesięć takich znaków.\nWielkość ta jest niezależna i zawsze chodzi o \"0\" o -[font-size: 10px]-."
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "19": {
@@ -550,7 +550,7 @@
         "to do",
         "to do"
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "23": {
@@ -562,7 +562,7 @@
         "to do",
         "to do"
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "24": {
@@ -574,7 +574,7 @@
         "to do",
         "to do"
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "25": {
@@ -586,7 +586,7 @@
         "to do",
         "to do"
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "26": {
@@ -598,7 +598,7 @@
         "to do",
         "to do"
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "27": {
@@ -610,7 +610,7 @@
         "to do",
         "to do"
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "28": {
@@ -622,7 +622,7 @@
         "to do",
         "to do"
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "29": {
@@ -648,7 +648,7 @@
         "",
         ""
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "2": {
@@ -660,7 +660,7 @@
         "",
         ""
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "3": {
@@ -672,7 +672,7 @@
         "",
         ""
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "4": {
@@ -684,7 +684,7 @@
         "",
         ""
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "5": {
@@ -696,7 +696,7 @@
         "",
         ""
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "6": {
@@ -708,7 +708,7 @@
         "",
         ""
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "7": {
@@ -720,7 +720,7 @@
         "",
         ""
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "8": {
@@ -732,7 +732,7 @@
         "",
         ""
       ],
-      "explanation": "",
+      "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "9": {

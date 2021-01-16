@@ -1,3 +1,6 @@
+$border-color-selected: #4a82e8;
+$background-color-correct: #e4f9e4;
+
 .quiz-question {
   position: relative;
   padding: 0.4rem 2rem 1rem 4rem;
@@ -59,8 +62,8 @@
 .quiz-question__answer {
   display: flex;
   align-items: baseline;
-  padding-left: 2rem;
-  margin-bottom: 1rem;
+  padding: 0.5rem 0 0.5rem 2rem;
+  margin-bottom: 0.4rem;
   cursor: pointer;
 
   > span {
@@ -70,8 +73,20 @@
   code {
     margin-top: 0;
   }
+
+  &.answer--selected {
+    border: 2px solid $border-color-selected;
+  }
+
+  &.answer--correct {
+    background-color: $background-color-correct;
+  }
 }
 
 .quiz-question__answer-input {
   margin-right: 1rem;
+}
+
+.explanation {
+  margin-top: 2rem;
 }

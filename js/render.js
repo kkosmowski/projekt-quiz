@@ -1,28 +1,34 @@
 import Base from './base.js';
+import Text from '../pl.js';
 
 export default class Render {
   static quizElement;
-  static quizPageElements = [];
+  static quizPageElements;
   static quizPagesWrapperElement;
   static quizInstructionsElement;
   static quizControlsElement;
   static quizEndScreenElement;
 
+  static progressElement;
   static progressBarValue;
   static progressTextValue;
-  static progressValueVisible = false;
-  static progressBoxesVisible = false;
+  static progressValueVisible;
+  static progressBoxesVisible;
 
   static deviceIsMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   static screenNotSmall = window.innerWidth >= 1000;
 
-  static questionsRenderedCount = 0;
+  static questionsRenderedCount;
 
 
   /*
     Initial method, renders fundamental elements.
    */
   static init() {
+    this.quizPageElements = [];
+    this.questionsRenderedCount = 0;
+    this.progressValueVisible = false;
+    this.progressBoxesVisible = false;
     this.quiz();
     this.header();
     this.pagesWrapper();
@@ -59,14 +65,14 @@ export default class Render {
       'h1',
       titleContainer,
       'header__title',
-      'Quiz'
+      Text.common.quiz
     );
 
     Base.createElement(
       'h2',
       titleContainer,
       'header__subtitle',
-      'HTML, CSS i JS'
+      Text.common.htmlCssAndJs
     );
   }
 
@@ -86,7 +92,7 @@ export default class Render {
     The last argument is startQuizFn which has to be a function, invoked on start button click.
    */
   static instructions(questionsCount, questionsPerCategoryCount, startQuizFn) {
-    const instructions = `Celem quizu jest sprawdzenie Twojej wiedzy z zakresu języków HTML, CSS i Javascript.\n\nQuiz składa się z <em>${ questionsCount } pytań</em> - po ${ questionsPerCategoryCount } z każdej kategorii i jedno dodatkowe, z losowej kategorii.\n\nPytania podzielone są na <em>cztery stopnie trudności</em> - po 2 z każdego. Ostatnie - dwudzieste piąte - pytanie będzie zawsze o stopniu trudności 3.\n\nKażde pytanie oznaczone jest kategorią z lewej strony.\n\nPytania są losowane z większej puli, a więc dwa podejścia do quizu będą skutkowały innymi pytaniami oraz w innej kolejności. Odpowiedzi również mogą być w innej kolejności.\n\nNie ma limitu czasowego.\n\nPowodzenia!`;
+    const instructions = Base.interpolate(Text.start.instructions, questionsCount, questionsPerCategoryCount, questionsPerCategoryCount);
 
     this.quizPageElements.push(
       Base.createElement(
@@ -106,7 +112,7 @@ export default class Render {
       'h3',
       this.quizInstructionsElement,
       'instructions__title',
-      'Zanim zaczniesz'
+      Text.start.beforeYouStart
     );
 
     Base.createElement(
@@ -121,7 +127,7 @@ export default class Render {
       'button',
       this.quizInstructionsElement,
       ['quiz__start-button', 'button'],
-      'Rozpocznij'
+      Text.start.begin
     );
 
     startButton.type = 'button';
@@ -174,20 +180,28 @@ export default class Render {
       'button',
       this.quizControlsElement,
       ['button', 'controls__button--back'],
-      'Cofnij'
+      Text.common.back
     );
     backControl.type = 'button';
 
     this.indicators(questionsCount, questionsPerPage);
 
+    const restartControl = Base.createElement(
+      'button',
+      this.quizControlsElement,
+      ['button', 'controls__button--restart'],
+      Text.common.restart
+    );
+    restartControl.type = 'button';
+
     const continueControl = Base.createElement(
       'button',
       this.quizControlsElement,
       ['button', 'controls__button--continue'],
-      'Kontynuuj'
+      Text.common.continue
     );
     continueControl.type = 'button';
-    return [backControl, continueControl];
+    return [backControl, restartControl, continueControl];
   }
 
 
@@ -200,7 +214,7 @@ export default class Render {
    */
   static indicators(questionsCount, questionsPerPage) {
     if (!this.deviceIsMobile && this.screenNotSmall) {
-      const progress = Base.createElement(
+      this.progressElement = Base.createElement(
         'div',
         this.quizControlsElement,
         'controls__progress'
@@ -209,7 +223,7 @@ export default class Render {
       for (let i = 1; i <= questionsCount; i++) {
         const progressBox = Base.createElement(
           'div',
-          progress,
+          this.progressElement,
           'controls__progress-box'
         );
         progressBox.id = `progress-box-${ i }`;
@@ -221,18 +235,21 @@ export default class Render {
 
       this.progressBoxesVisible = true;
     } else {
-      const progressBar = Base.createElement(
-        'div', this.quizControlsElement,
+      this.progressElement = Base.createElement(
+        'div',
+        this.quizControlsElement,
         'controls__progress-bar'
       );
 
       this.progressBarValue = Base.createElement(
-        'div', progressBar,
+        'div',
+        this.progressElement,
         'controls__progress-value'
       );
 
       this.progressTextValue = Base.createElement(
-        'span', progressBar,
+        'span',
+        this.progressElement,
         'controls__progress-text',
         '0%'
       );
@@ -257,7 +274,12 @@ export default class Render {
 
     // Render question content
     const question = Base.createElement('h3', quizQuestion, 'quiz-question__question');
-    Base.createElement('span', question, 'quiz-question__label', `Pytanie ${ this.questionsRenderedCount }: `);
+    Base.createElement(
+      'span',
+      question,
+      'quiz-question__label',
+      `${Text.common.question}: ${ this.questionsRenderedCount }: `
+    );
     Base.createElement('span', question, null, content, true);
 
     // Create answers container
@@ -343,6 +365,15 @@ export default class Render {
     return positions;
   }
 
+
+  // TODO: add definition if necessary
+  static disableAnswerRadios() {
+    [...this.quizPagesWrapperElement.querySelectorAll('input.quiz-question__answer-input')].forEach(input => {
+      input.disabled = true;
+    });
+  }
+
+
   // TODO: add definition if necessary
   static endScreen(currentPage) {
     this.page(null, currentPage, null);
@@ -350,13 +381,48 @@ export default class Render {
     Base.addClass(this.quizEndScreenElement, 'end-screen');
   }
 
+
+  // TODO: add definition if necessary
+  static endScreenControls(reviewAnswersFn, restartFn) {
+    const controlsElement = Base.createElement(
+      'div',
+      this.quizEndScreenElement,
+      ['end-screen__controls'],
+    );
+
+    const reviewAnswersButton = Base.createElement(
+      'button',
+      controlsElement,
+      ['end-screen__control--review-answers', 'button'],
+      Text.end.reviewAnswers
+    );
+
+    reviewAnswersButton.addEventListener('click', function _reviewAnswersFn() {
+      reviewAnswersButton.removeEventListener('click', _reviewAnswersFn);
+      reviewAnswersFn();
+    });
+
+    const restartButton = Base.createElement(
+      'button',
+      controlsElement,
+      ['end-screen__control--restart', 'button'],
+      Text.end.tryAgain
+    );
+
+    restartButton.addEventListener('click', function _restartFn() {
+      restartButton.removeEventListener('click', _restartFn);
+      restartFn();
+    });
+  }
+
+
   // TODO: add definition if necessary
   static endScreenScores(correctAnswersCount, questionsCount, correctAnswersPercent) {
     Base.createElement(
       'p',
       this.quizEndScreenElement,
       ['end-screen__paragraph', 'end-screen__general-score'],
-      `Odpowiedziałeś(aś) poprawnie na ${ correctAnswersCount } z ${ questionsCount } odpowiedzi.\nDaje to wynik <em>${ correctAnswersPercent + '%' }</em>!`,
+      Base.interpolate(Text.end.generalScoreText, correctAnswersCount, questionsCount, correctAnswersPercent),
       true
     );
   }
@@ -387,5 +453,37 @@ export default class Render {
     }
 
     Base.createElement('h3', this.quizEndScreenElement, ['end-screen__title'], passed ? 'Brawo!' : ':(');
+  }
+
+  static markSelectedAnswers(selectedAnswers) {
+    this.markAnswers(selectedAnswers, 'answer--selected');
+  }
+
+  static markCorrectAnswers(correctAnswers) {
+    this.markAnswers(correctAnswers, 'answer--correct');
+  }
+
+  static markAnswers(answers, className) {
+    answers.forEach((answer, index) => {
+      this.quizPagesWrapperElement
+        .querySelector(`.quiz-question__answer-input[name="question-${index + 1}"][id="answer-${answer}"]`)
+        .parentElement
+        .classList.add(className)
+    })
+  }
+
+  static explanations(explanations) {
+    explanations.forEach((explanationText, index) => {
+      const questionElement = this.quizPagesWrapperElement
+        .querySelector(`.quiz-question__answer-input[name="question-${index + 1}"]`).parentElement.parentElement;
+
+      Base.createElement(
+        'div',
+        questionElement,
+        'explanation',
+        `<strong>${Text.review.explanation}: </strong>` + Base.parseText(explanationText),
+        true
+      );
+    })
   }
 }

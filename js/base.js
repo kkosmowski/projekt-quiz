@@ -75,4 +75,13 @@ export default class Base {
   static removeClassFromId(id, className) {
     this.removeClass(document.getElementById(id), className);
   }
+
+  static interpolate(translation, ...interpolations) {
+    const swapText = '[_]';
+    interpolations.forEach(interpolation => {
+      translation = translation.replace(swapText, interpolation);
+    });
+
+    return translation;
+  }
 }

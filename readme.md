@@ -1,14 +1,22 @@
-#Projekt quizu na zaliczenie
-v. 0.5.0
+# Projekt quizu na zaliczenie
+v. 0.6.1
 
-####TODO:
+#### TODO:
 * Dokumentacja - in progress
 * Ekran końcowy - in progress
-* Ekran z wyjaśnieniami
 * Nowy layout
-* Osobny JSON z tekstami (translacjami)
 
-####Changelog:
+#### Changelog:
+* 0.6.1
+  * teksty przenisione do pliku z translacjami;
+  * metoda `interpolate()` dla tłumaczenia tekstów z zawartymi zmiennymi;
+* 0.6.0
+  * dodano stan przeglądu wyników;
+  * dodano ekran przeglądu wyników;
+  * usunięcia nasłuchiwania kontrolek dopiero przed wyczyszczeniem quizu;
+  * usprawnienia działania metody `changePage()`;
+  * poprawione pobieranie odpowiedzi użytkownika;
+  * znaczące poprawki w pobieraniu quizu (server.py już niepotrzebny);
 * 0.5.0
   * dodano ekran końcowy i wyliczanie wyniku;
   * dodano procent wymagany do zaliczenia quizu;

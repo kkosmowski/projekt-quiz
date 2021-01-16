@@ -37,3 +37,13 @@
   text-align: center;
   line-height: 1.75;
 }
+
+.end-screen__controls {
+  $items-margin-bottom: 2rem;
+  @include flex-column();
+  margin-bottom: -$items-margin-bottom;
+
+  > .button {
+    margin-bottom: $items-margin-bottom;
+  }
+}
