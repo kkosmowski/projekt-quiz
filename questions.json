@@ -222,7 +222,7 @@
       "answers": [
         "Nie, ponieważ -[<span>]- to element inline, a -[<div>]- to element block. W elementach inline mogą być umieszczone tylko inne elementy inline.",
         "Tak, ponieważ -[<span>]- to element inline, a -[<div>]- to element block. W elementach inline mogą być umieszczone wszystkie inne typy elementów.",
-        "Nie, ponieważ -[<span>]- to element block, a -[<div>]- to element inline. W elementach block mogą byyć umieszczone tylko inne elementy block.",
+        "Nie, ponieważ -[<span>]- to element block, a -[<div>]- to element inline. W elementach block mogą być umieszczone tylko inne elementy block.",
         "Tak, ponieważ -[<span>]- to element block, a -[<div>]- to element inline. W elementach block mogą być umieszczone wszystkie inne typy elementów."
       ],
       "explanation": "Lorem ipsum, dolor sit amet.",
@@ -397,15 +397,16 @@
         "Zmienne z języków rozszerzających CSS - jak np. Sass (SCSS) - zostają skompliowane i znikają, podczas gdy zmienne w CSSie nadal istnieją po załadowaniu strony. Nie ma innych różnic.",
         "Zmienne CSS są globalne, tj. nie trzeba importować pliku, w którym je zdefiniowaliśmy. To jedyna zaleta tego rozwiązania.",
         "Zmienne CSS nie mają przewagi nad zmiennymi w np. Sassie, ponieważ trzeba je deklarować w selektorze -[:root]- i odwoływać się do nich skomplikowaną składnią."
-      ]
+      ],
+      "explanation": "Lorem ipsum, dolor sit amet."
     },
     "10": {
       "question": "Jak zadeklarować i użyć zmienną w CSS?",
       "difficulty": 3,
       "answers": [
-        "--[:root {\n  --color: lightblue;\n}\n\nbody {\n  background-color: var(color);\n}]--",
-        "--[:root {\n  color: lightblue;\n}\n\nbody {\n  background-color: --var(color);\n}]--",
         "--[:root {\n  --color: lightblue;\n}\n\nbody {\n  background-color: var(--color);\n}]--",
+        "--[:root {\n  color: lightblue;\n}\n\nbody {\n  background-color: var(--color);\n}]--",
+        "--[:root {\n  color: lightblue;\n}\n\nbody {\n  background-color: --var(color);\n}]--",
         "--[:root {\n  --var(color): lightblue;\n}\n\nbody {\n  background-color: --var(color);\n}]--"
       ]
     },

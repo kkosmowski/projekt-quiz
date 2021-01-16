@@ -1,6 +1,6 @@
 {
   "name": "projekt-quiz",
-  "version": "0.6.0",
+  "version": "0.6.4",
   "description": "Start: 12.12.2020 22:20\r #Projekt quizu na zaliczenie\r v. 0.0.1",
   "main": "js/index.js",
   "scripts": {

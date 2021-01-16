@@ -1,5 +1,5 @@
 # Projekt quizu na zaliczenie
-v. 0.6.1
+v. 0.6.4
 
 #### TODO:
 * Dokumentacja - in progress
@@ -7,6 +7,10 @@ v. 0.6.1
 * Nowy layout
 
 #### Changelog:
+* 0.6.4:
+  * dodane statystyki odpowiedzi na konkretne kategorie w ekranie końcowym;
+  * dodane przetrzymywanie informacji jakiej kategorii jest każde pytanie;
+  * poprawiony parser kodu;
 * 0.6.1
   * teksty przenisione do pliku z translacjami;
   * metoda `interpolate()` dla tłumaczenia tekstów z zawartymi zmiennymi;

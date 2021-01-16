@@ -27,14 +27,25 @@ export default class Base {
       -[<h1>]-    =>  <code>&lt;h1&gt;</code>
       --[<h1>]--  =>  <code class="block">&lt;h1&gt;</code>
    */
-  static parseText(string) {
+  static parseText(string, options) {
     //TODO: refactor into own method that makes only one loop across the string, instead of <as many as replaceAll calls>
-    return string
+    const replaceTags = (string) => string
       .replaceAll('<', '&lt;').replaceAll('>', '&gt;')
       .replaceAll('--[', '<code class="block">').replaceAll(']--', '</code>')
-      .replaceAll('-[', '<code>').replaceAll(']-', '</code>')
-      .replaceAll('---', '&mdash;')
-      .replaceAll('--', '&ndash;');
+      .replaceAll('-[', '<code>').replaceAll(']-', '</code>');
+
+    const replaceDashes = (string) => string.replaceAll('---', '&mdash;').replaceAll('--', '&ndash;');
+
+    if (!options) {
+      return replaceDashes(replaceTags(string));
+    } else {
+      if (options.skipTags) {
+        return replaceDashes(string);
+      } else if (options.skipDashes) {
+        return replaceTags(string);
+      }
+      return string;
+    }
   }
 
 

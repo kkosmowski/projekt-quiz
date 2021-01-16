@@ -29,6 +29,7 @@ class Quiz {
   restartControl;
 
   questions;
+  questionsDetails;
 
   userAnswers;
   correctAnswers;
@@ -41,6 +42,7 @@ class Quiz {
     this.state = this.states.none;
 
     this.questions = [];
+    this.questionsDetails = {};
     this.userAnswers = new Array(this.questionsCount).fill(null);
     this.correctAnswers = [];
     this.explanations = [];
@@ -191,13 +193,18 @@ class Quiz {
   }
 
 
+  // TODO: add definition
   loadQuestions() {
-    const selectedCategories = {
-      html: 0,
-      css: 0,
-      javascript: 0,
-    };
+    const selectedCategories = {};
 
+    this.categories.forEach(category => {
+      selectedCategories[category] = 0;
+      this.questionsDetails[category] = {
+        questions: []
+      };
+    });
+
+    // TODO: add definition
     const selectQuestion = (questions, category) => {
       let selectedQuestion = Math.floor(Math.random() * Object.keys(questions[category]).length);
 
@@ -211,6 +218,7 @@ class Quiz {
       return selectQuestion(questions, category);
     };
 
+    // TODO: add definition
     const selectCategory = (checkLimit) => {
       const pickFrom = Math.floor(Math.random() * this.categoriesCount);
       const selectedCategory = this.categories[pickFrom];
@@ -221,18 +229,35 @@ class Quiz {
       return selectCategory(true);
     };
 
+    // TODO: add definition
+    const getQuestion = (fetchedQuestions, i, lastQuestion) => {
+      const selectedCategory = selectCategory(!lastQuestion);
+      const selectedQuestion = selectQuestion(fetchedQuestions, selectedCategory);
+      this.explanations.push(fetchedQuestions[selectedCategory][selectedQuestion].explanation);
+      this.questionsDetails[selectedCategory].questions.push(i);
+
+      if (lastQuestion) {
+        this.categories.forEach(category => this.questionsDetails[category] = {
+          ...this.questionsDetails[category],
+          count: selectedCategories[category]
+        });
+      }
+
+      this.questionsDetails[selectedCategory].questions.push(i);
+      return [selectedCategory, selectedQuestion];
+    };
+
+    // TODO: add definition
     fetch('questions.json', {
-		  method: 'GET',
-		  headers: {'Content-Type': 'application/json'}
-		})
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'}
+    })
       .then(res => res.json())
       .then(data => {
         let fetchedQuestions = {...data};
 
         for (let i = 1; i < this.questionsCount; i++) {
-          const selectedCategory = selectCategory(true);
-          const selectedQuestion = selectQuestion(fetchedQuestions, selectedCategory);
-          this.explanations.push(fetchedQuestions[selectedCategory][selectedQuestion].explanation);
+          const [selectedCategory, selectedQuestion] = getQuestion(fetchedQuestions, i, false);
 
           fetchedQuestions = {
             ...fetchedQuestions,
@@ -243,9 +268,7 @@ class Quiz {
           };
         }
 
-        const selectedCategory = selectCategory(false);
-        const selectedQuestion = selectQuestion(fetchedQuestions, selectedCategory); // 25th question
-        this.explanations.push(fetchedQuestions[selectedCategory][selectedQuestion].explanation);
+        getQuestion(fetchedQuestions, this.questionsCount, true);
 
         this.setNextPage();
         this.state = this.states.inProgress;
@@ -271,22 +294,34 @@ class Quiz {
     Render.endScreen(this.pages + 1);
     Render.endScreenResult(correctAnswersPercent >= this.requiredPercentToPass);
     Render.endScreenScores(correctAnswersCount, this.questionsCount, correctAnswersPercent);
-    // TODO
-    // Render.endScreenScorePerLanguage({
-    //   html: {
-    //     correctAnswers: '2/8',
-    //     percent: 50,
-    //   },
-    //   css: {
-    //     correctAnswers: '9/9',
-    //     percent: 100,
-    //   },
-    //   javascript: {
-    //     correctAnswers: '2/8',
-    //     percent: 50,
-    //   }
-    // });
+    Render.endScreenScorePerCategory(this.getScoresByCategory(), this.categories);
     Render.endScreenControls(this.reviewAnswers.bind(this), this.restartQuiz.bind(this));
+  }
+
+
+  getScoresByCategory() {
+    const result = {};
+    const counter = {};
+
+    this.categories.forEach(category => counter[category] = 0);
+
+    this.userAnswers.forEach((userAnswer, index) => {
+      if (userAnswer === this.correctAnswers[index]) {
+        for (let j = 0; j < this.categories.length; j++) {
+          if (this.questionsDetails[this.categories[j]].questions.includes(index + 1)) {
+            counter[this.categories[j]]++;
+            break;
+          }
+        }
+      }
+    });
+
+    this.categories.forEach(category => result[category] = {
+      correctAnswers: `${ counter[category] }/${ this.questionsDetails[category].count }`,
+      percentage: +(counter[category] / this.questionsDetails[category].count * 100).toFixed(2) + '%',
+    });
+
+    return result;
   }
 
 

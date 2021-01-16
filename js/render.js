@@ -156,7 +156,7 @@ export default class Render {
         this.question(
           this.quizPageElements[currentPage],
           question.type,
-          Base.parseText(question.question),
+          Base.parseText(question.question, { skipDashes: true }),
           question.answers,
           correctAnswers
         );
@@ -310,7 +310,7 @@ export default class Render {
     input.id = `answer-${ id }`;
 
     // this is appended to label HTML — already containing an input — and it has to be the last.
-    label.innerHTML += `<span>${ Base.parseText(content) }</span>`;
+    label.innerHTML += `<span>${ Base.parseText(content, { skipDashes: true }) }</span>`;
   }
 
 
@@ -428,12 +428,21 @@ export default class Render {
   }
 
   // TODO: add definition if necessary
-  static endScreenScorePerLanguage(scores) {
+  static endScreenScorePerCategory(scores, categories) {
+    let content = `${ Text.end.categoryScoresText }: <table class="end-screen__scores-table">`;
+    content += `<tr><th>${ Text.end.category }</th><th>${ Text.end.correctAnswers }</th><th>${ Text.end.percentage }</th></tr>`;
+
+    categories.forEach(category => {
+      content += `<tr><td>${ Text.categories[category] }</td><td>${ scores[category].correctAnswers }</td><td>${ scores[category].percentage }</td></tr>`;
+    });
+
+    content += '</table>';
+
     Base.createElement(
       'p',
       this.quizEndScreenElement,
       ['end-screen__paragraph', 'end-screen__languages-score'],
-      `Wyniki w poszczególnych językach: <ul class="end-screen__language-scores"><li>HTML: ${scores.html.correctAnswers} (${scores.html.percent})</li><li>CSS: ${scores.css.correctAnswers} (${scores.css.percent})</li><li>Javascript: ${scores.javascript.correctAnswers} (${scores.javascript.percent})</li></ul>`,
+      content,
       true
     );
   }

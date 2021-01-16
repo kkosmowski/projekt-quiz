@@ -47,3 +47,28 @@
     margin-bottom: $items-margin-bottom;
   }
 }
+
+.end-screen__language-scores,
+.end-screen__scores-table {
+  text-align: center;
+}
+
+.end-screen__scores-table {
+  border-spacing: 0;
+  margin: 1rem auto 0;
+
+  th {
+    padding-bottom: 0.4rem;
+    font-weight: 400;
+    border-bottom: 1px solid #666;
+  }
+
+  th, td {
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+  }
+
+  td {
+    padding-top: 0.6rem;
+  }
+}
