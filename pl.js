@@ -21,7 +21,9 @@ const Text = {
   end: {
     category: 'Kategoria',
     categoryScoresText: 'Statystyki odpowiedzi w poszczególnych językach',
+    congrats: 'Brawo!',
     correctAnswers: 'Poprawne',
+    failed: ':(',
     generalScoreText: 'Odpowiedziałeś(aś) poprawnie na [_] z [_] odpowiedzi.\nDaje to wynik <em>[_]%</em>.',
     percentage: 'Procent',
     reviewAnswers: 'Przejrzyj odpowiedzi',

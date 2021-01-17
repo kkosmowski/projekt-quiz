@@ -1,3 +1,7 @@
+/*
+  Base class consists of helper methods such as creating DOM elements, toggling visibility of an element
+  or parsing the text. Group of utils that do not belong in neither Quiz nor Render classes.
+ */
 export default class Base {
   static displayNoneClass = 'display:none';
 
@@ -19,13 +23,24 @@ export default class Base {
   }
 
 
-  //TODO: update definition
   /*
-    Text parser to remove any html tags from code.
+    Text parser method, parses the html tags such as '<img>' into '&lt;img&gt;'.
+    This causes user to see '<img>' in the text, instead of an image.
     Additionally code symbol are parsed into <code> tags.
     Example:
-      -[<h1>]-    =>  <code>&lt;h1&gt;</code>
+       -[<h1>]-   =>  <code>&lt;h1&gt;</code>
       --[<h1>]--  =>  <code class="block">&lt;h1&gt;</code>
+
+    Additionally parses '--' into n-dash and '---' into m-dash.
+
+    Input: string to be parsed, and options.
+    Options is an object, that can consist of:
+     * skipTags - parsing of Html and code tags is not executed,
+     * skipDashes - parsing of '--' and '---' into n- and m-dashes is not executed.
+    Examples of valid options:
+      { skipDashes: true }
+      { skipTags: true }
+      { skipDashes: true, skipTags: true } <- also allowed, but will result in no text parsing.
    */
   static parseText(string, options) {
     //TODO: refactor into own method that makes only one loop across the string, instead of <as many as replaceAll calls>
@@ -68,25 +83,49 @@ export default class Base {
   }
 
 
+  /*
+    Adds specified class (if single) or classes (if an array) to a specified element.
+  */
   static addClass(element, classNames) {
     typeof classNames === 'object' ? element.classList.add(...classNames) : element.classList.add(classNames);
   }
 
 
+  /*
+    Adds specified class (if single) or classes (if an array) to element of specified id.
+  */
   static addClassToId(id, classNames) {
     this.addClass(document.getElementById(id), classNames);
   }
 
-
+  /*
+    Removes specified class (if single) or classes (if an array) from a specified element.
+   */
   static removeClass(element, classNames) {
     typeof classNames === 'object' ? element.classList.remove(...classNames) : element.classList.remove(classNames);
   }
 
 
+  /*
+    Removes specified class (if single) or classes (if an array) from an element of specified id.
+   */
   static removeClassFromId(id, className) {
     this.removeClass(document.getElementById(id), className);
   }
 
+
+  /*
+    Returns a text with swap text ('[_]') being replaced with specified interpolations.
+    Note: The order of interpolations matters.
+    Example:
+      translation: 'This bicycle costs [_], but I bought it for [_].'
+      interpolations: '100$', '80$'
+      output: 'This bicycle costs 100$, but I bought it for 80$.'
+    Another example:
+      translation: 'You answered correctly [_] out of [_] answers, this is [_]%.'
+      interpolations: 3, 4, 75
+      output: 'You answered correctly 3 out of 4 answers, this is 75%.'
+   */
   static interpolate(translation, ...interpolations) {
     const swapText = '[_]';
     interpolations.forEach(interpolation => {

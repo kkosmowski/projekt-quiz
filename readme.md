@@ -1,18 +1,54 @@
 # Projekt quizu na zaliczenie
-v. 0.6.4
+v. 0.7.0
 
-#### TODO:
-* Dokumentacja - in progress
-* Ekran końcowy - in progress
-* Nowy layout
+## Cel quizu
+#### Sprawdzenie wiedzy użytkownika
+Pierwszym, oczywistym celem stworzonego quizu jest sprawdzenie wiedzy z zakresu języków HTML, CSS oraz Javascript
+osób biorących w nim udział.
+
+Quiz jest skonstruowany tak, że przy odpowiednio dużej liczbie pytań z kategorii oraz przy rozsądnej liczbie
+zadanych pytań może być wielokrotnie rozwiązywany. Powodem tego jest losowość pytań oraz odpowiedzi.
+
+#### Poszerzenie wiedzy i umiejętności autora
+Niezaprzeczalnym pozytywem stworzenia quizu jest odświeżenie i poszerzenie wiedzy z zakresu fundamentów tworzenia stron
+internetowych przez autora. Nowe doświadczenie w rozwiązywaniu problemów również zostało pozyskane.
+
+## Uproszczony opis działania quizu
+* 0 - Brak stanu
+  w momencie ładowania strony następuje automatyczna inicjalizacja quizu;
+* 1 - Obecny stan: `pre-start`
+  * inicjalizacja quizu kończy się przedstawieniem ekranu startowego, zawierającego kluczowe informacje o quizie i przycisk umożlwiający start.
+* 2 - Po kliknięciu przycisku "Start", stan: `in-progress`
+  * pobrana zostaje baza pytań, następuje wylosowanie danej liczby pytań i wyświetlenie pierwszej porcji na stronie pierwszej.
+  * oprócz pierwszej strony wyrenderowane zostają kontrolki do obsługi quizu oraz indykatory pytań.
+  * po kliknięciu kontrolki "Kontynuuj" zostanie pokazana następna strona, zawierająca kolejną porcję pytań.
+  * po kliknięciu kontrolki "Cofnij" zostanie pokazana poprzednia strona, nie będzie ona jednak na nowo tworzona, ponieważ istnieje już w DOM.
+    * po ponownym kliknięciu kontrolki "Kontynuuj" również strona nie będzie na nowo renderowana, jeżeli została już raz wyświetlona.
+  * na ostatniej stronie kontrolka "Kontynuuj" służy do zakończenia quizu.
+* 3 - Po kliknięciu przycisku "Zakończ", stan: `finished`
+  * wyświetlony zostaje ekran końcowy, przedstawiający wynik i statystyki podzielone na kategorie (języki).
+  * dostępne są dwa przyciski: "Przejrzyj odpowiedzi" (4) oraz "Spróbuj ponownie" (5).
+* 4 - Po kliknięciu przycisku "Przejrzyj odpowiedzi", stan: `reviewing`
+  * wyświetlona zostaje pierwsza strona z pytaniami, jednak nie ma już możliwości wyboru odpowiedzi.
+  * dodatkowo zostają wyświetlone indykatory pokazujące poprawną odpowiedź, wybraną odpowiedź oraz wyjaśnienie (jeżeli jest potrzeba).
+  * zostaje wyświetlona nowa kontrolka - "Uruchom ponownie".
+* 5 - Po kliknięciu przycisku "Spróbuj ponownie" (ekran końcowy) bądź "Uruchom ponownie" (przegląd odpowiedzi), stan: `restarted`
+  * quiz zostaje zrestartowany, następuje reinicjalizacja i automatyczne rozpoczęcie quizu z nowymi pytaniami -> (2)
+  
+---
 
 #### Changelog:
+* 0.7.0:
+  * zaktualizowano i uzupełniono dokumentację;
+  * znacząco uporządkowany kod;
+  * dodany cel quizu oraz uproszczony opis działania;
+  * drobne poprawki w kodzie;
 * 0.6.4:
   * dodane statystyki odpowiedzi na konkretne kategorie w ekranie końcowym;
   * dodane przetrzymywanie informacji jakiej kategorii jest każde pytanie;
   * poprawiony parser kodu;
 * 0.6.1
-  * teksty przenisione do pliku z translacjami;
+  * teksty przeniesione do pliku z translacjami;
   * metoda `interpolate()` dla tłumaczenia tekstów z zawartymi zmiennymi;
 * 0.6.0
   * dodano stan przeglądu wyników;

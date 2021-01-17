@@ -1,19 +1,23 @@
 import Base from './base.js';
 import Text from '../pl.js';
 
+/*
+  Responsible for DOM rendering and updating. Stores DOM elements.
+  Uses Base class as a helper. Is not invoked by itself, is used as a extension for Quiz class.
+ */
 export default class Render {
-  static quizElement;
-  static quizPageElements;
-  static quizPagesWrapperElement;
+  static quizElement; // Main quiz element.
+  static quizPageElements; // Array of Page elements.
+  static quizPagesWrapperElement; // Parent element of Page elements.
   static quizInstructionsElement;
   static quizControlsElement;
   static quizEndScreenElement;
 
-  static progressElement;
+  static progressElement; // This is either ProgressBar or ProgressBoxes element depending on what was rendered.
   static progressBarValue;
   static progressTextValue;
-  static progressValueVisible;
-  static progressBoxesVisible;
+  static progressValueVisible; // Boolean flag saying whether ProgressValue was rendered.
+  static progressBoxesVisible; // Boolean flag saying whether ProgressBoxes were rendered.
 
   static deviceIsMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   static screenNotSmall = window.innerWidth >= 1000;
@@ -22,7 +26,7 @@ export default class Render {
 
 
   /*
-    Initial method, renders fundamental elements.
+    Initial method, renders fundamental elements and declares default values.
    */
   static init() {
     this.quizPageElements = [];
@@ -45,128 +49,27 @@ export default class Render {
 
 
   /*
-    Creates quiz header, containing title and subtitle.
-    TODO: Add Vistula logo with URL to Vistula website.
+    Creates answer element.
+    Requires its id, parent container, and its content.
    */
-  static header() {
-    const quizHeader = Base.createElement(
-      'header',
-      this.quizElement,
-      ['quiz__header', 'header']
-    );
+  static answer(id, container, content) {
+    // render label (text)
+    const label = Base.createElement('label', container, 'quiz-question__answer');
 
-    const titleContainer = Base.createElement(
-      'hgroup',
-      quizHeader,
-      'header__title-container'
-    );
+    // render and setup the input
+    const input = Base.createElement('input', label, 'quiz-question__answer-input');
+    input.type = 'radio';
+    input.name = `question-${ this.questionsRenderedCount }`;
+    input.id = `answer-${ id }`;
 
-    Base.createElement(
-      'h1',
-      titleContainer,
-      'header__title',
-      Text.common.quiz
-    );
-
-    Base.createElement(
-      'h2',
-      titleContainer,
-      'header__subtitle',
-      Text.common.htmlCssAndJs
-    );
-  }
-
-
-  static pagesWrapper() {
-    this.quizPagesWrapperElement = Base.createElement(
-      'div',
-      this.quizElement,
-      ['quiz__pages']
-    );
+    // this is appended to label HTML — already containing an input — and it has to be the last.
+    // Note: skipDashes is necessary to avoid parsing '--var' into '–var'
+    label.innerHTML += `<span>${ Base.parseText(content, { skipDashes: true }) }</span>`;
   }
 
 
   /*
-    Creates instructions start screen (page 0).
-    It is necessary to pass questionsCount, questionsPerCategoryCount to add these values to instructions content.
-    The last argument is startQuizFn which has to be a function, invoked on start button click.
-   */
-  static instructions(questionsCount, questionsPerCategoryCount, startQuizFn) {
-    const instructions = Base.interpolate(Text.start.instructions, questionsCount, questionsPerCategoryCount, questionsPerCategoryCount);
-
-    this.quizPageElements.push(
-      Base.createElement(
-        'div',
-        this.quizPagesWrapperElement,
-        'quiz__questions'
-      )
-    );
-
-    this.quizInstructionsElement = Base.createElement(
-      'section',
-      this.quizPageElements[0],
-      ['quiz__instructions', 'instructions']
-    );
-
-    Base.createElement(
-      'h3',
-      this.quizInstructionsElement,
-      'instructions__title',
-      Text.start.beforeYouStart
-    );
-
-    Base.createElement(
-      'p',
-      this.quizInstructionsElement,
-      'instructions__content',
-      instructions,
-      true
-    );
-
-    const startButton = Base.createElement(
-      'button',
-      this.quizInstructionsElement,
-      ['quiz__start-button', 'button'],
-      Text.start.begin
-    );
-
-    startButton.type = 'button';
-    // TODO: remove EL after event is fired
-    startButton.addEventListener('click', () => startQuizFn());
-  }
-
-
-  /*
-    Renders page with question(s).
-    Arguments: questionsToRender (an array of questions), current page id and correctAnswers.
-    Note: correctAnswers aren't used in this method, but they are necessary in this.question().
-   */
-  static page(questionsToRender, currentPage, correctAnswers) {
-    this.quizPageElements.push(
-      Base.createElement(
-        'div',
-        this.quizPagesWrapperElement,
-        'quiz__page'
-      )
-    );
-
-    if (questionsToRender) {
-      questionsToRender.forEach(question => {
-        this.questionsRenderedCount++;
-        this.question(
-          this.quizPageElements[currentPage],
-          question.type,
-          Base.parseText(question.question, { skipDashes: true }),
-          question.answers,
-          correctAnswers
-        );
-      });
-    }
-  }
-
-
-  /*
-    Creates and returns back and continue controls.
+    Creates and returns BackControl, RestartControl and ContinueControl buttons.
     Invokes indicators() method to create progress indicator between controls.
    */
   static controls(questionsCount, questionsPerPage) {
@@ -202,6 +105,207 @@ export default class Render {
     );
     continueControl.type = 'button';
     return [backControl, restartControl, continueControl];
+  }
+
+
+  /*
+    Re-renders progress boxes.
+    In order to do this, current page and questions per page need to be provided.
+    Since it is executed after page change, a Boolean information whether the page number
+     increased or decreased is required as well. Necessary to unmark the previous boxes.
+   */
+  static currentBoxes(currentPage, questionsPerPage, increase) {
+    // if current page number is 1 and it was increased, it means it is initial execution.
+    // in such case there are no "previous" boxes, so their removal should not happen.
+    if (!(currentPage === 1 && increase)) {
+      const previousFirstBox = (currentPage - (increase ? 2 : 0)) * questionsPerPage + 1;
+      const previousLastBox = previousFirstBox + questionsPerPage;
+
+      for (let i = previousFirstBox; i < previousLastBox; i++) {
+        Base.removeClassFromId(`progress-box-${ i }`, '--current');
+      }
+    }
+
+    const firstBox = (currentPage - 1) * questionsPerPage + 1;
+    const lastBox = firstBox + questionsPerPage;
+
+    for (let i = firstBox; i < lastBox; i++) {
+      Base.addClassToId(`progress-box-${ i }`, '--current');
+    }
+  }
+
+
+  /*
+    Finds all answer inputs and disables each and one of them.
+   */
+  static disableAnswerRadios() {
+    [...this.quizPagesWrapperElement.querySelectorAll('input.quiz-question__answer-input')].forEach(input => {
+      input.disabled = true;
+    });
+  }
+
+
+  /*
+    Renders an end screen by rendering a new page without any questions.
+   */
+  static endScreen(currentPage) {
+    this.page(null, currentPage, null);
+    this.quizEndScreenElement = this.quizPageElements[currentPage];
+    Base.addClass(this.quizEndScreenElement, 'end-screen');
+  }
+
+
+  /*
+    Renders controls in the end screen - the reviewAnswers and restart buttons.
+    Also adds EventListeners with provided functions in input.
+    The EventListeners are removed after single click.
+   */
+  static endScreenControls(reviewAnswersFn, restartFn) {
+    const controlsElement = Base.createElement(
+      'div',
+      this.quizEndScreenElement,
+      ['end-screen__controls'],
+    );
+
+    const reviewAnswersButton = Base.createElement(
+      'button',
+      controlsElement,
+      ['end-screen__control--review-answers', 'button'],
+      Text.end.reviewAnswers
+    );
+
+    // Add a EventListener and immediately remove it after function has been invoked.
+    // Follow with specified function.
+    reviewAnswersButton.addEventListener('click', function _reviewAnswersFn() {
+      reviewAnswersButton.removeEventListener('click', _reviewAnswersFn);
+      reviewAnswersFn();
+    });
+
+    const restartButton = Base.createElement(
+      'button',
+      controlsElement,
+      ['end-screen__control--restart', 'button'],
+      Text.end.tryAgain
+    );
+
+    // Add a EventListener and immediately remove it after function has been invoked.
+    // Follow with specified function.
+    restartButton.addEventListener('click', function _restartFn() {
+      restartButton.removeEventListener('click', _restartFn);
+      restartFn();
+    });
+  }
+
+
+  /*
+    Renders general score in the end screen.
+   */
+  static endScreenScores(correctAnswersCount, questionsCount, correctAnswersPercent) {
+    Base.createElement(
+      'p',
+      this.quizEndScreenElement,
+      ['end-screen__paragraph', 'end-screen__general-score'],
+      Base.interpolate(Text.end.generalScoreText, correctAnswersCount, questionsCount, correctAnswersPercent),
+      true
+    );
+  }
+
+
+  /*
+    Renders scores per category in the end screen.
+    Displays a table with each category as a new row, containing correct answers count and percentage.
+   */
+  static endScreenScorePerCategory(scores, categories) {
+    let content = `${ Text.end.categoryScoresText }: <table class="end-screen__scores-table">`;
+    content += `<tr><th>${ Text.end.category }</th><th>${ Text.end.correctAnswers }</th><th>${ Text.end.percentage }</th></tr>`;
+
+    categories.forEach(category => {
+      content += `<tr><td>${ Text.categories[category] }</td><td>${ scores[category].correctAnswers }</td><td>${ scores[category].percentage }</td></tr>`;
+    });
+
+    content += '</table>';
+
+    Base.createElement(
+      'p',
+      this.quizEndScreenElement,
+      ['end-screen__paragraph', 'end-screen__languages-score'],
+      content,
+      true
+    );
+  }
+
+
+  /*
+    Renders the result of the quiz in the end screen.
+    The result is an icon, either a green tick or red cross visualizing the pass/fail result.
+   */
+  static endScreenResult(passed) {
+    const graphicResult = Base.createElement(
+      'div',
+      this.quizEndScreenElement,
+      ['end-screen__graphic-result', passed ? '--passed' : '--failed']
+    );
+
+    if (passed) {
+      graphicResult.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0zm0 0h24v24H0V0z" fill="none"/><path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>';
+    } else {
+      graphicResult.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
+    }
+
+    Base.createElement(
+      'h3',
+      this.quizEndScreenElement,
+      'end-screen__title',
+      passed ? Text.end.congrats : Text.end.failed
+    );
+  }
+
+  static explanations(explanations) {
+    explanations.forEach((explanationText, index) => {
+      const questionElement = this.quizPagesWrapperElement
+        .querySelector(`.quiz-question__answer-input[name="question-${index + 1}"]`).parentElement.parentElement;
+
+      Base.createElement(
+        'div',
+        questionElement,
+        'explanation',
+        `<strong>${Text.review.explanation}: </strong>` + Base.parseText(explanationText),
+        true
+      );
+    })
+  }
+
+
+  /*
+    Creates quiz header, containing title and subtitle.
+    TODO: Add Vistula logo with URL to Vistula website.
+   */
+  static header() {
+    const quizHeader = Base.createElement(
+      'header',
+      this.quizElement,
+      ['quiz__header', 'header']
+    );
+
+    const titleContainer = Base.createElement(
+      'hgroup',
+      quizHeader,
+      'header__title-container'
+    );
+
+    Base.createElement(
+      'h1',
+      titleContainer,
+      'header__title',
+      Text.common.quiz
+    );
+
+    Base.createElement(
+      'h2',
+      titleContainer,
+      'header__subtitle',
+      Text.common.htmlCssAndJs
+    );
   }
 
 
@@ -260,6 +364,129 @@ export default class Render {
 
 
   /*
+    Creates instructions start screen (page 0).
+    It is necessary to pass questionsCount, questionsPerCategoryCount to add these values to instructions content.
+    The last argument is startQuizFn which has to be a function, invoked on start button click.
+   */
+  static instructions(questionsCount, questionsPerCategoryCount, startQuizFn) {
+    const instructions = Base.interpolate(Text.start.instructions, questionsCount, questionsPerCategoryCount, questionsPerCategoryCount);
+
+    this.quizPageElements.push(
+      Base.createElement(
+        'div',
+        this.quizPagesWrapperElement,
+        'quiz__questions'
+      )
+    );
+
+    this.quizInstructionsElement = Base.createElement(
+      'section',
+      this.quizPageElements[0],
+      ['quiz__instructions', 'instructions']
+    );
+
+    Base.createElement(
+      'h3',
+      this.quizInstructionsElement,
+      'instructions__title',
+      Text.start.beforeYouStart
+    );
+
+    Base.createElement(
+      'p',
+      this.quizInstructionsElement,
+      'instructions__content',
+      instructions,
+      true
+    );
+
+    const startButton = Base.createElement(
+      'button',
+      this.quizInstructionsElement,
+      ['quiz__start-button', 'button'],
+      Text.start.begin
+    );
+
+    startButton.type = 'button';
+    // TODO: remove EL after event is fired
+    startButton.addEventListener('click', () => startQuizFn());
+  }
+
+
+  /*
+    Marks specified answers with specified css class or classes.
+    Input: An array of answers, a single string className or an array of string classNames.
+   */
+  static markAnswers(answers, className) {
+    answers.forEach((answer, index) => {
+      this.quizPagesWrapperElement
+          // Identification of answer happens on input...
+        .querySelector(`.quiz-question__answer-input[name="question-${index + 1}"][id="answer-${answer}"]`)
+          // But we want to add the class to its parent element, to mark both input and its text value.
+        .parentElement
+        .classList.add(className)
+    })
+  }
+
+
+  /*
+    Uses markAnswer to mark specified (correct) answers as correct.
+   */
+  static markCorrectAnswers(correctAnswers) {
+    this.markAnswers(correctAnswers, 'answer--correct');
+  }
+
+
+  /*
+    Uses markAnswer to mark specified (user given) answers as selected.
+   */
+  static markSelectedAnswers(selectedAnswers) {
+    this.markAnswers(selectedAnswers, 'answer--selected');
+  }
+
+
+  /*
+    Renders page with questions.
+    Arguments: questionsToRender (an array of questions), current page id and correctAnswers.
+    Note: correctAnswers aren't used in this method, but they are necessary in this.question().
+   */
+  static page(questionsToRender, currentPage, correctAnswers) {
+    this.quizPageElements.push(
+      Base.createElement(
+        'div',
+        this.quizPagesWrapperElement,
+        'quiz__page'
+      )
+    );
+
+    if (questionsToRender) {
+      questionsToRender.forEach(question => {
+        this.questionsRenderedCount++;
+        this.question(
+          this.quizPageElements[currentPage],
+          question.type,
+          Base.parseText(question.question, { skipDashes: true }),
+          question.answers,
+          correctAnswers
+        );
+      });
+    }
+  }
+
+
+  /*
+    Creates a parent element for all of the page elements.
+   */
+  static pagesWrapper() {
+    this.quizPagesWrapperElement = Base.createElement(
+      'div',
+      this.quizElement,
+      ['quiz__pages']
+    );
+  }
+
+
+  /*
     Creates a question element and invokes creation of answers.
     Question element requires a answersContainer, a parent element of answer elements.
    */
@@ -296,52 +523,6 @@ export default class Render {
 
 
   /*
-    Creates answer element.
-    Requires its id, parent container, and its content.
-   */
-  static answer(id, container, content) {
-    // render label (text)
-    const label = Base.createElement('label', container, 'quiz-question__answer');
-
-    // render and setup the input
-    const input = Base.createElement('input', label, 'quiz-question__answer-input');
-    input.type = 'radio';
-    input.name = `question-${ this.questionsRenderedCount }`;
-    input.id = `answer-${ id }`;
-
-    // this is appended to label HTML — already containing an input — and it has to be the last.
-    label.innerHTML += `<span>${ Base.parseText(content, { skipDashes: true }) }</span>`;
-  }
-
-
-  /*
-    Re-renders progress boxes.
-    In order to do this, current page and questions per page need to be provided.
-    Since it is executed after page change, a Boolean information whether the page number
-     increased or decreased is required as well. Necessary to unmark the previous boxes.
-   */
-  static currentBoxes(currentPage, questionsPerPage, increase) {
-    // if current page number is 1 and it was increased, it means it is initial execution.
-    // in such case there are no "previous" boxes, so their removal should not happen.
-    if (!(currentPage === 1 && increase)) {
-      const previousFirstBox = (currentPage - (increase ? 2 : 0)) * questionsPerPage + 1;
-      const previousLastBox = previousFirstBox + questionsPerPage;
-
-      for (let i = previousFirstBox; i < previousLastBox; i++) {
-        Base.removeClassFromId(`progress-box-${ i }`, '--current');
-      }
-    }
-
-    const firstBox = (currentPage - 1) * questionsPerPage + 1;
-    const lastBox = firstBox + questionsPerPage;
-
-    for (let i = firstBox; i < lastBox; i++) {
-      Base.addClassToId(`progress-box-${ i }`, '--current');
-    }
-  }
-
-
-  /*
     Input is an array (of position ids).
     Output is the shuffled array of same position ids.
     Example:
@@ -363,136 +544,5 @@ export default class Render {
       positions[random] = temp;
     }
     return positions;
-  }
-
-
-  // TODO: add definition if necessary
-  static disableAnswerRadios() {
-    [...this.quizPagesWrapperElement.querySelectorAll('input.quiz-question__answer-input')].forEach(input => {
-      input.disabled = true;
-    });
-  }
-
-
-  // TODO: add definition if necessary
-  static endScreen(currentPage) {
-    this.page(null, currentPage, null);
-    this.quizEndScreenElement = this.quizPageElements[currentPage];
-    Base.addClass(this.quizEndScreenElement, 'end-screen');
-  }
-
-
-  // TODO: add definition if necessary
-  static endScreenControls(reviewAnswersFn, restartFn) {
-    const controlsElement = Base.createElement(
-      'div',
-      this.quizEndScreenElement,
-      ['end-screen__controls'],
-    );
-
-    const reviewAnswersButton = Base.createElement(
-      'button',
-      controlsElement,
-      ['end-screen__control--review-answers', 'button'],
-      Text.end.reviewAnswers
-    );
-
-    reviewAnswersButton.addEventListener('click', function _reviewAnswersFn() {
-      reviewAnswersButton.removeEventListener('click', _reviewAnswersFn);
-      reviewAnswersFn();
-    });
-
-    const restartButton = Base.createElement(
-      'button',
-      controlsElement,
-      ['end-screen__control--restart', 'button'],
-      Text.end.tryAgain
-    );
-
-    restartButton.addEventListener('click', function _restartFn() {
-      restartButton.removeEventListener('click', _restartFn);
-      restartFn();
-    });
-  }
-
-
-  // TODO: add definition if necessary
-  static endScreenScores(correctAnswersCount, questionsCount, correctAnswersPercent) {
-    Base.createElement(
-      'p',
-      this.quizEndScreenElement,
-      ['end-screen__paragraph', 'end-screen__general-score'],
-      Base.interpolate(Text.end.generalScoreText, correctAnswersCount, questionsCount, correctAnswersPercent),
-      true
-    );
-  }
-
-  // TODO: add definition if necessary
-  static endScreenScorePerCategory(scores, categories) {
-    let content = `${ Text.end.categoryScoresText }: <table class="end-screen__scores-table">`;
-    content += `<tr><th>${ Text.end.category }</th><th>${ Text.end.correctAnswers }</th><th>${ Text.end.percentage }</th></tr>`;
-
-    categories.forEach(category => {
-      content += `<tr><td>${ Text.categories[category] }</td><td>${ scores[category].correctAnswers }</td><td>${ scores[category].percentage }</td></tr>`;
-    });
-
-    content += '</table>';
-
-    Base.createElement(
-      'p',
-      this.quizEndScreenElement,
-      ['end-screen__paragraph', 'end-screen__languages-score'],
-      content,
-      true
-    );
-  }
-
-  // TODO: add definition if necessary
-  static endScreenResult(passed) {
-    const graphicResult = Base.createElement(
-      'div',
-      this.quizEndScreenElement,
-      ['end-screen__graphic-result', passed ? '--passed' : '--failed']
-    );
-
-    if (passed) {
-      graphicResult.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0zm0 0h24v24H0V0z" fill="none"/><path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>';
-    } else {
-      graphicResult.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
-    }
-
-    Base.createElement('h3', this.quizEndScreenElement, ['end-screen__title'], passed ? 'Brawo!' : ':(');
-  }
-
-  static markSelectedAnswers(selectedAnswers) {
-    this.markAnswers(selectedAnswers, 'answer--selected');
-  }
-
-  static markCorrectAnswers(correctAnswers) {
-    this.markAnswers(correctAnswers, 'answer--correct');
-  }
-
-  static markAnswers(answers, className) {
-    answers.forEach((answer, index) => {
-      this.quizPagesWrapperElement
-        .querySelector(`.quiz-question__answer-input[name="question-${index + 1}"][id="answer-${answer}"]`)
-        .parentElement
-        .classList.add(className)
-    })
-  }
-
-  static explanations(explanations) {
-    explanations.forEach((explanationText, index) => {
-      const questionElement = this.quizPagesWrapperElement
-        .querySelector(`.quiz-question__answer-input[name="question-${index + 1}"]`).parentElement.parentElement;
-
-      Base.createElement(
-        'div',
-        questionElement,
-        'explanation',
-        `<strong>${Text.review.explanation}: </strong>` + Base.parseText(explanationText),
-        true
-      );
-    })
   }
 }
