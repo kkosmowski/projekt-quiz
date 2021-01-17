@@ -16,11 +16,19 @@ const Text = {
   start: {
     beforeYouStart: 'Zanim zaczniesz',
     begin: 'Rozpocznij',
-    instructions: 'Celem quizu jest sprawdzenie Twojej wiedzy z zakresu języków HTML, CSS i Javascript.\n\nQuiz składa się z <em>[_] pytań</em> - po [_] z każdej kategorii i jedno dodatkowe, z losowej kategorii.\n\nPytania podzielone są na <em>cztery stopnie trudności</em> - po 2 z każdego. Ostatnie, [_]. pytanie będzie zawsze o stopniu trudności 3.\n\nKażde pytanie oznaczone jest kategorią z lewej strony.\n\nPytania są losowane z większej puli, a więc dwa podejścia do quizu będą skutkowały innymi pytaniami oraz w innej kolejności. Odpowiedzi również mogą być w innej kolejności.\n\nNie ma limitu czasowego.\n\nPowodzenia!',
+    instructions: {
+      purpose: 'Celem quizu jest sprawdzenie Twojej wiedzy z&nbsp;zakresu języków HTML, CSS i&nbsp;Javascript.\n\n',
+      questionCount: 'Quiz składa się z&nbsp;<em>[_] pytań</em> - po&nbsp;[_] z&nbsp;każdej',
+      additionalQuestionCount: ' kategorii i&nbsp;[_]&nbsp;dodatkowe z&nbsp;losowej',
+      questionsDivided: ' kategorii.\n\nPytania podzielone są na&nbsp;<em>cztery stopnie trudności</em> - po&nbsp;[_] z&nbsp;każdego. ',
+      additionalDividedSingleQuestion: 'Ostatnie pytanie będzie zawsze o&nbsp;stopniu trudności&nbsp;3.',
+      additionalDividedMultipleQuestion: 'Ostatnie [_] pytania będą zawsze o&nbsp;stopniu trudności&nbsp;3.',
+      rest: '\n\nKażde pytanie oznaczone jest kategorią z&nbsp;lewej strony.\n\nPytania są losowane z&nbsp;większej puli, a&nbsp;więc dwa podejścia do&nbsp;quizu będą skutkowały innymi pytaniami oraz w&nbsp;innej kolejności. Odpowiedzi również mogą być w&nbsp;innej kolejności.\n\nNie ma limitu czasowego.\n\nPowodzenia!'
+    },
   },
   end: {
     category: 'Kategoria',
-    categoryScoresText: 'Statystyki odpowiedzi w poszczególnych językach',
+    categoryScoresText: 'Statystyki odpowiedzi w&nbsp;poszczególnych językach',
     congrats: 'Brawo!',
     correctAnswers: 'Poprawne',
     failed: ':(',

@@ -371,8 +371,29 @@ export default class Render {
     It is necessary to pass questionsCount, questionsPerCategoryCount to add these values to instructions content.
     The last argument is startQuizFn which has to be a function, invoked on start button click.
    */
-  static instructions(questionsCount, questionsPerCategoryCount, startQuizFn) {
-    const instructions = Base.interpolate(Text.start.instructions, questionsCount, questionsPerCategoryCount, questionsPerCategoryCount);
+  static instructions(questionsCount, categoriesCount, startQuizFn) {
+    const questionsPerCategoryCount = Math.floor(questionsCount / categoriesCount);
+    const additionalQuestionsCount = questionsCount % questionsPerCategoryCount;
+    let instructions = Text.start.instructions.purpose;
+
+    instructions += Base.interpolate(Text.start.instructions.questionCount, questionsCount, questionsPerCategoryCount);
+
+    if (additionalQuestionsCount) {
+      instructions += Base.interpolate(Text.start.instructions.additionalQuestionCount, additionalQuestionsCount);
+    }
+
+    instructions += Base.interpolate(Text.start.instructions.questionsDivided, questionsPerCategoryCount);
+
+    if (additionalQuestionsCount === 1) {
+      instructions += Text.start.instructions.additionalDividedSingleQuestion;
+    } else if (additionalQuestionsCount > 1) {
+      instructions += Base.interpolate(
+        Text.start.instructions.additionalDividedMultipleQuestion,
+        additionalQuestionsCount
+      );
+    }
+
+    instructions += Text.start.instructions.rest;
 
     this.quizPageElements.push(
       Base.createElement(

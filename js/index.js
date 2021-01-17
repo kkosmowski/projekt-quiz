@@ -10,7 +10,7 @@ class Quiz {
   categories = ['html', 'css'];
   // categories = ['html', 'css', 'javascript'];
   categoriesCount = this.categories.length;
-  questionsCount = 4; // TODO: Check why 1 is buggy
+  questionsCount = 25;
   requiredPercentToPass = 75;
 
     /*
@@ -75,7 +75,7 @@ class Quiz {
     if (this.state === this.states.none) {
       Render.instructions(
         this.questionsCount,
-        Math.floor(this.questionsCount / this.categoriesCount),
+        this.categoriesCount,
         this.startQuiz.bind(this)
       );
     } else if (this.state === this.states.restarted) {
