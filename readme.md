@@ -1,5 +1,5 @@
 # Projekt quizu na zaliczenie
-v. 0.7.0
+v. 0.7.1
 
 ## Cel quizu
 #### Sprawdzenie wiedzy użytkownika
@@ -38,6 +38,9 @@ internetowych przez autora. Nowe doświadczenie w rozwiązywaniu problemów rów
 ---
 
 #### Changelog:
+* 0.7.1:
+  * przywrócono oznaczenia pytań utracone w wersji 0.7.0;
+  * w statystykach pojawiają się tylko kategorie, z których pytania zostały wylosowane;
 * 0.7.0:
   * zaktualizowano i uzupełniono dokumentację;
   * znacząco uporządkowany kod;

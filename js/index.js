@@ -185,7 +185,6 @@ class Quiz {
     Returns a boolean.
    */
   checkIfAllPageAnswersAreGiven() {
-    // TODO: Refactor start and end into global constants
     const start = (this.currentPage - 1) * this.questionsPerPage;
     const end = start + this.questionsPerPage;
     const currentAnswers = this.userAnswers.slice(start, end);
@@ -234,11 +233,11 @@ class Quiz {
       {
         [category1]: {
           correctAnswers: '1/2',
-          percentage: '50%',
+          percentage: 50%,
         },
         [category2]: {
           correctAnswers: '4/6',
-          percentage: '66.67%',
+          percentage: 66.67,
         },
         ...
       }
@@ -278,9 +277,13 @@ class Quiz {
 
       // Finally, after all of the correct answers were assigned to their category,
       // go through each category and build the result object out of the collected data.
-    this.categories.forEach(category => result[category] = {
-      correctAnswers: `${ counter[category] }/${ this.questionsDetails[category].length }`,
-      percentage: +(counter[category] / this.questionsDetails[category].length * 100).toFixed(2) + '%',
+    this.categories.forEach(category => {
+      if (this.questionsDetails[category].length) {
+        result[category] = {
+          correctAnswers: `${ counter[category] }/${ this.questionsDetails[category].length }`,
+          percentage: +(counter[category] / this.questionsDetails[category].length * 100).toFixed(2),
+        }
+      }
     });
 
     return result;
@@ -362,7 +365,10 @@ class Quiz {
         // Check if the question exists in the questions array...
       if (questions[category][selectedQuestion]) {
           // If it does, add it to the "this.questions" array and return its id.
-        this.questions.push(questions[category][selectedQuestion]);
+        this.questions.push({
+          ...questions[category][selectedQuestion],
+          type: category,
+        });
         return selectedQuestion;
       }
         // If it doesn't exist, that means the question was already drawn

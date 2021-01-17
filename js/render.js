@@ -220,7 +220,10 @@ export default class Render {
     content += `<tr><th>${ Text.end.category }</th><th>${ Text.end.correctAnswers }</th><th>${ Text.end.percentage }</th></tr>`;
 
     categories.forEach(category => {
-      content += `<tr><td>${ Text.categories[category] }</td><td>${ scores[category].correctAnswers }</td><td>${ scores[category].percentage }</td></tr>`;
+      console.log(scores);
+      if (scores[category]) {
+        content += `<tr><td>${ Text.categories[category] }</td><td>${ scores[category].correctAnswers }</td><td>${ scores[category].percentage || 0 }%</td></tr>`;
+      }
     });
 
     content += '</table>';
