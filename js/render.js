@@ -263,6 +263,11 @@ export default class Render {
     );
   }
 
+  /*
+    TODO: Add documentation
+    TODO: make explanation rendering optional
+    TODO: add "more info url" rendering
+   */
   static explanations(explanations) {
     explanations.forEach((explanationText, index) => {
       const questionElement = this.quizPagesWrapperElement

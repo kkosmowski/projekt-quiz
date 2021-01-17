@@ -1,68 +1,65 @@
 {
   "html": {
     "1": {
-      "question": "Ile tagów -[<h1>]- powinno być umieszczonych na jednej stronie?",
       "difficulty": 2,
+      "question": "Ile tagów -[<h1>]- powinno być umieszczonych na jednej stronie?",
       "answers": [
         "Dokładnie jeden.",
         "Maksymalnie dwa.",
         "Nie ma ograniczeń.",
         "Taki tag nie istnieje."
       ],
-      "explanation": "Tag -[<h1>]- ma za zadanie prezentować główny tytuł strony, dlatego zawsze powinien być tylko jeden. Pomijanie go również błędny zabieg. Należy też pamiętać, że tagi h1-h6 mają za zadanie oznaczać semantyczne tytuły i podtytuły na stronie, dlatego nic nie stoi na przeszkodzie by h1 był mniejszy i mniej widoczny niż h2.",
+      "explanation": "Tag -[<h1>]- ma za zadanie prezentować główny heading strony, wyjaśniający jej cel, dlatego zawsze powinien być tylko jeden. Pomijanie go to również błędny zabieg. Należy też pamiętać, że tagi h1-h6 mają za zadanie oznaczać semantyczne tytuły, podtytuły czy nagłówki na stronie, dlatego nic nie stoi na przeszkodzie by h1 był mniejszy i mniej widoczny niż h2. Założenie, że -[h1]- musi mieć większy -[font-size]- niż -[h2]-, -[h2]- większy niż -[h3]- itd. to błąd, nie należy mieszać wartości semantycznej z warstwą wizualną.",
       "moreInfoUrl": ""
     },
     "2": {
-      "question": "Do czego służy tag -[<ul>]-?",
       "difficulty": 1,
+      "question": "Do czego służy tag -[<ul>]-?",
       "answers": [
         "Do stworzenia nieposortowanej listy.",
         "Do stworzenia odnośnika (linku).",
         "Do stworzenia nagłówka.",
-        "Do stworzenia paragrafu."
+        "Do stworzenia posortowanej listy."
       ],
-      "explanation": "-[<ul>]- (unordered list) to tag listy nieposortowanej, której podpunkty nie są ponumerowane, tzw. bullet list. Za pomocą CSS można zmienić wypunktowania w <ul> nawet na \"a)\" lub \"1.\", jednak jest to błędny i zbędny zabieg.",
-      "moreInfoUrl": ""
+      "explanation": "-[<ul>]- (unordered list) to tag listy nieposortowanej, której podpunkty nie są ponumerowane, tzw. bullet list. Za pomocą CSS można zmienić wypunktowania w <ul>, nawet na \"a)\" lub \"1.\", jednak jest to zabieg błędny i całkowicie zbędny."
     },
     "3": {
-      "question": "Czym różni się -[<span>]- od -[<p>]-?",
       "difficulty": 2,
+      "question": "Czym różni się -[<span>]- od -[<p>]-?",
       "answers": [
         "-[<span>]- to generyczny element -[inline]- bez wartości semantycznej, podczas gdy -[<p>]- to paragraf.",
         "-[<span>]- to generyczny element -[block]-, podczas gdy -[<p>]- to generyczny element -[inline-block]-",
-        "-[<p>]- i -[<span>]- służą do tego samego, różnią się jedynie stylami.",
+        "-[<p>]- i -[<span>]- służą do tego samego, różnią się jedynie stylami (marginesy).",
         "-[<p>]- to element grupujący elementy -[<span>]-."
       ],
-      "explanation": "-[<span>]- to generyczny element -[inline]-, odpowiednik blokowego -[div]-. Reguła stosowania jest identyczna jak w przypadku -[div]- - stosujemy go wtedy, gdy żaden inny element -[inline]- nie pasuje.",
-      "moreInfoUrl": ""
+      "explanation": "-[<span>]- to generyczny element -[inline]-, odpowiednik blokowego -[div]-. Reguła stosowania jest identyczna jak w przypadku -[div]- - stosujemy go wtedy, gdy żaden inny semantyczny element -[inline]- nie pasuje."
     },
     "4": {
-      "question": "Do czego służy tag -[<em>]-?",
       "difficulty": 3,
+      "question": "Do czego służy tag -[<em>]-?",
       "answers": [
         "Do oznaczenia tekstu, na który kładziemy nacisk.",
-        "Do nałożenia kursywy.",
+        "Do nałożenia kursywy na wybrany tekst.",
         "Do oznaczenia cytatu.",
         "Jest to generyczny element -[inline]- służący do stylowania tekstu."
       ],
-      "explanation": "Tag -[<em>]- (emphasis) to dodany w HTML5 semantyczny tag mający nadać nacisk na tekst w nim zawarty. Domyślnie nakłada kursywę na tekst, jednak równie dobrze możemy ustawic pogrubiony, czerwony kolor lub ustawić zwykły tekst i nadal będzie to poprawne.",
+      "explanation": "Tag -[<em>]- (emphasis) to dodany w HTML5 semantyczny tag mający nadawać nacisk na tekst w nim zawarty. Domyślnie nakłada kursywę na tekst, jednak równie dobrze możemy ostylować -[<em]- na pogrubiony, czerwony kolor lub na zwykły tekst i nadal będzie to poprawne.",
       "moreInfoUrl": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em"
     },
     "5": {
-      "question": "Jak wyświetlić obraz o ścieżce -[./images/logo.png]-, alternatywnym tekście \"Logo\" i wymiarach 160x50 px?",
       "difficulty": 2,
+      "question": "Jak wyświetlić obraz o ścieżce -[./images/logo.png]-, alternatywnym tekście \"Logo\" i wymiarach 160x50 px?",
       "answers": [
         "-[<img src=\"./images/logo.png\" alt=\"Logo\" class=\"logo\">]-, a wymiary nadać klasie w CSSie.",
         "-[<img href=\"./images/logo.png\" alt=\"Logo\" class=\"logo\">]-, a wymiary nadać klasie w CSSIe.",
         "-[<img src=\"./images/logo.png\" alt=\"Logo\" width=\"160\" height=\"50\">]-.",
         "-[<img href=\"./images/logo.png\" alt=\"Logo\" width=\"160\" height=\"50\">]-."
       ],
-      "explanation": "Atrybu [href] jest niepoprawny dla tagu -[<img>]-, z kolei ustawienie wymiarów poprzez atrybuty -[width]- i -[height]- jest możliwe i nie jest błędem, jednak zdecydowanie najlepszą praktyką jest zarządzanie warstwą \"wizualną\" --- czyli tego jak coś wyświetlać --- za pomocą CSS.",
-      "moreInfoUrl": ""
+      "explanation": "Atrybut -[href]- jest niepoprawny dla tagu -[<img>]-, z kolei ustawienie wymiarów poprzez atrybuty -[width]- i -[height]- jest możliwe, jednak jest to zła praktyka. Zdecydowanie najlepszą opcją jest zarządzanie warstwą \"wizualną\" --- czyli jak coś wyświetlać --- za pomocą CSS."
     },
     "6": {
-      "question": "Do czego służy element -[<wbr>]-?",
       "difficulty": 4,
+      "question": "Do czego służy element -[<wbr>]-?",
       "answers": [
         "Do oznaczenia w którym miejscu pojawia się możliwość złamania tekstu.",
         "Do zakończenia linii.",
@@ -73,224 +70,205 @@
       "moreInfoUrl": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr"
     },
     "7": {
-      "question": "Dlaczego dodany został tag -[<strong>]- skoro mamy już -[<b>]-?",
       "difficulty": 3,
+      "question": "Dlaczego dodany został tag -[<strong>]- skoro mamy już -[<b>]-?",
       "answers": [
         "Tag -[<strong>]- służy do oznaczenia tekstu ważnego, podniesienia jego istoty.",
         "Tagi -[<strong>]- i -[<b>]- różnią się tym, że -[<strong>]- jeszcze bardziej pogrubia tekst.",
         "Tagi -[<b>]-, -[<i>]- i -[<u>]- są już wycofane. Tag -[<strong>]- to następca -[<b>]-.",
         "Oba te tagi służą do tego samego i mogą być zamiennie stosowane."
       ],
-      "explanation": "Nie należy patrzeć na -[<strong>]- jako na element, którym pogrubimy tekst --- od tego mamy style CSS, lub tag -[<b>]-. Podobnie style -[<strong>]- nie są czymś intotnym i usunięcie pogrubienia, czy też zmiana koloru na czerwony będą jak najbardziej poprawnymi zmianami.",
-      "moreInfoUrl": ""
+      "explanation": "Nie należy patrzeć na -[<strong>]- jako na element, którym pogrubimy tekst --- od tego mamy style CSS, lub tag -[<b>]-. Podobnie style -[<strong>]- nie są czymś intotnym i usunięcie pogrubienia, czy też zmiana koloru na czerwony będą jak najbardziej poprawnymi zmianami."
     },
     "8": {
-      "question": "Czym jest język HTML?",
       "difficulty": 1,
+      "question": "Czym jest język HTML?",
       "answers": [
-        "Jest to tzw. język znaczników, podstawowy budulec stron internetowych, pozwalający tworzyć elementy DOM.",
+        "Jest to język znaczników, podstawowy budulec stron internetowych, pozwalający tworzyć elementy DOM.",
         "Jest to język programowania, stosowany w celu nadania stronie internetowej \"życia\".",
         "HTML to nowy język łączący w sobie znaczniki (tagi) oraz logikę (np. IF i ELSE, pętle FOR).",
         "Jest to rozszerzenie do Javascriptu i CSSa."
       ],
-      "explanation": "HTML, tak jak np. XML, to języki znaczników. Nie mają żadnych instrukcji for czy też if, nie wprowadzają żadnej logiki. Jego jedynym zadaniem jest budowa dokumentu z wcześniej wspomnianych znaczników (tagów), do których później logikę dodajemy Javascriptem, a style CSSem.",
-      "moreInfoUrl": ""
+      "explanation": "HTML, tak jak np. XML, to język znaczników. Nie ma żadnych instrukcji for czy też if, nie wprowadza żadnej logiki. Jego jedynym zadaniem jest budowa dokumentu z wcześniej wspomnianych znaczników (tagów), do których później logikę dodajemy np. Javascriptem, a style CSSem."
     },
     "9": {
-      "question": "Czym różni się -[<input>]- od -[<input />]-? Który powinniśmy stosować?",
       "difficulty": 2,
+      "question": "Czym różni się -[<input>]- od -[<input />]-? Który tag powinniśmy stosować w HTML5?",
       "answers": [
-        "W HTML5 powinniśmy stosować -[<input>]-. -[<input />]- to przykład taga bez zamknięcia, stosowany w XHTMLu.",
+        "W HTML5 powinniśmy stosować -[<input>]-, jednak -[<input />]- jest również poprawny, to przykład taga bez zamknięcia, stosowany w XHTMLu.",
         "Oba te tagi są identyczne, po prostu -[<input />]- to nowsza wersja taga -[<input>]- i to jego należy używać.",
         "-[<input>]- stosujemy gdy chcemy umieścić tekst wewnątrz taga: -[<input>Nazwa inputa</input>]-. Bez tekstu wystarczy -[<input />]-.",
         "-[<input>]- służy do przycisków (-[<input type=\"button\">Wyślij</input>]-), podczas gdy -[<input />]- służy do pól formularza."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "XHTML to następca HTML 4.01 i przodek HTML5. Zawiera on elementy języka XML, gdzie możliwe jest automatyczne zamknięcie tagu bez zawartości, np.: -[<div></div>]- => -[<div />]-. Nie ma żadnej różnicy między -[<input>]- i -[<input />]-, jest to jedynie zapis z różnych wersji języka HTML. Warto jednak zwrócić uwagę, że w HTML5 składnia np.: -[<div />]- nie jest dozwolona.",
+      "moreInfoUrl": "https://www.it-swarm-eu.dev/pl/html/czy-niewazne-samozamykajace-sie-tagi-sa-poprawne-w-html5/969196167/"
     },
     "10": {
-      "question": "Czym jest i jaką wartość semantyczną ma element -[<div>]-?",
       "difficulty": 2,
+      "question": "Czym jest i jaką wartość semantyczną ma element -[<div>]-?",
       "answers": [
         "Nie ma żadnej. Jest to generyczny element, stosowany wszędzie tam, gdzie pozostałe, semantyczne elementy nie pasują.",
         "Jest to element rozdzielający, tzw. divider. Nie ma wartości semantycznej.",
-        "Jest to semantyczny tag, oznaczający element oddzielony od głównej treści, niezwiązany z nim.",
+        "Jest to semantyczny tag, oznaczający element oddzielony od głównej treści, niezwiązany z nią.",
         "Jest to posortowana lista, semantycznie służy do tworzenia list innych niż wypunktowane."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "W HTML5 stosujemy -[<div>]- wszędzie tam, gdzie nie pasują nam żadne inne elementy semantyczne, np. -[<main>]-, -[<section>]-, -[<footer>]- itd."
     },
     "11": {
-      "question": "Do czego stosujemy -[<table>]-?",
       "difficulty": 3,
+      "question": "Do czego stosujemy -[<table>]-?",
       "answers": [
         "Do tworzenia tabel oraz mailingów (najbardziej stabilna opcja tworzenia szablonów maili).",
         "-[<table>]- to najlepszy sposób na zbudowanie layoutu strony, ale nie nadaje się do szablonów maili.",
-        "-[<table>]- wykorzystujemy aby poprawić responsywność stron internetowych.",
+        "-[<table>]- wykorzystujemy aby nadać lub poprawić responsywność stron internetowych.",
         "Do tworzenia tabel oraz layoutów stron."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "W przeszłości tabele były popularną metodą tworzenia layoutu strony, dzieląc ją na wiersze, np. header, menu, sekcja pierwsze, sekcja druga, footer. Dziś jednak jest to jedynie przykre wspomnienie. Dużo osób jednak sądzi, że -[<table>]- to samo zło, jednak nadal jest to doskonałe narzędzie do tworzenia tabel lub elementów na stronie."
     },
     "12": {
-      "question": "Jaki cel ma ten kod?--[<meta name=\"viewport\" content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">]--",
       "difficulty": 4,
+      "question": "Jaki cel ma ten kod?--[<meta name=\"viewport\" content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">]--",
       "answers": [
-        "Jest to znacznik, który ustawia domyślne wyświetlenie strony na urządzeniu mobilnym.",
-        "Jest to znacznik, który informuje urządzenie mobilne, że ta strona wspiera technologię renderowania \"viewport\".",
+        "Jest to znacznik, który ustawia domyślne wyświetlanie strony na urządzeniu mobilnym.",
+        "Jest to znacznik, który informuje urządzenie mobilne, że ta strona wspiera technologię renderowania -[viewport]-.",
         "Ma on na celu ustawienie domyślnego wyświetlania strony na urządzeniach typu desktop.",
-        "Ma on na celu ustawienie ciemnego motywu na stronie."
+        "Ma on na celu ustawienie ciemnego motywu na stronie, ."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "Znacznik meta to element zawierający metadane strony internetowej, czyli informacje o stronie oraz o tym, co zawiera, jak ma się wyświetlać, kto jest autorem itd. Powyższy tag definiuje domyślny sposób wyświetlania strony na urządzeniach mobilnych: ustawia jej szerokość, domyślne powiększenie czy możliwość powiększenia.",
+      "moreInfoUrl": "https://developer.mozilla.org/pl/docs/Mozilla/Mobile/Viewport_meta_tag"
     },
     "13": {
-      "question": "Wybierz tagi, które można utworzyć wewnątrz -[<head>]-:",
       "difficulty": 2,
+      "question": "Wybierz tagi, które można utworzyć wewnątrz -[<head>]-:",
       "answers": [
         "-[<meta>]-, -[<script>]-, -[<link>]-, -[<base>]-",
         "-[<style>]-, -[<main>]-, -[<script>]-, -[<title>]-",
         "-[<meta>]-, -[<link>]-, -[<embed>]-, -[<style>]-",
         "-[<href>]-, -[<script>]-, -[<title>]-, -[<link>]-"
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "-[<meta>]- to tag zawierający metadane o stronie internetowej. -[<script]- pozwalana na załączenie skryptów do strony, może być umieszczony zarówno w -[<head>]- jak i w -[<body>]-. -[<link>]- to odnośnik do zasobów, np. styli, fontów czy skryptów. -[<base>]- to element ustawiający prefix wszystkich linków stronie."
     },
     "14": {
-      "question": "Który atrybut jest nieprawidłowy dla elementu -[<form>]-?",
       "difficulty": 2,
+      "question": "Który atrybut jest nieprawidłowy dla elementu -[<form>]-?",
       "answers": [
         "type",
         "action",
         "method",
         "novalidate"
-      ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      ]
     },
     "15": {
-      "question": "Który typ przycisku nie istnieje?",
       "difficulty": 1,
+      "question": "Który -[type]- przycisku nie istnieje?",
       "answers": [
         "input",
         "reset",
         "button",
         "submit"
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "O ile istnieje -[<input type=\"button\">]-, o tyle nie spotkamy się z -[<button type=\"input\">]-."
     },
     "16": {
-      "question": "Czym różni się -[<input type=\"button\">]- od -[<button>]-?",
       "difficulty": 2,
+      "question": "Czym różni się -[<input type=\"button\">]- od -[<button>]-?",
       "answers": [
         "Graficznie i funkcjonalnie niczym. Różnica w dodawaniu zawartości: -[<input type=\"button\" value=\"Przycisk\">]- vs -[<button type=\"button\">Przycisk</button>]-.",
         "Mają inne zastosowanie - -[<input type=\"button\">]- jest używany w formularzach, a -[<button>]- nie.",
-        "Mają inne style, ale ich funkcjonalność jest identyczna.",
-        "Nie istnieje input o typie -[button]-."
+        "Mają inne style - marginesy, padding i kolor - ale ich funkcjonalność jest identyczna.",
+        "Nie istnieje input o -[type]- -[button]-."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "Nie ma żadnej różnicy w wyglądzie tych dwóch elementów. Znaczącą różnicą jest jednak fakt, że -[<button>]- pozwala nam dodać kontent przycisku między tagami, a więc możemy w nim umieścić inne tagi HTML, np. -[<img>]-."
     },
     "17": {
-      "question": "Do czego służy atrybut -[accesskey]-?",
       "difficulty": 4,
+      "question": "Do czego służy atrybut -[accesskey]-?",
       "answers": [
-        "Pozwala na stworzenie skrótu klawiszowego z wybranym (podanym) klawiszem.",
+        "Pozwala na zdefiniowanie skrótu klawiszowego pod podanym klawiszem.",
         "Do ustawienia klucza dostępu do elementu (np. przycisku).",
-        "Atrybut służy do podania wartości dla inputu, którą trzeba wpisać, aby wykonać przypisaną akcję.",
+        "Atrybut służy do podania wartości dla inputu, którą trzeba wpisać, aby wykonać przypisaną akcję (np. funkcję w Javascripcie).",
         "Taki atrybut nie istnieje."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "-[accesskey]- to atrybut z kategorii a11y, pozwalający na przypisanie do buttona jakiegoś skrótu klawiszowego. Najczęściej wykonuje się go kombinacją Alt + Shift + klawisz.",
+      "moreInfoUrl": "https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey"
     },
     "18": {
-      "question": "Co to jest a11y (accessibility)? Do czego służy?",
       "difficulty": 4,
+      "question": "Co to jest a11y (accessibility)? Do czego służy?",
       "answers": [
-        "Jest to zestaw rozwiązań i praktyk mających na celu umożliwienie przeglądania naszej strony przez osoby z niepełnosprawnościami.",
+        "Jest to zestaw rozwiązań i praktyk mających na celu umożliwienie przeglądania strony internetowej przez osoby z niepełnosprawnościami.",
         "To zestaw działań mający na celu łatwiejszy dostęp do naszej strony (m.in. SEO).",
-        "Jest to zbiór rozwiązań takich jak uwierzytelnianie i autoryzacja, mających na celu uprzywilejowanie użytkownika.",
+        "To zbiór rozwiązań takich jak uwierzytelnianie i autoryzacja, mających na celu uprzywilejowanie użytkownika.",
         "Jest to błędnie nazwany zestaw dobrych praktyk, związanych z rozmieszczaniem przycisków w formularzu."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "Accessibility to zestaw rozwiązań takich jak atrybuty, np.: -[aria-label]-, dobre praktyki, np.: nie usuwanie property -[outline]- z elementów, utrzymywanie rozsądnego kontrastu między elementami itd."
     },
     "19": {
-      "question": "Czy element -[<div>]- może być zawarty w elemencie -[<span>]-?",
       "difficulty": 2,
+      "question": "Czy element -[<div>]- może być zawarty w elemencie -[<span>]-?",
       "answers": [
-        "Nie, ponieważ -[<span>]- to element inline, a -[<div>]- to element block. W elementach inline mogą być umieszczone tylko inne elementy inline.",
-        "Tak, ponieważ -[<span>]- to element inline, a -[<div>]- to element block. W elementach inline mogą być umieszczone wszystkie inne typy elementów.",
-        "Nie, ponieważ -[<span>]- to element block, a -[<div>]- to element inline. W elementach block mogą być umieszczone tylko inne elementy block.",
-        "Tak, ponieważ -[<span>]- to element block, a -[<div>]- to element inline. W elementach block mogą być umieszczone wszystkie inne typy elementów."
-      ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+        "Nie, ponieważ -[<span>]- to element -[inline]-, a -[<div>]- to element -[block]-. W elementach -[inline]- mogą być umieszczone tylko inne elementy -[inline]-.",
+        "Tak, ponieważ -[<span>]- to element -[inline]-, a -[<div>]- to element -[block]-. W elementach -[inline]- mogą być umieszczone wszystkie inne typy elementów.",
+        "Nie, ponieważ -[<span>]- to element -[block]-, a -[<div>]- to element -[inline]-. W elementach -[block]- mogą być umieszczone tylko inne elementy -[block]-.",
+        "Tak, ponieważ -[<span>]- to element -[block]-, a -[<div>]- to element -[inline]-. W elementach -[block]- mogą być umieszczone wszystkie inne typy elementów."
+      ]
     },
     "20": {
-      "question": "Co jest nie tak w tym kodzie? Zakładamy, że nie ma żadnego stylowania.\n-[<a src=\"index.html\">\n  <div>\n    <img href=\"logo.png\"></img>\n  </div>\n</a>]-",
       "difficulty": 1,
+      "question": "Wybierz wszystkie błędy w tym kodzie. Zakładamy, że nie ma żadnego stylowania.\n-[<a src=\"index.html\">\n  <div>\n    <img href=\"logo.png\"></img>\n  </div>\n</a>]-",
       "answers": [
-        "-[<a>]- ma błędny atrybut -[src]-, -[<div>]- w -[<a>]- oraz -[<img>]- z błędnym atrybutem -[href]- i tagiem zamykającym.",
-        "-[<a>]- ma błędny atrybut -[src]-, -[<div>]- w -[<a>]- oraz -[<img>]- z błędnym atrybutem -[href]-.",
-        "-[<a>]- ma błędny atrybut -[src]-, -[<img>]- ma błędny atrybut -[href]-.",
+        "-[<a>]- ma błędny atrybut -[src]-, -[<div>]- w -[<a>]- oraz -[<img>]- bez atrybutu -[alt]-, z błędnym atrybutem -[href]- i tagiem zamykającym.",
+        "-[<a>]- ma błędny atrybut -[src]-, -[<div>]- w -[<a>]-, -[<img>]- w -[<a>]- i z błędnym atrybutem -[href]- oraz brakiem atrybutu -[alt]-.",
+        "-[<a>]- z brakiem atrybutu -[target]-, -[<img>]- ma błędny atrybut -[href]- oraz ma tag zamykajacy.",
         "-[<div>]- w -[<a>]- oraz -[<img>]- z tagiem zamykającym."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "-[<a>]- nie posiada atrybutu -[src]- (zamiast tego -[href]-) i jest to element liniowy --- to znaczy, że może zawierać w sobie jedynie inne elememty liniowe, a więc -[<div>]- jest tutaj niepoprawny. Dodatkowo -[<img]- nie ma parametru -[href]-, a -[src]-, brakuje wymaganego tagu -[alt]- (nawet jeżeli miałby być pusty) i nie powinien mieć tagu zamykającego."
     },
     "21": {
-      "question": "Do czego służy tag -[<aside>]-?",
       "difficulty": 3,
+      "question": "Do czego służy tag -[<aside>]-?",
       "answers": [
-        "Do elementów i treści mniej powiązanych (niebezpośrednio) z główną treścią.",
+        "Do elementów i treści mniej powiązanych z główną treścią lub nie powiązanych wcale.",
         "Do wyświetlania elementów z boku strony, np. bocznego menu, sidebara.",
-        "Do wyświetlenia elementów niezwiązanych z treścią, np. reklam.",
+        "Do wyświetlenia elementów, które nie mają żadnego związku z główną treścią, np. reklam.",
         "Tag -[<aside>]- używany jest do elementów rozwijanych horyzontalnie i takich, które wysuwają się z boku strony."
       ],
-      "explanation": "-[<aside>]- wcale nie musi być \"z boku\" strony, może to być mniej powiązane zdanie w artykule. Jednak może to być także np. sidebar. Generalnie elementy tylko trochę związane z główną treścią.",
-      "moreInfoUrl": ""
+      "explanation": "-[<aside>]- wcale nie musi być \"z boku\" strony, może to być np. mniej powiązane zdanie w artykule. Jednak może to być także np. sidebar czy reklama. Generalnie elementy trochę związane z główną treścią - np. cytaty, przypisy, wyjaśnienie, a także w ogóle z nią nie związane - np. reklamy."
     },
     "22": {
-      "question": "Czy istnieje możliwość wyświetlania innego obrazu na telefonie i komputerze za pomocą samego HTMLa?",
       "difficulty": 3,
+      "question": "Czy istnieje możliwość wyświetlania innego obrazu na telefonie i komputerze za pomocą samego HTMLa?",
       "answers": [
         "Tak, służy do tego element -[<picture>]- i w nim zawarte (opcjonalne) elementy -[<source>]- i jeden -[<img>]-.",
         "Tak, służy do tego element -[<source>]- i w nim zawarte (opcjonalne) elementy -[<picture>]- i jeden -[<img>]-.",
         "Nie, jest to możliwe tylko przy użyciu CSS.",
         "Nie, jest to możliwe tylko przy użyciu Javascriptu."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "moreInfoUrl": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source"
     },
     "23": {
-      "question": "Do czego nam tag -[<header>]-?",
       "difficulty": 3,
+      "question": "Do czego nam tag -[<header>]-?",
       "answers": [
         "Do oznaczenia headera całej strony, artykułu, sekcji lub jakiegoś bloku.",
-        "-[<header>]- to element będący headerem strony lub podstrony. Powinien być tylko jeden na stronie, tak jak -[<h1>]-.",
-        "-[<header>]- to element przed -[<body>]-, w którym zawieramy metadane strony i odnośniki do innych zasobów.",
+        "Jest to element będący headerem strony lub podstrony. Powinien być tylko jeden na stronie, tak jak -[<h1>]-.",
+        "To element przed -[<body>]-, w którym zawieramy metadane strony, tytuł czy odnośniki do zasobów.",
         "-[<header>]- i -[<footer>]- to elementy, które muszą być w tagu -[<main>]- i określają kolejno header i footer strony."
-      ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      ]
     },
     "24": {
       "question": "Czym jest atrybut -[aria-role]-?",
       "difficulty": 4,
       "answers": [
-        "",
-        "",
-        "",
-        ""
+        "Jest to atrybut definiujący cel i typ elementu dla urządzeń asystujących.",
+        "Jest to atrybut z serii ARIA, atrybutów zmieniających rodzaj elementu. -[aria-role=\"button\"]- sprawi, że nasz -[div]- będzie wyglądał i działał jak -[button]-.",
+        "To atrybut definiujący rolę elementu, wymagany aby przeglądarka wiedziała, czy -[<header>]- jest headerem strony czy artykułu.",
+        "To stary atrybut stosowany do oznaczenia roli elementu -[<div>]- zanim jeszcze pojawił się semantyczny HTML5 z tagami takimi jak -[<header>]-, -[<footer>]- itd."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "ARIA to zbiór atrybutów umożliwiających dostosowanie strony internetowej dla urządzeń asystujących, np. czytników dla osób niewidomych. Dzięki atrybutowi -[aria-role]- możemy zdefiniować typ oraz cel elementu, który go nie posiada - np. -[<div>]- czy -[<span>]- lub nadpisać domyślny. W większości przypadków atrybut ten nie jest potrzebny.",
+      "moreInfoUrl": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques"
     }
   },
-
-
 
   "css": {
     "1": {
@@ -390,7 +368,7 @@
       "moreInfoUrl": ""
     },
     "9": {
-      "question": "Jaką ma przewagę ma zmienna CSS nad zmienną w np. Sassie?",
+      "question": "Jaką przewagę ma zmienna CSS nad zmienną w np. Sassie?",
       "difficulty": 3,
       "answers": [
         "Zmienne z języków rozszerzających CSS - jak np. Sass (SCSS) - zostają skompilowane i znikają, z kolei zmienne CSSowe nadal istnieją po załadowaniu strony, dodatkowo można się do nich odwołać Javascriptem.",
@@ -636,6 +614,90 @@
         "-[margin-left]- i -[margin-top]-"
       ],
       "explanation": "-[transform: translate]- to najwydajniejszy sposób na animację zmiany pozycji elementów. Warto również dodać do tego property -[will-change]- pozwalające przeglądarace \"przygotować się\" do takiej zmiany.",
+      "moreInfoUrl": ""
+    },
+    "30": {
+      "question": "Jaki będzie rezultat tego kodu: (hmtl z inputem) (cssy z input::before) <- pytanie pułapka",
+      "difficulty": 4,
+      "answers": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "explanation": "",
+      "moreInfoUrl": ""
+    },
+    "31": {
+      "question": "flex question",
+      "difficulty": 2,
+      "answers": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "explanation": "",
+      "moreInfoUrl": ""
+    },
+    "32": {
+      "question": "flex question",
+      "difficulty": 3,
+      "answers": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "explanation": "",
+      "moreInfoUrl": ""
+    },
+    "33": {
+      "question": "flex question",
+      "difficulty": 4,
+      "answers": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "explanation": "",
+      "moreInfoUrl": ""
+    },
+    "34": {
+      "question": "grid question",
+      "difficulty": 2,
+      "answers": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "explanation": "",
+      "moreInfoUrl": ""
+    },
+    "35": {
+      "question": "grid question",
+      "difficulty": 3,
+      "answers": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "explanation": "",
+      "moreInfoUrl": ""
+    },
+    "36": {
+      "question": "grid question",
+      "difficulty": 4,
+      "answers": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "explanation": "",
       "moreInfoUrl": ""
     }
   },

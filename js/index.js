@@ -10,7 +10,7 @@ class Quiz {
   categories = ['html', 'css'];
   // categories = ['html', 'css', 'javascript'];
   categoriesCount = this.categories.length;
-  questionsCount = 25;
+  questionsCount = 4; // TODO: Fix issue with last page when questionCount=5 and questionsPerPage=2
   requiredPercentToPass = 75;
 
     /*
