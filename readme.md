@@ -38,8 +38,14 @@ internetowych przez autora. Nowe doświadczenie w rozwiązywaniu problemów rów
 ---
 
 #### Changelog:
+* 0.7.5:
+  * stopnie trudności są teraz brane pod uwagę;
+  * ilość wylosowanych pytań jest teraz poprawna;
+  * przygotowanie kontrolek wykonywane jest teraz dopiero po załadowaniu pytań;
+  * poprawiony błąd w instrukcji (ilość pytań przypadających na stopień trudności;
+  * progress boxy ukrywają się teraz kiedy szerokość ekranu będzie poniżej 1000px;
 * 0.7.2:
-  * dynamiczna instrukcja, zmienia się w zależności od ilości pytań i kategorii.
+  * dynamiczna instrukcja, zmienia się w zależności od ilości pytań i kategorii;
 * 0.7.1:
   * przywrócono oznaczenia pytań utracone w wersji 0.7.0;
   * w statystykach pojawiają się tylko kategorie, z których pytania zostały wylosowane;

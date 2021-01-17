@@ -382,7 +382,7 @@ export default class Render {
       instructions += Base.interpolate(Text.start.instructions.additionalQuestionCount, additionalQuestionsCount);
     }
 
-    instructions += Base.interpolate(Text.start.instructions.questionsDivided, questionsPerCategoryCount);
+    instructions += Base.interpolate(Text.start.instructions.questionsDivided, Math.floor(questionsPerCategoryCount / 4));
 
     if (additionalQuestionsCount === 1) {
       instructions += Text.start.instructions.additionalDividedSingleQuestion;

@@ -95,11 +95,10 @@ class Quiz {
 
 
   /*
-    Loads (asynchronously) questions and (synchronously) setups controls of the quiz.
+    Loads (asynchronously) questions of the quiz.
    */
   startQuiz() {
     this.loadQuestions();
-    this.setupControls();
     this.state = this.states.inProgress;
   }
 
@@ -310,16 +309,25 @@ class Quiz {
 
 
   /*
-    Method responsible for loading and processing questions and answers.
+    Method responsible for loading and processing questions.
+    Setups controls after question processing is finished and proceeds to first page.
     In-depth documentation inside the method due to high level of complexity.
    */
   loadQuestions() {
       // Selected categories counter object.
     const selectedCategories = {};
+      // Selected difficulties counter object.
+    const selectedDifficulties = {};
 
     this.categories.forEach(category => {
-        // Set it to 0 for each category.
+        // Set counters to 0 for each category.
       selectedCategories[category] = 0;
+      selectedDifficulties[category] = {
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0,
+      };
         // Set an array of questions belonging to the category.
       this.questionsDetails[category] = [];
     });
@@ -358,18 +366,21 @@ class Quiz {
 
       Returns a number - an id of the selected question.
      */
-    const selectQuestion = (questions, category) => {
+    const selectQuestion = (questions, category, checkLimit) => {
         // Draw a pseudorandom id of the question.
-      let selectedQuestion = Math.floor(Math.random() * Object.keys(questions[category]).length);
+      let selectedQuestionId = Math.floor(Math.random() * Object.keys(questions[category]).length);
+      const selectedQuestion = questions[category][selectedQuestionId];
 
         // Check if the question exists in the questions array...
-      if (questions[category][selectedQuestion]) {
+      if (selectedQuestion && (!checkLimit || canSelectQuestionDifficulty(selectedQuestion.difficulty, category))) {
           // If it does, add it to the "this.questions" array and return its id.
         this.questions.push({
-          ...questions[category][selectedQuestion],
+          ...selectedQuestion,
           type: category,
         });
-        return selectedQuestion;
+
+        selectedDifficulties[category][selectedQuestion.difficulty]++;
+        return selectedQuestionId;
       }
         // If it doesn't exist, that means the question was already drawn
         // and a new question needs to be drawn by the method executing itself.
@@ -377,13 +388,21 @@ class Quiz {
     };
 
     /*
+      Returns a boolean informing whether question of specified category and difficult can be selected.
+     */
+    const canSelectQuestionDifficulty = (difficulty, category) => {
+      const difficultyCountLimit = Math.floor(Math.floor(this.questionsCount / this.categoriesCount) / 4);
+      return selectedDifficulties[category][difficulty] < difficultyCountLimit;
+    };
+
+    /*
       Method that groups category and question selection methods.
       Additionally adds a question's explanation into "this.explanations" array and adds the question id
       into specific category array in "this.questionDetails" for further category-based statistics.
      */
-    const getQuestion = (fetchedQuestions, i, lastQuestion) => {
-      const selectedCategory = selectCategory(!lastQuestion);
-      const selectedQuestion = selectQuestion(fetchedQuestions, selectedCategory);
+    const getQuestion = (fetchedQuestions, i, checkLimit) => {
+      const selectedCategory = selectCategory(checkLimit);
+      const selectedQuestion = selectQuestion(fetchedQuestions, selectedCategory, checkLimit);
       this.explanations.push(fetchedQuestions[selectedCategory][selectedQuestion].explanation);
       this.questionsDetails[selectedCategory].push(i);
       return [selectedCategory, selectedQuestion];
@@ -399,16 +418,28 @@ class Quiz {
         // get data from the response
       .then(res => res.json())
       .then(questions => {
-        for (let i = 1; i < this.questionsCount; i++) {
+        const questionsToDrawInsideTheLoop = Math.floor(this.questionsCount / this.categoriesCount) * 2;
+        const questionsToDrawOutsideTheLoop = this.questionsCount % this.categoriesCount;
+        for (let i = 1; i <= questionsToDrawInsideTheLoop; i++) {
             // get required number of questions
-          const [selectedCategory, selectedQuestion] = getQuestion(questions, i, false);
+          const [selectedCategory, selectedQuestion] = getQuestion(questions, i, true);
 
             // after each draw, mark current question as taken by setting it to null
           questions[selectedCategory][selectedQuestion] = null;
         }
 
-        getQuestion(questions, this.questionsCount, true);
+        if (questionsToDrawOutsideTheLoop) {
+          for (let i = 1; i <= questionsToDrawOutsideTheLoop; i++) {
+            const [selectedCategory, selectedQuestion] = getQuestion(
+              questions,
+              questionsToDrawInsideTheLoop+i,
+              false
+            );
+            questions[selectedCategory][selectedQuestion] = null;
+          }
+        }
 
+        this.setupControls();
         this.setNextPage();
         this.state = this.states.inProgress;
       });
