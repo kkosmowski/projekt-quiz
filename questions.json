@@ -257,8 +257,8 @@
       ]
     },
     "24": {
-      "question": "Czym jest atrybut -[aria-role]-?",
       "difficulty": 4,
+      "question": "Czym jest atrybut -[aria-role]-?",
       "answers": [
         "Jest to atrybut definiujący cel i typ elementu dla urządzeń asystujących.",
         "Jest to atrybut z serii ARIA, atrybutów zmieniających rodzaj elementu. -[aria-role=\"button\"]- sprawi, że nasz -[div]- będzie wyglądał i działał jak -[button]-.",
@@ -267,120 +267,173 @@
       ],
       "explanation": "ARIA to zbiór atrybutów umożliwiających dostosowanie strony internetowej dla urządzeń asystujących, np. czytników dla osób niewidomych. Dzięki atrybutowi -[aria-role]- możemy zdefiniować typ oraz cel elementu, który go nie posiada - np. -[<div>]- czy -[<span>]- lub nadpisać domyślny. W większości przypadków atrybut ten nie jest potrzebny.",
       "moreInfoUrl": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques"
+    },
+    "25": {
+      "difficulty": 4,
+      "question": "Do czego służy tag -[<map>]-?",
+      "answers": [
+        "Pozwala utworzyć dowolną liczbę kształtów na obrazie, będących odnośnikami.",
+        "Jest to semantyczny tag będący kontenerem map, np. Google Maps.",
+        "Pozwala utworzyć interaktywną mapę, określoną tagiem -[src]-.",
+        "Jest to tag umożliwiający dodanie kilku obrazów w jednym elemencie w dowolny sposób."
+      ],
+      "moreInfoUrl": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map"
+    },
+    "26": {
+      "difficulty": 1,
+      "question": "Jeden z elementów -[option]- w elemencie -[select]- musi być zablokowany. Jakim atrybutem tego dokonamy?",
+      "answers": [
+        "-[disabled]-",
+        "-[readonly]-",
+        "-[selected]-",
+        "-[label]-"
+      ]
+    },
+    "27": {
+      "difficulty": 1,
+      "question": "Jakiego atrybutu użyć, aby pole w formularzu było obowiązkowe?",
+      "answers": [
+        "required",
+        "mandatory",
+        "valid",
+        "obligatory"
+      ]
+    },
+    "28": {
+      "difficulty": 1,
+      "question": "Jak dodać podpowiedź w polu, która zniknie gdy zaczniemy w nim pisać?",
+      "answers": [
+        "-[<input type=\"text\" placeholder=\"Nazwa\">]-",
+        "-[<input type=\"text\" alt=\"Nazwa\">]-",
+        "-[<input type=\"text\" label=\"Nazwa\">]-",
+        "-[<input type=\"text\" title=\"Nazwa\">]-"
+      ]
+    },
+    "29": {
+      "difficulty": 3,
+      "question": "Jak możemy ograniczyć wybierane pliki w inpucie typu -[file]- do zdjęć w formacie JPEG?",
+      "answers": [
+        "-[<input type=\"file\" name=\"plik\" accept=\"image/jpeg\">]-",
+        "-[<input type=\"file\" name=\"plik\" type=\"image/jpeg\">]-",
+        "-[<input type=\"file\" name=\"plik\" codetype=\"image/jpeg\">]-",
+        "-[<input type=\"file\" name=\"plik\" allow=\"image/jpeg\">]-"
+      ]
+    },
+    "30": {
+      "difficulty": 4,
+      "question": "Jak nadać sekcji -[<section]- tytuł?",
+      "answers": [
+        "Używajac wewnątrz niej nagłówka -[<h_>]-.",
+        "Nie ma takiej możliwości.",
+        "Nadając jej atrybut -[id]-.",
+        "Używając wewnątrz niej elementu z atrybutem -[aria-role=\"title\"]-."
+      ]
     }
   },
 
   "css": {
     "1": {
-      "question": "Względem czego pozycjonuje się element z -[position: absolute]-?",
       "difficulty": 2,
+      "question": "Względem czego pozycjonuje się element z -[position: absolute]-?",
       "answers": [
         "Względem najbliższego przodka o -[position]- innym niż -[static]-. Jeżeli takiego nie ma, to względem viewportu.",
         "Względem rodzica, którego -[position]- nie ma żadnego wpływu.",
         "Względem viewportu.",
         "Względem najbliższego przodka o -[position]- nie innym niż -[relative]-."
       ],
-      "explanation": "-[position: absolute]- opuszcza domyślny flow dokumentu, dopasowując się do najbliżsezgo przodka o -[position]- innym niż [static]-. Może się jednak zdażyć, że takiego przodka nie ma - wówczas element ustawi się względem okna (viewportu).",
-      "moreInfoUrl": ""
+      "explanation": "-[position: absolute]- opuszcza domyślny flow dokumentu, dopasowując się do najbliżsezgo przodka o -[position]- innym niż [static]-. Może się jednak zdażyć, że takiego przodka nie ma - wówczas element ustawi się względem okna (viewportu)."
     },
     "2": {
-      "question": "Które elementy będą miały czerwone tło?:--[.list .item {\n  background-color: red;\n}]--\n--[<div class=\"list\">\n  <div class=\"item\">item 1</div>\n  <div class=\"item\">item 2</div>\n  <div class=\"item\">\n    <div class=\"item\">item 3</div>\n    <div class=\"item\">item 4</div>\n    <div class=\"item\">\n      <div class=\"item\">item 5</div>\n      <div class=\"item\">item 6</div>\n    </div>\n  </div>\n</div>]--",
       "difficulty": 2,
+      "question": "Które elementy będą miały czerwone tło?:--[.list .item {\n  background-color: red;\n}]--\n--[<div class=\"list\">\n  <div class=\"item\">item 1</div>\n  <div class=\"item\">item 2</div>\n  <div class=\"item\">\n    <div class=\"item\">item 3</div>\n    <div class=\"item\">item 4</div>\n    <div class=\"item\">\n      <div class=\"item\">item 5</div>\n      <div class=\"item\">item 6</div>\n    </div>\n  </div>\n</div>]--",
       "answers": [
         "Wszystkie elementy -[.item]-.",
         "Elementy -[.item]- \"item 1\" i \"item 2\"",
         "Elementy -[.item]- poza \"item 1\" i \"item 2\"",
         "Żaden element nie będzie miał czerwonego tła."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "-[.list .item]- to selektor, który zadziała dla wszystkich elementów o klasie -[.item]- zawartych w elemencie -[.list]- i wszystkich elementach, które są w nim zawarte."
     },
     "3": {
-      "question": "Jaki kolory będą miały elementy?--[<p class=\"parent\">\n  <span id=\"item-1\" class=\"item-1\" data-name=\"item-1\">Item 1</span>\n  <span id=\"item-2\" class=\"item-2\" data-name=\"item-2\" style=\"color: limegreen\">Item 2</span>\n  <span id=\"item-3\" class=\"item-3\" data-name=\"item-3\">Item 3</span>\n</p>]--\n--[.parent > * {\n  beige;\n}\n\n.item-1 {\n  color: steelblue !important;\n}\n\n.parent span {\n  color: coral;\n}\n\n.parent > .item-3 {\n  color: darkslateblue;\n}\n\n.parent #item-3 {\n  color: hotpink;\n}\n\n.parent .item-1,\n.parent .item-2 {\n  color: chocolate;\n}]--",
       "difficulty": 3,
+      "question": "Jaki kolory będą miały elementy?--[<p class=\"parent\">\n  <span id=\"item-1\" class=\"item-1\" data-name=\"item-1\">Item 1</span>\n  <span id=\"item-2\" class=\"item-2\" data-name=\"item-2\" style=\"color: limegreen\">Item 2</span>\n  <span id=\"item-3\" class=\"item-3\" data-name=\"item-3\">Item 3</span>\n</p>]--\n--[.parent > * {\n  beige;\n}\n\n.item-1 {\n  color: steelblue !important;\n}\n\n.parent span {\n  color: coral;\n}\n\n.parent > .item-3 {\n  color: darkslateblue;\n}\n\n.parent #item-3 {\n  color: hotpink;\n}\n\n.parent .item-1,\n.parent .item-2 {\n  color: chocolate;\n}]--",
       "answers": [
         "Kolejno: -[steelblue]-, -[limegreen]- i -[hotpink]-.",
         "Kolejno: -[chocolate]-, -[limegreen]- i -[darkslateblue]-.",
         "Kolejno: -[chocolate]-, -[chocolate]- i -[darkslateblue]-.",
         "Kolejno: -[steelblue]-, -[chocolate]- i -[hotpink]-."
       ],
-      "explanation": "Pierwszy -[<span>]- będzie o kolorze -[steelblue]- ponieważ reguła -[!important]- jest ponad wszystkimi innymi regułami. Następny element będzie w kolorze -[limegreen]- ponieważ -[specificity]- styli -[inline]- jest najwyższym możliwym. Ostatni element będzie w kolorze -[hotpink]- ponieważ selektor id ma większe specificity niż jakiekolwiek kombinacje selektorów klas.",
-      "moreInfoUrl": ""
+      "explanation": "Pierwszy -[<span>]- będzie o kolorze -[steelblue]- ponieważ reguła -[!important]- jest ponad wszystkimi innymi regułami. Następny element będzie w kolorze -[limegreen]-, ponieważ specificity stylów inline jest najwyższym możliwym. Ostatni element będzie w kolorze -[hotpink]- ponieważ selektor id ma większe specificity niż jakiekolwiek kombinacje selektorów klas."
     },
     "4": {
-      "question": "Wybierz w odpowiedniej kolejności coraz konkretniejsze style (o większym specificity).",
       "difficulty": 3,
+      "question": "Wybierz w odpowiedniej kolejności coraz konkretniejsze style (o większym specificity).",
       "answers": [
         "-[span]-, -[span > span]-, -[.item]-, -[.parent > .item]-, -[#parent]-, -[#parent .item]-, style inline.",
         "-[span]-, -[.item]-, -[#parent]-, -[span > span]-, -[.parent > .item]-, -[#parent .item]-, style inline.",
         "style inline, -[span]-, -[#parent]-, -[.item]-, -[span > span]-, -[#parent .item]-, -[.parent > .item]-.",
         "-[#parent]-, -[span]-, -[.item]-, -[span > span]-, -[#parent .item]-, -[.parent > .item]-, style inline."
       ],
-      "explanation": "W CSSie istnieje kluczowa charakterystyka zwana specificity, określająca konkretność danego selektora bądź kombinacji selektorów. Oznacza to, że każdy selektor (-[*]-, -[.parent + .parent]-, -[#parent > .item button]- itd.) ma swoje odwzorowanie w liczbie. Tag = 1, klasa = 10, id = 100, inline = 1000.",
-      "moreInfoUrl": ""
+      "explanation": "W CSSie istnieje kluczowa charakterystyka zwana _specificity_, określająca konkretność danego selektora. Oznacza to, że każdy selektor (-[*]-, -[.parent + .parent]-, -[#parent > .item button]- itd.) ma swoje odwzorowanie w liczbie. Tag = 1, klasa = 10, id = 100, inline = 1000."
     },
     "5": {
-      "question": "Jakie property służy do zmiany rozmiaru fontu (czcionki)?",
       "difficulty": 1,
+      "question": "Jakie property służy do zmiany rozmiaru fontu (czcionki)?",
       "answers": [
         "-[font-size]-",
-        "-[large-text]-",
-        "-[text-scale]-",
+        "-[size]-",
+        "-[text-size]-",
         "-[font]-"
-      ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      ]
     },
     "6": {
-      "question": "Czym różni się property -[background]- od -[background-color]-?",
       "difficulty": 1,
+      "question": "Czym różni się property -[background]- od -[background-color]-?",
       "answers": [
         "-[background]- to skrót wielu property ustawiających tło, np.: -[background-color]-, -[background-repeat]-, -[background-position]- itd.",
         "-[background]- to property do ustawienia obrazu jako tła, podczas gdy -[background-color]- służy do ustawienia koloru tła.",
         "-[background]- ustawia kolor tła dla elementu i wszystkich jego dzieci, podczas gdy -[background-color]- tylko dla tego konkretnego elementu.",
         "-[background]- to skrót od -[background-color]- i niczym się te property nie różnią."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "-[background]- to tzw. _shorthand_, czyli skrót od innych property, w tym przypadku od wszystkich zaczynających się na \"background-\". Wartości podane w odpowiedniej kolejności pozwolą na ustawienie koloru, rozmiaru, położenia, powtarzania tła, a także na wiele innych opcji."
     },
     "7": {
+      "difficulty": 3,
       "question": "Jaki efekt ma reguła -[* { box-sizing: border-box; }]-?",
-      "difficulty": 4,
       "answers": [
         "-[box-sizing]- o wartości -[border-box]- sprawia, że -[padding]- i -[border]- wliczają się do rozmiaru elementu. -[*]- to selektor oznaczający każdy element.",
         "-[box-sizing]- o wartości -[border-box]- sprawia, że -[padding]- wlicza się do rozmiaru elementu. -[*]- to selektor oznaczający każdy element.",
         "-[box-sizing]- o wartości -[border-box]- sprawia, że -[padding]-, -[border]- i -[margin]- wliczają się do rozmiaru elementu. -[*]- to selektor oznaczający każdy element.",
         "-[box-sizing]- o wartości -[border-box]- sprawia, że -[padding]- nie wlicza się do rozmiaru elementu. -[*]- to selektor oznaczający każdy element."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "Jest to bardzo podstawowa reguła, pozwalajaca na wliczenie paddingu i bordera do rozmiaru elementu. Dzięki tej regule, ustawiając elementowi np. -[width: 200px; height 200px;]- mamy pewność, że element ten jest dokładnie takiego rozmiaru. Bez takiej reguły, element mający np. 8px paddingu i border 1px miałby wymiary 218x218 px."
     },
     "8": {
-      "question": "Jak ostylować wszystkie elementy występujące tuż po tagu -[<code>]-?",
       "difficulty": 2,
+      "question": "Jak ostylować wszystkie elementy występujące tuż po tagu -[<code>]-?",
       "answers": [
         "-[code + *]-",
         "-[code ~ *]-",
         "-[code > *]-",
         "-[code:after(*)]-"
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "-[+]-, -[~]-, -[>]- itd. w selektorach CSS to tzw. kombinatory. Pozwalają one na wybranie elementów bez bezpośredniego ich wybrania. Aby wybrać element będący tuż po -[code]-, czyli _adjacent sibling_, stosujemy kombinator -[*]-.",
+      "moreInfoUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator"
     },
     "9": {
-      "question": "Jaką przewagę ma zmienna CSS nad zmienną w np. Sassie?",
       "difficulty": 3,
+      "question": "Jaką przewagę ma zmienna CSS nad zmienną w np. Sassie?",
       "answers": [
-        "Zmienne z języków rozszerzających CSS - jak np. Sass (SCSS) - zostają skompilowane i znikają, z kolei zmienne CSSowe nadal istnieją po załadowaniu strony, dodatkowo można się do nich odwołać Javascriptem.",
-        "Zmienne z języków rozszerzających CSS - jak np. Sass (SCSS) - zostają skompliowane i znikają, podczas gdy zmienne w CSSie nadal istnieją po załadowaniu strony. Nie ma innych różnic.",
+        "Zmienne z języków rozszerzających CSS - jak np. Sass (SCSS) - zostają skompilowane i znikają z arkusza styli, z kolei zmienne CSSowe nadal istnieją po załadowaniu strony, dodatkowo można się do nich odwołać Javascriptem.",
+        "Zmienne z języków rozszerzających CSS - jak np. Sass (SCSS) - zostają skompliowane i znikają z arkusza styli, podczas gdy zmienne w CSSie nadal istnieją po załadowaniu strony. Nie ma innych różnic.",
         "Zmienne CSS są globalne, tj. nie trzeba importować pliku, w którym je zdefiniowaliśmy. To jedyna zaleta tego rozwiązania.",
         "Zmienne CSS nie mają przewagi nad zmiennymi w np. Sassie, ponieważ trzeba je deklarować w selektorze -[:root]- i odwoływać się do nich skomplikowaną składnią."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet."
+      "explanation": "Zmienne CSS --- mimo skomplikowanej składni --- posiadają szereg zalet, takich jak dostępność po wyświetleniu strony internetowej, możliwość edycji javascriptem i wiele innych. Mało kto jednak wie, że zmienne CSSowe nie mogą zostać użyte np. wyrażeniach logicznych media query."
     },
     "10": {
-      "question": "Jak zadeklarować i użyć zmienną w CSS?",
       "difficulty": 3,
+      "question": "Jak zadeklarować i użyć zmiennej w CSS?",
       "answers": [
         "--[:root {\n  --color: lightblue;\n}\n\nbody {\n  background-color: var(--color);\n}]--",
         "--[:root {\n  color: lightblue;\n}\n\nbody {\n  background-color: var(--color);\n}]--",
@@ -389,116 +442,107 @@
       ]
     },
     "11": {
-      "question": "Jaka jest różnica między marginesem a paddingiem?",
       "difficulty": 1,
+      "question": "Jaka jest różnica między marginesem, a paddingiem?",
       "answers": [
         "Padding to odstęp pomiędzy zawartością elementu (contentem), a ramką (borderem).",
         "Padding to odstęp poza elementem (za ramką).",
         "Padding to inaczej ramka, jest pomiędzy marginesem, a borderem.",
         "Padding to margines dla elementów -[inline]-."
       ],
-      "explanation": "Przede wszystkim padding zalicza się do modelu pudełkowego. Jest to przestrzeń bezpośrednio otaczająca content. Następnie mamy border, a później - już poza box modelem - margin.",
-      "moreInfoUrl": ""
+      "explanation": "Przede wszystkim padding zalicza się do modelu pudełkowego. Jest to przestrzeń bezpośrednio otaczająca content. Następnie mamy border, a później - już poza box modelem - margin."
     },
     "12": {
-      "question": "Czym się różni element -[inline]- od elementu -[block]-?",
       "difficulty": 2,
+      "question": "Czym się różni element -[inline]- od elementu -[block]-?",
       "answers": [
         "Element inline ma ustawione własności -[width]- i -[height]- na -[auto]-, ich zmiana nic nie da. Nie działają też marginesy -[top]- i -[bottom]-, a paddingi -[top]- i -[bottom]- nakładają się, ale nie mają żadnego wpływu. Marginesy i paddingi -[left]- i -[right]- zachowuja się normalnie. Nie działa -[transform]-. Pozycjonowany jest obok innego elementu jeżeli jest taka możliwość.",
         "Element inline ma ustawione własności -[width]- i -[height]- na -[auto]-, ich zmiana nic nie da. Nie działa na niego margines -[top]- i -[bottom]-. Pozostałe -[margin-left]-, -[margin-right]-, a także -[padding]- i -[transform]- działają normalnie. Pozycjonowany jest obok innego elementu jeżeli jest taka możliwość.",
         "Element inline ma ustawione własności -[width]- i -[height]- na -[auto]-, ale można je dowolnie zmienić. Działają wszystkie marginy i paddingi, ale nie działa property -[transform]-. Pozycjonowany jest obok innego elementu jeżeli jest taka możliwość.",
         "Element inline ma ustawione własności -[width]- i -[height]- na -[auto]-, ale można je dowolnie zmienić. Działają tylko marginesy i paddingi -[left]- i -[right]-. Można stosować -[transform]-. Pozycjonowany jest obok innego elementu jeżeli jest taka możliwość."
       ],
-      "explanation": "Element -[inline]-, to taki który pozycjonuje się w linii. Jego szerokość i wysokość jest automatyczna, czyli najmniejsza jaka jest potrzebna. Takie elementy nie mają marginesu -[top]- i -[bottom]-, a padding -[top]- i -[bottom]- choć się nakłada, to nie ma wpływu na inne elementy. Mało znanym faktem jest też to, że faktycznie -[transform]- na takich elementach nie działa.",
-      "moreInfoUrl": ""
+      "explanation": "Element -[inline]-, to taki który pozycjonuje się w linii. Jego szerokość i wysokość jest automatyczna, czyli najmniejsza jaka jest potrzebna. Takie elementy nie mają marginesu -[top]- i -[bottom]-, a padding -[top]- i -[bottom]- choć się nakłada, to nie ma wpływu na inne elementy. Mało znanym faktem jest też to, że faktycznie -[transform]- na takich elementach nie działa."
     },
     "13": {
-      "question": "Co to jest pseudoklasa? Co to jest pseudoelement?",
       "difficulty": 3,
+      "question": "Co to jest pseudoklasa? Co to jest pseudoelement?",
       "answers": [
         "Pseudoklasa to selektor stanu. Poprzedza go -[:]-. Przykład: -[:hover]-, -[:focus]-, -[:active]-. Pseudoelement to \"wewnętrzny\" element w innym elemencie, np. w divie, poprzedzony -[::]-. Przykład: -[::before]-, -[::after]-, -[::placeholder]-.",
         "Pseudoklasa to selektor stanu. Poprzedza go -[::]-. Przykład: -[::hover]-, -[::focus]-, -[::active]-. Pseudoelement to \"wewnętrzny\" element w innym elemencie, np. w divie, poprzedzony -[:]-. Przykład: -[:before]-, -[:after]-, -[:placeholder]-.",
         "Pseudoklasa to selektor, którego budowa to -[<nazwa-tagu>.<nazwa-klasy>]-, np. -[button.active]-. Pseudoelement (lub Pseudoidentyfikator) to selektor, którego budowa to <nazwa-tagu>#<nazwa-id>, np. -[button#next-step]-.",
-        "Pseudoklasa to selektor, którego budowa to -[<nazwa-tagu>.<nazwa-klasy>]-, np. -[button.active]-. Pseudoelement (lub Pseudoidentyfikator) to selektor, którego budowa to <nazwa-klasy>#<nazwa-id>, np. -[.button#next-step]-."
+        "Pseudoklasa to selektor, którego budowa to -[$<nazwa-klasy>]-, np. -[$active]-. Pseudoelement (lub Pseudoidentyfikator) to selektor, którego budowa to @<nazwa-pseudoid>, np. -[@next-step]-."
       ],
-      "explanation": "Z reguły pseudoelement poprzedzony jest -[::]- (wyjątek stanowi implementacja IE) np. -[::before]-, natomiast zawsze pseudoklasa poprzedzona jest -[:]-, np. -[:placeholder-shown]-.",
-      "moreInfoUrl": ""
+      "explanation": "Z reguły pseudoelement poprzedzony jest -[::]- (wyjątek stanowi implementacja IE) np. -[::before]-, natomiast zawsze pseudoklasa poprzedzona jest -[:]-, np. -[:placeholder-shown]-. Pseudoelement to faktyczny element, który możemy ostylować, ustawić mu wymiary, tło, animować go. Może być dodany do każdego elementu _nie-void_, czyli takiego, który ma zamknięcie. Oznacza to, że nie można dodać pseudoelementów np. elementowi -[<input>]- czy -[<hr>]-."
     },
     "14": {
-      "question": "Czym się różni id od klasy? Po czym powinniśmy stylować?",
       "difficulty": 2,
+      "question": "Czym się różni id od klasy? Czego powinniśmy używać do stylowania elementów?",
       "answers": [
         "Id to unikalna nazwa elementu. Jeden element może mieć maksymalnie 1 id. Klas natomiast może mieć wiele i to po nich powinniśmy stylować. Przykłady: -[#przykladowe-id]-, -[.przykladowa-klasa]-.",
         "Klasa to unikalna nazwa elementu. Jeden element może mieć maksymalnie 1 klasę. Id natomiast może mieć wiele i to po nich powinniśmy stylować. Przykłady: -[#przykladowe-id]-, -[.przykladowa-klasa]-.",
         "Id to unikalna nazwa elementu. Jeden element może mieć maksymalnie 1 id. Klas natomiast może mieć wiele i to po nich powinniśmy stylować. Przykłady: -[.przykladowe-id]-, -[#przykladowa-klasa]-.",
         "Klasa to unikalna nazwa elementu. Jeden element może mieć maksymalnie 1 klasę. Id natomiast może mieć wiele i to po nich powinniśmy stylować. Przykłady: -[.przykladowe-id]-, -[#przykladowa-klasa]-."
       ],
-      "explanation": "Element może mieć dowolną liczbę klas (-[.klasa]-), oddzielonych spacją, ale maksymalnie jedno id (-[#id]-). Atrybut typu -[id=\"id-1 id-2\"]- sprawi, że \"id-1 id-2\" będzie wartością id tego elementu. Powinniśmy unikać nazw tagów i id jako selektorów.",
-      "moreInfoUrl": ""
+      "explanation": "Element może mieć dowolną liczbę klas (-[.klasa]-), oddzielonych spacją, ale maksymalnie jedno id (-[#id]-). Atrybut typu -[id=\"id-1 id-2\"]- sprawi, że \"id-1 id-2\" będzie wartością id tego elementu. Powinniśmy unikać nazw tagów i id jako selektorów."
     },
     "15": {
-      "question": "Wyjaśnij różnice między: -[.item1.item2]-, -[.item1 .item2]-, -[.item1 > .item2]-.",
       "difficulty": 2,
+      "question": "Wyjaśnij różnice między: -[.item1.item2]-, -[.item1 .item2]-, -[.item1 > .item2]-.",
       "answers": [
-        "Pierwszy selektor to wszystkie elementy o dwóch klasach -[.item1]- i -[.item2]-, drugi to wszyscy potomkowie elementu -[.item1]- mający klasę -[.item2]-, natomiast trzeci selektor to wszyscy bezpośredni potomkowie (dzieci) elementu -[.item1]- mające klasę -[.item2]-.",
-        "Pierwszy selektor to wszystkie elementy o klasie -[.item1]- lub -[.item2]- (wystarczy jedna). Drugi to dzieci elementu -[.item1]- mające klasę -[.item2]-, natomiast trzeci selektor to błąd, gdyż w CSSie nie używam operatorów arytmetycznych.",
-        "Pierwszy selektor to wszystkie elementy o klasie -[.item1.item2]-, drugi to wszyscy potomkowie elementu -[.item1]- mające klasę -[.item2]-. Trzeci selektor to elementy o klasie -[.item2]- będące bezpośrednio po elementach o klasie -[.item1]-.",
-        "Pierwszy selektor to błąd, drugi z kolei to wszyscy potomkowie elementu -[.item1]- mający klasę -[.item2]-. Trzeci selektor to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-."
+        "-[.item1.item2]- to wszystkie elementy o dwóch klasach -[.item1]- i -[.item2]-, -[.item1 .item2]- to wszyscy potomkowie elementu -[.item1]- mający klasę -[.item2]-, natomiast -[.item1 > .item2]- to wszyscy bezpośredni potomkowie (dzieci) elementu -[.item1]- mające klasę -[.item2]-.",
+        "-[.item1.item2]- to wszystkie elementy o klasie -[.item1]- lub -[.item2]- (wystarczy jedna). -[.item1 .item2]- to dzieci elementu -[.item1]- mające klasę -[.item2]-, natomiast -[.item1 > .item2]- to błąd, gdyż w CSSie nie używam operatorów arytmetycznych.",
+        "-[.item1.item2]- to wszystkie elementy o klasie -[.item1.item2]-, -[.item1 .item2]- to wszyscy potomkowie elementu -[.item1]- mające klasę -[.item2]-. -[.item1 > .item2]- to elementy o klasie -[.item2]- będące bezpośrednio po elementach o klasie -[.item1]-.",
+        "-[.item1.item2]- to błąd, -[.item1 .item2]- z kolei to wszyscy potomkowie elementu -[.item1]- mający klasę -[.item2]-. -[.item1 > .item2]- to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "-[.item1.item2]- to selektor jednego elementu o co najmniej tych klasach. -[.item1 .item2]- to selektor ze spacją --- kombinatorem potomków, a więc każdy element o klasie -[.item2]- będący pomiędzy tagami elementu -[.item1]-. -[>]- to kombinator dziecka, czyli bezpośredniego potomka."
     },
     "16": {
-      "question": "Wyjaśnij róznice między: -[.item1 .item2]-, -[.item1 + .item2]-, -[.item1 ~ .item2]-.",
       "difficulty": 3,
+      "question": "Wyjaśnij róznice między: -[.item1 .item2]-, -[.item1 + .item2]-, -[.item1 ~ .item2]-.",
       "answers": [
         "Pierwszy selektor to wszyscy potomkowie elementu -[.item1]- mający klasę -[.item2]-. Drugi to elementy o klasie -[.item2]- będące bezpośrednio po elementach o klasie -[.item1]-. Trzeci to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-.",
         "Pierwszy selektor to wszystkie dzieci (bezpośredni potomkowie) elementu -[.item1]- mające klasę -[.item2]-. Drugi to elementy o klasie -[.item2]- będące bezpośrednio po elementach o klasie -[.item1]-. Trzeci to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-.",
         "Pierwszy selektor to wszystkie dzieci (bezpośredni potomkowie) elementu -[.item1]- mające klasę -[.item2]-. Drugi to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-. Trzeci to elementy o klasie -[.item1]- będące bezpośrednio po elementach o klasie -[.item2]-.",
         "Pierwszy selektor to wszyscy potomkowie elementu -[.item1]- mający klasę -[.item2]-. Drugi to wszystkie dzieci (bezpośredni potomkowie) elementu -[.item1]- mające klasę -[.item2]-. Trzeci to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-."
-      ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      ]
     },
     "17": {
-      "question": "Wyjaśnij różnicę między jednostkami: -[px]-, -[em]-, -[rem]-.",
       "difficulty": 4,
+      "question": "Wyjaśnij różnicę między jednostkami: -[px]-, -[em]-, -[rem]-.",
       "answers": [
         "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[em]- to mnożnik \"obecnego\" rozmiaru tekstu, a więc jeżeli -[font-size]- elementu to -[16px]-, to -[width: 2em]- wyniesie w rzeczywistości -[32px]-. -[rem]- to mnożnik wartości -[font-size]- w tagu -[html]-. Jeżeli ustawimy w html -[font-size: 10px]-, to -[1rem]- = -[10px]-.",
         "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[rem]- to mnożnik \"obecnego\" rozmiaru tekstu, ustawiany w selektorze html. Jeżeli w html ustawimy -[rem-size: 1.5]-, to mając -[font-size: 16px]- -[1rem]- wyniesie -[24px]-. -[em]- to mnożnik wartości -[font-size]- w tagu -[html]-. Jeżeli ustawimy w html -[font-size: 10px]-, to -[1em]- = -[10px]-.",
         "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[em]- to jednostka znaków, a więc element z -[width: 5em]- będzie długi na 5 znaków \"0\". -[rem]- to nowa jednostka rozmiaru tekstu, stosowania tylko w preprocesorach takich jak Sass czy Less.",
         "-[px]- to jednostka pikseli. -[1px]- to 1 piksel. -[em]- to mnożnik \"obecnego\" rozmiaru tekstu, ustawiany w selektorze html. Jeżeli w html ustawimy -[em-scale: 1.5]-, to mając -[font-size: 16px]- -[1em]- wyniesie -[24px]-. -[rem]- to mnożnik wartości -[font-size]- w tagu -[html]-. Jeżeli ustawimy w html -[font-size: 10px]-, to -[1rem]- = -[10px]-."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "Jednostka -[em]- to mnożnik obecnego rozmiaru tekstu, czyli zdefiniowanego w elemencie lub w najbliższym przodku, który ma zdefiniowany -[font-size]-, gdyż to property jest dziedziczone. Dla przykładu -[<span>]- będący w -[<h1>]- z regułą -[font-size: 2em]- będzie miał dwukrotnie większy rozmiar tekstu niż h1.\nJednostka -[rem]- działa na podobnej zasadzie, jednak zawsze mnoży -[font-size]- zadeklarowany w selektorze rootowym, najczęściej w -[html]-.",
+      "moreInfoUrl": "https://love-coding.pl/rem-em-jednostki-miary-w-css/"
     },
     "18": {
-      "question": "Co reprezentuje jednostka -[ch]-?",
       "difficulty": 2,
+      "question": "Co reprezentuje jednostka -[ch]-?",
       "answers": [
         "Jednostka -[ch]- reprezentuje szerokość znaku \"0\", czyli -[width: 10ch]- to taka sama szerokość jak dziesięć takich znaków.\nWielkość ta zależy od obecnego -[font-size]-.",
         "Jednostka -[ch]- reprezentuje szerokość znaku \"0\", czyli -[width: 10ch]- to taka sama szerokość jak dziesięć takich znaków.\nWielkość ta zależy od -[font-size]- w selektorze -[html]- (domyślnie 16px).",
         "Jednostka -[ch]- reprezentuje szerokość znaku \"0\", czyli -[width: 10ch]- to taka sama szerokość jak dziesięć takich znaków.\nWielkość ta jest niezależna i zawsze chodzi o \"0\" o -[font-size: 16px]-.",
         "Jednostka -[ch]- reprezentuje szerokość znaku \"0\", czyli -[width: 10ch]- to taka sama szerokość jak dziesięć takich znaków.\nWielkość ta jest niezależna i zawsze chodzi o \"0\" o -[font-size: 10px]-."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "moreInfoUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/length"
     },
     "19": {
-      "question": "Jak zaznaczyć -[<a>]-, których wartość atrybutu -[href]- kończy się na \".pdf\"?",
       "difficulty": 3,
+      "question": "Jak zaznaczyć elementy -[<a>]-, których wartość atrybutu -[href]- kończy się na \".pdf\"?",
       "answers": [
         "-[a[href$=\".pdf\"]]-",
         "-[a[href^=\".pdf\"]]-",
         "-[a[href*=\".pdf\"]]-",
         "-[a[href#=\".pdf\"]]-"
       ],
-      "explanation": "W CSSie możemy wybrać tylko elementy zawierające konkretne atrybuty i ich wartości, np. -[a[href]]- aby zaznaczyć -[a]- posiadające atrybut -[href]-. Możemy także wyszczególnić, że wartość tego atrybutu powinna kończyć się wartością \".pdf\" w ten sposób: -[href$=\".pdf\"]]-.\nWarto dodać, że opcja -[href*=\".pdf\"]]- także zadziała, ponieważ wyszukuje podanej wartości w całej wartości atrybutu, a więc może nie zadziałać tak, jakbyśmy tego oczekiwali.",
-      "moreInfoUrl": ""
+      "explanation": "W CSSie możemy wybrać tylko elementy zawierające konkretne atrybuty i ich wartości, np. -[a[href]]- aby zaznaczyć -[a]- posiadające atrybut -[href]-. Możemy także wyszczególnić, że wartość tego atrybutu powinna kończyć się wartością \".pdf\" w ten sposób: -[href$=\".pdf\"]]-.\nWarto dodać, że opcja -[href*=\".pdf\"]]- także zadziała, ponieważ wyszukuje podanej wartości w całej wartości atrybutu, a więc może nie zadziałać tak, jakbyśmy tego oczekiwali."
     },
     "20": {
-      "question": "Jak zaznaczyć -[<a>]-, których wartość atrybutu -[href]- zaczyna się od \"https\"?",
       "difficulty": 3,
+      "question": "Jak zaznaczyć elementy -[<a>]-, których wartość atrybutu -[href]- zaczyna się od \"https\"?",
       "answers": [
         "-[a[href^=\"https\"]]-",
         "-[a[href$=\"https\"]]-",
@@ -509,8 +553,8 @@
       "moreInfoUrl": ""
     },
     "21": {
-      "question": "Co to jest Sass, Less albo Stylus?",
       "difficulty": 3,
+      "question": "Co to jest Sass, Less albo Stylus?",
       "answers": [
         "Są to preprocesory języka CSS, czyli rozszerzenia dające nam nowe możliwości, ostatecznie kompilowane do czystego kodu CSS.",
         "Są to postprocesory języka CSS, umożliwiające optymalizację kodu CSS (usunięcie nieużywanych lub powtarzających się reguł, grupowanie selektorów o tych samych regułach itd.",
@@ -518,355 +562,623 @@
         "Są to następcy języka CSS, łączący w sobie CSS i Javascript, tzw. CSS-in-JS. Style pisane są w Javascripcie."
       ],
       "explanation": "Preprocesor języka CSS to narzędzie pozwalające na wydajniejsze tworzenie styli, dzięki możliwościom takim jak zmienne (nie mylić ze zmiennymi CSS), mixiny, pętle for, instrukcje if, czy nawet zagnieżdżanie reguł styli.",
-      "moreInfoUrl": ""
+      "moreInfoUrl": "https://code.tutsplus.com/pl/tutorials/sass-vs-less-vs-stylus-preprocessor-shootout--net-24320"
     },
     "22": {
-      "question": "Co to jest flexbox? Jak działa?",
       "difficulty": 2,
+      "question": "Co to jest flexbox? Jak działa?",
       "answers": [
-        "to do",
-        "to do",
-        "to do",
-        "to do"
+        "Flexbox to zestaw własności i wartości wprowadzających nowe możliwości układania elementów na stronie, jest to tzw. jednowymiarowy model. Jest to jeden z popularniejszych sposobów tworzenia layoutów.",
+        "Flexbox to zestaw własności i wartości wprowadzających możliwości układania elementów na stronie, jest to tzw. jednowymiarowy model. Jest to przestarzała technologia wyparta przez technologię float, czyli dwuwymiarowy model.",
+        "Flexbox to zestaw własności i wartości wprowadzających nowe możliwości układania elementów na stronie, jest to tzw. dwuwymiarowy model. Pozwala tworzyć responsywną siatkę elementów.",
+        "Flexbox to zestaw własności i wartości wprowadzających responsywność w stronach internetowych. Jest to najpopularniejsza metoda, wypierająca dawniej stosowane media query."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "\"Moduł\" flexible box, czyli potocznie flexbox, to relatywnie stara technologia, jednak obecnie zdecydowanie razem z gridem najbardziej popularna w tworzeniu zarówno layoutu strony, jak i rozmieszczenia mniejszych elementów. Jest to podstawa każdego front end developa w dzisiejszych czasach."
     },
     "23": {
-      "question": "Co to jest grid? Jak działa?",
       "difficulty": 3,
+      "question": "Co to jest grid? Jak działa?",
       "answers": [
-        "to do",
-        "to do",
-        "to do",
-        "to do"
+        "Grid to dwuwymiarowy model layoutu, dzielący stronę lub element na regiony, w których można umieszczać inne elementy.",
+        "Grid to jednowymiary model layoutu, potocznie nazywany Flex lub Flexbox. Jest to najpopularniejsza technologia tworzenia layoutów stron internetowych.",
+        "Grid to jednowymiary model layoutu, potocznie nazywany Flex lub Flexbox. Jest to przestarzała technologia tworzenia layoutów stron internetowych, której powinniśmy unikać.",
+        "Grid to dwuwymiarowy model layoutu, który ma działać na zasadzie dzielenia strony na siatkę elementów. Wersja eksperymentalna jest już dostępna, jednak nie ma na razie szerokiego wsparcia przeglądarek."
       ],
       "explanation": "Lorem ipsum, dolor sit amet.",
       "moreInfoUrl": ""
     },
     "24": {
-      "question": "Co to jest sprite? Jakie korzyści niesie?",
-      "difficulty": 3,
+      "difficulty": 1,
+      "question": "Jaki będzie rozmiar tekstu h1?:--[<div>\n  <h1>Tytuł</h1>\n</div>]--\n--[div {\n  font-size: 16px;\n}\n\nh1 {\n  font-size: 2em;\n}]--",
       "answers": [
-        "to do",
-        "to do",
-        "to do",
-        "to do"
+        "-[32px]-",
+        "-[16px]-",
+        "-[20px]-",
+        "-[18px]-"
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "-[em]- to jednostka mnożąca obecny -[font-size]- - czyli w tym przypadku dziedziony rozmiar tekstu rodzica (-[div]-). 2 * 16px daje 32px."
     },
     "25": {
-      "question": "Co to jest -[outline]- i dlaczego nie powinniśmy ustawiać go na -[none]-?",
       "difficulty": 4,
+      "question": "Co to jest -[outline]- i dlaczego nie powinniśmy ustawiać go na -[none]-?",
       "answers": [
-        "to do",
-        "to do",
-        "to do",
-        "to do"
+        "-[outline]- to obrys pojawiający się domyślnie na elementach z pseudoklasą -[:focus]-, np. po kliknięciu przycisku. Nie powinniśmy go usuwać ze względu na accessibility.",
+        "-[outline]- to obrys pojawiający się między -[margin]-em, a -[border]-em, jest to obrys dookoła ramki elementu. Rzadko stosowana pozostałość po HTML4.01.",
+        "-[outline]- to obrys pojawiający się między -[padding-]iem, a -[border]-em, jest to obrys wewnątrz ramki elementu. Rzadko stosowana pozostałość po HTML4.01.",
+        "-[outline]- to podkreślenie widoczne np. po najechaniu na link. Może zostać zastosowane w każdym elemencie, poprzez nadanie grubości, stylu i koloru."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "Accessibility to zestaw praktyk i rozwiązań ułatwiających korzystanie ze strony internetowej osobom z niepełnosprawnościami. Widoczny outline to zwiększone accesibility, ponieważ nie usuwa oznaczenia, że element jest wybrany. Jest to także przydatne dla osób nawigujących po stronie klawiszem Tab. Alternatywą dla -[outline: none]- jest nadanie innych styli na -[:focus]-, aby zachować to oznaczenie."
     },
     "26": {
-      "question": "Do czego służy -[@media]-?",
       "difficulty": 4,
+      "question": "Do czego służy -[@media]-?",
       "answers": [
-        "to do",
-        "to do",
-        "to do",
-        "to do"
+        "Jest to reguła umożliwiająca nadanie styli w określonym scenariuszu - np. w widoku drukowania, na ekranach o maksymalnej szerokości 600px, gdy preferowany jest ciemny motyw itd.",
+        "Jest to reguła umożliwiająca zaimportowanie elementów takich jak obrazy czy fonty do arkusza styli, aby móc później używać ich jako zmiennych do ustawienia ścieżki.",
+        "Jest to reguła umożliwiająca nadanie styli responsywnych, tj. ustawienie styli na telefony, tablety i PC, podczas gdy -[@prefers]- umożlwia nadanie styli, gdy użytkownik preferuje np. ciemny motyw.",
+        "Jest to reguła z preprocesora Sass, stosowana do importowania innych plików styli."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "moreInfoUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media"
     },
     "27": {
-      "question": "Jak stworzyć media query tylko dla telefonów o maksymalnej wysokości 600px i szerokości 360px?",
-      "difficulty": 3,
+      "difficulty": 4,
+      "question": "Jak stworzyć media query tylko dla telefonów w pionie o maksymalnej wysokości 600px i maksymalnej szerokości 360px?",
       "answers": [
-        "to do",
-        "to do",
-        "to do",
-        "to do"
+        "-[@media (max-width: 360px) and (max-height: 600px) and (orientation: portrait) and (any-pointer: coarse)]-",
+        "-[@media handheld and (max-width: 360px) and (max-height: 600px) and (orientation: portrait)]-",
+        "-[@media handheld and (max-width: 360px) and (max-height: 600px)]-",
+        "-[@media handheld and (max-width: 360px) and (max-height: 600px) and (orientation: portrait) and (any-pointer: fine)]-"
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "-[handheld]- to przestarzała wartość, której nie należy już stosować. Warto również użyć -[any-pointer: coarse]- co sprawi, że reguła weźmie pod uwagę urządzenia z ekranem dotykowym."
     },
     "28": {
-      "question": "Wyjaśnij ten selektor: -[[role=navigation] > ul a:not([href^=mailto])]-",
       "difficulty": 4,
+      "question": "Wyjaśnij ten selektor: -[[aria-role=navigation] > ul a:not([href^=mailto])]-",
       "answers": [
-        "to do",
-        "to do",
-        "to do",
-        "to do"
-      ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+        "Szukamy w elemencie o atrybucie -[aria-role=navigation]- elementów -[a]-, których atrybut -[href] zaczyna się tekstem -[mailto]-.",
+        "Szukamy w elemencie o atrybucie -[aria-role=navigation]- elementów -[a]-, których atrybut -[href] nie kończy się tekstem -[mailto]-.",
+        "Szukamy w elementów o atrybucie -[aria-role=navigation]- będących obok elementów -[a]- o atrybucie -[href] nie kończącym się tekstem -[mailto]-.",
+        "Selektor jest niepoprawny, ponieważ powinno być -[*[aria-role=\"navigation\"]]-."
+      ]
     },
     "29": {
-      "question": "Jaki jest najlepszy sposób żeby wykonać animację przesunięcia elementu o 200px w lewo i 50px w dół?",
       "difficulty": 2,
+      "question": "Jaki jest najlepszy sposób żeby wykonać animację przesunięcia elementu o 200px w lewo i 50px w dół?",
       "answers": [
         "-[transform: translate(...)]-",
         "-[left]- i -[top]-",
         "-[padding-left]- i -[padding-top]-",
         "-[margin-left]- i -[margin-top]-"
       ],
-      "explanation": "-[transform: translate]- to najwydajniejszy sposób na animację zmiany pozycji elementów. Warto również dodać do tego property -[will-change]- pozwalające przeglądarace \"przygotować się\" do takiej zmiany.",
-      "moreInfoUrl": ""
+      "explanation": "-[transform: translate]- to najwydajniejszy sposób na animację zmiany pozycji elementów. Warto również dodać do tego property -[will-change]- pozwalające przeglądarace \"przygotować się\" do takiej zmiany."
     },
     "30": {
-      "question": "Jaki będzie rezultat tego kodu: (hmtl z inputem) (cssy z input::before) <- pytanie pułapka",
       "difficulty": 4,
+      "question": "Jaki będzie wizualny rezultat tego kodu:--[<div>\n  <input type=\"text\" class=\"pole\">\n</div>]--\n--[.pole {\n  position: relative;\n}\n\n.pole::before {\n  content: '*';\n  position: absolute;\n  right: -10px;\n  top: 0;\n}]--",
       "answers": [
-        "",
-        "",
-        "",
-        ""
+        "Będzie to zwykłe pole tekstowe.",
+        "Będzie to pole tekstowe z \"*\" po prawej stronie, poza polem.",
+        "Będzie to pole tekstowe z \"*\" po lewej stronie, poza polem.",
+        "Będzie to pole tekstowe z \"*\" po prawej stronie, wewnątrz pola."
       ],
-      "explanation": "",
-      "moreInfoUrl": ""
+      "explanation": "Pułapka, o której warto wiedzieć -- elementy \"void\", czyli takie, które nie mają tagu zamykającego, jak -[<input>]-, -[<hr>]-, -[<br>]- itd. nie mogą posiadać pseudoelementów -- w końcu nie posiadają kontentu."
     },
     "31": {
-      "question": "flex question",
-      "difficulty": 2,
+      "difficulty": 1,
+      "question": "Które property pozwala zmienić odległość między literami w tekście?",
       "answers": [
-        "",
-        "",
-        "",
-        ""
-      ],
-      "explanation": "",
-      "moreInfoUrl": ""
+        "-[letter-spacing]-",
+        "-[letter-distance]-",
+        "-[white-space]-",
+        "-[word-spacing]-"
+      ]
     },
     "32": {
-      "question": "flex question",
-      "difficulty": 3,
+      "difficulty": 1,
+      "question": "Wybierz wartość lewego marginesu: -[margin: 10px 20px 30px 40px;]-",
       "answers": [
-        "",
-        "",
-        "",
-        ""
-      ],
-      "explanation": "",
-      "moreInfoUrl": ""
+        "-[40px]-",
+        "-[30px]-",
+        "-[20px]-",
+        "-[10px]-"
+      ]
     },
     "33": {
-      "question": "flex question",
       "difficulty": 4,
+      "question": "Jaki będzie kolor ramki elementu -[button]-?:--[<div>\n  <form>\n    <button type=\"button\">Przycisk</button>\n  </form>\n</div>]--\n--[div {\n  border-color: red;\n}\n\ndiv > form {\n  border-color: blue;\n}\n\nbutton {\n  border: 1px solid;\n color: green;\n}]--",
       "answers": [
-        "",
-        "",
-        "",
-        ""
+        "-[green]-",
+        "-[red]-",
+        "-[blue]-",
+        "Domyślny - czarny"
       ],
-      "explanation": "",
-      "moreInfoUrl": ""
+      "explanation": "-[border-color]- nie jest dziedziczonym property, więc tak naprawdę kolory obramowania jego rodziców są nieistotne. W przypadku gdy nie jest podany kolor ramki, jest to kolor tekstu, dlatego zazwyczaj jest to czarny. Jednak zmiana koloru tekstu, zmieni w tym przypadku również kolor ramki."
     },
     "34": {
-      "question": "grid question",
-      "difficulty": 2,
+      "difficulty": 1,
+      "question": "Jak wybrać ostatni element -[<li>]-?--[<ul>\n  <li>pierwszy</li>\n  <li>drugi</li>\n  <li>trzeci</li>\n</ul>]--",
       "answers": [
-        "",
-        "",
-        "",
-        ""
-      ],
-      "explanation": "",
-      "moreInfoUrl": ""
+        "-[li:last-child]-",
+        "-[li:last-element]-",
+        "-[li:last-item]-",
+        "-[li:child(-1)]-"
+      ]
     },
     "35": {
-      "question": "grid question",
-      "difficulty": 3,
+      "difficulty": 4,
+      "question": "Jak wybrać ostatni element -[<p>]-?--[<article>\n  <p>pierwszy</p>\n  <p>drugi</p>\n  <p>trzeci</p>\n<footer>stopka</footer></article>]--",
       "answers": [
-        "",
-        "",
-        "",
-        ""
-      ],
-      "explanation": "",
-      "moreInfoUrl": ""
+        "-[p:last-of-type]-",
+        "-[article:last-child]-",
+        "-[p:last-child]-",
+        "-[article:last-of-items]-"
+      ]
     },
     "36": {
-      "question": "grid question",
-      "difficulty": 4,
+      "difficulty": 1,
+      "question": "Jak usunąć podkreślenie z wszystkich linków na stronie?",
       "answers": [
-        "",
-        "",
-        "",
-        ""
-      ],
-      "explanation": "",
-      "moreInfoUrl": ""
+        "--[a {\n  text-decoration: none;\n}]--",
+        "--[a {\n  text-underline: none;\n}]--",
+        "--[a {\n  bottom-line: none;\n}]--",
+        "--[a {\n  bottom-underline: none;\n}]--"
+      ]
     }
   },
+
   "javascript": {
     "1": {
-      "question": "",
-      "difficulty": 2,
+      "difficulty": 1,
+      "question": "Wybierz poprawne różnice między -[const]-, -[let]- i -[var]-.",
       "answers": [
-        "",
-        "",
-        "",
-        ""
+        "-[let]- i -[const]- mają zasięg (scope) blokowy, -[var]- podlega windowaniu (\"hoisting\"), -[const]- musi mieć zdefiniowaną wartość podczas deklaracji i nie może ona zostać zmieniona.",
+        "Wszystkie zmienne podlegają windowaniu (\"hoisting\"), wartość -[const]- nie może ulec zmianie, -[let]- w przeciwieństwie do -[var]- nie może być deklarowany w pętli, gdyż deklaracja zniknęłaby w następnym jej obrocie.",
+        "-[var]- i -[const]- podlegają windowaniu (\"hoisting\"), dodatkowo -[const]- ma zasięg (scope) blokowy, a jego wartość nie może zostać zmieniona. -[let]- może być wielokrotnie deklarowany.",
+        "-[var]- ma zasięg (scope) blokowy, -[let]- i -[const]- podlegają windowaniu (\"hoisting\"), -[const]- musi mieć zdefiniowaną wartość podczas deklaracji i nie może być ona zmieniona."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "-[let]- i -[const]- to relatywnie nowe rodzaje zmiennych. W porównaniu do -[var]-, mają one zasięg blokowy, tj. zadeklarowane w instrukcji blokowej (np. -[if]- czy -[for]-) nie są dostępne poza nią. Nie podlegają windowaniu, czyli wyniesieniu deklaracji zmiennej na początek funkcji. Dodatkowo -[const]- ma służyć do stałych, czyli deklaracji wartości, która nie może być zmieniona. Nie można napisać deklaracji -[const x;]-, gdyż stała musi mieć zdefiniowaną wartość."
     },
     "2": {
-      "question": "",
-      "difficulty": 3,
+      "difficulty": 1,
+      "question": "Jaki typ zmiennej zastosować jako licznik w pętli -[for]-?",
       "answers": [
-        "",
-        "",
-        "",
-        ""
+        "-[let]-, aby zmienna nie istniała poza pętlą, jeżeli tego nie chcemy.",
+        "-[var]-, aby zmienna nie istniała poza pętlą, jeżeli tego nie chcemy.",
+        "Musi to być -[var]- ponieważ -[let]- byłby -[undefined]- po pierwszym obrocie pętli.",
+        "Bez znaczenia: może to być -[var]-, -[let]- czy -[const]-."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "Pomijając skrajne przypadki, gdy chcemy mieć dostęp do licznika pętli, np. zmiennej -[i]-, stosujemy zmienną -[let]-: -[for (let i = 0; i < 10; i++)]-. Dzięki temu, po zakończeniu instrukcji pętli, nie mamy dostępu do zmiennej -[i]-."
     },
     "3": {
-      "question": "",
-      "difficulty": 0,
+      "difficulty": 3,
+      "question": "Co się stanie w takiej sytuacji?\n--[x = 5;\nvar x;\nconsole.log(x);]--",
       "answers": [
-        "",
-        "",
-        "",
-        ""
+        "-[console.log]- wyświetli wartość -[5]-.",
+        "Wystąpi błąd - zmienna -[x]- nie istnieje.",
+        "Wystąpi błąd - nie można zmienić wartości -[var]-.",
+        "-[console.log]- wyświetli wartość -[undefined]-."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "W wyniku procesu zwanego \"hoisting\" deklaracja -[var x;]- zostanie \"wywindowana\" na początek kodu, w wyniku czego inicjalizacja -[x = 5]- zadziała bez zarzutu.",
+      "moreInfoUrl": "https://love-coding.pl/co-to-jest-hoisting-w-javascript/"
     },
     "4": {
-      "question": "",
-      "difficulty": 0,
+      "difficulty": 2,
+      "question": "Co się stanie w takiej sytuacji?\n--[x = 5;\nlet x;\nconsole.log(x);]--",
       "answers": [
-        "",
-        "",
-        "",
-        ""
+        "Wystąpi błąd - zmienna -[x]- nie istnieje.",
+        "-[console.log]- wyświetli wartość -[5]-.",
+        "Wystąpi błąd - nie można zmienić wartości -[let]-.",
+        "-[console.log]- wyświetli wartość -[undefined]-."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "-[let]- nie podlega procesowi \"hoisting\", przez co zmienna -[x]- nie jest dostępna przed jej deklaracją."
     },
     "5": {
-      "question": "",
-      "difficulty": 0,
+      "difficulty": 1,
+      "question": "Co się stanie w takiej sytuacji?\n--[x = 5;\nconst x;\nconsole.log(x);]--",
       "answers": [
-        "",
-        "",
-        "",
-        ""
+        "Wystąpi błąd - zmienna -[x]- nie istnieje.",
+        "-[console.log]- wyświetli wartość -[5]-.",
+        "Wystąpi błąd - nie można zmienić wartości -[const]-.",
+        "Wystąpi błąd - wartość -[const]- musi mieć zainicjalizowaną wartość."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "-[const]- to stała, której wartość można zainicjalizować tylko raz i musi to być wartość podana podczas deklaracji. Nie jest możliwe zadeklarowanie stałej: -[const x;]- i zdefiniowanie jej wartości później. Kod -[x = 5;]- nie będzie uznany za błąd ponieważ poza trybem -[strict]- Javascript jest \"wyrozumiały\"."
     },
     "6": {
-      "question": "",
-      "difficulty": 0,
+      "difficulty": 2,
+      "question": "Co to jest \"hoisting\"?",
       "answers": [
-        "",
-        "",
-        "",
-        ""
+        "Jest to proces wyniesienia deklaracji -[var]- na początek kodu lub funkcji.",
+        "Jest to proces wyniesienia deklaracji zmiennych na początek kodu lub funkcji.",
+        "To dobra praktyka, mówiąca o tym, że deklaracje zmiennych -[var]- powinny być umieszczanie na początku kodu lub funkcji.",
+        "To dobra praktyka, mówiąca o tym, że deklaracje wszystkich zmiennych powinny być umieszczanie na początku kodu lub funkcji."
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "Hoisting to proces ułatwiający życie programistom Javascript, wynoszący deklaracje zmiennych -[var]- na początek instrukcji. Oznacza to, że taki kod: -[console.log(x); var x = 5;]- nie zwróci błędu, gdyż w momencie wykonania skryptu, deklaracja -[var x;]- zostanie przeniesiona przed funkcję -[console.log]-.",
+      "moreInfoUrl": "https://love-coding.pl/co-to-jest-hoisting-w-javascript/"
     },
     "7": {
-      "question": "",
-      "difficulty": 0,
+      "difficulty": 1,
+      "question": "Jak znaleźć element o klasie -[.element]-:\n--[<p>\\n  <span class=\"tekst\"></span>\\n  <span class=\"element\"></span>\\n  <span class=\"podpis\"></span>\\n</p>]--",
       "answers": [
-        "",
-        "",
-        "",
-        ""
+        "-[document.getElementsByClassName('element')[0];]-",
+        "-[document.getElementsByClassName('.element')[0];]-",
+        "-[document.getElementByClassName('element');]-",
+        "-[document.getElementByClassName('.element');]-"
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "Obiekt -[document]- posiada metodę -[getElementsByClassName]- pobierającą samą nazwę klasy CSSowej - w tym przypadku -[element]-. Należy zwrócić uwagę, że zwracana nie jest lista typu -[Array]-, a -[HTMLCollection]-, która rózni się np. brakiem metod -[forEach]- czy -[map]-."
     },
     "8": {
-      "question": "",
-      "difficulty": 0,
+      "difficulty": 2,
+      "question": "Jak znaleźć elementy -[button]- o -[type=\"submit\"]-?",
       "answers": [
-        "",
-        "",
-        "",
-        ""
+        "-[document.querySelectorAll('button[type=submit]');]-",
+        "-[document.querySelector('button[type=submit]');]-",
+        "-[document.getElementsByAttribute('type', 'submit', 'button')[0];]-",
+        "-[document.getElementByAttribute('type', 'submit', 'button');]-"
       ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      "explanation": "Obiekt -[document]- nie posiada metod -[getElementByAttribute]- ani -[getElementsByAttribute]-. Z kolei metody -[querySelector]- i -[querySelectorAll]- znajdują odpowiednio: element i -[HTMLCollection]- elementów."
     },
     "9": {
-      "question": "",
-      "difficulty": 0,
+      "difficulty": 2,
+      "question": "Co zwróci to porównanie?: -[\"1\" == 1]-",
       "answers": [
-        "",
-        "",
-        "",
-        ""
-      ]
+        "-[true]-, ponieważ operator == dokonuje konwersji typów jeżeli jest to konieczne.",
+        "-[true]- ponieważ w Javascripcie -[string]- zawierający liczbę automatycznie konwertowany jest na -[number]-.",
+        "-[false]-, ponieważ typy wartości są różne.",
+        "-[false]-, ponieważ Javascript konwertujes stringi na ich wartość ASCII, a w tym przypadku wartość ASCII znaku \"1\" nie wynosi 1, a 49."
+      ],
+      "explanation": "W Javascripcie mamy dwa operatory porównania. Operator -[===]- to strict comparison, czyli porównanie i typów i wartości -- takie porównanie zwróciłoby -[false]-. Natomiast operator -[==]- sprawdza typy, a jeżeli są rózne, ale możliwa jest konwersja to jej dokonuje. W tym przypadku -[\"1\"]- zostaje zamienione na -[1]-, stąd -[true]-."
     },
     "10": {
-      "question": "",
-      "difficulty": 0,
+      "difficulty": 4,
+      "question": "Jaki będzie wynik tej nierówności?: -[-Infinity < NaN]-",
       "answers": [
-        "",
-        "",
-        "",
-        ""
-      ]
+        "-[false]-",
+        "-[true]-",
+        "-[undefined]-",
+        "Błąd: zmienna -[Infinity]- nie została zadeklarowana."
+      ],
+      "explanation": "W Javascripcie mamy dwie bardzo małe wartości, jedna to -[Number.MIN_VALUE]-, a druga to -[-Infinity]-. O ile ta druga w każdym innym przypadku okaże się być najmniejsza, o tyle -[NaN]- nie stosuje się do reguł arytmetyki -- zarówno -[0 > NaN]-, -[0 == NaN]-, -[0 === NaN]- jak i -[0 < NaN]- zwróci false. Nawet -[NaN == NaN]-."
     },
     "11": {
-      "question": "",
-      "difficulty": 0,
+      "difficulty": 3,
+      "question": "Podaj wartość zwracaną z tego polecenia: -[typeof NaN]-.",
       "answers": [
-        "",
-        "",
-        "",
-        ""
-      ]
+        "-[\"number\"]-",
+        "-[\"object\"]-",
+        "-[\"function\"]-",
+        "-[\"NaN\"]-"
+      ],
+      "explanation": "Choć wydaje się to nielogiczne to -[NaN]- (Not a Number) jest typu -[number]-.",
+      "moreInfoUrl": "https://developer.mozilla.org/pl/docs/Web/JavaScript/Referencje/Obiekty/NaN"
     },
     "12": {
-      "question": "",
-      "difficulty": 0,
+      "difficulty": 1,
+      "question": "Jaki będzie wynik tego kodu?\n--[const array = [1, 2, 3];\nconsole.log(array[3]);]--",
       "answers": [
-        "",
-        "",
-        "",
-        ""
-      ]
+        "-[undefined]-",
+        "-[3]-",
+        "-[null]-",
+        "Wystąpi błąd."
+      ],
+      "explanation": "Wynikiem będzie -[undefined]-, gdyż odwołujemy się do elementu o indeksie 3 tablicy -[array]-. Ta tablica ma zdefiniowane elementy o indeksach 0, 1 i 2, a więc element o indeksie 3 nie jest zdefiniowany (stąd \"undefined\")."
     },
     "13": {
-      "question": "",
-      "difficulty": 0,
+      "difficulty": 2,
+      "question": "Jaki będzie wynik tego kodu?\n--[const array = [1, 2, 3, 5];\nconsole.log(array.indexOf(3));]--",
       "answers": [
-        "",
-        "",
-        "",
-        ""
-      ]
+        "-[2]-",
+        "-[-1]-",
+        "-[3]-",
+        "-[5]-"
+      ],
+      "explanation": "Metoda -[indexOf]- zwraca indeks pierwszego znalezionego elementu o podanej wartości. W tym przypadku była to trójka znajdująca się na pozycji drugiej -- w Javascripcie, jak w wielu językach programowania, indeksujemy od zera."
     },
     "14": {
-      "question": "",
-      "difficulty": 0,
+      "difficulty": 1,
+      "question": "Które z działań da taki sam wynik jak -[wynik += liczba]-?",
       "answers": [
-        "",
-        "",
-        "",
-        ""
-      ]
+        "-[wynik = wynik + liczba]-",
+        "-[wynik = liczba + liczba]-",
+        "-[wynik = ++liczba]-",
+        "-[wynik = liczba++]-"
+      ],
+      "explanation": "Operator -[+=]- to skrót od zdefiniowania wartości zmiennej jako wartości tej zmiennej zsumowanej do prawej wartości. A więc -[wynik += liczba]- to to samo co -[wynik = wynik + liczba]-."
     },
     "15": {
-      "question": "",
-      "difficulty": 0,
+      "difficulty": 2,
+      "question": "Jaki będzie wynik tego kodu: -[console.log(\"2021\" - \"1995\");]-?",
       "answers": [
-        "",
-        "",
-        "",
-        ""
+        "-[26]-",
+        "-[NaN]-",
+        "-[null]-",
+        "Wystąbi błąd."
+      ],
+      "explanation": "Operator -[-]- w razie potrzeby konwertuje wartości na liczby, przez co ostatecznie działanie to to nic innego jak -[2021 - 1995]-. Stąd też wynikają takie \"smaczki\" jak -[\"20\" - 4 = 16; \"20\" + 4 = \"24\"]- - w drugim  przypadku -[+]- konwertuje -[4]- na -[\"4\"]-."
+    },
+    "16": {
+      "difficulty": 3,
+      "question": "Który z tych operatorów nie jest operatorem logicznym?",
+      "answers": [
+        "-[|]-",
+        "-[!]-",
+        "-[||]-",
+        "-[&&]-"
+      ],
+      "explanation": "Operatory -[!]-, -[||]-, -[&&]- to operatory logiczne, kolejno: zaprzeczenia (NOT), \"lub\" (OR) oraz \"i\" (AND). W czystym Javascripcie -[|]- to operator bitowy."
+    },
+    "17": {
+      "difficulty": 1,
+      "question": "Wybierz poprawną składnię komentarzy w Javascripcie:",
+      "answers": [
+        ">> Komentarz",
+        "/ Komentarz /",
+        "/* Komentarz */",
+        ";; Komentarz"
       ]
+    },
+    "18": {
+      "difficulty": 2,
+      "question": "W Javascripcie mamy dużo swobody, ale nie możemy nazywać zmiennych jak chcemy. Wybierz przykład niepoprawnej nazwy zmiennej:",
+      "answers": [
+        "4wynik",
+        "_wynik",
+        "$wynik",
+        "wynik$"
+      ],
+      "explanation": "Nazwy zmiennych nie mogą zaczynać się cyfrą."
+    },
+    "19": {
+      "difficulty": 4,
+      "question": "Wybierz wynik poniższego kodu:\n--[let x = 43;\nconsole.log(x++);]--",
+      "answers": [
+        "-[43]-",
+        "-[44]-",
+        "-[45]-",
+        "-[\"43++\"]-"
+      ],
+      "explanation": "Operator inkrementacji -[++]- może być dodany jako prefiks lub sufiks. Warto wiedzieć, że użyty jako sufiks (-[zmienna++]-) zwraca wartość zmiennej przed jej inkrementacją (zwiększeniem o 1)."
+    },
+    "20": {
+      "difficulty": 4,
+      "question": "Wybierz wynik poniższego kodu:\n--[let x = 43;\nconsole.log(++x);]--",
+      "answers": [
+        "-[44]-",
+        "-[43]-",
+        "-[45]-",
+        "-[\"++43\"]-"
+      ],
+      "explanation": "Operator inkrementacji -[++]- może być dodany jako prefiks lub sufiks. Warto wiedzieć, że użyty jako prefiks (-[++zmienna]-) zwraca wartość zmiennej po jej inkrementacji (zwiększeniu o 1)."
+    },
+    "21": {
+      "difficulty": 3,
+      "question": "Jaki wynik da ten kod: -[console.log(100 && 5);]-?",
+      "answers": [
+        "-[5]-",
+        "-[100]-",
+        "-[105]-",
+        "-[true]-"
+      ],
+      "explanation": "Operator logiczny -[&&]- zwraca pierwszą wartość falsy, czyli taką, którą da się przekonwertować na -[false]-. Jeżeli takiej nie ma, zwraca ostatnią. -[Boolean(100)]- zwróci true, a więc wynikiem jest -[5]-. Gdyby przykładem było -[0 && 5]- otrzymalibyśmy -[0]-."
+    },
+    "22": {
+      "difficulty": 3,
+      "question": "Jaki wynik da ten kod: -[console.log(100 || 5);]-?",
+      "answers": [
+        "-[5]-",
+        "-[100]-",
+        "-[105]-",
+        "-[true]-"
+      ],
+      "explanation": "Operator logiczny -[||]- zwraca pierwszą wartość truthy, czyli taką, którą da się przekonwertować na -[true]-. Jeżeli takiej nie ma, zwraca ostatnią. -[Boolean(100)]- zwróci true, a więc wynikiem jest -[100]-. Gdyby przykładem było -[0 || 5]- otrzymalibyśmy wynik -[5]-."
+    },
+    "23": {
+      "difficulty": 3,
+      "question": "Jaki będzie wynik tego kodu?\n--[const array = [1, 2, 3];\narray.shift();\nconsole.log(array);]--",
+      "answers": [
+        "-[[2, 3]]-",
+        "-[[1, 2, 3]]-",
+        "-[[3, 2, 1]]-",
+        "-[[undefined, 1, 2, 3]]-"
+      ],
+      "explanation": "Metoda -[shift]- zwraca pierwszy element tablicy i usuwa go z niej. A więc po jednym takim wykonaniu z tablicy usuwamy element -[1]-."
+    },
+    "24": {
+      "difficulty": 2,
+      "question": "Jaki będzie wynik tego kodu?--[let isLogged = false;\nconst role = isLogged ? 'Zalogowany' : 'Gość';]--",
+      "answers": [
+        "-['Gość']-",
+        "-['Zalogowany']-",
+        "-[false]-",
+        "Wystąpi błąd."
+      ],
+      "explanation": "Tzw operator warunkowy: -[warunek ? wyrażenie1 : wyrażenie2]-, gdzie wyrażenie1 występuje jeżeli warunek jest spełniony, w przeciwnym wypadku wykonane jest wyrażenie2. W powyższym przykładzie zmienna -[isLogged]- ma wartość -[false]-, a więc przypisana zostaje druga wartość: -['Gość']-."
+    },
+    "25": {
+      "difficulty": 1,
+      "question": "Jaki będzie wynik tego kodu: -[console.log(3 ** 3);]-?",
+      "answers": [
+        "-[27]-",
+        "-[9]-",
+        "-[6]-",
+        "Wystąpi błąd."
+      ]
+    },
+    "26": {
+      "difficulty": 2,
+      "question": "Jaki będzie wynik tego kodu: -[console.log(!!null);]-?",
+      "answers": [
+        "-[false]-",
+        "-[true]-",
+        "-[NaN]-",
+        "-[null]-"
+      ],
+      "explanation": "Operator zaprzeczenia zostaje tu użyty dwukrotnie, a więc rozbijmy przykład na dwa kroki: 1. zamieniamy null na przeciwną dla niego wartość boolean. null jest wartością falsy, a więc konwertowaną do -[false]-, dlatego -[!null]- da nam -[true]-. Ponowne zaprzeczenie, a więc -[!!null]- jest równoznaczne zaprzeczeniu -[!true]-, a więc wynikiem będzie -[false]."
+    },
+    "27": {
+      "difficulty": 2,
+      "question": "Jaki będzie wynik tego kodu: -[console.log(Math.round(19.95));]-?",
+      "answers": [
+        "-[20]-",
+        "-[19]-",
+        "-[19.9]-",
+        "-[NaN]-"
+      ],
+      "explanation": "Metoda -[round]- obiektu -[Math]- przybliża liczbę do najbliższej liczby całkowitej, a więc będzie to -[20]-.\nLiczby od x.0 do x.49999... są zaokrąglane do x, z kolei liczby od x.5 do x.9999... zaokrąglane są do x+1."
+    },
+    "28": {
+      "difficulty": 3,
+      "question": "Który z typów danych nie jest typem prymitywnym?",
+      "answers": [
+        "object",
+        "number",
+        "string",
+        "undefined"
+      ],
+      "explanation": "Typy danych dzielimy na proste i złożone. Proste to takie, które pod zmienną trzymają jedną wartość - np. liczbę, string, czy wartość boolean. Złożone to typy trzymające referencję do danych, jest to -[object]- i -[function]-.",
+      "moreInfoUrl": "https://www.modestprogrammer.pl/typy-wartosciowe-oraz-typy-referencyjne-w-javascript"
+    },
+    "29": {
+      "difficulty": 2,
+      "question": "Jaki będzie wynik tego kodu: -[console.log(typeof false);]-?",
+      "answers": [
+        "-[false]-",
+        "-['false']-",
+        "-['boolean']-",
+        "-['type']-"
+      ],
+      "explanation": "Operator -[typeof]- zwraca typ podanej wartości jako string. Oznacza to, że dla -[false]-, które jest typu boolean dostaniemy string: -['boolean']-. Nie istnieje także żaden z typów: -['false']-, -['true']- czy -['type']-."
+    },
+    "30": {
+      "difficulty": 2,
+      "question": "Jaki będzie wynik tego kodu?:--[var liczba = 2;\nvar liczba = 5;\n\nconsole.log(liczba);]--",
+      "answers": [
+        "-[5]-",
+        "-[2]-",
+        "Wystąpi błąd, ponieważ zmienna -[liczba]- jest już zadeklarowana.",
+        "Wystąpi błąd, ponieważ zmienna -[liczba]- nie może mieć zmienionej wartości."
+      ],
+      "explanation": "Przed nadejściem zmiennych -[let]- i -[const]- nie trudno było o pomyłkę. Javascript pozwalał na wiele rzeczy, między innymi na wielokrotne deklarowanie tej samej zmiennej. Jest to całkowicie bezcelowy zabieg, najczęściej spowodowanym błędem ludzkim. Zmienna -[let]- czy też -[strict mode]- eliminują taką możliwość, zgłaszając błąd."
+    },
+    "31": {
+      "difficulty": 3,
+      "question": "Jaki będzie wynik tego kodu?:--[const numbers = [10, 20, 30];\nconst [a, b, c] = numbers;\n\nconsole.log(b);]--",
+      "answers": [
+        "-[20]-",
+        "-[10]-",
+        "-[30]-",
+        "Wystąpi błąd."
+      ],
+      "explanation": "Jest to tzw. destrukturyzacja obiektu (bądź tablicy). Kolejne elementy tablicy -[numbers]- zostają zadeklarowane jako -[a]-, -[b]- oraz -[c]-, stąd -[b]- wynosi -[20]-."
+    },
+    "32": {
+      "difficulty": 3,
+      "question": "Jaki będzie wynik tego kodu: -[console.log(true + true);]-?",
+      "answers": [
+        "-[2]-",
+        "-[1]-",
+        "-[true]-",
+        "-[NaN]-"
+      ],
+      "explanation": "Wynikiem będzie -[2]-, ponieważ operator -[+]- konwertuje obie wartości na typ -[number]-. W tym momencie warto wiedzieć, że -[Number(false)]- da nam -[0]-, z kolei -[Number(true)]- da -[1]-. Ostatecznie -[1]- + -[1]- daje -[2]-."
+    },
+    "33": {
+      "difficulty": 4,
+      "question": "Jaki będzie wynik tego kodu?:--[const tablica = [1, 2, 3, 4];\nconsole.log(tablica.push(5) - tablica.pop());]--",
+      "answers": [
+        "-[0]-",
+        "-[5]-",
+        "-[NaN]-",
+        "-[1]-"
+      ],
+      "explanation": "Aby dokładnie wiedzieć jaki będzie wynik należy rozumieć co zwracają metody -[push]- i -[pop]-. Ta pierwsza zwróci nową długość tablicy, podczas gdy ostatnia zwróci (i usunie z tablicy) ostatni element.\nW wyniku tych działań odejmujemy od siebie długość tablicy -[[1, 2, 3, 4, 5]]- -- czyli -[5]- od ostatniego elementu, czyli -[5]-."
+    },
+    "34": {
+      "difficulty": 4,
+      "question": "Jaki będzie wynik tego kodu?:--[const zbior = new Set([1, 1, 2, 2, 3, 4, 4, 4]);\nconsole.log([...zbior]);]--",
+      "answers": [
+        "-[[1, 2, 3, 4]]-",
+        "-[[1, 1, 2, 2, 3, 4, 4, 4]]-",
+        "-[11223444]-",
+        "Wystąpi błąd."
+      ],
+      "explanation": "-[Set]- to obiekt przechowywujący unikalne wartości każdego typu. W wyniku czego utworzenie zbioru: -[Set([1, 1, 2, 2])]- automatycznie utworzy nam zbiór z elementami -[[1, 2]]-. Przypisanie destrukturyzujące (-[...zbior]-) tworzy nam nową tablicę na podstawie iterowanego obiektu - czyli tablicy, obiektu, Setu."
+    },
+    "35": {
+      "difficulty": 4,
+      "question": "Co wypisze nam -[console.log]-?:--[class User {\n  getName() {}\n}\n\nconsole.log(typeof User);]--",
+      "answers": [
+        "-['function']-",
+        "-['object']-",
+        "-['class']-",
+        "-['string']-"
+      ],
+      "explanation": "Klasy w Javascripcie to nic innego jak funkcje, owinięte tzw. \"syntactic sugar\" (pol. \"lukier składniowy\") czyli ładną otoczką upiększającą i ułatwiającą składnię języka. Wszystko co napiszemy klasami, możemy napisać również funkcjami."
+    },
+    "36": {
+      "difficulty": 4,
+      "question": "Jaki będzie wynik tego kodu: -[console.log('good' > 'bad');]-?",
+      "answers": [
+        "-[true]-",
+        "-[false]-",
+        "-[NaN]-",
+        "Wystąpi błąd, ponieważ stringów nie można porównywać."
+      ],
+      "explanation": "Stringi można porównywać, co więcej - każda kolejna litera alfabetu jest \"większa\" od poprzedniej, a każda mała litera jest \"większa\" od dużej. Wynika to z faktu, że porównywane są kody ASCII tych znaków. W przypadku dłuższych stringów porównywane są kolejne znaki."
+    },
+    "37": {
+      "difficulty": 4,
+      "question": "Jaki będzie wynik tego kodu: -[console.log('toString' in {});]-?",
+      "answers": [
+        "-[true]-",
+        "-[false]-",
+        "-[undefined]-",
+        "Wystąpi błąd."
+      ],
+      "explanation": "-['toString']- to nazwa metody obiektów, umożliwiającej wypisanie obiektu jako stringa. Oczywiście \"wydrukowanie\" zakończy się prawdpodobnie rezultatem -['[object Object]']-, o ile prototyp nie jest inny, ale zadziała dobrze dla innego obiektu - tablicy: -[[1, 2, 3,].toString()]- => -[\"1,2,3\"]-."
+    },
+    "38": {
+      "difficulty": 4,
+      "question": "Jaki będzie wynik tego kodu?:--[var x = 10;\nvar wynik = 50;\n\n(function() {\n  console.log(x);\n  var x = 20;\n})();]--",
+      "answers": [
+        "-[undefined]-",
+        "-[10]-",
+        "-[20]-",
+        "-[50]-"
+      ],
+      "explanation": "Wynik to rezultat procesu hoistingu -- jako że deklarujemy w funkcji nową zmienną -[x]-, zostaje ona wyniesiona do góry, przed naszego -[console.log]-a, co skutkuje tym, że -[x]- istnieje, ale nie ma zdefiniowanej wartości. -[x]- wynosiłoby -[10]-, gdyby nie ponowna deklaracja zmiennej."
+    },
+    "39": {
+      "difficulty": 4,
+      "question": "Co należy podstawić za -[_]-, aby -[console.log]- wypisał -[true]-?:--[const x = _;\nconsole.log(x !== x);]--",
+      "answers": [
+        "-[NaN]-",
+        "-[undefined]-",
+        "-[Infinity]-",
+        "-[Math.random()]-"
+      ],
+      "explanation": "-[NaN]- nie stosuje się do reguł arytmetyki -- zarówno -[0 > NaN]-, -[0 == NaN]-, -[0 === NaN]- jak i -[0 < NaN]- zwróci false. Nawet -[NaN == NaN]-."
+    },
+    "40": {
+      "difficulty": 3,
+      "question": "Jaki będzie rezultat tego kodu?:--[const array = new Array(10);\nconsole.log(array[0]);]--",
+      "answers": [
+        "-[undefined]-",
+        "-[10]-",
+        "-[0]-",
+        "-[null]-"
+      ],
+      "explanation": "-[new Array(10)]- tworzy taką oto tablicę: -[[undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined]]-."
+    },
+    "41": {
+      "difficulty": 4,
+      "question": "Jaki będzie wynik tego kodu?:--[const User = function() {};\n\nUser.prototype = {\n  name: 'Adam'\n};\n\nconst user = new User();\n\nUser.prototype = {\n  name: 'Bartek'\n};\n\nconsole.log(user.name);]--",
+      "answers": [
+        "-['Adam']-",
+        "-['Bartek']-",
+        "-[undefined]-",
+        "Wystąpi błąd."
+      ],
+      "explanation": "Kod polega na stworzeniu obiektu User jako pustej funkcji - niczym tworzenie pustej klasy User. Prototyp obiektu to jego domyślne pola tworzone podczas tworzenia obiektu (np. pole -[name]-), dlatego też zmiana prototypu po utworzeniu już instancji tego obiektu niczego nie zmienia. Aby dokonać takiej zmiany, musielibyśmy użyć -[Object.setPrototypeOf]-."
     }
   }
 }
