@@ -41,6 +41,9 @@ internetowych przez autora. Nowe doświadczenie w rozwiązywaniu problemów rów
 * dodać parser "\_text\_" => "&lt;em&gt;text&lt;/em&gt;";
 
 #### Changelog:
+* 1.1.0:
+  * naprawiony krytyczny błąd uniemożliwiający ukończenie quizu;
+  * małe poprawki w pytaniach, odpowiedziach i/lub wyjaśnieniach;
 * 1.0.0:
   * dodany link ze szczegółami w widoku przeglądu;
   * link ze szczegółami i wyjaśnienie jest teraz opcjonalne;

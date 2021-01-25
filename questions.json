@@ -43,7 +43,7 @@
         "Do oznaczenia cytatu.",
         "Jest to generyczny element -[inline]- służący do stylowania tekstu."
       ],
-      "explanation": "Tag -[<em>]- (emphasis) to dodany w HTML5 semantyczny tag mający nadawać nacisk na tekst w nim zawarty. Domyślnie nakłada kursywę na tekst, jednak równie dobrze możemy ostylować -[<em]- na pogrubiony, czerwony kolor lub na zwykły tekst i nadal będzie to poprawne.",
+      "explanation": "Tag -[<em>]- (emphasis) to dodany w HTML5 semantyczny tag mający nadawać nacisk na tekst w nim zawarty. Domyślnie nakłada kursywę na tekst, jednak równie dobrze możemy ostylować -[<em>]- na pogrubiony, czerwony kolor lub na zwykły tekst i nadal będzie to poprawne.",
       "moreInfoUrl": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em"
     },
     "5": {
@@ -248,7 +248,7 @@
     },
     "23": {
       "difficulty": 3,
-      "question": "Do czego nam tag -[<header>]-?",
+      "question": "Do czego służy tag -[<header>]-?",
       "answers": [
         "Do oznaczenia headera całej strony, artykułu, sekcji lub jakiegoś bloku.",
         "Jest to element będący headerem strony lub podstrony. Powinien być tylko jeden na stronie, tak jak -[<h1>]-.",
@@ -378,7 +378,7 @@
     },
     "5": {
       "difficulty": 1,
-      "question": "Jakie property służy do zmiany rozmiaru fontu (czcionki)?",
+      "question": "Jakie property służy do zmiany rozmiaru tekstu?",
       "answers": [
         "-[font-size]-",
         "-[size]-",
@@ -706,7 +706,7 @@
     },
     "35": {
       "difficulty": 4,
-      "question": "Jak wybrać ostatni element -[<p>]-?--[<article>\n  <p>pierwszy</p>\n  <p>drugi</p>\n  <p>trzeci</p>\n<footer>stopka</footer></article>]--",
+      "question": "Jak wybrać ostatni element -[<p>]-?--[<article>\n  <p>pierwszy</p>\n  <p>drugi</p>\n  <p>trzeci</p>\n  <footer>stopka</footer>\n</article>]--",
       "answers": [
         "-[p:last-of-type]-",
         "-[article:last-child]-",
@@ -797,7 +797,7 @@
     },
     "7": {
       "difficulty": 1,
-      "question": "Jak znaleźć element o klasie -[.element]-:\n--[<p>\\n  <span class=\"tekst\"></span>\\n  <span class=\"element\"></span>\\n  <span class=\"podpis\"></span>\\n</p>]--",
+      "question": "Jak znaleźć element o klasie -[.element]-:--[<p>\n  <span class=\"tekst\"></span>\n  <span class=\"element\"></span>\n  <span class=\"podpis\"></span>\n</p>]--",
       "answers": [
         "-[document.getElementsByClassName('element')[0];]-",
         "-[document.getElementsByClassName('.element')[0];]-",

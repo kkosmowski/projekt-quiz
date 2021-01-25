@@ -9,7 +9,7 @@ import Text from '../pl.js';
 class Quiz {
   categories = ['html', 'css', 'javascript'];
   categoriesCount = this.categories.length;
-  questionsCount = 42;
+  questionsCount = 25;
   requiredPercentToPass = 75;
 
     /*
@@ -18,7 +18,7 @@ class Quiz {
       If we set the questions count to 10, and the question per page to 15
       it is obvious we should display only 10 questions on a page.
      */
-  questionsPerPage = Math.min(15, this.questionsCount);
+  questionsPerPage = Math.min(10, this.questionsCount);
   pages = Math.ceil(this.questionsCount / this.questionsPerPage);
   currentPage;
   lastCachedPage;
@@ -62,6 +62,7 @@ class Quiz {
     this.explanations = [];
     this.moreInfoUrls = [];
     this.createQuiz();
+    console.log('Quiz v1.1.0\nAutor: Krzysztof Kosmowski\nhttps://github.com/zaxanq/projekt-quiz');
   }
 
 
@@ -420,7 +421,7 @@ class Quiz {
         // get data from the response
       .then(res => res.json())
       .then(questions => {
-        const questionsToDrawInsideTheLoop = Math.floor(this.questionsCount / this.categoriesCount) * 2;
+        const questionsToDrawInsideTheLoop = Math.floor(this.questionsCount / this.categoriesCount) * this.categoriesCount;
         const questionsToDrawOutsideTheLoop = this.questionsCount % this.categoriesCount;
         for (let i = 1; i <= questionsToDrawInsideTheLoop; i++) {
             // get required number of questions
@@ -502,6 +503,11 @@ class Quiz {
     }
 
     if (!pageCached) {
+      console.log(this.currentPage-1);
+      console.log((this.currentPage-1) * this.questionsPerPage);
+      console.log(this.questionsPerPage);
+      console.log([...this.questions].splice((this.currentPage - 1) * this.questionsPerPage, this.questionsPerPage));
+      console.log([...this.questions]);
       Render.page(
           // Get only portion of the questions that will be displayed in the page.
         [...this.questions].splice((this.currentPage - 1) * this.questionsPerPage, this.questionsPerPage),
