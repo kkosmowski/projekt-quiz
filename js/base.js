@@ -87,7 +87,7 @@ export default class Base {
     Adds specified class (if single) or classes (if an array) to a specified element.
   */
   static addClass(element, classNames) {
-    typeof classNames === 'object' ? element.classList.add(...classNames) : element.classList.add(classNames);
+    if (element) typeof classNames === 'object' ? element.classList.add(...classNames) : element.classList.add(classNames);
   }
 
 

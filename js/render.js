@@ -151,6 +151,8 @@ export default class Render {
   static endScreen(currentPage) {
     this.page(null, currentPage, null);
     this.quizEndScreenElement = this.quizPageElements[currentPage];
+    this.progressBoxesVisible = false;
+    this.progressValueVisible = false;
     Base.addClass(this.quizEndScreenElement, 'end-screen');
   }
 
@@ -205,7 +207,7 @@ export default class Render {
       'p',
       this.quizEndScreenElement,
       ['end-screen__paragraph', 'end-screen__general-score'],
-      Base.interpolate(Text.end.generalScoreText, correctAnswersCount, questionsCount, correctAnswersPercent),
+      Base.interpolate(Text.end.generalScoreText, correctAnswersCount, questionsCount, +(correctAnswersPercent).toFixed(2)),
       true
     );
   }
@@ -220,9 +222,8 @@ export default class Render {
     content += `<tr><th>${ Text.end.category }</th><th>${ Text.end.correctAnswers }</th><th>${ Text.end.percentage }</th></tr>`;
 
     categories.forEach(category => {
-      console.log(scores);
       if (scores[category]) {
-        content += `<tr><td>${ Text.categories[category] }</td><td>${ scores[category].correctAnswers }</td><td>${ scores[category].percentage || 0 }%</td></tr>`;
+        content += `<tr><td>${ Text.categories[category] }</td><td>${ scores[category].correctAnswers }</td><td>${ +(scores[category].percentage || 0).toFixed(2) }%</td></tr>`;
       }
     });
 
@@ -268,18 +269,30 @@ export default class Render {
     TODO: make explanation rendering optional
     TODO: add "more info url" rendering
    */
-  static explanations(explanations) {
+  static explanations(explanations, moreInfoUrls) {
     explanations.forEach((explanationText, index) => {
       const questionElement = this.quizPagesWrapperElement
         .querySelector(`.quiz-question__answer-input[name="question-${index + 1}"]`).parentElement.parentElement;
 
-      Base.createElement(
-        'div',
-        questionElement,
-        'explanation',
-        `<strong>${Text.review.explanation}: </strong>` + Base.parseText(explanationText),
-        true
-      );
+      if (explanationText) {
+        Base.createElement(
+          'div',
+          questionElement,
+          'explanation',
+          `<strong>${ Text.review.explanation }: </strong>` + Base.parseText(explanationText),
+          true
+        );
+      }
+
+      if (moreInfoUrls[index]) {
+        Base.createElement(
+          'div',
+          questionElement,
+          'more-info-url',
+          `<strong>${ Text.review.moreInfoUrl }: </strong><a href=${ moreInfoUrls[index] } target="_blank">${ moreInfoUrls[index] }</a>`,
+          true
+        )
+      }
     })
   }
 

@@ -1,5 +1,5 @@
 # Projekt quizu na zaliczenie
-v. 0.9.0
+v. 1.0.0
 
 ## Cel quizu
 #### Sprawdzenie wiedzy użytkownika
@@ -38,12 +38,14 @@ internetowych przez autora. Nowe doświadczenie w rozwiązywaniu problemów rów
 ---
 
 #### To do:
-* dodać link z wyjaśnieniami w trybie przeglądania;
-* dodać opcjonalność wyjaśnienia (nie każde pytanie go potrzebuje);
-* naprawić błąd na ostatniej stronie kiedy pytań jest mniej niż `questionsPerPage`;
 * dodać parser "\_text\_" => "&lt;em&gt;text&lt;/em&gt;";
 
 #### Changelog:
+* 1.0.0:
+  * dodany link ze szczegółami w widoku przeglądu;
+  * link ze szczegółami i wyjaśnienie jest teraz opcjonalne;
+  * ekran końcowy chowa indykatory postępu;
+  * dodano zaokrąglenie procentów głównego wyniku;
 * 0.9.0:
   * dodane pytania z kategorii Javascript;
   * dodane kilka pytań z kategorii HTML i CSS;

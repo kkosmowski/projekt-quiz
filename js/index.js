@@ -7,10 +7,9 @@ import Text from '../pl.js';
   Uses Base class as a helper, uses Render class as an extension to manage DOM.
  */
 class Quiz {
-  categories = ['html', 'css'];
-  // categories = ['html', 'css', 'javascript'];
+  categories = ['html', 'css', 'javascript'];
   categoriesCount = this.categories.length;
-  questionsCount = 4; // TODO: Fix issue with last page when questionCount=5 and questionsPerPage=2
+  questionsCount = 42;
   requiredPercentToPass = 75;
 
     /*
@@ -19,7 +18,7 @@ class Quiz {
       If we set the questions count to 10, and the question per page to 15
       it is obvious we should display only 10 questions on a page.
      */
-  questionsPerPage = Math.min(2, this.questionsCount);
+  questionsPerPage = Math.min(15, this.questionsCount);
   pages = Math.ceil(this.questionsCount / this.questionsPerPage);
   currentPage;
   lastCachedPage;
@@ -44,6 +43,7 @@ class Quiz {
   userAnswers;
   correctAnswers;
   explanations;
+  moreInfoUrls;
 
 
   /*
@@ -60,6 +60,7 @@ class Quiz {
     this.userAnswers = new Array(this.questionsCount).fill(null);
     this.correctAnswers = [];
     this.explanations = [];
+    this.moreInfoUrls = [];
     this.createQuiz();
   }
 
@@ -280,7 +281,7 @@ class Quiz {
       if (this.questionsDetails[category].length) {
         result[category] = {
           correctAnswers: `${ counter[category] }/${ this.questionsDetails[category].length }`,
-          percentage: +(counter[category] / this.questionsDetails[category].length * 100).toFixed(2),
+          percentage: counter[category] / this.questionsDetails[category].length * 100,
         }
       }
     });
@@ -404,6 +405,7 @@ class Quiz {
       const selectedCategory = selectCategory(checkLimit);
       const selectedQuestion = selectQuestion(fetchedQuestions, selectedCategory, checkLimit);
       this.explanations.push(fetchedQuestions[selectedCategory][selectedQuestion].explanation);
+      this.moreInfoUrls.push(fetchedQuestions[selectedCategory][selectedQuestion].moreInfoUrl);
       this.questionsDetails[selectedCategory].push(i);
       return [selectedCategory, selectedQuestion];
     };
@@ -539,7 +541,7 @@ class Quiz {
     Render.disableAnswerRadios();
     Render.markSelectedAnswers(this.userAnswers);
     Render.markCorrectAnswers(this.correctAnswers);
-    Render.explanations(this.explanations);
+    Render.explanations(this.explanations, this.moreInfoUrls);
     Base.show(Render.quizControlsElement);
     Base.hide(Render.progressElement); // hide Progress (between BackControl and ContinueControl)
     Base.show(this.restartControl); // show RestartControl instead of Progress

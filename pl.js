@@ -40,6 +40,7 @@ const Text = {
   },
   review: {
     explanation: 'Wyjaśnienie',
+    moreInfoUrl: 'Więcej szczegołów'
   }
 };
 
