@@ -18,7 +18,7 @@ class Quiz {
       If we set the questions count to 10, and the question per page to 15
       it is obvious we should display only 10 questions on a page.
      */
-  questionsPerPage = Math.min(10, this.questionsCount);
+  questionsPerPage = 1;
   pages = Math.ceil(this.questionsCount / this.questionsPerPage);
   currentPage;
   lastCachedPage;
@@ -503,11 +503,6 @@ class Quiz {
     }
 
     if (!pageCached) {
-      console.log(this.currentPage-1);
-      console.log((this.currentPage-1) * this.questionsPerPage);
-      console.log(this.questionsPerPage);
-      console.log([...this.questions].splice((this.currentPage - 1) * this.questionsPerPage, this.questionsPerPage));
-      console.log([...this.questions]);
       Render.page(
           // Get only portion of the questions that will be displayed in the page.
         [...this.questions].splice((this.currentPage - 1) * this.questionsPerPage, this.questionsPerPage),

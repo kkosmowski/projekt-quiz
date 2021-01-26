@@ -43,7 +43,7 @@
         "Do oznaczenia cytatu.",
         "Jest to generyczny element -[inline]- służący do stylowania tekstu."
       ],
-      "explanation": "Tag -[<em>]- (emphasis) to dodany w HTML5 semantyczny tag mający nadawać nacisk na tekst w nim zawarty. Domyślnie nakłada kursywę na tekst, jednak równie dobrze możemy ostylować -[<em>]- na pogrubiony, czerwony kolor lub na zwykły tekst i nadal będzie to poprawne.",
+      "explanation": "Tag -[<em>]- (emphasis) to dodany w HTML5 semantyczny tag mający nadawać nacisk na tekst w nim zawarty. Domyślnie nakłada kursywę na tekst, jednak równie dobrze możemy ostylować -[<em>]- na pogrubiony, czerwony kolor lub na zwykły tekst i -_nadal będzie to poprawne_-.",
       "moreInfoUrl": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em"
     },
     "5": {
@@ -78,7 +78,7 @@
         "Tagi -[<b>]-, -[<i>]- i -[<u>]- są już wycofane. Tag -[<strong>]- to następca -[<b>]-.",
         "Oba te tagi służą do tego samego i mogą być zamiennie stosowane."
       ],
-      "explanation": "Nie należy patrzeć na -[<strong>]- jako na element, którym pogrubimy tekst --- od tego mamy style CSS, lub tag -[<b>]-. Podobnie style -[<strong>]- nie są czymś intotnym i usunięcie pogrubienia, czy też zmiana koloru na czerwony będą jak najbardziej poprawnymi zmianami."
+      "explanation": "Nie należy patrzeć na -[<strong>]- jako na element, którym pogrubimy tekst --- -_od tego mamy style CSS_-, lub tag -[<b>]-. Podobnie style -[<strong>]- nie są czymś istotnym i usunięcie pogrubienia, czy też zmiana koloru na czerwony będą jak najbardziej poprawnymi zmianami."
     },
     "8": {
       "difficulty": 1,
@@ -123,7 +123,7 @@
         "-[<table>]- wykorzystujemy aby nadać lub poprawić responsywność stron internetowych.",
         "Do tworzenia tabel oraz layoutów stron."
       ],
-      "explanation": "W przeszłości tabele były popularną metodą tworzenia layoutu strony, dzieląc ją na wiersze, np. header, menu, sekcja pierwsze, sekcja druga, footer. Dziś jednak jest to jedynie przykre wspomnienie. Dużo osób jednak sądzi, że -[<table>]- to samo zło, jednak nadal jest to doskonałe narzędzie do tworzenia tabel lub elementów na stronie."
+      "explanation": "W przeszłości tabele były popularną metodą tworzenia layoutu strony, dzieląc go na wiersze -- np. header, menu, sekcja pierwsze, sekcja druga, footer. Dziś jednak jest to jedynie przykre wspomnienie. Dużo osób jednak sądzi, że -[<table>]- to samo zło, jednak nadal jest to doskonałe narzędzie do tworzenia tabel lub elementów na stronie."
     },
     "12": {
       "difficulty": 4,
@@ -215,7 +215,7 @@
     },
     "20": {
       "difficulty": 1,
-      "question": "Wybierz wszystkie błędy w tym kodzie. Zakładamy, że nie ma żadnego stylowania.\n-[<a src=\"index.html\">\n  <div>\n    <img href=\"logo.png\"></img>\n  </div>\n</a>]-",
+      "question": "Wybierz wszystkie błędy w tym kodzie. Zakładamy, że nie ma żadnego stylowania.\n--[<a src=\"index.html\">\n  <div>\n    <img href=\"logo.png\"></img>\n  </div>\n</a>]--",
       "answers": [
         "-[<a>]- ma błędny atrybut -[src]-, -[<div>]- w -[<a>]- oraz -[<img>]- bez atrybutu -[alt]-, z błędnym atrybutem -[href]- i tagiem zamykającym.",
         "-[<a>]- ma błędny atrybut -[src]-, -[<div>]- w -[<a>]-, -[<img>]- w -[<a>]- i z błędnym atrybutem -[href]- oraz brakiem atrybutu -[alt]-.",
@@ -261,7 +261,7 @@
       "question": "Czym jest atrybut -[aria-role]-?",
       "answers": [
         "Jest to atrybut definiujący cel i typ elementu dla urządzeń asystujących.",
-        "Jest to atrybut z serii ARIA, atrybutów zmieniających rodzaj elementu. -[aria-role=\"button\"]- sprawi, że nasz -[div]- będzie wyglądał i działał jak -[button]-.",
+        "Jest to atrybut z serii ARIA, atrybut zmieniający rodzaj elementu. -[aria-role=\"button\"]- sprawi, że nasz -[div]- będzie wyglądał i działał jak -[button]-.",
         "To atrybut definiujący rolę elementu, wymagany aby przeglądarka wiedziała, czy -[<header>]- jest headerem strony czy artykułu.",
         "To stary atrybut stosowany do oznaczenia roli elementu -[<div>]- zanim jeszcze pojawił się semantyczny HTML5 z tagami takimi jak -[<header>]-, -[<footer>]- itd."
       ],
@@ -341,7 +341,7 @@
         "Względem viewportu.",
         "Względem najbliższego przodka o -[position]- nie innym niż -[relative]-."
       ],
-      "explanation": "-[position: absolute]- opuszcza domyślny flow dokumentu, dopasowując się do najbliżsezgo przodka o -[position]- innym niż [static]-. Może się jednak zdażyć, że takiego przodka nie ma - wówczas element ustawi się względem okna (viewportu)."
+      "explanation": "-[position: absolute]- opuszcza domyślny flow dokumentu, dopasowując się do najbliżsezgo przodka o -[position]- innym niż -[static]-. Może się jednak zdarzyć, że takiego przodka nie ma - wówczas element ustawi się względem okna (viewportu)."
     },
     "2": {
       "difficulty": 2,
@@ -374,7 +374,7 @@
         "style inline, -[span]-, -[#parent]-, -[.item]-, -[span > span]-, -[#parent .item]-, -[.parent > .item]-.",
         "-[#parent]-, -[span]-, -[.item]-, -[span > span]-, -[#parent .item]-, -[.parent > .item]-, style inline."
       ],
-      "explanation": "W CSSie istnieje kluczowa charakterystyka zwana _specificity_, określająca konkretność danego selektora. Oznacza to, że każdy selektor (-[*]-, -[.parent + .parent]-, -[#parent > .item button]- itd.) ma swoje odwzorowanie w liczbie. Tag = 1, klasa = 10, id = 100, inline = 1000."
+      "explanation": "W CSSie istnieje kluczowa charakterystyka zwana -_specificity_-, określająca konkretność danego selektora. Oznacza to, że każdy selektor (-[*]-, -[.parent + .parent]-, -[#parent > .item button]- itd.) ma swoje odwzorowanie w liczbie. Tag = 1, klasa = 10, id = 100, inline = 1000."
     },
     "5": {
       "difficulty": 1,
@@ -395,7 +395,7 @@
         "-[background]- ustawia kolor tła dla elementu i wszystkich jego dzieci, podczas gdy -[background-color]- tylko dla tego konkretnego elementu.",
         "-[background]- to skrót od -[background-color]- i niczym się te property nie różnią."
       ],
-      "explanation": "-[background]- to tzw. _shorthand_, czyli skrót od innych property, w tym przypadku od wszystkich zaczynających się na \"background-\". Wartości podane w odpowiedniej kolejności pozwolą na ustawienie koloru, rozmiaru, położenia, powtarzania tła, a także na wiele innych opcji."
+      "explanation": "-[background]- to tzw. -_shorthand_-, czyli skrót od innych property, w tym przypadku od wszystkich zaczynających się na \"background-\". Wartości podane w odpowiedniej kolejności pozwolą na ustawienie koloru, rozmiaru, położenia, powtarzania tła, a także na wiele innych opcji."
     },
     "7": {
       "difficulty": 3,
@@ -417,7 +417,7 @@
         "-[code > *]-",
         "-[code:after(*)]-"
       ],
-      "explanation": "-[+]-, -[~]-, -[>]- itd. w selektorach CSS to tzw. kombinatory. Pozwalają one na wybranie elementów bez bezpośredniego ich wybrania. Aby wybrać element będący tuż po -[code]-, czyli _adjacent sibling_, stosujemy kombinator -[*]-.",
+      "explanation": "-[+]-, -[~]-, -[>]- itd. w selektorach CSS to tzw. kombinatory. Pozwalają one na wybranie elementów bez bezpośredniego ich wybrania. Aby wybrać element będący tuż po -[code]-, czyli -_adjacent sibling_-, stosujemy kombinator -[*]-.",
       "moreInfoUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator"
     },
     "9": {
@@ -472,7 +472,7 @@
         "Pseudoklasa to selektor, którego budowa to -[<nazwa-tagu>.<nazwa-klasy>]-, np. -[button.active]-. Pseudoelement (lub Pseudoidentyfikator) to selektor, którego budowa to <nazwa-tagu>#<nazwa-id>, np. -[button#next-step]-.",
         "Pseudoklasa to selektor, którego budowa to -[$<nazwa-klasy>]-, np. -[$active]-. Pseudoelement (lub Pseudoidentyfikator) to selektor, którego budowa to @<nazwa-pseudoid>, np. -[@next-step]-."
       ],
-      "explanation": "Z reguły pseudoelement poprzedzony jest -[::]- (wyjątek stanowi implementacja IE) np. -[::before]-, natomiast zawsze pseudoklasa poprzedzona jest -[:]-, np. -[:placeholder-shown]-. Pseudoelement to faktyczny element, który możemy ostylować, ustawić mu wymiary, tło, animować go. Może być dodany do każdego elementu _nie-void_, czyli takiego, który ma zamknięcie. Oznacza to, że nie można dodać pseudoelementów np. elementowi -[<input>]- czy -[<hr>]-."
+      "explanation": "Z reguły pseudoelement poprzedzony jest -[::]- (wyjątek stanowi implementacja IE) np. -[::before]-, natomiast -_zawsze_- pseudoklasa poprzedzona jest -[:]-, np. -[:placeholder-shown]-. Pseudoelement to faktyczny element, który możemy ostylować, ustawić mu wymiary, tło, animować go. Może być dodany do każdego elementu -_nie-void_-, czyli takiego, który ma zamknięcie. Oznacza to, że nie można dodać pseudoelementów np. elementowi -[<input>]- czy -[<hr>]-."
     },
     "14": {
       "difficulty": 2,
@@ -483,7 +483,7 @@
         "Id to unikalna nazwa elementu. Jeden element może mieć maksymalnie 1 id. Klas natomiast może mieć wiele i to po nich powinniśmy stylować. Przykłady: -[.przykladowe-id]-, -[#przykladowa-klasa]-.",
         "Klasa to unikalna nazwa elementu. Jeden element może mieć maksymalnie 1 klasę. Id natomiast może mieć wiele i to po nich powinniśmy stylować. Przykłady: -[.przykladowe-id]-, -[#przykladowa-klasa]-."
       ],
-      "explanation": "Element może mieć dowolną liczbę klas (-[.klasa]-), oddzielonych spacją, ale maksymalnie jedno id (-[#id]-). Atrybut typu -[id=\"id-1 id-2\"]- sprawi, że \"id-1 id-2\" będzie wartością id tego elementu. Powinniśmy unikać nazw tagów i id jako selektorów."
+      "explanation": "Element może mieć dowolną liczbę klas (-[.klasa]-), oddzielonych spacją, ale maksymalnie jedno id (-[#id]-). Atrybut typu -[id=\"id-1 id-2\"]- sprawi, że \"id-1 id-2\" będzie -_jedną_- wartością id tego elementu. Powinniśmy unikać nazw tagów i id jako selektorów."
     },
     "15": {
       "difficulty": 2,
@@ -498,7 +498,7 @@
     },
     "16": {
       "difficulty": 3,
-      "question": "Wyjaśnij róznice między: -[.item1 .item2]-, -[.item1 + .item2]-, -[.item1 ~ .item2]-.",
+      "question": "Wyjaśnij różnice między: -[.item1 .item2]-, -[.item1 + .item2]-, -[.item1 ~ .item2]-.",
       "answers": [
         "Pierwszy selektor to wszyscy potomkowie elementu -[.item1]- mający klasę -[.item2]-. Drugi to elementy o klasie -[.item2]- będące bezpośrednio po elementach o klasie -[.item1]-. Trzeci to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-.",
         "Pierwszy selektor to wszystkie dzieci (bezpośredni potomkowie) elementu -[.item1]- mające klasę -[.item2]-. Drugi to elementy o klasie -[.item2]- będące bezpośrednio po elementach o klasie -[.item1]-. Trzeci to elementy o klasie -[.item2]- będące bezpośrednio lub niebezpośrednio po elementach o klasie -[.item1]-.",
@@ -538,7 +538,7 @@
         "-[a[href*=\".pdf\"]]-",
         "-[a[href#=\".pdf\"]]-"
       ],
-      "explanation": "W CSSie możemy wybrać tylko elementy zawierające konkretne atrybuty i ich wartości, np. -[a[href]]- aby zaznaczyć -[a]- posiadające atrybut -[href]-. Możemy także wyszczególnić, że wartość tego atrybutu powinna kończyć się wartością \".pdf\" w ten sposób: -[href$=\".pdf\"]]-.\nWarto dodać, że opcja -[href*=\".pdf\"]]- także zadziała, ponieważ wyszukuje podanej wartości w całej wartości atrybutu, a więc może nie zadziałać tak, jakbyśmy tego oczekiwali."
+      "explanation": "W CSSie możemy wybrać tylko elementy zawierające konkretne atrybuty i ich wartości, np. -[a[href]]- aby zaznaczyć -[a]- posiadające atrybut -[href]-. Możemy także wyszczególnić, że wartość tego atrybutu powinna kończyć się wartością \".pdf\" w ten sposób: -[href$=\".pdf\"]-.\nWarto dodać, że opcja -[href*=\".pdf\"]- także zadziała, ponieważ wyszukuje podanej wartości w całej wartości atrybutu, ale oznacza to również, że może nie zadziałać tak, jakbyśmy tego oczekiwali."
     },
     "20": {
       "difficulty": 3,
@@ -583,9 +583,7 @@
         "Grid to jednowymiary model layoutu, potocznie nazywany Flex lub Flexbox. Jest to najpopularniejsza technologia tworzenia layoutów stron internetowych.",
         "Grid to jednowymiary model layoutu, potocznie nazywany Flex lub Flexbox. Jest to przestarzała technologia tworzenia layoutów stron internetowych, której powinniśmy unikać.",
         "Grid to dwuwymiarowy model layoutu, który ma działać na zasadzie dzielenia strony na siatkę elementów. Wersja eksperymentalna jest już dostępna, jednak nie ma na razie szerokiego wsparcia przeglądarek."
-      ],
-      "explanation": "Lorem ipsum, dolor sit amet.",
-      "moreInfoUrl": ""
+      ]
     },
     "24": {
       "difficulty": 1,
@@ -613,9 +611,9 @@
       "difficulty": 4,
       "question": "Do czego służy -[@media]-?",
       "answers": [
-        "Jest to reguła umożliwiająca nadanie styli w określonym scenariuszu - np. w widoku drukowania, na ekranach o maksymalnej szerokości 600px, gdy preferowany jest ciemny motyw itd.",
+        "Jest to reguła umożliwiająca nadanie styli w określonym scenariuszu --- np. w widoku drukowania, na ekranach o maksymalnej szerokości 600px, gdy preferowany jest ciemny motyw itd.",
         "Jest to reguła umożliwiająca zaimportowanie elementów takich jak obrazy czy fonty do arkusza styli, aby móc później używać ich jako zmiennych do ustawienia ścieżki.",
-        "Jest to reguła umożliwiająca nadanie styli responsywnych, tj. ustawienie styli na telefony, tablety i PC, podczas gdy -[@prefers]- umożlwia nadanie styli, gdy użytkownik preferuje np. ciemny motyw.",
+        "Jest to reguła umożliwiająca nadanie styli responsywnych, tj. ustawienie styli na telefony, tablety i PC, podczas gdy -[@prefers]- umożliwia nadanie styli, gdy użytkownik preferuje np. ciemny motyw.",
         "Jest to reguła z preprocesora Sass, stosowana do importowania innych plików styli."
       ],
       "moreInfoUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media"
@@ -650,7 +648,7 @@
         "-[padding-left]- i -[padding-top]-",
         "-[margin-left]- i -[margin-top]-"
       ],
-      "explanation": "-[transform: translate]- to najwydajniejszy sposób na animację zmiany pozycji elementów. Warto również dodać do tego property -[will-change]- pozwalające przeglądarace \"przygotować się\" do takiej zmiany."
+      "explanation": "-[transform: translate]- to najwydajniejszy sposób na animację zmiany pozycji elementów. Warto również dodać wtedy property -[will-change]- pozwalające przeglądarace \"przygotować się\" do takiej zmiany."
     },
     "30": {
       "difficulty": 4,
@@ -781,7 +779,8 @@
         "Wystąpi błąd - nie można zmienić wartości -[const]-.",
         "Wystąpi błąd - wartość -[const]- musi mieć zainicjalizowaną wartość."
       ],
-      "explanation": "-[const]- to stała, której wartość można zainicjalizować tylko raz i musi to być wartość podana podczas deklaracji. Nie jest możliwe zadeklarowanie stałej: -[const x;]- i zdefiniowanie jej wartości później. Kod -[x = 5;]- nie będzie uznany za błąd ponieważ poza trybem -[strict]- Javascript jest \"wyrozumiały\"."
+      "explanation": "-[const]- to stała, której wartość można zainicjalizować tylko raz i musi to być wartość podana podczas deklaracji. Nie jest możliwe zadeklarowanie stałej: -[const x;]- i zdefiniowanie jej wartości później. Kod -[x = 5;]- nie będzie uznany za błąd ponieważ poza trybem -[strict]- Javascript jest \"wyrozumiały\". Więcej o trybie -[strict]-:",
+      "moreInfoUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode"
     },
     "6": {
       "difficulty": 2,
@@ -804,7 +803,7 @@
         "-[document.getElementByClassName('element');]-",
         "-[document.getElementByClassName('.element');]-"
       ],
-      "explanation": "Obiekt -[document]- posiada metodę -[getElementsByClassName]- pobierającą samą nazwę klasy CSSowej - w tym przypadku -[element]-. Należy zwrócić uwagę, że zwracana nie jest lista typu -[Array]-, a -[HTMLCollection]-, która rózni się np. brakiem metod -[forEach]- czy -[map]-."
+      "explanation": "Obiekt -[document]- posiada metodę -[getElementsByClassName]- pobierającą samą nazwę klasy CSSowej - w tym przypadku -[element]-. Należy zwrócić uwagę, że zwracana nie jest listą typu -[Array]-, a -[HTMLCollection]-, która różni się np. brakiem metod -[forEach]- czy -[map]-."
     },
     "8": {
       "difficulty": 2,
@@ -821,7 +820,7 @@
       "difficulty": 2,
       "question": "Co zwróci to porównanie?: -[\"1\" == 1]-",
       "answers": [
-        "-[true]-, ponieważ operator == dokonuje konwersji typów jeżeli jest to konieczne.",
+        "-[true]-, ponieważ operator -[==]- dokonuje konwersji typów jeżeli jest to konieczne.",
         "-[true]- ponieważ w Javascripcie -[string]- zawierający liczbę automatycznie konwertowany jest na -[number]-.",
         "-[false]-, ponieważ typy wartości są różne.",
         "-[false]-, ponieważ Javascript konwertujes stringi na ich wartość ASCII, a w tym przypadku wartość ASCII znaku \"1\" nie wynosi 1, a 49."
@@ -837,7 +836,7 @@
         "-[undefined]-",
         "Błąd: zmienna -[Infinity]- nie została zadeklarowana."
       ],
-      "explanation": "W Javascripcie mamy dwie bardzo małe wartości, jedna to -[Number.MIN_VALUE]-, a druga to -[-Infinity]-. O ile ta druga w każdym innym przypadku okaże się być najmniejsza, o tyle -[NaN]- nie stosuje się do reguł arytmetyki -- zarówno -[0 > NaN]-, -[0 == NaN]-, -[0 === NaN]- jak i -[0 < NaN]- zwróci false. Nawet -[NaN == NaN]-."
+      "explanation": "W Javascripcie mamy dwie bardzo małe wartości, jedna to -[Number.MIN_VALUE]-, a druga to -[-Infinity]-. O ile ta druga w każdym innym przypadku okaże się być najmniejsza, o tyle -[NaN]- nie stosuje się do reguł arytmetyki -- zarówno -[0 > NaN]-, -[0 == NaN]-, -[0 === NaN]- jak i -[0 < NaN]- zwróci false. Nawet -[NaN === NaN]-."
     },
     "11": {
       "difficulty": 3,
@@ -936,7 +935,7 @@
         "-[45]-",
         "-[\"43++\"]-"
       ],
-      "explanation": "Operator inkrementacji -[++]- może być dodany jako prefiks lub sufiks. Warto wiedzieć, że użyty jako sufiks (-[zmienna++]-) zwraca wartość zmiennej przed jej inkrementacją (zwiększeniem o 1)."
+      "explanation": "Operator inkrementacji -[++]- może być dodany jako prefiks lub sufiks. Warto wiedzieć, że użyty jako sufiks (-[zmienna++]-) zwraca wartość zmiennej przed jej inkrementacją (zwiększeniem o 1), natomiast prefiks (-[++zmienna]-) zwróci wartość zmiennej po jej inkrementacji."
     },
     "20": {
       "difficulty": 4,
@@ -947,7 +946,7 @@
         "-[45]-",
         "-[\"++43\"]-"
       ],
-      "explanation": "Operator inkrementacji -[++]- może być dodany jako prefiks lub sufiks. Warto wiedzieć, że użyty jako prefiks (-[++zmienna]-) zwraca wartość zmiennej po jej inkrementacji (zwiększeniu o 1)."
+      "explanation": "Operator inkrementacji -[++]- może być dodany jako prefiks lub sufiks. Warto wiedzieć, że użyty jako prefiks (-[++zmienna]-) zwraca wartość zmiennej po jej inkrementacji (zwiększeniu o 1), natomiast sufiks (-[zmienna++]-) zwróci wartość przed inkrementacją."
     },
     "21": {
       "difficulty": 3,
@@ -958,18 +957,18 @@
         "-[105]-",
         "-[true]-"
       ],
-      "explanation": "Operator logiczny -[&&]- zwraca pierwszą wartość falsy, czyli taką, którą da się przekonwertować na -[false]-. Jeżeli takiej nie ma, zwraca ostatnią. -[Boolean(100)]- zwróci true, a więc wynikiem jest -[5]-. Gdyby przykładem było -[0 && 5]- otrzymalibyśmy -[0]-."
+      "explanation": "Operator logiczny -[&&]- zwraca pierwszą wartość -_falsy_-, czyli taką, którą da się przekonwertować na -[false]-. Jeżeli takiej nie ma, zwraca ostatnią. -[Boolean(100)]- zwróci true, a więc wynikiem jest -[5]-. Gdyby przykładem było -[0 && 5]- otrzymalibyśmy -[0]-."
     },
     "22": {
       "difficulty": 3,
       "question": "Jaki wynik da ten kod: -[console.log(100 || 5);]-?",
       "answers": [
-        "-[5]-",
         "-[100]-",
+        "-[5]-",
         "-[105]-",
         "-[true]-"
       ],
-      "explanation": "Operator logiczny -[||]- zwraca pierwszą wartość truthy, czyli taką, którą da się przekonwertować na -[true]-. Jeżeli takiej nie ma, zwraca ostatnią. -[Boolean(100)]- zwróci true, a więc wynikiem jest -[100]-. Gdyby przykładem było -[0 || 5]- otrzymalibyśmy wynik -[5]-."
+      "explanation": "Operator logiczny -[||]- zwraca pierwszą wartość -_truthy_-, czyli taką, którą da się przekonwertować na -[true]-. Jeżeli takiej nie ma, zwraca ostatnią. -[Boolean(100)]- zwróci true, a więc wynikiem jest -[100]-. Gdyby przykładem było -[0 || 5]- otrzymalibyśmy wynik -[5]-."
     },
     "23": {
       "difficulty": 3,
@@ -1012,7 +1011,7 @@
         "-[NaN]-",
         "-[null]-"
       ],
-      "explanation": "Operator zaprzeczenia zostaje tu użyty dwukrotnie, a więc rozbijmy przykład na dwa kroki: 1. zamieniamy null na przeciwną dla niego wartość boolean. null jest wartością falsy, a więc konwertowaną do -[false]-, dlatego -[!null]- da nam -[true]-. Ponowne zaprzeczenie, a więc -[!!null]- jest równoznaczne zaprzeczeniu -[!true]-, a więc wynikiem będzie -[false]."
+      "explanation": "Operator zaprzeczenia zostaje tu użyty dwukrotnie, a więc rozbijmy przykład na dwa kroki: 1. zamieniamy null na przeciwną dla niego wartość boolean. null jest wartością -_falsy_-, a więc konwertowaną do -[false]-, dlatego -[!null]- da nam -[true]-. Ponowne zaprzeczenie, a więc -[!!null]- jest równoznaczne zaprzeczeniu -[!true]-, a więc wynikiem będzie -[false]."
     },
     "27": {
       "difficulty": 2,
@@ -1112,7 +1111,7 @@
         "-['class']-",
         "-['string']-"
       ],
-      "explanation": "Klasy w Javascripcie to nic innego jak funkcje, owinięte tzw. \"syntactic sugar\" (pol. \"lukier składniowy\") czyli ładną otoczką upiększającą i ułatwiającą składnię języka. Wszystko co napiszemy klasami, możemy napisać również funkcjami."
+      "explanation": "Klasy w Javascripcie to nic innego jak funkcje, owinięte tzw. -_syntactic sugar_- (pol. \"lukier składniowy\") czyli ładną otoczką upiększającą i ułatwiającą składnię języka. Wszystko co napiszemy klasami, możemy napisać również funkcjami."
     },
     "36": {
       "difficulty": 4,
@@ -1156,7 +1155,7 @@
         "-[Infinity]-",
         "-[Math.random()]-"
       ],
-      "explanation": "-[NaN]- nie stosuje się do reguł arytmetyki -- zarówno -[0 > NaN]-, -[0 == NaN]-, -[0 === NaN]- jak i -[0 < NaN]- zwróci false. Nawet -[NaN == NaN]-."
+      "explanation": "-[NaN]- nie stosuje się do reguł arytmetyki -- zarówno -[0 > NaN]-, -[0 == NaN]-, -[0 === NaN]- jak i -[0 < NaN]- zwróci false. Nawet -[NaN === NaN]-."
     },
     "40": {
       "difficulty": 3,

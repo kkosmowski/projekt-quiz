@@ -547,7 +547,7 @@ export default class Render {
       'span',
       question,
       'quiz-question__label',
-      `${Text.common.question}: ${ this.questionsRenderedCount }: `
+      `${ Text.common.question } ${ this.questionsRenderedCount }: `
     );
     Base.createElement('span', question, null, content, true);
 

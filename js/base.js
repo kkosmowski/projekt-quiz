@@ -47,7 +47,8 @@ export default class Base {
     const replaceTags = (string) => string
       .replaceAll('<', '&lt;').replaceAll('>', '&gt;')
       .replaceAll('--[', '<code class="block">').replaceAll(']--', '</code>')
-      .replaceAll('-[', '<code>').replaceAll(']-', '</code>');
+      .replaceAll('-[', '<code>').replaceAll(']-', '</code>')
+      .replaceAll('-_', '<em>').replaceAll('_-', '</em>');
 
     const replaceDashes = (string) => string.replaceAll('---', '&mdash;').replaceAll('--', '&ndash;');
 

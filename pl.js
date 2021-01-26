@@ -21,9 +21,9 @@ const Text = {
       questionCount: 'Quiz składa się z&nbsp;<em>[_] pytań</em> - po&nbsp;[_] z&nbsp;każdej',
       additionalQuestionCount: ' kategorii i&nbsp;[_]&nbsp;dodatkowe z&nbsp;losowej',
       questionsDivided: ' kategorii.\n\nPytania podzielone są na&nbsp;<em>cztery stopnie trudności</em> - po&nbsp;[_] z&nbsp;każdego. ',
-      additionalDividedSingleQuestion: 'Ostatnie pytanie będzie zawsze o&nbsp;stopniu trudności&nbsp;3.',
-      additionalDividedMultipleQuestion: 'Ostatnie [_] pytania będą zawsze o&nbsp;stopniu trudności&nbsp;3.',
-      rest: '\n\nKażde pytanie oznaczone jest kategorią z&nbsp;lewej strony.\n\nPytania są losowane z&nbsp;większej puli, a&nbsp;więc dwa podejścia do&nbsp;quizu będą skutkowały innymi pytaniami oraz w&nbsp;innej kolejności. Odpowiedzi również mogą być w&nbsp;innej kolejności.\n\nNie ma limitu czasowego.\n\nPowodzenia!'
+      additionalDividedSingleQuestion: 'Ostatnie pytanie będzie o&nbsp;losowym stopniu trudności.',
+      additionalDividedMultipleQuestion: 'Ostatnie [_] pytania będą o&nbsp;losowym stopniu trudności.',
+      rest: '\n\nKażde pytanie oznaczone jest kategorią z&nbsp;lewej strony.\n\nPytania są losowane z&nbsp;większej puli, a&nbsp;więc dwa podejścia do&nbsp;quizu będą skutkowały innymi pytaniami oraz będą w&nbsp;innej kolejności. Odpowiedzi również mogą być w&nbsp;innej kolejności.\n\nNie ma limitu czasowego.\n\nPowodzenia!'
     },
   },
   end: {
@@ -40,7 +40,7 @@ const Text = {
   },
   review: {
     explanation: 'Wyjaśnienie',
-    moreInfoUrl: 'Więcej szczegołów'
+    moreInfoUrl: 'Więcej szczegółów'
   }
 };
 
