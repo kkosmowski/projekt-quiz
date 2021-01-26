@@ -44,6 +44,12 @@ $background-color-correct: #e4f9e4;
   }
 }
 
+.print {
+  .quiz-question::before {
+    content: none;
+  }
+}
+
 .quiz-question__question {
   margin-bottom: 1rem;
   white-space: pre-wrap;

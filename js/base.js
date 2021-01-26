@@ -4,13 +4,20 @@
  */
 export default class Base {
   static displayNoneClass = 'display:none';
+  static permanentDisplayNoneClass = 'display:none--permanent';
 
 
   /*
     Adds a display:none rule class to an element.
    */
-  static hide(element) {
-    element.classList.add(this.displayNoneClass);
+  static hide(element, permanentHide) {
+    if (element) {
+      if (!permanentHide) {
+        element.classList.add(this.displayNoneClass);
+      } else {
+        element.classList.add(this.permanentDisplayNoneClass);
+      }
+    }
   }
 
 
@@ -19,7 +26,7 @@ export default class Base {
     Note: It will only show an element that was hidden with hide method.
    */
   static show(element) {
-    element.classList.remove(this.displayNoneClass);
+    if (element) element.classList.remove(this.displayNoneClass);
   }
 
 
@@ -72,14 +79,18 @@ export default class Base {
     - or with contentAsHtml true (innerHTML)
     Additionally returns the element.
    */
-  static createElement(tag, parent, classes, content = null, contentAsHtml = false) {
+  static createElement(tag, parent, classes, content = null, contentAsHtml = false, prepend = false) {
     const element = document.createElement(tag);
     if (content) {
       if (contentAsHtml) element.innerHTML = content;
       else element.textContent = content;
     }
     if (classes) this.addClass(element, classes);
-    parent.append(element);
+    if (!prepend) {
+      parent.append(element);
+    } else {
+      parent.prepend(element);
+    }
     return element;
   }
 
@@ -103,7 +114,7 @@ export default class Base {
     Removes specified class (if single) or classes (if an array) from a specified element.
    */
   static removeClass(element, classNames) {
-    typeof classNames === 'object' ? element.classList.remove(...classNames) : element.classList.remove(classNames);
+    if (element) typeof classNames === 'object' ? element.classList.remove(...classNames) : element.classList.remove(classNames);
   }
 
 

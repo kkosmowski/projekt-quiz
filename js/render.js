@@ -24,6 +24,11 @@ export default class Render {
 
   static questionsRenderedCount;
 
+  static resultPassed;
+  static resultCorrectAnswersCount;
+  static resultCorrectAnswersPercent;
+  static resultPerCategory;
+
 
   /*
     Initial method, renders fundamental elements and declares default values.
@@ -121,6 +126,10 @@ export default class Render {
       const previousFirstBox = (currentPage - (increase ? 2 : 0)) * questionsPerPage + 1;
       const previousLastBox = previousFirstBox + questionsPerPage;
 
+      console.log(previousFirstBox);
+      console.log(previousLastBox);
+      console.log(increase);
+
       for (let i = previousFirstBox; i < previousLastBox; i++) {
         Base.removeClassFromId(`progress-box-${ i }`, '--current');
       }
@@ -162,7 +171,7 @@ export default class Render {
     Also adds EventListeners with provided functions in input.
     The EventListeners are removed after single click.
    */
-  static endScreenControls(reviewAnswersFn, restartFn) {
+  static endScreenControls(reviewAnswersFn, restartFn, printFn) {
     const controlsElement = Base.createElement(
       'div',
       this.quizEndScreenElement,
@@ -196,6 +205,19 @@ export default class Render {
       restartButton.removeEventListener('click', _restartFn);
       restartFn();
     });
+
+    const printButton = Base.createElement(
+      'button',
+      controlsElement,
+      ['end-screen__control--print', 'button'],
+      Text.end.printScore
+    );
+
+    // Add a EventListener and immediately remove it after function has been invoked.
+    // Follow with specified function.
+    printButton.addEventListener('click', function _printFn() {
+      printFn();
+    });
   }
 
 
@@ -203,11 +225,13 @@ export default class Render {
     Renders general score in the end screen.
    */
   static endScreenScores(correctAnswersCount, questionsCount, correctAnswersPercent) {
+    this.resultCorrectAnswersCount = correctAnswersCount;
+    this.resultCorrectAnswersPercent = +(correctAnswersPercent).toFixed(2);
     Base.createElement(
       'p',
       this.quizEndScreenElement,
       ['end-screen__paragraph', 'end-screen__general-score'],
-      Base.interpolate(Text.end.generalScoreText, correctAnswersCount, questionsCount, +(correctAnswersPercent).toFixed(2)),
+      Base.interpolate(Text.end.generalScoreText, correctAnswersCount, questionsCount, this.resultCorrectAnswersPercent),
       true
     );
   }
@@ -218,6 +242,7 @@ export default class Render {
     Displays a table with each category as a new row, containing correct answers count and percentage.
    */
   static endScreenScorePerCategory(scores, categories) {
+    this.resultPerCategory = scores;
     let content = `${ Text.end.categoryScoresText }: <table class="end-screen__scores-table">`;
     content += `<tr><th>${ Text.end.category }</th><th>${ Text.end.correctAnswers }</th><th>${ Text.end.percentage }</th></tr>`;
 
@@ -244,6 +269,7 @@ export default class Render {
     The result is an icon, either a green tick or red cross visualizing the pass/fail result.
    */
   static endScreenResult(passed) {
+    this.resultPassed = passed;
     const graphicResult = Base.createElement(
       'div',
       this.quizEndScreenElement,
@@ -521,6 +547,7 @@ export default class Render {
 
     if (questionsToRender) {
       questionsToRender.forEach(question => {
+        console.log(this.quizPageElements);
         this.questionsRenderedCount++;
         this.question(
           this.quizPageElements[currentPage],
@@ -604,5 +631,60 @@ export default class Render {
       positions[random] = temp;
     }
     return positions;
+  }
+
+  static printPage() {
+    const printPageScoreGeneralPercentage = 'Uzyskałeś(aś) <strong>' + this.resultCorrectAnswersPercent + '%</strong> z testu z wiedzy HTML, CSS, Javascript.';
+    const printPageScoreGeneralCount = 'W wyniku poprawnej odpowiedzi na <strong>' + this.resultCorrectAnswersCount + '</strong> z <strong>' + this.questionsRenderedCount + '</strong> pytań.';
+
+    const printPage = Base.createElement(
+      'section',
+      this.quizPagesWrapperElement,
+      'print-page',
+      '',
+      false,
+      true
+    );
+
+    Base.createElement(
+      'h2',
+      printPage,
+      'print-page__title',
+      Text.printPage.certificate
+    );
+
+    Base.createElement(
+        'p',
+      printPage,
+      ['print-page__score', 'print-page__score--general-percentage'],
+      printPageScoreGeneralPercentage,
+      true
+    );
+
+    Base.createElement(
+        'p',
+      printPage,
+      ['print-page__score', 'print-page__score--general-count'],
+      printPageScoreGeneralCount,
+      true
+    );
+
+    Base.createElement(
+        'p',
+      printPage,
+      'print-page__your-answers',
+      'Twoje odpowiedzi:'
+    );
+
+    Base.addClass(Render.quizElement, 'print');
+    Render.quizPageElements.forEach(element => Base.show(element));
+    Base.hide(Render.quizEndScreenElement);
+
+    html2pdf(document.body);
+
+    Base.hide(printPage);
+    Base.removeClass(Render.quizElement, 'print');
+    Render.quizPageElements.forEach(element => Base.hide(element));
+    Base.show(Render.quizEndScreenElement);
   }
 }

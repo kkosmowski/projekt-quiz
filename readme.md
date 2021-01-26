@@ -1,5 +1,5 @@
 # Projekt quizu na zaliczenie
-v. 1.1.4
+v. 1.3.0
 
 ## Cel quizu
 #### Sprawdzenie wiedzy użytkownika
@@ -37,10 +37,12 @@ internetowych przez autora. Nowe doświadczenie w rozwiązywaniu problemów rów
   
 ---
 
-#### To do:
-* dodać zapis do PDF;
-
 #### Changelog:
+* 1.3.0:
+  * dodany zapis do PDF;
+  * naprawiony błąd, w którym progress boxy wyrzucały bład gdy cofaliśmy się ze strony, na której było mniej pytań niż powinno być;
+  * napraiwony błąd, w wyniku którego po restarcie quizu nadal były pokazywane instrukcje;
+  * od teraz autor pokazuje się tylko raz;
 * 1.1.4:
   * dodano logo Vistula;
 * 1.1.3:

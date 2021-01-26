@@ -35,7 +35,12 @@ const Text = {
     generalScoreText: 'Odpowiedziałeś(aś) poprawnie na [_] z [_] odpowiedzi.\nDaje to wynik <em>[_]%</em>.',
     percentage: 'Procent',
     reviewAnswers: 'Przejrzyj odpowiedzi',
+    printScore: 'Drukuj wynik',
     tryAgain: 'Spróbuj ponownie',
+
+  },
+  printPage: {
+    certificate: 'Certyfikat',
 
   },
   review: {

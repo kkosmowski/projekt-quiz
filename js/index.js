@@ -7,6 +7,7 @@ import Text from '../pl.js';
   Uses Base class as a helper, uses Render class as an extension to manage DOM.
  */
 class Quiz {
+  authorShown = false;
   categories = ['html', 'css', 'javascript'];
   categoriesCount = this.categories.length;
   questionsCount = 25;
@@ -31,7 +32,7 @@ class Quiz {
     finished: 'finished', // End screen displayed.
     reviewing: 'reviewing',
   };
-  state; // Current quiz state, depending on its value some actions may be allowed and/or blocked.
+  state = this.states.none; // Current quiz state, depending on its value some actions may be allowed and/or blocked.
 
   backControl;
   continueControl;
@@ -44,7 +45,7 @@ class Quiz {
   correctAnswers;
   explanations;
   moreInfoUrls;
-
+  reviewRendered;
 
   /*
     Initialization method, used to start (and restart) the creation of the quiz.
@@ -53,7 +54,6 @@ class Quiz {
   init() {
     this.currentPage = 0;
     this.lastCachedPage = 0;
-    this.state = this.states.none;
 
     this.questions = [];
     this.questionsDetails = {};
@@ -61,8 +61,13 @@ class Quiz {
     this.correctAnswers = [];
     this.explanations = [];
     this.moreInfoUrls = [];
+    this.reviewRendered = false;
+    Render.init();
     this.createQuiz();
-    console.log('Quiz v1.1.0\nAutor: Krzysztof Kosmowski\nhttps://github.com/zaxanq/projekt-quiz');
+    if (!this.authorShown) {
+      console.log('Quiz v1.3.0\nAutor: Krzysztof Kosmowski\nhttps://github.com/zaxanq/projekt-quiz');
+      this.authorShown = true;
+    }
   }
 
 
@@ -71,7 +76,6 @@ class Quiz {
     Renders instructions.
    */
   createQuiz() {
-    Render.init();
     this.addAnswerListener();
       // Show quiz instructions only on the first launch.
     if (this.state === this.states.none) {
@@ -80,10 +84,10 @@ class Quiz {
         this.categoriesCount,
         this.startQuiz.bind(this)
       );
+      this.state = this.states.preStart;
     } else if (this.state === this.states.restarted) {
       this.startQuiz();
     }
-    this.state = this.states.preStart;
   }
 
 
@@ -101,7 +105,6 @@ class Quiz {
    */
   startQuiz() {
     this.loadQuestions();
-    this.state = this.states.inProgress;
   }
 
 
@@ -135,14 +138,14 @@ class Quiz {
     Specific page number is relevant when and increase is not passed, and it allows us to set the page
     to a specific page id, instead of changing it to previous or next.
    */
-  changePage(increase, specificPageNumber = null) {
+  changePage(increase, specificPageNumber = null, permanentHide = false) {
     if (typeof increase === 'boolean') {
       increase ? this.currentPage++ : this.currentPage--;
-      this.renderPage(increase);
+      this.renderPage(increase, permanentHide);
     } else {
       if (typeof specificPageNumber === 'number') {
         this.currentPage = specificPageNumber;
-        this.renderPage(null);
+        this.renderPage(null, permanentHide);
       }
     }
 
@@ -443,7 +446,12 @@ class Quiz {
         }
 
         this.setupControls();
-        this.setNextPage();
+        if (this.state === this.states.preStart) {
+          this.setNextPage(true);
+        } else {
+          Render.quizPageElements.push(undefined);
+          this.changePage(null, 1);
+        }
         this.state = this.states.inProgress;
       });
   }
@@ -456,6 +464,17 @@ class Quiz {
    */
   markProgressBox(questionId) {
     Base.addClassToId(`progress-box-${ questionId }`, '--answered');
+  }
+
+  //TODO: Add documentation
+  printScores() {
+    Render.disableAnswerRadios();
+    Render.markSelectedAnswers(this.userAnswers);
+    Render.markCorrectAnswers(this.correctAnswers);
+    Render.explanations(this.explanations, this.moreInfoUrls);
+    this.reviewRendered = true;
+
+    Render.printPage();
   }
 
 
@@ -480,7 +499,7 @@ class Quiz {
     Render.endScreenResult(correctAnswersPercent >= this.requiredPercentToPass);
     Render.endScreenScores(correctAnswersCount, this.questionsCount, correctAnswersPercent);
     Render.endScreenScorePerCategory(this.getScoresByCategory(), this.categories);
-    Render.endScreenControls(this.reviewAnswers.bind(this), this.restartQuiz.bind(this));
+    Render.endScreenControls(this.reviewAnswers.bind(this), this.restartQuiz.bind(this), this.printScores.bind(this));
   }
 
 
@@ -491,15 +510,18 @@ class Quiz {
       the next page (next = true)
       the previous page (next = false)
    */
-  renderPage(next) {
+  renderPage(next, permanentHide) {
     const pageCached = this.checkIfPageCached();
 
       // If next is a boolean, hide adjacent page.
     if (typeof next === 'boolean') {
-      Base.hide(Render.quizPageElements[next ? this.currentPage - 1 : this.currentPage + 1]);
+      Base.hide(Render.quizPageElements[next ? this.currentPage - 1 : this.currentPage + 1], permanentHide);
       // Else hide all (currently rendered) pages.
     } else {
-      Render.quizPageElements.forEach(pageElement => Base.hide(pageElement));
+      console.log(this.state);
+      if (this.state !== this.states.restarted && this.state !== this.states.reviewing) {
+        Render.quizPageElements.forEach(pageElement => Base.hide(pageElement));
+      }
     }
 
     if (!pageCached) {
@@ -539,10 +561,12 @@ class Quiz {
   reviewAnswers() {
     Base.hide(Render.quizEndScreenElement);
     this.state = this.states.reviewing;
-    Render.disableAnswerRadios();
-    Render.markSelectedAnswers(this.userAnswers);
-    Render.markCorrectAnswers(this.correctAnswers);
-    Render.explanations(this.explanations, this.moreInfoUrls);
+    if (!this.reviewRendered) {
+      Render.disableAnswerRadios();
+      Render.markSelectedAnswers(this.userAnswers);
+      Render.markCorrectAnswers(this.correctAnswers);
+      Render.explanations(this.explanations, this.moreInfoUrls);
+    }
     Base.show(Render.quizControlsElement);
     Base.hide(Render.progressElement); // hide Progress (between BackControl and ContinueControl)
     Base.show(this.restartControl); // show RestartControl instead of Progress
@@ -582,14 +606,14 @@ class Quiz {
 
     This method is also used after this quiz' question have been drawn to set page to quest page 1.
    */
-  setNextPage() {
+  setNextPage(permanentHide = false) {
     if (
       this.checkIfAllPageAnswersAreGiven()
       && this.state !== this.states.none
       && this.state !== this.states.finished
     ) {
       if (this.currentPage !== this.pages) {
-        this.changePage(true);
+        this.changePage(true, null, permanentHide);
       } else {
         this.endQuiz();
       }

@@ -7,6 +7,10 @@ body {
   .display\:none {
     display: none;
   }
+
+  .display\:none--permanent {
+    display: none;
+  }
 }
 
 .quiz {
@@ -33,7 +37,6 @@ body {
 
 .non-question-page {
   width: max(60%, 30rem);
-  padding-top: 4rem;
   margin: 0 auto;
 }
 

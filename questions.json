@@ -633,9 +633,9 @@
       "difficulty": 4,
       "question": "Wyjaśnij ten selektor: -[[aria-role=navigation] > ul a:not([href^=mailto])]-",
       "answers": [
-        "Szukamy w elemencie o atrybucie -[aria-role=navigation]- elementów -[a]-, których atrybut -[href] zaczyna się tekstem -[mailto]-.",
-        "Szukamy w elemencie o atrybucie -[aria-role=navigation]- elementów -[a]-, których atrybut -[href] nie kończy się tekstem -[mailto]-.",
-        "Szukamy w elementów o atrybucie -[aria-role=navigation]- będących obok elementów -[a]- o atrybucie -[href] nie kończącym się tekstem -[mailto]-.",
+        "Szukamy w elemencie o atrybucie -[aria-role=navigation]- elementów -[a]-, których atrybut -[href]- zaczyna się tekstem -[mailto]-.",
+        "Szukamy w elemencie o atrybucie -[aria-role=navigation]- elementów -[a]-, których atrybut -[href]- nie kończy się tekstem -[mailto]-.",
+        "Szukamy w elementów o atrybucie -[aria-role=navigation]- będących obok elementów -[a]- o atrybucie -[href]- nie kończącym się tekstem -[mailto]-.",
         "Selektor jest niepoprawny, ponieważ powinno być -[*[aria-role=\"navigation\"]]-."
       ]
     },
