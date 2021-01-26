@@ -1,5 +1,5 @@
 # Projekt quizu na zaliczenie
-v. 1.1.3
+v. 1.1.4
 
 ## Cel quizu
 #### Sprawdzenie wiedzy użytkownika
@@ -38,10 +38,11 @@ internetowych przez autora. Nowe doświadczenie w rozwiązywaniu problemów rów
 ---
 
 #### To do:
-* dodać logo Vistula;
 * dodać zapis do PDF;
 
 #### Changelog:
+* 1.1.4:
+  * dodano logo Vistula;
 * 1.1.3:
   * poprawki w pytaniach, odpowiedziach i wyjaśnieniach;
   * dodany parser "-\_text\_-" => "&lt;em&gt;text&lt;/em&gt;";

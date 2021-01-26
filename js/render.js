@@ -327,6 +327,24 @@ export default class Render {
       'header__subtitle',
       Text.common.htmlCssAndJs
     );
+
+    const logoLink = Base.createElement(
+      'a',
+      quizHeader,
+      'header__logo-container'
+    );
+    logoLink.href = '//www.vistula.edu.pl/';
+    logoLink.target = '_blank';
+
+    const logo = Base.createElement(
+      'img',
+      logoLink,
+      'header__logo',
+    );
+    const logoText = 'Akademia Finansów i Biznesu Vistula';
+    logo.src = './afib-icon.png';
+    logo.alt = logoText;
+    logo.title = logoText;
   }
 
 
