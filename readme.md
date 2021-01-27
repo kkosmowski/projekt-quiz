@@ -1,5 +1,5 @@
 # Projekt quizu na zaliczenie
-v. 1.4.0
+v. 1.4.1
 
 ## Cel quizu
 #### Sprawdzenie wiedzy użytkownika
@@ -38,6 +38,8 @@ internetowych przez autora. Nowe doświadczenie w rozwiązywaniu problemów rów
 ---
 
 #### Changelog:
+* 1.4.1:
+  * nazwa PDFa to teraz `certyfikat.pdf`;
 * 1.4.0:
   * PDF zawiera teraz tabelę z ekranu końcowego, ze szczegółowymi widokami;
   * PDF nie zawiera już wyjaśnień i linków;

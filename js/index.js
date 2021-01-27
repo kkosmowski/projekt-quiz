@@ -65,7 +65,7 @@ class Quiz {
     Render.init();
     this.createQuiz();
     if (!this.authorShown) {
-      console.log('Quiz v. 1.4.0\nAutor: Krzysztof Kosmowski\nhttps://github.com/zaxanq/projekt-quiz');
+      console.log('Quiz v. 1.4.1\nAutor: Krzysztof Kosmowski\nhttps://github.com/zaxanq/projekt-quiz');
       this.authorShown = true;
     }
   }

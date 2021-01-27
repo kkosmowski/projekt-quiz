@@ -678,7 +678,7 @@ export default class Render {
     Render.quizPageElements.forEach(element => Base.show(element));
     Base.hide(Render.quizEndScreenElement);
 
-    html2pdf(document.body);
+    html2pdf(document.body, { filename: 'certyfikat.pdf' });
 
     Base.hide(printPage);
     Base.removeClass(Render.quizElement, 'print');
