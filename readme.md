@@ -1,3 +1,7 @@
+Quiz dostępny w dwóch wersjach na żywo:
+* http://kosmowski.ct8.pl/quiz/ (25 pytań, 1 pytanie per strona)
+* http://kosmowski.ct8.pl/quiz-5x5/ (25 pytań, 5 pytań per strona)
+
 # Projekt quizu na zaliczenie
 v. 1.4.1
 
