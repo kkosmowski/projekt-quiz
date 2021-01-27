@@ -1,5 +1,5 @@
 # Projekt quizu na zaliczenie
-v. 1.3.0
+v. 1.4.0
 
 ## Cel quizu
 #### Sprawdzenie wiedzy użytkownika
@@ -38,6 +38,13 @@ internetowych przez autora. Nowe doświadczenie w rozwiązywaniu problemów rów
 ---
 
 #### Changelog:
+* 1.4.0:
+  * PDF zawiera teraz tabelę z ekranu końcowego, ze szczegółowymi widokami;
+  * PDF nie zawiera już wyjaśnień i linków;
+  * kolejne poprawki w pytaniach i odpowiedziach;
+  * quiz dobiera teraz poprawną ilość pytań z każdej kategorii, np. dla 25 pytań po 8 z każdej kategorii i 1 losowe, a nie jak dotychczas nawet 9/9/6 + 1 losowe;
+  * drobne zmiany w parserze tekstu;
+  * logo Vistuli nie jest już dostępne klawiszem Tab (utrudniało obsługę quizu klawiaturą);
 * 1.3.0:
   * dodany zapis do PDF;
   * naprawiony błąd, w którym progress boxy wyrzucały bład gdy cofaliśmy się ze strony, na której było mniej pytań niż powinno być;

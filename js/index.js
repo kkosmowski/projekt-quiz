@@ -65,7 +65,7 @@ class Quiz {
     Render.init();
     this.createQuiz();
     if (!this.authorShown) {
-      console.log('Quiz v1.3.0\nAutor: Krzysztof Kosmowski\nhttps://github.com/zaxanq/projekt-quiz');
+      console.log('Quiz v. 1.4.0\nAutor: Krzysztof Kosmowski\nhttps://github.com/zaxanq/projekt-quiz');
       this.authorShown = true;
     }
   }
@@ -351,7 +351,7 @@ class Quiz {
       const pickFrom = Math.floor(Math.random() * this.categoriesCount);
       const selectedCategory = this.categories[pickFrom];
         // If (limit is checked and it is not exceeded) or (limit is ignored)...
-      if (checkLimit && selectedCategories[selectedCategory] < (this.questionsCount / this.categoriesCount) || !checkLimit) {
+      if (checkLimit && selectedCategories[selectedCategory] < Math.floor(this.questionsCount / this.categoriesCount) || !checkLimit) {
           // Select the category and increase the selected categories counter.
         selectedCategories[selectedCategory]++;
         return selectedCategory;
@@ -471,10 +471,9 @@ class Quiz {
     Render.disableAnswerRadios();
     Render.markSelectedAnswers(this.userAnswers);
     Render.markCorrectAnswers(this.correctAnswers);
-    Render.explanations(this.explanations, this.moreInfoUrls);
     this.reviewRendered = true;
 
-    Render.printPage();
+    Render.printPage(this.getScoresByCategory(), this.categories);
   }
 
 
@@ -518,7 +517,6 @@ class Quiz {
       Base.hide(Render.quizPageElements[next ? this.currentPage - 1 : this.currentPage + 1], permanentHide);
       // Else hide all (currently rendered) pages.
     } else {
-      console.log(this.state);
       if (this.state !== this.states.restarted && this.state !== this.states.reviewing) {
         Render.quizPageElements.forEach(pageElement => Base.hide(pageElement));
       }
@@ -565,8 +563,8 @@ class Quiz {
       Render.disableAnswerRadios();
       Render.markSelectedAnswers(this.userAnswers);
       Render.markCorrectAnswers(this.correctAnswers);
-      Render.explanations(this.explanations, this.moreInfoUrls);
     }
+    Render.explanations(this.explanations, this.moreInfoUrls);
     Base.show(Render.quizControlsElement);
     Base.hide(Render.progressElement); // hide Progress (between BackControl and ContinueControl)
     Base.show(this.restartControl); // show RestartControl instead of Progress

@@ -123,7 +123,7 @@
         "-[<table>]- wykorzystujemy aby nadać lub poprawić responsywność stron internetowych.",
         "Do tworzenia tabel oraz layoutów stron."
       ],
-      "explanation": "W przeszłości tabele były popularną metodą tworzenia layoutu strony, dzieląc go na wiersze -- np. header, menu, sekcja pierwsze, sekcja druga, footer. Dziś jednak jest to jedynie przykre wspomnienie. Dużo osób jednak sądzi, że -[<table>]- to samo zło, jednak nadal jest to doskonałe narzędzie do tworzenia tabel lub elementów na stronie."
+      "explanation": "W przeszłości tabele były popularną metodą tworzenia layoutu strony, dzieląc go na wiersze --- np. header, menu, sekcja pierwsze, sekcja druga, footer. Dziś jednak jest to jedynie przykre wspomnienie. Dużo osób jednak sądzi, że -[<table>]- to samo zło, jednak nadal jest to doskonałe narzędzie do tworzenia tabel lub elementów na stronie."
     },
     "12": {
       "difficulty": 4,
@@ -602,7 +602,7 @@
       "answers": [
         "-[outline]- to obrys pojawiający się domyślnie na elementach z pseudoklasą -[:focus]-, np. po kliknięciu przycisku. Nie powinniśmy go usuwać ze względu na accessibility.",
         "-[outline]- to obrys pojawiający się między -[margin]-em, a -[border]-em, jest to obrys dookoła ramki elementu. Rzadko stosowana pozostałość po HTML4.01.",
-        "-[outline]- to obrys pojawiający się między -[padding-]iem, a -[border]-em, jest to obrys wewnątrz ramki elementu. Rzadko stosowana pozostałość po HTML4.01.",
+        "-[outline]- to obrys pojawiający się między -[padding]-iem, a -[border]-em, jest to obrys wewnątrz ramki elementu. Rzadko stosowana pozostałość po HTML4.01.",
         "-[outline]- to podkreślenie widoczne np. po najechaniu na link. Może zostać zastosowane w każdym elemencie, poprzez nadanie grubości, stylu i koloru."
       ],
       "explanation": "Accessibility to zestaw praktyk i rozwiązań ułatwiających korzystanie ze strony internetowej osobom z niepełnosprawnościami. Widoczny outline to zwiększone accesibility, ponieważ nie usuwa oznaczenia, że element jest wybrany. Jest to także przydatne dla osób nawigujących po stronie klawiszem Tab. Alternatywą dla -[outline: none]- jest nadanie innych styli na -[:focus]-, aby zachować to oznaczenie."
@@ -635,7 +635,7 @@
       "answers": [
         "Szukamy w elemencie o atrybucie -[aria-role=navigation]- elementów -[a]-, których atrybut -[href]- zaczyna się tekstem -[mailto]-.",
         "Szukamy w elemencie o atrybucie -[aria-role=navigation]- elementów -[a]-, których atrybut -[href]- nie kończy się tekstem -[mailto]-.",
-        "Szukamy w elementów o atrybucie -[aria-role=navigation]- będących obok elementów -[a]- o atrybucie -[href]- nie kończącym się tekstem -[mailto]-.",
+        "Szukamy elementów o atrybucie -[aria-role=navigation]- będących obok elementów -[a]- o atrybucie -[href]- nie kończącym się tekstem -[mailto]-.",
         "Selektor jest niepoprawny, ponieważ powinno być -[*[aria-role=\"navigation\"]]-."
       ]
     },
@@ -659,7 +659,7 @@
         "Będzie to pole tekstowe z \"*\" po lewej stronie, poza polem.",
         "Będzie to pole tekstowe z \"*\" po prawej stronie, wewnątrz pola."
       ],
-      "explanation": "Pułapka, o której warto wiedzieć -- elementy \"void\", czyli takie, które nie mają tagu zamykającego, jak -[<input>]-, -[<hr>]-, -[<br>]- itd. nie mogą posiadać pseudoelementów -- w końcu nie posiadają kontentu."
+      "explanation": "Pułapka, o której warto wiedzieć --- elementy \"void\", czyli takie, które nie mają tagu zamykającego, jak -[<input>]-, -[<hr>]-, -[<br>]- itd. nie mogą posiadać pseudoelementów --- w końcu nie posiadają kontentu."
     },
     "31": {
       "difficulty": 1,
@@ -683,7 +683,7 @@
     },
     "33": {
       "difficulty": 4,
-      "question": "Jaki będzie kolor ramki elementu -[button]-?:--[<div>\n  <form>\n    <button type=\"button\">Przycisk</button>\n  </form>\n</div>]--\n--[div {\n  border-color: red;\n}\n\ndiv > form {\n  border-color: blue;\n}\n\nbutton {\n  border: 1px solid;\n color: green;\n}]--",
+      "question": "Jaki będzie kolor ramki elementu -[button]-?:--[<div>\n  <form>\n    <button type=\"button\">Przycisk</button>\n  </form>\n</div>]--\n--[div {\n  border-color: red;\n}\n\ndiv > form {\n  border-color: blue;\n}\n\nbutton {\n  border: 1px solid;\n  color: green;\n}]--",
       "answers": [
         "-[green]-",
         "-[red]-",
@@ -774,10 +774,10 @@
       "difficulty": 1,
       "question": "Co się stanie w takiej sytuacji?\n--[x = 5;\nconst x;\nconsole.log(x);]--",
       "answers": [
+        "Wystąpi błąd - wartość -[const]- musi mieć zainicjalizowaną wartość.",
         "Wystąpi błąd - zmienna -[x]- nie istnieje.",
         "-[console.log]- wyświetli wartość -[5]-.",
-        "Wystąpi błąd - nie można zmienić wartości -[const]-.",
-        "Wystąpi błąd - wartość -[const]- musi mieć zainicjalizowaną wartość."
+        "Wystąpi błąd - nie można zmienić wartości -[const]-."
       ],
       "explanation": "-[const]- to stała, której wartość można zainicjalizować tylko raz i musi to być wartość podana podczas deklaracji. Nie jest możliwe zadeklarowanie stałej: -[const x;]- i zdefiniowanie jej wartości później. Kod -[x = 5;]- nie będzie uznany za błąd ponieważ poza trybem -[strict]- Javascript jest \"wyrozumiały\". Więcej o trybie -[strict]-:",
       "moreInfoUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode"
@@ -825,7 +825,7 @@
         "-[false]-, ponieważ typy wartości są różne.",
         "-[false]-, ponieważ Javascript konwertujes stringi na ich wartość ASCII, a w tym przypadku wartość ASCII znaku \"1\" nie wynosi 1, a 49."
       ],
-      "explanation": "W Javascripcie mamy dwa operatory porównania. Operator -[===]- to strict comparison, czyli porównanie i typów i wartości -- takie porównanie zwróciłoby -[false]-. Natomiast operator -[==]- sprawdza typy, a jeżeli są rózne, ale możliwa jest konwersja to jej dokonuje. W tym przypadku -[\"1\"]- zostaje zamienione na -[1]-, stąd -[true]-."
+      "explanation": "W Javascripcie mamy dwa operatory porównania. Operator -[===]- to strict comparison, czyli porównanie i typów i wartości --- takie porównanie zwróciłoby -[false]-. Natomiast operator -[==]- sprawdza typy, a jeżeli są rózne, ale możliwa jest konwersja to jej dokonuje. W tym przypadku -[\"1\"]- zostaje zamienione na -[1]-, stąd -[true]-."
     },
     "10": {
       "difficulty": 4,
@@ -836,16 +836,16 @@
         "-[undefined]-",
         "Błąd: zmienna -[Infinity]- nie została zadeklarowana."
       ],
-      "explanation": "W Javascripcie mamy dwie bardzo małe wartości, jedna to -[Number.MIN_VALUE]-, a druga to -[-Infinity]-. O ile ta druga w każdym innym przypadku okaże się być najmniejsza, o tyle -[NaN]- nie stosuje się do reguł arytmetyki -- zarówno -[0 > NaN]-, -[0 == NaN]-, -[0 === NaN]- jak i -[0 < NaN]- zwróci false. Nawet -[NaN === NaN]-."
+      "explanation": "W Javascripcie mamy dwie bardzo małe wartości, jedna to -[Number.MIN_VALUE]-, a druga to -[-Infinity]-. O ile ta druga w każdym innym przypadku okaże się być najmniejsza, o tyle -[NaN]- nie stosuje się do reguł arytmetyki --- zarówno -[0 > NaN]-, -[0 == NaN]-, -[0 === NaN]- jak i -[0 < NaN]- zwróci false. Nawet -[NaN === NaN]-."
     },
     "11": {
       "difficulty": 3,
       "question": "Podaj wartość zwracaną z tego polecenia: -[typeof NaN]-.",
       "answers": [
-        "-[\"number\"]-",
-        "-[\"object\"]-",
-        "-[\"function\"]-",
-        "-[\"NaN\"]-"
+        "-['number']-",
+        "-['object']-",
+        "-['function']-",
+        "-['NaN']-"
       ],
       "explanation": "Choć wydaje się to nielogiczne to -[NaN]- (Not a Number) jest typu -[number]-.",
       "moreInfoUrl": "https://developer.mozilla.org/pl/docs/Web/JavaScript/Referencje/Obiekty/NaN"
@@ -870,7 +870,7 @@
         "-[3]-",
         "-[5]-"
       ],
-      "explanation": "Metoda -[indexOf]- zwraca indeks pierwszego znalezionego elementu o podanej wartości. W tym przypadku była to trójka znajdująca się na pozycji drugiej -- w Javascripcie, jak w wielu językach programowania, indeksujemy od zera."
+      "explanation": "Metoda -[indexOf]- zwraca indeks pierwszego znalezionego elementu o podanej wartości. W tym przypadku była to trójka znajdująca się na pozycji drugiej --- w Javascripcie, jak w wielu językach programowania, indeksujemy od zera."
     },
     "14": {
       "difficulty": 1,
@@ -909,15 +909,15 @@
       "difficulty": 1,
       "question": "Wybierz poprawną składnię komentarzy w Javascripcie:",
       "answers": [
+        "/* Komentarz */",
         ">> Komentarz",
         "/ Komentarz /",
-        "/* Komentarz */",
         ";; Komentarz"
       ]
     },
     "18": {
       "difficulty": 2,
-      "question": "W Javascripcie mamy dużo swobody, ale nie możemy nazywać zmiennych jak chcemy. Wybierz przykład niepoprawnej nazwy zmiennej:",
+      "question": "W Javascripcie mamy dużo swobody, ale są też pewne ograniczenia. Wybierz przykład niepoprawnej nazwy zmiennej:",
       "answers": [
         "4wynik",
         "_wynik",
@@ -1040,9 +1040,9 @@
       "difficulty": 2,
       "question": "Jaki będzie wynik tego kodu: -[console.log(typeof false);]-?",
       "answers": [
+        "-['boolean']-",
         "-[false]-",
         "-['false']-",
-        "-['boolean']-",
         "-['type']-"
       ],
       "explanation": "Operator -[typeof]- zwraca typ podanej wartości jako string. Oznacza to, że dla -[false]-, które jest typu boolean dostaniemy string: -['boolean']-. Nie istnieje także żaden z typów: -['false']-, -['true']- czy -['type']-."
@@ -1089,7 +1089,7 @@
         "-[NaN]-",
         "-[1]-"
       ],
-      "explanation": "Aby dokładnie wiedzieć jaki będzie wynik należy rozumieć co zwracają metody -[push]- i -[pop]-. Ta pierwsza zwróci nową długość tablicy, podczas gdy ostatnia zwróci (i usunie z tablicy) ostatni element.\nW wyniku tych działań odejmujemy od siebie długość tablicy -[[1, 2, 3, 4, 5]]- -- czyli -[5]- od ostatniego elementu, czyli -[5]-."
+      "explanation": "Aby dokładnie wiedzieć jaki będzie wynik należy rozumieć co zwracają metody -[push]- i -[pop]-. Ta pierwsza zwróci nową długość tablicy, podczas gdy ostatnia zwróci (i usunie z tablicy) ostatni element.\nW wyniku tych działań odejmujemy od siebie długość tablicy -[[1, 2, 3, 4, 5]]- --- czyli -[5]- od ostatniego elementu, czyli -[5]-."
     },
     "34": {
       "difficulty": 4,
@@ -1111,7 +1111,7 @@
         "-['class']-",
         "-['string']-"
       ],
-      "explanation": "Klasy w Javascripcie to nic innego jak funkcje, owinięte tzw. -_syntactic sugar_- (pol. \"lukier składniowy\") czyli ładną otoczką upiększającą i ułatwiającą składnię języka. Wszystko co napiszemy klasami, możemy napisać również funkcjami."
+      "explanation": "Klasy w Javascripcie to nic innego jak funkcje, owinięte w tzw. -_syntactic sugar_- (pol. \"lukier składniowy\") czyli ładną otoczką upiększającą i ułatwiającą składnię języka. Wszystko co napiszemy klasami, możemy napisać również funkcjami."
     },
     "36": {
       "difficulty": 4,
@@ -1122,7 +1122,7 @@
         "-[NaN]-",
         "Wystąpi błąd, ponieważ stringów nie można porównywać."
       ],
-      "explanation": "Stringi można porównywać, co więcej - każda kolejna litera alfabetu jest \"większa\" od poprzedniej, a każda mała litera jest \"większa\" od dużej. Wynika to z faktu, że porównywane są kody ASCII tych znaków. W przypadku dłuższych stringów porównywane są kolejne znaki."
+      "explanation": "Stringi można porównywać, co więcej - każda kolejna litera alfabetu jest \"większa\" od poprzedniej, a każda mała litera jest \"większa\" od dużej. Wynika to z faktu, że porównywane są kody ASCII tych znaków. W przypadku dłuższych stringów porównywane są one znak po znaku, czyli -['kot' > 'koc']- bo -['t' > 'c']-."
     },
     "37": {
       "difficulty": 4,
@@ -1144,7 +1144,7 @@
         "-[20]-",
         "-[50]-"
       ],
-      "explanation": "Wynik to rezultat procesu hoistingu -- jako że deklarujemy w funkcji nową zmienną -[x]-, zostaje ona wyniesiona do góry, przed naszego -[console.log]-a, co skutkuje tym, że -[x]- istnieje, ale nie ma zdefiniowanej wartości. -[x]- wynosiłoby -[10]-, gdyby nie ponowna deklaracja zmiennej."
+      "explanation": "Wynik to rezultat procesu hoistingu --- jako że deklarujemy w funkcji nową zmienną -[x]-, zostaje ona wyniesiona do góry, przed naszego -[console.log]-a, co skutkuje tym, że -[x]- istnieje, ale nie ma zdefiniowanej wartości. -[x]- wynosiłoby -[10]-, gdyby nie ponowna deklaracja zmiennej."
     },
     "39": {
       "difficulty": 4,
@@ -1155,18 +1155,18 @@
         "-[Infinity]-",
         "-[Math.random()]-"
       ],
-      "explanation": "-[NaN]- nie stosuje się do reguł arytmetyki -- zarówno -[0 > NaN]-, -[0 == NaN]-, -[0 === NaN]- jak i -[0 < NaN]- zwróci false. Nawet -[NaN === NaN]-."
+      "explanation": "-[NaN]- nie stosuje się do reguł arytmetyki --- zarówno -[0 > NaN]-, -[0 == NaN]-, -[0 === NaN]- jak i -[0 < NaN]- zwróci false. Nawet -[NaN === NaN]-."
     },
     "40": {
       "difficulty": 3,
-      "question": "Jaki będzie rezultat tego kodu?:--[const array = new Array(10);\nconsole.log(array[0]);]--",
+      "question": "Jaki będzie rezultat tego kodu?:--[const array = new Array(6);\nconsole.log(array[0]);]--",
       "answers": [
         "-[undefined]-",
-        "-[10]-",
+        "-[6]-",
         "-[0]-",
         "-[null]-"
       ],
-      "explanation": "-[new Array(10)]- tworzy taką oto tablicę: -[[undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined]]-."
+      "explanation": "-[new Array(6)]- tworzy taką oto tablicę: -[[undefined, undefined, undefined, undefined, undefined, undefined]]-."
     },
     "41": {
       "difficulty": 4,

@@ -69,7 +69,7 @@ export default class Render {
 
     // this is appended to label HTML — already containing an input — and it has to be the last.
     // Note: skipDashes is necessary to avoid parsing '--var' into '–var'
-    label.innerHTML += `<span>${ Base.parseText(content, { skipDashes: true }) }</span>`;
+    label.innerHTML += `<span>${ Base.parseText(content) }</span>`;
   }
 
 
@@ -125,10 +125,6 @@ export default class Render {
     if (!(currentPage === 1 && increase)) {
       const previousFirstBox = (currentPage - (increase ? 2 : 0)) * questionsPerPage + 1;
       const previousLastBox = previousFirstBox + questionsPerPage;
-
-      console.log(previousFirstBox);
-      console.log(previousLastBox);
-      console.log(increase);
 
       for (let i = previousFirstBox; i < previousLastBox; i++) {
         Base.removeClassFromId(`progress-box-${ i }`, '--current');
@@ -241,7 +237,7 @@ export default class Render {
     Renders scores per category in the end screen.
     Displays a table with each category as a new row, containing correct answers count and percentage.
    */
-  static endScreenScorePerCategory(scores, categories) {
+  static endScreenScorePerCategory(scores, categories, parent = this.quizEndScreenElement) {
     this.resultPerCategory = scores;
     let content = `${ Text.end.categoryScoresText }: <table class="end-screen__scores-table">`;
     content += `<tr><th>${ Text.end.category }</th><th>${ Text.end.correctAnswers }</th><th>${ Text.end.percentage }</th></tr>`;
@@ -256,7 +252,7 @@ export default class Render {
 
     Base.createElement(
       'p',
-      this.quizEndScreenElement,
+      parent,
       ['end-screen__paragraph', 'end-screen__languages-score'],
       content,
       true
@@ -361,6 +357,7 @@ export default class Render {
     );
     logoLink.href = '//www.vistula.edu.pl/';
     logoLink.target = '_blank';
+    logoLink.tabIndex = '-1';
 
     const logo = Base.createElement(
       'img',
@@ -435,7 +432,7 @@ export default class Render {
    */
   static instructions(questionsCount, categoriesCount, startQuizFn) {
     const questionsPerCategoryCount = Math.floor(questionsCount / categoriesCount);
-    const additionalQuestionsCount = questionsCount % questionsPerCategoryCount;
+    const additionalQuestionsCount = questionsCount % categoriesCount;
     let instructions = Text.start.instructions.purpose;
 
     instructions += Base.interpolate(Text.start.instructions.questionCount, questionsCount, questionsPerCategoryCount);
@@ -547,12 +544,11 @@ export default class Render {
 
     if (questionsToRender) {
       questionsToRender.forEach(question => {
-        console.log(this.quizPageElements);
         this.questionsRenderedCount++;
         this.question(
           this.quizPageElements[currentPage],
           question.type,
-          Base.parseText(question.question, { skipDashes: true }),
+          Base.parseText(question.question),
           question.answers,
           correctAnswers
         );
@@ -633,7 +629,7 @@ export default class Render {
     return positions;
   }
 
-  static printPage() {
+  static printPage(scores, categories) {
     const printPageScoreGeneralPercentage = 'Uzyskałeś(aś) <strong>' + this.resultCorrectAnswersPercent + '%</strong> z testu z wiedzy HTML, CSS, Javascript.';
     const printPageScoreGeneralCount = 'W wyniku poprawnej odpowiedzi na <strong>' + this.resultCorrectAnswersCount + '</strong> z <strong>' + this.questionsRenderedCount + '</strong> pytań.';
 
@@ -668,6 +664,8 @@ export default class Render {
       printPageScoreGeneralCount,
       true
     );
+
+    Render.endScreenScorePerCategory(scores, categories, printPage);
 
     Base.createElement(
         'p',

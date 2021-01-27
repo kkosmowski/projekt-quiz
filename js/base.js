@@ -33,42 +33,22 @@ export default class Base {
   /*
     Text parser method, parses the html tags such as '<img>' into '&lt;img&gt;'.
     This causes user to see '<img>' in the text, instead of an image.
-    Additionally code symbol are parsed into <code> tags.
+    Additionally code symbol are parsed into <code> tags and emphasis into <em>.
     Example:
        -[<h1>]-   =>  <code>&lt;h1&gt;</code>
       --[<h1>]--  =>  <code class="block">&lt;h1&gt;</code>
+      -_text_-    =>  <em>text</em>
 
-    Additionally parses '--' into n-dash and '---' into m-dash.
-
-    Input: string to be parsed, and options.
-    Options is an object, that can consist of:
-     * skipTags - parsing of Html and code tags is not executed,
-     * skipDashes - parsing of '--' and '---' into n- and m-dashes is not executed.
-    Examples of valid options:
-      { skipDashes: true }
-      { skipTags: true }
-      { skipDashes: true, skipTags: true } <- also allowed, but will result in no text parsing.
+    Additionally parses '---' into m-dash.
    */
-  static parseText(string, options) {
+  static parseText(string) {
     //TODO: refactor into own method that makes only one loop across the string, instead of <as many as replaceAll calls>
-    const replaceTags = (string) => string
+    return string
       .replaceAll('<', '&lt;').replaceAll('>', '&gt;')
       .replaceAll('--[', '<code class="block">').replaceAll(']--', '</code>')
       .replaceAll('-[', '<code>').replaceAll(']-', '</code>')
-      .replaceAll('-_', '<em>').replaceAll('_-', '</em>');
-
-    const replaceDashes = (string) => string.replaceAll('---', '&mdash;').replaceAll('--', '&ndash;');
-
-    if (!options) {
-      return replaceDashes(replaceTags(string));
-    } else {
-      if (options.skipTags) {
-        return replaceDashes(string);
-      } else if (options.skipDashes) {
-        return replaceTags(string);
-      }
-      return string;
-    }
+      .replaceAll('-_', '<em>').replaceAll('_-', '</em>')
+      .replaceAll('---', '&mdash;');
   }
 
 
